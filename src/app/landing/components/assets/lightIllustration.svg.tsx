@@ -19,7 +19,6 @@ export default function LightIllustration() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
-        exit={{ opacity: 0 }}
       >
         <path
           fill="#000000"

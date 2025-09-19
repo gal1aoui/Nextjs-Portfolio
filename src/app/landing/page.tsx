@@ -3,10 +3,11 @@
 import { Box, Stack, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import DarkIllustration from "./components/assets/darkIllustration.svg";
+import LightIllustration from "./components/assets/lightIllustration.svg";
+import styles from "./components/assets/page.module.css";
 import CustomCursor from "./components/CustomCursor";
-import styles from "./page.module.css";
-import DarkIllustration from "../../assets/darkIllustration";
-import LightIllustration from "../../assets/lightIllustration";
+import MysteryComponent from "./components/mysteryComponent";
 
 export default function Home() {
   const [isLightHovering, setIsLightHovering] = useState(false);
@@ -30,19 +31,16 @@ export default function Home() {
           onMouseEnter={() => setIsDarkHovering(true)}
           onMouseLeave={() => setIsDarkHovering(false)}
         >
-          {isDarkHovering && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
-            >
-              <DarkIllustration />
-            </motion.div>
-          )}
+          {isDarkHovering && <DarkIllustration />}
         </Box>
       </Stack>
 
-      <motion.div className={styles.centeredText}>
+      <motion.div
+        className={styles.centeredText}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <Typography
           variant="h1"
           component="h1"
@@ -63,6 +61,7 @@ export default function Home() {
           Achref Gallaoui
         </Typography>
       </motion.div>
+      <MysteryComponent />
     </main>
   );
 }

@@ -1,0 +1,12 @@
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: white;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+}

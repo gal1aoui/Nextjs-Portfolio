@@ -2,7 +2,7 @@
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect } from "react";
-import styles from "./customCursor.module.css";
+import styles from "./assets/customCursor.module.css";
 
 interface CustomCursorProps {
   isHovering: boolean;
