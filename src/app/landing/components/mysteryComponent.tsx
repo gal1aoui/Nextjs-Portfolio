@@ -1,8 +1,17 @@
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Slide } from "@mui/material";
-import MysteryIllustration from "./assets/mysteryIllustration.svg";
-import { forwardRef, useState } from "react";
+import {
+  Box,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Slide,
+} from "@mui/material";
 import type { TransitionProps } from "@mui/material/transitions";
 import Link from "next/link";
+import { forwardRef, useState } from "react";
+import MysteryIllustration from "./assets/mysteryIllustration.svg";
+import styles from "./assets/page.module.css";
 
 const Transition = forwardRef(function Transition(
   props: TransitionProps & {
@@ -13,11 +22,22 @@ const Transition = forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function MysteryComponent() {
-    const [open, setOpen] = useState(false);
+interface MysteryComponentProps {
+  launchRocket: () => void;
+}
+
+export default function MysteryComponent({ launchRocket }: MysteryComponentProps) {
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
+  };
+
+  const handleRocketLaunching = () => {
+    launchRocket();
+    setTimeout(() => {
+      window.location.href = "https://www.fastfol.io/achref-gallaoui";
+    }, 3000);
   };
 
   const handleClose = () => {
@@ -25,10 +45,10 @@ export default function MysteryComponent() {
   };
   return (
     <>
-    <Box
+      <Box
         position="absolute"
-        bottom="10vh"
-        right="45vw"
+        top="10vh"
+        right="10vw"
         display={{ xs: "none", md: "none", lg: "block" }}
         onClick={handleClickOpen}
       >
@@ -42,20 +62,28 @@ export default function MysteryComponent() {
         }}
         keepMounted
         onClose={handleClose}
-        aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle>{"Use Google's location service?"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            Let Google help apps determine location. This means sending anonymous
-            location data to Google, even when no apps are running.
+        <DialogContent className={styles.dialogPaper}>
+          <DialogTitle>🚀 Ready to Take the Rocket?</DialogTitle>
+          <DialogContentText sx={{ mixBlendMode: "difference", color: "white" }}>
+            You’re about to launch into my AI-powered portfolio experience. It may feel like a wild
+            ride, but here’s what you’ll discover along the way:
+            <br />• My skills and background, presented interactively
+            <br />• Real projects I’ve worked on (with impact)
+            <br />• A chance to see how I mix tech + creativity in my work
+            <br />
+            Choose wisely:
           </DialogContentText>
+          <DialogActions sx={{ justifyContent: "space-between" }}>
+            <Link href="/" className={styles.disagreeButton}>
+              Leave Me Here
+            </Link>
+            <Link href="#" className={styles.agreeButton} onClick={handleRocketLaunching}>
+              Take the Rocket
+            </Link>
+          </DialogActions>
         </DialogContent>
-        <DialogActions>
-          <Link href="/"><Button onClick={handleClose} sx={{ cursor: "none" }}>Disagree</Button></Link>
-          <Link href="https://www.fastfol.io/achref-gallaoui"><Button onClick={handleClose} sx={{ cursor: "none" }}>Agree</Button></Link>
-        </DialogActions>
       </Dialog>
     </>
-  )
+  );
 }

@@ -14,7 +14,7 @@ export default function MysteryIllustration() {
       viewBox="0 0 576 544"
       enableBackground="new 0 0 576 544"
       xmlSpace="preserve"
-	  className={styles.mystery}
+      className={styles.mystery}
     >
       <title>Mystery Design Illustration</title>
       <path
@@ -709,11 +709,11 @@ z"
       />
       <motion.g
         initial={{ opacity: 0 }}
-        animate={{ opacity: .8 }}
+        animate={{ opacity: 0.8 }}
         transition={{ duration: 0.3, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
       >
         <path
-          fill="#FFFFFF"
+          fill="#000"
           opacity="1.000000"
           stroke="none"
           d="
@@ -728,7 +728,7 @@ z"
         />
 
         <path
-          fill="#FFFFFF"
+          fill="#000"
           opacity="1.000000"
           stroke="none"
           d="
@@ -743,7 +743,7 @@ z"
         />
 
         <path
-          fill="#FFFFFF"
+          fill="#000"
           opacity="1.000000"
           stroke="none"
           d="
@@ -757,7 +757,7 @@ M37.706223,481.354065
 z"
         />
         <path
-          fill="#FFFFFF"
+          fill="#000"
           opacity="1.000000"
           stroke="none"
           d="
@@ -772,7 +772,7 @@ z"
         />
 
         <path
-          fill="#FFFFFF"
+          fill="#000"
           opacity="1.000000"
           stroke="none"
           d="
@@ -786,7 +786,7 @@ M95.280426,528.566895
 z"
         />
         <path
-          fill="#FFFFFF"
+          fill="#000"
           opacity="1.000000"
           stroke="none"
           d="
@@ -801,7 +801,7 @@ z"
         />
 
         <path
-          fill="#FFFFFF"
+          fill="#000"
           opacity="1.000000"
           stroke="none"
           d="
@@ -815,7 +815,7 @@ M507.456299,532.511597
 z"
         />
         <path
-          fill="#FFFFFF"
+          fill="#000"
           opacity="1.000000"
           stroke="none"
           d="
@@ -831,7 +831,7 @@ z"
         />
 
         <path
-          fill="#FFFFFF"
+          fill="#000"
           opacity="1.000000"
           stroke="none"
           d="
@@ -846,7 +846,7 @@ z"
         />
 
         <path
-          fill="#FFFFFF"
+          fill="#000"
           opacity="1.000000"
           stroke="none"
           d="
