@@ -1,4 +1,4 @@
-import {heroui} from "@heroui/theme"
+import { heroui } from "@heroui/theme"
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -30,11 +30,11 @@ const config = {
           },
           '100%': {
             borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
-          },
+          }
         },
       },
       animation: {
-        blob: 'blob 8s ease-in-out infinite',
+        blob: 'blob 8s ease-in-out infinite'
       },
     },
   },

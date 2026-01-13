@@ -9,6 +9,7 @@ import ContactForm from "./contact/contact-form";
 import dynamic from "next/dynamic";
 import PdfRendererSkeleton from "./pdf-renderer-skeleton";
 import { useEffect, useState } from "react";
+import useWindowWidth from "@/hooks/useWindowWidth";
 
 const DynamicPDFViewer = dynamic(() => import("./pdf-renderer"), {
   loading: () => <PdfRendererSkeleton />,
@@ -20,9 +21,16 @@ export default function Introduction() {
   const { openModal } = useModal();
   const roughNotationAnimationDelay = 500;
 
+  const windowWidth = useWindowWidth();
+
   useEffect(() => {
-   setTimeout(() => setRoughNotationStarted(true), 2000);
-  })
+    if(windowWidth > 651){
+      setTimeout(() => setRoughNotationStarted(true), 2000);
+    } else {
+      setRoughNotationStarted(false);
+    }
+  }, [windowWidth]);
+
   return (
     <div className="flex flex-col w-fit text-center md:text-start h-screen p-4">
       <h1 className="text-4xl md:text-6xl">Hi there, I am</h1>
@@ -80,7 +88,7 @@ export default function Introduction() {
           </Tooltip>
         </div>
 
-        <div className="flex gap-12 items-center">
+        <div className="flex gap-12 items-center mx-auto md:mx-0">
           <Tooltip content="LinkedIn" placement="top">
             <LinkedInIcon size={40} className="cursor-pointer" />
           </Tooltip>

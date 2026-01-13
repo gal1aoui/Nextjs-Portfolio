@@ -1,6 +1,6 @@
 import { IconSvgProps } from "@/types";
 
-type ShapeType = "formatBold" | "formatItalic" | "formatUnderline" | "strikethrough" | "leftAlign" | "centerAlign" | "rightAlign" | "justifyAlign";
+type ShapeType = "formatBold" | "formatItalic" | "formatUnderline" | "strikethrough" | "leftAlign" | "centerAlign" | "rightAlign" | "justifyAlign" | "leftArrow" | "rightArrow" | "downloadFile";
 
 const IconsShape: Record<ShapeType, string> = {
     "formatBold": "M6.75 3.744h-.753v8.25h7.125a4.125 4.125 0 0 0 0-8.25H6.75Zm0 0v.38m0 16.122h6.747a4.5 4.5 0 0 0 0-9.001h-7.5v9h.753Zm0 0v-.37m0-15.751h6a3.75 3.75 0 1 1 0 7.5h-6m0-7.5v7.5m0 0v8.25m0-8.25h6.375a4.125 4.125 0 0 1 0 8.25H6.75m.747-15.38h4.875a3.375 3.375 0 0 1 0 6.75H7.497v-6.75Zm0 7.5h5.25a3.75 3.75 0 0 1 0 7.5h-5.25v-7.5Z",
@@ -10,7 +10,10 @@ const IconsShape: Record<ShapeType, string> = {
     "leftAlign": "M3,12H17M3,6H21M3,18H13",
     "centerAlign": "M6,12H18M3,6H21M3,18H21",
     "rightAlign": "M21,12H7M21,6H3M21,18H11",
-    "justifyAlign": "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+    "justifyAlign": "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5",
+    "leftArrow": "M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18",
+    "rightArrow": "M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3",
+    "downloadFile": "M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
 }
 
 export const UndoIcon: React.FC<IconSvgProps & { disabled?: boolean }> = ({

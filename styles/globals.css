@@ -8,4 +8,16 @@
     --breakpoint-md: 80rem;
 }
 
+::-webkit-scrollbar
+{
+	width: 3px;
+    height: 3px;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: currentColor;
+	border-radius: 48px;
+}
+
 @config "../tailwind.config.js"

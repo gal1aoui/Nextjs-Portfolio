@@ -39,7 +39,7 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          "min-h-screen text-foreground bg-background font-sans antialiased overflow-y-hidden",
+          "min-h-screen text-foreground bg-background font-sans antialiased overflow-auto",
           fontSans.variable
         )}
       >
@@ -47,7 +47,7 @@ export default function RootLayout({
           <ModalProvider>
             <div className="relative flex flex-col">
               <Navbar />
-              <main className="p-0 md:px-4 md:pt-6 overflow-auto"><ThemeSwitch />{children}</main>
+              <main className="p-0 md:px-4 md:pt-6">{children}</main>
             </div>
           </ModalProvider>
         </Providers>

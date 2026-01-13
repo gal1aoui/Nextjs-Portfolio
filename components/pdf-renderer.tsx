@@ -1,12 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
-import { ModalFooter } from "@heroui/modal";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
-import { Button } from "./ui/button";
+import { Divider } from "@heroui/divider";
+import { Button as EditorButton } from "@heroui/button";
 import { ZoomInIcon, ZoomOutIcon } from "./icons";
 import PdfRendererSkeleton from "./pdf-renderer-skeleton";
+import { EditorActionIcon } from "./contact/editor/icons";
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.mjs",
@@ -59,95 +60,83 @@ export default function ResumeViewer() {
   return (
     <>
       <div className="flex flex-col items-center py-4">
-        <div className="flex justify-between w-full text-center p-2">
-          <div className="flex gap-2 rounded-lg p-2 bg-default-100">
-            <Button
-              size="xs"
-              variant="flat"
-              onClick={zoomOut}
+        <div className="flex w-full items-center justify-center p-2 sticky top-0 z-10"> 
+          <div className="flex gap-2 p-2">
+            <EditorButton
+              isIconOnly
+              onPress={zoomOut}
+              size="sm"
               isDisabled={scale <= 0.5}
               startContent={<ZoomOutIcon />}
+              className="rounded-full"
             />
-            <Button size="xs" variant="flat" onClick={resetZoom}>
+            <EditorButton variant="bordered" size="sm" onPress={resetZoom}>
               {Math.round(scale * 100)}%
-            </Button>
-            <Button
-              size="xs"
-              variant="flat"
-              onClick={zoomIn}
+            </EditorButton>
+            <EditorButton
+              isIconOnly
+              size="sm"
+              onPress={zoomIn}
               isDisabled={scale >= 3.0}
               startContent={<ZoomInIcon />}
+              className="rounded-full"
+            />
+            <Divider className="h-[24px] mt-1" orientation="vertical" />
+            <EditorButton
+              isIconOnly
+              color="success"
+              variant="flat"
+              size="sm"
+              onPress={downloadPDF}
+              className="rounded-full"
+              startContent={
+                <EditorActionIcon type="downloadFile" />
+              }
             />
           </div>
-          {numPages && (
-            <div className="flex items-center gap-4 bg-default-100 rounded-lg shadow-sm p-2">
-              <Button
-                size="xs"
-                variant="flat"
-                onClick={previousPage}
-                isDisabled={pageNumber <= 1}
-              >
-                Previous
-              </Button>
-              <span className="text-sm font-medium text-foreground">
-                Page {pageNumber} of {numPages}
-              </span>
-              <Button
-                size="xs"
-                variant="flat"
-                onClick={nextPage}
-                isDisabled={pageNumber >= numPages}
-              >
-                Next
-              </Button>
-            </div>
-          )}
-          <Button
-            color="success"
-            variant="flat"
-            size="sm"
-            onClick={downloadPDF}
-            startContent={
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
-              </svg>
-            }
-          >
-            Download PDF
-          </Button>
         </div>
         {/* PDF Document */}
-        <div className="shadow-md">
-          <Document
-            file="resume.pdf"
-            onLoadSuccess={onDocumentLoadSuccess}
-            loading={<PdfRendererSkeleton />}
-            error={
-              <div className="flex items-center w-full justify-center p-20 text-red-500">
-                <p>
-                  Failed to load PDF. Please make sure the file exists in the
-                  public folder.
-                </p>
-              </div>
+        <div className="flex items-center justify-between w-full">
+          <EditorButton
+            isIconOnly
+            onPress={previousPage}
+            isDisabled={pageNumber <= 1}
+            className="rounded-full sticky left-2 z-10"
+            startContent={
+              <EditorActionIcon type="leftArrow" />
             }
-          >
-            <Page
-              pageNumber={pageNumber}
-              scale={scale}
-              renderTextLayer={true}
-              renderAnnotationLayer={true}
-            />
-          </Document>
+          />
+          <div className="shadow-md mx-auto">
+            <Document
+              file="resume.pdf"
+              onLoadSuccess={onDocumentLoadSuccess}
+              loading={<PdfRendererSkeleton />}
+              error={
+                <div className="flex items-center w-full justify-center p-20 text-red-500">
+                  <p>
+                    Failed to load PDF. Please make sure the file exists in the
+                    public folder.
+                  </p>
+                </div>
+              }
+            >
+              <Page
+                pageNumber={pageNumber}
+                scale={scale}
+                renderTextLayer={true}
+                renderAnnotationLayer={true}
+              />
+            </Document>
+          </div>
+          <EditorButton
+            isIconOnly
+            onPress={nextPage}
+            isDisabled={pageNumber >= (numPages ?? 0)}
+            className="rounded-full sticky right-2 z-10"
+            startContent={
+              <EditorActionIcon type="rightArrow" />
+            }
+          />
         </div>
       </div>
     </>

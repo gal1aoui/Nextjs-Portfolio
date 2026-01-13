@@ -9,6 +9,8 @@ import {
   Logo
 } from "@/components/icons";
 import { Button } from "./ui/button";
+import { ThemeSwitch } from "./theme-switch";
+import QuestionAndAnswer from "./contact/qa/question-answer";
 
 export const Navbar = () => {
 
@@ -28,9 +30,8 @@ export const Navbar = () => {
       </Tabs>
       
       <div className="hidden md:flex">
-        <Tooltip closeDelay={2000} content="Get some Q&A about me">
-        <Button size="sm" radius="full">Quick answers</Button>
-        </Tooltip>
+        <ThemeSwitch />
+        <QuestionAndAnswer />
       </div>
     </div>
   );
