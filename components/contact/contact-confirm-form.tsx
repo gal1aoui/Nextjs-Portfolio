@@ -157,7 +157,7 @@ export default function ContactConfirmForm({
     <u>[companyName]</u>
   `;
   const [description, setDescription] = useState<string>("");
-  console.log(description);
+  
   const onChange = (editorState: EditorState, editor: LexicalEditor) => {
     editorState.read(() => {
       const htmlString = $generateHtmlFromNodes(editor, null);

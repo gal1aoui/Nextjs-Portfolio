@@ -10,6 +10,7 @@ import dynamic from "next/dynamic";
 import PdfRendererSkeleton from "./pdf-renderer-skeleton";
 import { useEffect, useState } from "react";
 import useWindowWidth from "@/hooks/useWindowWidth";
+import { RandomizedTextEffect } from "./randomized-text";
 
 const DynamicPDFViewer = dynamic(() => import("./pdf-renderer"), {
   loading: () => <PdfRendererSkeleton />,
@@ -34,7 +35,7 @@ export default function Introduction() {
   return (
     <div className="flex flex-col w-fit text-center md:text-start h-screen p-4">
       <h1 className="text-4xl md:text-6xl">Hi there, I am</h1>
-      <h1 className="text-6xl md:text-8xl font-bold">Achref Gallaoui</h1>
+      <h1 className="text-6xl md:text-8xl font-bold"><RandomizedTextEffect text="Achref Gallaoui" /></h1>
 
       <div className="flex flex-col md:flex-row gap-2 sm:my-12 my-6 mx-auto md:mx-0 text-center">
         <span className="badge">Software Engineer</span>

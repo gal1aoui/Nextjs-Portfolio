@@ -78,7 +78,7 @@ export default function ToolbarPlugin() {
   }, [editor, $updateToolbar]);
 
   return (
-    <div className="toolbar bg-default-100" ref={toolbarRef}>
+    <div className="toolbar bg-default-100 overflow-auto" ref={toolbarRef}>
       <div className='flex gap-1'>
         <button
           disabled={!canUndo}
