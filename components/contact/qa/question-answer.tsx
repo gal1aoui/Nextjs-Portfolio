@@ -31,6 +31,8 @@ export default function QuestionAndAnswer() {
   const chatRef = useRef<HTMLDivElement>(null);
   const width = useWindowWidth();
 
+  console.log(history)
+
   useEffect(() => {
     chatRef.current?.scrollTo({
       top: chatRef.current.scrollHeight,
@@ -59,7 +61,12 @@ export default function QuestionAndAnswer() {
   return (
     <>
       <Tooltip closeDelay={2000} content="Get some Q&A about me">
-        <Button size="sm" radius="full" onPress={onOpen} isIconOnly={width < 640}>
+        <Button
+          size="sm"
+          radius="full"
+          onPress={onOpen}
+          isIconOnly={width < 640}
+        >
           <BotIcon />
           <p className="hidden sm:block">Quick answers</p>
         </Button>
@@ -124,7 +131,9 @@ export default function QuestionAndAnswer() {
                   ))}
                 </div>
                 <RecruiterQuestions
-                  recruiterQuestions={Object.keys(recruiterQA)}
+                  recruiterQuestions={Object.keys(recruiterQA).filter(
+                    (q) => !new Set(history.map((h) => h.question)).has(q)
+                  )}
                   selectedQuestion={handleSelectQuestion}
                 />
               </DrawerBody>

@@ -33,7 +33,7 @@ export default function Introduction() {
   }, [windowWidth]);
 
   return (
-    <div className="flex flex-col w-fit text-center md:text-start h-screen p-4">
+    <div className="flex flex-col w-fit text-center md:text-start p-4">
       <h1 className="text-4xl md:text-6xl">Hi there, I am</h1>
       <h1 className="text-6xl md:text-8xl font-bold"><RandomizedTextEffect text="Achref Gallaoui" /></h1>
 

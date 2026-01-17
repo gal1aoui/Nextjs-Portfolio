@@ -17,7 +17,7 @@ export default function SkillCategoryCard({ category}: { category: SkillCategory
         whileInView="visible"
         viewport={{ once: true }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="w-full h-screen sticky top-20 p-2"
+        className="w-full h-[90vh] sticky top-20 p-2"
       >
         <Card className="rounded-3xl shadow-sm h-[76vh]">
           <CardHeader className="flex flex-col items-start gap-1 px-6 pt-6">

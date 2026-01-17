@@ -5,23 +5,28 @@ import Introduction from "@/components/introduction";
 
 export default function Home() {
   return (
-    <section className="flex flex-col md:flex-row lg:p-16 md:gap-x-36 w-fit">
+    <section className="flex flex-col items-center md:flex-row lg:p-6 md:gap-x-8 w-fit">
+      <div className="hidden md:block flex-shrink-0">
       <Image
         as={NextImage}
+        priority
         isBlurred
         alt="Achref Gallaoui Image"
         src={profile.src}
-        width={520}
-        height={640}
-        className="z-10 bg-default animate-blob hidden md:block relative contrast-110"
+        width={600}
+        height={700}
+        className="z-10 bg-default animate-blob relative contrast-110"
         style={{
           borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%",
           backgroundColor: "current",
-          objectFit: "cover"
+          objectFit: "cover",
+          width: "auto",
+          height: "auto"
         }}
-        sizes="100vw"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
         quality={100}
       />
+      </div>
       <Introduction />
     </section>
   );
