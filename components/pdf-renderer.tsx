@@ -61,7 +61,7 @@ export default function ResumeViewer() {
     <>
       <div className="flex flex-col items-center py-4">
         <div className="flex w-full items-center justify-center p-2 sticky top-0 z-10"> 
-          <div className="flex gap-2 p-2">
+          <div className="flex gap-2 p-1 bg-background rounded-4xl shadow-sm">
             <EditorButton
               isIconOnly
               onPress={zoomOut}

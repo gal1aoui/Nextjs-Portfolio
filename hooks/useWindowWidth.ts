@@ -7,7 +7,7 @@ const useWindowWidth = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
+      setWindowWidth(document.body.clientWidth);
     };
     handleResize();
 

@@ -16,6 +16,8 @@ import { Divider } from "@heroui/divider";
 
 import RecruiterQuestions from "./recruiter-questions";
 import { recruiterQA } from "./recruiter-qa";
+import { BotIcon } from "@/components/icons";
+import useWindowWidth from "@/hooks/useWindowWidth";
 
 type QAHistory = {
   question: string;
@@ -27,6 +29,7 @@ export default function QuestionAndAnswer() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [history, setHistory] = useState<QAHistory[]>([]);
   const chatRef = useRef<HTMLDivElement>(null);
+  const width = useWindowWidth();
 
   useEffect(() => {
     chatRef.current?.scrollTo({
@@ -56,8 +59,9 @@ export default function QuestionAndAnswer() {
   return (
     <>
       <Tooltip closeDelay={2000} content="Get some Q&A about me">
-        <Button size="sm" radius="full" onPress={onOpen}>
-          Quick answers
+        <Button size="sm" radius="full" onPress={onOpen} isIconOnly={width < 640}>
+          <BotIcon />
+          <p className="hidden sm:block">Quick answers</p>
         </Button>
       </Tooltip>
 
@@ -124,12 +128,9 @@ export default function QuestionAndAnswer() {
                   selectedQuestion={handleSelectQuestion}
                 />
               </DrawerBody>
-              <DrawerFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
+              <DrawerFooter className="p-4">
+                <Button onPress={onClose} size="md">
                   Close
-                </Button>
-                <Button color="primary" onPress={onClose}>
-                  Action
                 </Button>
               </DrawerFooter>
             </>

@@ -14,7 +14,6 @@ export function RandomizedTextEffect({ text }: AnimatedTextProps) {
   const [animatedText, setAnimatedText] = useState("");
 
   const ref = useRef(null)
-  const isInView = useInView(ref);
   const width = useWindowWidth();
 
   const getRandomChar = useCallback(
@@ -58,7 +57,7 @@ export function RandomizedTextEffect({ text }: AnimatedTextProps) {
 
   useEffect(() => {
     animateText();
-  }, [text, animateText, isInView]);
+  }, [text, animateText]);
 
   if (width < 651) {
     return <div className="relative inline-block">{text}</div>;

@@ -15,10 +15,6 @@ import {
 import {useCallback, useEffect, useRef, useState} from 'react';
 import { EditorActionIcon, RedoIcon, UndoIcon } from '../icons';
 
-function Divider() {
-  return <div className="divider" />;
-}
-
 export default function ToolbarPlugin() {
   const [editor] = useLexicalComposerContext();
   const toolbarRef = useRef(null);
@@ -32,7 +28,6 @@ export default function ToolbarPlugin() {
   const $updateToolbar = useCallback(() => {
     const selection = $getSelection();
     if ($isRangeSelection(selection)) {
-      // Update text format
       setIsBold(selection.hasFormat('bold'));
       setIsItalic(selection.hasFormat('italic'));
       setIsUnderline(selection.hasFormat('underline'));

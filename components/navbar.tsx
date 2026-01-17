@@ -3,31 +3,75 @@
 import { usePathname } from "next/navigation";
 import NextLink from "next/link";
 import {Tabs, Tab} from "@heroui/tabs"
-import { Logo } from "@/components/icons";
+import { AboutIcon, BlogIcon, ExperienceIcon, Logo, ProjectsIcon, SkillsIcon } from "@/components/icons";
 import { ThemeSwitch } from "./theme-switch";
 import QuestionAndAnswer from "./contact/qa/question-answer";
 
 export const Navbar = () => {
   const pathname = usePathname();
   return (
-    <div className="hidden sm:flex text-center items-center justify-between mx-2 p-2 border-b-1">
-      <NextLink className="flex justify-start items-center" href="/">
+    <div className="flex text-center items-center justify-between sm:px-2 py-2 sm:border-b-1">
+      <NextLink className="hidden sm:flex justify-start items-center" href="/">
         <Logo />
         <p className="font-bold text-inherit">CHREF.</p>
       </NextLink>
 
       <Tabs radius="full" variant="bordered" selectedKey={pathname}>
-        <Tab key="/" title="About" href="/" />
-        <Tab key="/skills" title="Skills" href="/skills" />
-        <Tab key="/experience" title="Experience" href="/experience" />
-        <Tab key="/projects" title="Projects" href="/projects" />
-        <Tab key="/blogs" title="Contact" href="/blogs" />
+        <Tab
+          key="/"
+          title={
+            <div className="flex items-center gap-1">
+              <AboutIcon className="h-6 w-6 mt-1" />
+              <p className="hidden md:block">About</p>
+            </div>
+          }
+          href="/"
+        />
+        <Tab
+          key="/skills"
+          title={
+            <div className="flex gap-1 items-center">
+              <SkillsIcon className="mb-1" />
+              <p className="hidden md:block">Skills</p>
+            </div>
+          }
+          href="/skills"
+        />
+        <Tab
+          key="/experience"
+          title={
+            <div className="flex gap-1 items-center">
+              <ExperienceIcon className="w-7 h-7" />
+              <p className="hidden md:block">Experience</p>
+            </div>
+          }
+          href="/experience"
+        />
+        <Tab
+          key="/projects"
+          title={
+            <div className="flex gap-1 items-center">
+              <ProjectsIcon />
+              <p className="hidden md:block">Projects</p>
+            </div>
+          }
+          href="/projects"
+        />
+        <Tab
+          key="/blogs"
+          title={
+            <div className="flex gap-1 items-center">
+              <BlogIcon />
+              <p className="hidden md:block">Blogs</p>
+            </div>
+          }
+          href="/blogs"
+        />
+        <Tab key="mode" title={<ThemeSwitch />} />
       </Tabs>
+
       
-      <div className="hidden md:flex gap-2">
-        <ThemeSwitch />
         <QuestionAndAnswer />
-      </div>
     </div>
   );
 };

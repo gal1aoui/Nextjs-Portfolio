@@ -89,7 +89,7 @@ export default function Introduction() {
           </Tooltip>
         </div>
 
-        <div className="flex gap-12 items-center mx-auto md:mx-0">
+        <div className="flex gap-12 items-center mx-auto md:mx-0 mb-4">
           <Tooltip content="LinkedIn" placement="top">
             <LinkedInIcon size={40} className="cursor-pointer" />
           </Tooltip>
