@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
@@ -53,6 +53,16 @@ export default function ResumeViewer() {
   const zoomIn = () => setScale((prev) => Math.min(prev + 0.25, 2.5));
   const zoomOut = () => setScale((prev) => Math.max(prev - 0.25, 0.5));
   const resetZoom = () => setScale(1.0);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") previousPage();
+      if (e.key === "ArrowRight") nextPage();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [pageNumber, numPages]);
 
   const downloadPDF = () => {
     const link = document.createElement("a");
@@ -112,7 +122,9 @@ export default function ResumeViewer() {
             className="hidden sm:flex rounded-full absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-default-100/80 backdrop-blur-sm shadow-md"
             startContent={<EditorActionIcon type="leftArrow" />}
           />
-          <div className="shadow-md mx-auto">
+          <div
+            className="shadow-md mx-auto"
+          >
             <Document
               file="resume.pdf"
               onLoadSuccess={onDocumentLoadSuccess}
@@ -160,23 +172,23 @@ export default function ResumeViewer() {
           />
         </div>
         <div className="sticky bottom-2 left-1/2 -translate-x-1/2 z-20">
-        <div className="flex items-center gap-4 p-2 bg-default-100/80 backdrop-blur-sm rounded-full shadow-sm">
-          <EditorButton
-            isIconOnly
-            size="sm"
-            onPress={previousPage}
-            isDisabled={pageNumber <= 1 || isPageChanging}
-            className="sm:hidden rounded-full bg-transparent"
-            startContent={<EditorActionIcon type="leftArrow" />}
-          />
+          <div className="flex items-center gap-4 p-2 bg-default-100/80 backdrop-blur-sm rounded-full shadow-sm">
+            <EditorButton
+              isIconOnly
+              size="sm"
+              onPress={previousPage}
+              isDisabled={pageNumber <= 1 || isPageChanging}
+              className="sm:hidden rounded-full bg-transparent"
+              startContent={<EditorActionIcon type="leftArrow" />}
+            />
 
-          <div className="flex items-center gap-2">
-            {numPages > 0 &&
-              Array.from({ length: numPages }, (_, i) => (
-                <button
-                  key={i + 1}
-                  onClick={() => changePage(i + 1)}
-                  className={`
+            <div className="flex items-center gap-2">
+              {numPages > 0 &&
+                Array.from({ length: numPages }, (_, i) => (
+                  <button
+                    key={i + 1}
+                    onClick={() => changePage(i + 1)}
+                    className={`
                         w-2 h-2 rounded-full transition-all duration-200
                         ${
                           pageNumber === i + 1
@@ -184,27 +196,27 @@ export default function ResumeViewer() {
                             : "bg-default-300 hover:bg-default-400"
                         }
                       `}
-                  aria-label={`Go to page ${i + 1}`}
-                />
-              ))}
+                    aria-label={`Go to page ${i + 1}`}
+                  />
+                ))}
+            </div>
+
+            <EditorButton
+              isIconOnly
+              size="sm"
+              onPress={nextPage}
+              isDisabled={pageNumber >= numPages || isPageChanging}
+              className="sm:hidden rounded-full bg-transparent"
+              startContent={<EditorActionIcon type="rightArrow" />}
+            />
           </div>
-
-          <EditorButton
-            isIconOnly
-            size="sm"
-            onPress={nextPage}
-            isDisabled={pageNumber >= numPages || isPageChanging}
-            className="sm:hidden rounded-full bg-transparent"
-            startContent={<EditorActionIcon type="rightArrow" />}
-          />
         </div>
-      </div>
 
-      {scale > 1 && (
-        <p className="sticky bottom-14 left-1/2 -translate-x-1/2 text-xs text-default-400 bg-default-100/80 backdrop-blur-sm px-3 py-1 rounded-full">
-          Scroll to pan around
-        </p>
-      )}
+        {scale > 1 && (
+          <p className="sticky bottom-14 left-1/2 -translate-x-1/2 text-xs text-default-400 bg-default-100/80 backdrop-blur-sm px-3 py-1 rounded-full">
+            Scroll to pan around
+          </p>
+        )}
       </div>
     </>
   );
