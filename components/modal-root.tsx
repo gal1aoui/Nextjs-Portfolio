@@ -12,7 +12,7 @@ interface ModalRootProps {
 export function ModalRoot({ open, state, close }: ModalRootProps) {
   return (
     <Modal isOpen={open} onOpenChange={(v) => !v && close()} backdrop="blur">
-      <ModalContent className="max-h-[100vh] max-w-[100vw] sm:max-w-[50vw] sm:max-h-[90vh] overflow-auto">
+      <ModalContent className="max-h-[100vh] max-w-[100vw] w-fit h-fit overflow-auto">
         {state.title && <ModalHeader className="pb-0">{state.title}</ModalHeader>}
         <ModalBody>
           {state.render?.({

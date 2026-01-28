@@ -5,15 +5,20 @@ import { RoughNotation, RoughNotationGroup } from "react-rough-notation";
 import { GithubIcon, LinkedInIcon, MediumIcon, RelatedContactIcon, RelatedResumeIcon } from "./icons";
 import { Button } from "./ui/button";
 import { useModal } from "@/providers/modal-provider";
-import ContactForm from "./contact/contact-form";
 import dynamic from "next/dynamic";
 import PdfRendererSkeleton from "./pdf-renderer-skeleton";
+import ContactFormSkeleton from "./contact/contact-form-skeleton";
 import { useEffect, useState } from "react";
 import useWindowWidth from "@/hooks/useWindowWidth";
 import { RandomizedTextEffect } from "./randomized-text";
 
 const DynamicPDFViewer = dynamic(() => import("./pdf-renderer"), {
   loading: () => <PdfRendererSkeleton />,
+  ssr: false
+});
+
+const DynamicContactForm = dynamic(() => import("./contact/contact-form"), {
+  loading: () => <ContactFormSkeleton />,
   ssr: false
 });
 
@@ -67,7 +72,7 @@ export default function Introduction() {
               onClick={() =>
                 openModal({
                   title: "Contact",
-                  render: () => <ContactForm />,
+                  render: () => <DynamicContactForm />,
                 })
               }
             >

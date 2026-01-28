@@ -31,8 +31,6 @@ export default function QuestionAndAnswer() {
   const chatRef = useRef<HTMLDivElement>(null);
   const width = useWindowWidth();
 
-  console.log(history)
-
   useEffect(() => {
     chatRef.current?.scrollTo({
       top: chatRef.current.scrollHeight,

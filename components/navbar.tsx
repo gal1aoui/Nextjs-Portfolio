@@ -10,13 +10,13 @@ import QuestionAndAnswer from "./contact/qa/question-answer";
 export const Navbar = () => {
   const pathname = usePathname();
   return (
-    <div className="flex text-center items-center justify-between px-2 py-2 shadow-sm">
+    <div className="flex text-center items-center px-2 py-2 shadow-sm">
       <NextLink className="hidden sm:flex justify-start items-center" href="/">
         <Logo />
-        <p className="font-bold text-inherit">CHREF.</p>
+        <p className="font-bold text-inherit text-2xl">CHREF.</p>
       </NextLink>
 
-      <Tabs radius="full" variant="bordered" selectedKey={pathname}>
+      <Tabs radius="full" size="lg" variant="bordered" selectedKey={pathname} color="primary" className="mx-auto">
         <Tab
           key="/"
           title={
@@ -69,7 +69,7 @@ export const Navbar = () => {
         />
         <Tab key="mode" title={<ThemeSwitch />} />
       </Tabs>
-        <QuestionAndAnswer />
+      <QuestionAndAnswer />
     </div>
   );
 };

@@ -21,8 +21,8 @@ export default function SkillCategoryCard({ category}: { category: SkillCategory
       >
         <Card className="rounded-3xl shadow-sm h-[76vh]">
           <CardHeader className="flex flex-col items-start gap-1 px-6 pt-6">
-            <h3 className="text-xl font-semibold"><RandomizedTextEffect text={category.title} /></h3>
-            <p className="text-sm text-muted-foreground">{category.summary}</p>
+            <h3 className="text-2xl font-extrabold"><RandomizedTextEffect text={category.title} /></h3>
+            <p className="text-xl text-muted-foreground">{category.summary}</p>
           </CardHeader>
           <CardBody className="px-6 pb-6 pt-4">
             <SkillGrid skills={category.skills} />

@@ -11,7 +11,13 @@ import { ModalFooter } from "@heroui/modal";
 import { Button } from "../ui/button";
 import { useState } from "react";
 import { useModal } from "@/providers/modal-provider";
-import ContactConfirmForm from "./contact-confirm-form";
+import dynamic from "next/dynamic";
+import ContactConfirmSkeleton from "./contact-confirm-skeleton";
+
+const DynamicContactConfirmForm = dynamic(() => import("./contact-confirm-form"), {
+  loading: () => <ContactConfirmSkeleton />,
+  ssr: false
+});
 
 export type ContactFormType = {
   date?: DateValue | undefined;
@@ -136,7 +142,7 @@ export default function ContactForm() {
           onClick={() =>
             openModal({
               title: "Email Body message",
-              render: ({ close }) => <ContactConfirmForm form={form} />,
+              render: () => <DynamicContactConfirmForm form={form} />,
             })
           }
         >
