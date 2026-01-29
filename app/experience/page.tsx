@@ -8,27 +8,30 @@ import { experiences } from "@/components/experience/experience-data";
 
 export default function ExperiencePage() {
   return (
-    <ReactLenis root>
-      <div className="max-w-6xl mx-auto px-4">
-        <section>
-          <motion.div
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: "easeOut" }}
-            className="mb-16 text-center"
+    <section className="py-8 md:py-12">
+      <div className="container mx-auto px-4 max-w-6xl">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-10"
+        >
+          <h1 className="text-3xl md:text-4xl font-extrabold mb-4">
+            <RandomizedTextEffect text="My Journey" />
+          </h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="mt-4 text-default-500 max-w-2xl mx-auto"
           >
-            <h1 className="text-3xl md:text-4xl font-extrabold mb-4">
-              <RandomizedTextEffect text="My Journey" />
-            </h1>
-            <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed text-lg md:text-xl">
-              From creative coding experiments to enterprise frontend architecture
-              — a story of continuous learning and growth.
-            </p>
-          </motion.div>
+            From creative coding experiments to enterprise frontend architecture
+            — a story of continuous learning and growth.
+          </motion.p>
+        </motion.div>
 
-          <Timeline experiences={experiences} />
-        </section>
+        <Timeline experiences={experiences} />
       </div>
-    </ReactLenis>
+    </section>
   );
 }

@@ -7,9 +7,14 @@ export default function SkillGrid({ skills }: { skills: Skill[] }) {
     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
       {skills.map((skill) => (
         <Tooltip
-          key={skill.id}
+          content={
+            <div className="max-w-xs p-2">
+              <p className="font-semibold mb-1">{skill.name}</p>
+              <p className="text-xs text-default-500">{skill.description}</p>
+            </div>
+          }
           placement="top"
-          content={skill.description}
+          delay={300}
         >
           <Card className="rounded-2xl hover:-translate-y-1 hover:shadow-md transition-all">
             <CardBody className="p-4 flex flex-col items-center gap-3">

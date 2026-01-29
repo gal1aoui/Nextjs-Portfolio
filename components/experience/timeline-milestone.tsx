@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { Card, CardBody } from "@heroui/card";
 import { Chip } from "@heroui/chip";
 import { ExperienceItem } from "./experience-data";
+import { SkillsIcon } from "../icons";
 
 interface TimelineMilestoneProps {
   experience: ExperienceItem;
@@ -31,7 +32,6 @@ export default function TimelineMilestone({
 
   return (
     <div ref={ref} className="relative pb-20 last:pb-8">
-      {/* Milestone dot - positioned on the line */}
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
         animate={isInView ? { scale: 1, opacity: 1 } : {}}
@@ -39,7 +39,6 @@ export default function TimelineMilestone({
         className="absolute left-0 md:left-1/2 md:-translate-x-1/2 z-20"
       >
         <div className="relative">
-          {/* Milestone dot */}
           <motion.div
             initial={{ scale: 0 }}
             animate={isInView ? { scale: 1 } : {}}
@@ -54,7 +53,6 @@ export default function TimelineMilestone({
             />
           </motion.div>
 
-          {/* Pulse ring animation */}
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={
@@ -96,7 +94,6 @@ export default function TimelineMilestone({
         >
           <Card className="rounded-2xl shadow-md hover:shadow-lg transition-shadow">
             <CardBody className="p-5 md:p-6">
-              {/* Header */}
               <div className="flex flex-wrap items-center gap-2 mb-3">
                 <Chip size="sm" variant="flat" color={typeColors[experience.type]}>
                   {experience.type}
@@ -106,7 +103,6 @@ export default function TimelineMilestone({
                 </span>
               </div>
 
-              {/* Title & Company */}
               <h3 className="text-lg md:text-xl font-bold mb-1">
                 {experience.title}
               </h3>
@@ -117,7 +113,6 @@ export default function TimelineMilestone({
                 {experience.location}
               </p>
 
-              {/* Story */}
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
@@ -141,7 +136,7 @@ export default function TimelineMilestone({
                       transition={{ delay: 0.4 + i * 0.05 }}
                       className="text-sm text-muted-foreground flex items-start gap-2"
                     >
-                      <span className="text-primary mt-0.5">+</span>
+                      <SkillsIcon className="text-amber-400" />
                       <span>{item}</span>
                     </motion.li>
                   ))}
