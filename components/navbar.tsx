@@ -6,10 +6,12 @@ import {Tabs, Tab} from "@heroui/tabs"
 import { AboutIcon, BlogIcon, ExperienceIcon, Logo, ProjectsIcon, SkillsIcon } from "@/components/icons";
 import { ThemeSwitch } from "./theme-switch";
 import QuestionAndAnswer from "./contact/qa/question-answer";
+import GameClient from "./game-client";
 
 export const Navbar = () => {
   const pathname = usePathname();
   return (
+    <>
     <div className="flex text-center items-center px-2 py-2 shadow-sm">
       <NextLink className="hidden sm:flex justify-start items-center" href="/">
         <Logo />
@@ -71,5 +73,7 @@ export const Navbar = () => {
       </Tabs>
       <QuestionAndAnswer />
     </div>
+    <GameClient />
+    </>
   );
 };
