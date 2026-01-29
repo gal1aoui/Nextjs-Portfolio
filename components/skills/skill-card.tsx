@@ -5,8 +5,9 @@ import { Card, CardBody } from "@heroui/card";
 export default function SkillGrid({ skills }: { skills: Skill[] }) {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-      {skills.map((skill) => (
+      {skills.map((skill, index) => (
         <Tooltip
+          key={`${skill}-${index}`}
           content={
             <div className="max-w-xs p-2">
               <p className="font-semibold mb-1">{skill.name}</p>
