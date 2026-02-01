@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import clsx from "clsx";
-
+import { Analytics } from '@vercel/analytics/next';
 import { Providers } from "./providers";
 
 import { siteConfig } from "@/config/site";
@@ -47,6 +47,7 @@ export default function RootLayout({
             <main className="p-0 md:px-4 md:pt-6">{children}</main>
           </ModalProvider>
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
