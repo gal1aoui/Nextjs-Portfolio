@@ -47,10 +47,8 @@ export default function ProjectsPage() {
               full-stack development, DevOps, and open-source contributions.
             </motion.p>
           </motion.div>
-
-          <div className="my-6 flex justify-center">
-            <GithubContributions username="gal1aoui" />
-          </div>
+          
+          <GithubContributions username="gal1aoui" />
 
           <motion.div
             layout

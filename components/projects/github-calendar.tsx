@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { Card, CardBody } from "@heroui/card";
-import { GitHubCalendar } from 'react-github-calendar';
+import { GitHubCalendar } from "react-github-calendar";
 import { Link } from "@heroui/link";
 import { GithubIcon } from "../icons";
 
@@ -23,8 +23,9 @@ export default function GithubContributions({
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.4 }}
+      className="w-full sm:w-fit overflow-x-auto mx-auto my-6"
     >
-      <Card className="border border-default-200/50 bg-background/60 w-fit overflow-auto">
+      <Card className="border border-default-200/50 bg-background/60">
         <CardBody className="p-6">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
@@ -43,19 +44,16 @@ export default function GithubContributions({
               </div>
             </div>
           </div>
-
-          <div className="overflow-x-auto">
-            <GitHubCalendar
-              username={username}
-              colorScheme={colorScheme}
-              blockSize={12}
-              blockMargin={4}
-              fontSize={14}
-              style={{
-                width: "100%",
-              }}
-            />
-          </div>
+          <GitHubCalendar
+            username={username}
+            colorScheme={colorScheme}
+            blockSize={12}
+            blockMargin={4}
+            fontSize={14}
+            style={{
+              width: "100%",
+            }}
+          />
         </CardBody>
       </Card>
     </motion.div>
