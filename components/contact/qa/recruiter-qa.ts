@@ -1,98 +1,92 @@
 export const recruiterQA: Record<string, string[]> = {
   "Can you tell me about yourself?": [
-    "I am a passionate developer with experience building scalable web applications and a strong focus on clean, maintainable code.",
-    "I have a background in software development and enjoy solving complex problems through technology.",
-    "I’m a motivated developer who enjoys learning new technologies and improving existing systems.",
+    "I’m a senior software engineer with strong expertise in frontend architecture, specializing in React and Angular. I design and deliver scalable, high-performance web applications used in production.",
+    "I have a solid academic background in computer science and project management, combined with hands-on experience across freelance and product-driven environments.",
+    "My focus is on clean architecture, performance optimization, and building maintainable systems that scale with business needs.",
   ],
 
   "What are you currently working on?": [
-    "I’m currently working on improving my portfolio and building real-world projects.",
-    "I’m focusing on refining my skills and experimenting with new tools and frameworks.",
-    "I’m working on personal and freelance projects to strengthen my practical experience.",
+    "I’m actively designing and maintaining production-ready npm packages with a strong emphasis on performance, bundle size, and developer experience.",
+    "I’m working on real-world frontend systems, refining reusable components and improving application architecture.",
+    "I continuously invest in improving frontend scalability, tooling, and long-term maintainability.",
   ],
 
   "What technologies are you most comfortable with?": [
-    "I’m most comfortable with JavaScript, TypeScript, React, and modern frontend tooling.",
-    "I have strong experience with React, Node.js, and RESTful APIs.",
-    "I work confidently with frontend frameworks and have backend experience as well.",
+    "My core stack is TypeScript, JavaScript, React, and Angular, with deep experience in modern frontend tooling and architecture.",
+    "I have strong experience with state management, performance optimization, and scalable UI design.",
+    "On the backend, I’ve worked with Node.js, PHP, Laravel, and RESTful APIs, which allows me to collaborate effectively across the stack.",
   ],
 
   "What kind of role are you looking for?": [
-    "I’m looking for a role where I can grow, contribute, and work on meaningful projects.",
-    "I’m interested in a position that allows me to solve real problems and collaborate with a team.",
-    "I’m seeking a role that challenges me and supports continuous learning.",
-  ],
-
-  "Why are you interested in this position?": [
-    "This role aligns well with my skills and career goals.",
-    "I admire the company’s mission and see an opportunity to contribute meaningfully.",
-    "The position matches both my technical interests and growth ambitions.",
+    "I’m looking for a senior frontend or full-stack role where I can own technical decisions and contribute to architecture and product quality.",
+    "I’m interested in teams that value clean code, scalability, and thoughtful engineering trade-offs.",
+    "I want to work on products where engineering quality directly impacts users and business outcomes.",
   ],
 
   "Can you describe a challenging project you worked on?": [
-    "I worked on a project with tight deadlines that required rapid problem-solving and teamwork.",
-    "I handled a complex feature that required refactoring existing code while maintaining stability.",
-    "I built a system from scratch while ensuring performance and scalability.",
+    "I designed and published npm packages used as reusable building blocks, where performance, stability, and DX were critical.",
+    "I led refactoring efforts on complex frontend codebases to improve scalability and maintainability without breaking production.",
+    "I’ve delivered systems from concept to production under tight deadlines while keeping technical debt under control.",
   ],
 
   "How do you handle tight deadlines?": [
-    "I prioritize tasks, communicate clearly, and focus on delivering the most impactful work first.",
-    "I break down tasks and stay organized to ensure deadlines are met.",
-    "I remain calm under pressure and adjust priorities as needed.",
+    "I focus on prioritization, risk assessment, and delivering the highest-impact features first.",
+    "I communicate clearly with stakeholders and make trade-offs explicit to protect long-term system quality.",
+    "I’m used to working under pressure while maintaining a high engineering standard.",
   ],
 
   "What is your experience with teamwork and collaboration?": [
-    "I enjoy working in teams and believe communication is key to success.",
-    "I’ve collaborated with designers and developers to deliver quality products.",
-    "I’m comfortable giving and receiving feedback in a team environment.",
+    "I’ve worked closely with designers, backend engineers, and product stakeholders in both freelance and structured team environments.",
+    "I value clear communication, shared ownership, and pragmatic decision-making.",
+    "I’m comfortable mentoring, reviewing code, and contributing to technical discussions.",
   ],
 
   "What are your strengths as a developer?": [
-    "Problem-solving, attention to detail, and adaptability are my key strengths.",
-    "I write clean code and enjoy improving existing systems.",
-    "I’m reliable, curious, and continuously improving my skills.",
+    "Strong frontend architecture skills, problem-solving ability, and attention to detail.",
+    "I excel at turning complex requirements into clean, scalable, and maintainable solutions.",
+    "I take ownership, deliver reliably, and continuously raise the quality bar.",
   ],
 
   "What areas are you currently improving?": [
-    "I’m improving system design and performance optimization skills.",
-    "I’m focusing on writing more testable and scalable code.",
-    "I’m learning best practices for large-scale applications.",
+    "I’m deepening my expertise in large-scale frontend system design and performance at scale.",
+    "I’m refining testing strategies and long-term maintainability for complex UI systems.",
+    "I continuously evaluate new tools and patterns to improve developer experience and reliability.",
   ],
 
   "Have you worked with deadlines or production systems?": [
-    "Yes, I have experience working with deadlines and production-ready systems.",
-    "I’ve supported production environments and handled real-user constraints.",
-    "I understand the importance of reliability and stability in production.",
+    "Yes, extensively. I’ve worked with production systems serving real users and real constraints.",
+    "I understand the importance of stability, monitoring, backward compatibility, and safe deployments.",
+    "I’m comfortable being accountable for production-quality code.",
   ],
 
   "How do you approach learning a new technology?": [
-    "I start with documentation, then apply it through small projects.",
-    "I learn by building practical examples and refining them over time.",
-    "I combine theory with hands-on experimentation.",
+    "I start with core concepts and architecture, not just syntax.",
+    "I validate new technologies by applying them to real use cases and measuring their impact.",
+    "I focus on understanding trade-offs and long-term implications.",
   ],
 
   "What type of work environment do you prefer?": [
-    "I prefer a collaborative and supportive environment.",
-    "I work best where learning and communication are encouraged.",
-    "I enjoy environments that value both autonomy and teamwork.",
+    "I perform best in environments that value technical ownership and clear communication.",
+    "I appreciate teams that prioritize code quality, scalability, and continuous improvement.",
+    "I’m comfortable with autonomy as long as expectations and goals are clear.",
   ],
 
   "Are you open to remote or relocation opportunities?": [
-    "Yes, I’m open to both remote work and relocation.",
-    "I’m flexible depending on the opportunity.",
-    "I’m open to discussing different work arrangements.",
+    "Yes, I’m open to remote work and international opportunities.",
+    "I’m flexible depending on the team, product, and long-term growth potential.",
+    "I’m open to discussing hybrid or relocation options if there’s strong alignment.",
   ],
 
   "What are your salary expectations?": [
-    "I’m open to discussing a fair salary based on the role and responsibilities.",
-    "I’m flexible and interested in growth opportunities.",
-    "I’d prefer to align expectations after understanding the full scope of the role.",
+    "I expect compensation aligned with a senior-level role and the impact I bring.",
+    "I’m open to discussion based on scope, responsibility, and growth opportunities.",
+    "I prefer aligning on expectations once I fully understand the role and challenges.",
   ],
 
   "When would you be available to start?": [
-    "I’m available to start within a reasonable notice period.",
-    "I can start immediately or as mutually agreed.",
-    "I’m flexible depending on the company’s needs.",
+    "I can start after a short notice period if required.",
+    "I’m open to immediate start depending on alignment.",
+    "I’m flexible and happy to coordinate based on project needs.",
   ],
 };
 
