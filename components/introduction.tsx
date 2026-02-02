@@ -4,6 +4,7 @@ import { Tooltip } from "@heroui/tooltip";
 import { RoughNotation, RoughNotationGroup } from "react-rough-notation";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
+import { Link } from "@heroui/link";
 
 import {
   GithubIcon,
@@ -151,13 +152,32 @@ export default function Introduction() {
 
         <div className="flex gap-12 items-center mx-auto md:mx-0 mb-4">
           <Tooltip content="LinkedIn" placement="top">
-            <LinkedInIcon className="cursor-pointer" size={40} />
+            <Link
+              isExternal
+              color="foreground"
+              href="https://www.linkedin.com/in/ashraf-gallaoui/"
+            >
+              <LinkedInIcon size={40} />
+            </Link>
           </Tooltip>
+
           <Tooltip content="Github" placement="top">
-            <GithubIcon className="cursor-pointer" size={48} />
+            <Link
+              isExternal
+              color="foreground"
+              href="https://github.com/gal1aoui"
+            >
+              <GithubIcon size={48} />
+            </Link>
           </Tooltip>
           <Tooltip content="Medium" placement="top">
-            <MediumIcon className="cursor-pointer" size={42} />
+            <Link
+              isExternal
+              color="foreground"
+              href="https://medium.com/@aga1laoui"
+            >
+              <MediumIcon size={42} />
+            </Link>
           </Tooltip>
         </div>
       </div>
