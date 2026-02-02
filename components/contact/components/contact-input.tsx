@@ -8,6 +8,8 @@ interface ContactInputProps {
   type: "email" | "text";
   value?: string;
   setValue: ChangeEventHandler<HTMLInputElement> | undefined;
+  errorMessage?: string;
+  isInvalid?: boolean;
 }
 
 export default function ContactInput({
@@ -17,10 +19,14 @@ export default function ContactInput({
   type,
   icon,
   setValue,
+  errorMessage,
+  isInvalid,
 }: Readonly<ContactInputProps>) {
   return (
     <Input
       isClearable
+      errorMessage={errorMessage}
+      isInvalid={isInvalid}
       label={label}
       placeholder={placeholder}
       size="lg"

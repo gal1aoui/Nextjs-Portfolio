@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { EditorState, LexicalEditor } from "lexical";
 import { $generateHtmlFromNodes, $generateNodesFromDOM } from "@lexical/html";
@@ -14,17 +16,22 @@ import {
 } from "lexical";
 import { $getRoot, $createParagraphNode, $isElementNode } from "lexical";
 import { ModalFooter } from "@heroui/modal";
+import { addToast } from "@heroui/toast";
 
 import { Button } from "../ui/button";
 import { SendIcon } from "../icons";
 
-import { ContactFormType } from "./contact-form";
+import ContactForm, { ContactFormType } from "./contact-form";
 import {
   parseAllowedColor,
   parseAllowedFontSize,
 } from "./editor/configs/styleConfig";
 import ExampleTheme from "./editor/configs/theme";
 import ContactTextEditor from "./components/contact-text-editor";
+import { EditorActionIcon } from "./editor/icons";
+
+import { sendEmail } from "@/lib/mailer";
+import { useModal } from "@/providers/modal-provider";
 
 const removeStylesExportDOM = (
   editor: LexicalEditor,
@@ -142,19 +149,21 @@ const monthNames = [
 export default function ContactConfirmForm({
   form,
 }: {
-  form: ContactFormType | undefined;
+  form: ContactFormType;
 }) {
+  const { openModal } = useModal();
+
   const autofill = `<b>Dear Achref,</b>
     <br />
     <p>
-    I'm <b>${form?.name}</b> from <u>[companyName]</u>, we are pleased to invite you to an interview as part of our recruitment process.
+    I'm <b>${form.name}</b> from <u>${form.company}</u>, we are pleased to invite you to an interview as part of our recruitment process.
     </p>
     <p>
     <b>Interview details:</b>
     <br />
     <p>
-    ${form?.date && `Date ${form.date?.day} ${monthNames[form.date?.month + 1]} ${form.date?.year === new Date().getFullYear() ? "" : form.date?.year}`}
-    ${form?.time && `Time ${form.time.hour}:${form.time.minute}`}
+    ${form.date && `Date ${form.date.day} ${monthNames[form.date.month + 1]} ${form.date.year === new Date().getFullYear() ? "" : form.date.year}`}
+    ${form.time && `Time ${form.time.hour}:${form.time.minute}`}
     </p>
     </p>
     <p>
@@ -166,9 +175,9 @@ export default function ContactConfirmForm({
     <p>
     We look forward to speaking with you.
     </p>
-    <b>${form?.name}</b>
-    ${form?.email}
-    <u>[companyName]</u>
+    <b>${form.name}</b>
+    ${form.email}
+    <u>${form.company}</u>
   `;
   const [description, setDescription] = useState<string>("");
 
@@ -220,11 +229,42 @@ export default function ContactConfirmForm({
     theme: ExampleTheme,
   };
 
+  const handleSendEmail = async () => {
+    const result = await sendEmail(form, description);
+
+    if (result.error) {
+      addToast({
+        title: "Failed to send email.",
+        color: "danger",
+        variant: "bordered",
+      });
+    } else {
+      addToast({
+        title: "Thank you for reaching out. I will get back to you soon.",
+        color: "success",
+        variant: "bordered",
+      });
+    }
+  };
+
   return (
     <div className="flex flex-col gap-4 items-center">
       <ContactTextEditor editorConfig={editorConfig} onChange={onChange} />
-      <ModalFooter className="w-full p-0">
-        <Button size="md" startContent={<SendIcon />}>
+      <ModalFooter className="w-full flex justify-between p-0">
+        <Button
+          color="primary"
+          size="md"
+          startContent={<EditorActionIcon type="leftArrow" />}
+          onPress={() =>
+            openModal({
+              title: "Edit your information",
+              render: () => <ContactForm formFill={form} />,
+            })
+          }
+        >
+          Return
+        </Button>
+        <Button size="md" startContent={<SendIcon />} onPress={handleSendEmail}>
           Send
         </Button>
       </ModalFooter>

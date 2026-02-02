@@ -18,6 +18,7 @@ import dynamic from "next/dynamic";
 import { Button } from "../ui/button";
 import {
   ClockCircleLinearIcon,
+  CompanyIcon,
   RelatedContactIcon,
   SubjectIcon,
   UserIcon,
@@ -39,14 +40,19 @@ const DynamicContactConfirmForm = dynamic(
 );
 
 export type ContactFormType = {
-  date?: DateValue | undefined;
-  time?: Time | null;
-  name?: string;
-  email?: string;
-  subject?: string;
+  date: DateValue | undefined;
+  time: Time | null;
+  name: string;
+  email: string;
+  subject: string;
+  company: string;
 };
 
-export default function ContactForm() {
+export default function ContactForm({
+  formFill,
+}: {
+  formFill?: ContactFormType;
+}) {
   const { openModal } = useModal();
 
   const { locale } = useLocale();
@@ -63,20 +69,79 @@ export default function ContactForm() {
     return date.add({ days: daysUntilMonday });
   };
 
-  const [form, setForm] = useState<ContactFormType>({
-    date: isWeekend(today(getLocalTimeZone()), locale)
-      ? getNextMonday(today(getLocalTimeZone()))
-      : today(getLocalTimeZone()),
-    time: new Time(15, 0),
-    name: "",
-    email: "",
-    subject: "",
+  const [form, setForm] = useState<ContactFormType>(
+    formFill ?? {
+      date: isWeekend(today(getLocalTimeZone()), locale)
+        ? getNextMonday(today(getLocalTimeZone()))
+        : today(getLocalTimeZone()),
+      time: new Time(15, 0),
+      name: "",
+      email: "",
+      subject: "",
+      company: "",
+    },
+  );
+
+  const [errors, setErrors] = useState<Partial<ContactFormType>>({
+    name: undefined,
+    email: undefined,
+    subject: undefined,
+    company: undefined,
   });
+
+  const validateForm = () => {
+    const newErrors: Partial<ContactFormType> = {};
+    let isValid = true;
+
+    if (!form.name.trim()) {
+      newErrors.name = "Name is required";
+      isValid = false;
+    }
+
+    if (!form.email.trim()) {
+      newErrors.email = "Email is required";
+      isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      newErrors.email = "Please enter a valid email";
+      isValid = false;
+    }
+
+    if (!form.subject.trim()) {
+      newErrors.subject = "Subject is required";
+      isValid = false;
+    }
+
+    if (!form.company.trim()) {
+      newErrors.company = "Company name is required";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+
+    return isValid;
+  };
 
   return (
     <>
       <div className="flex flex-col gap-4 items-center">
         <CopyInput />
+        <ContactInput
+          errorMessage={errors.company as string}
+          icon={<CompanyIcon />}
+          isInvalid={!!errors.company}
+          placeholder="Enter your Company Name"
+          setValue={(e) =>
+            setForm((prev) => {
+              return {
+                ...prev,
+                company: e.target.value,
+              };
+            })
+          }
+          type="text"
+          value={form?.company}
+        />
+
         <div className="flex flex-col sm:flex-row gap-4 w-full">
           <Calendar
             aria-label="Date (Unavailable)"
@@ -113,7 +178,9 @@ export default function ContactForm() {
               }
             />
             <ContactInput
+              errorMessage={errors.name as string}
               icon={<UserIcon />}
+              isInvalid={!!errors.name}
               placeholder="Enter your FullName"
               setValue={(e) =>
                 setForm((prev) => {
@@ -127,7 +194,9 @@ export default function ContactForm() {
               value={form?.name}
             />
             <ContactInput
+              errorMessage={errors.email as string}
               icon={<RelatedContactIcon />}
+              isInvalid={!!errors.email}
               placeholder="Enter your Email"
               setValue={(e) =>
                 setForm((prev) => {
@@ -141,7 +210,9 @@ export default function ContactForm() {
               value={form?.email}
             />
             <ContactInput
+              errorMessage={errors.subject as string}
               icon={<SubjectIcon />}
+              isInvalid={!!errors.subject}
               placeholder="Enter your Subject"
               setValue={(e) =>
                 setForm((prev) => {
@@ -161,12 +232,14 @@ export default function ContactForm() {
         <Button
           endContent={<ViewIcon />}
           size="md"
-          onClick={() =>
-            openModal({
-              title: "Email Body message",
-              render: () => <DynamicContactConfirmForm form={form} />,
-            })
-          }
+          onClick={() => {
+            if (validateForm()) {
+              openModal({
+                title: "Email Body message",
+                render: () => <DynamicContactConfirmForm form={form} />,
+              });
+            }
+          }}
         >
           Confirm
         </Button>

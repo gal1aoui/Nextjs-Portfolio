@@ -51,7 +51,7 @@
     "@heroui/table": "2.2.29",
     "@heroui/tabs": "^2.2.26",
     "@heroui/theme": "2.4.25",
-    "@heroui/toast": "^2.0.19",
+    "@heroui/toast": "^2.0.20",
     "@heroui/tooltip": "2.2.26",
     "@heroui/user": "2.2.24",
     "@lexical/react": "^0.39.0",
@@ -69,7 +69,8 @@
     "react-dom": "18.3.1",
     "react-github-calendar": "^5.0.5",
     "react-pdf": "^10.3.0",
-    "react-rough-notation": "^1.0.8"
+    "react-rough-notation": "^1.0.8",
+    "resend": "^6.9.1"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "15.5.9",

@@ -21,6 +21,7 @@ type ModalContextType = {
     render: (args: { close: () => void }) => ReactNode;
   }) => void;
   closeModal: () => void;
+  isOpen: boolean;
 };
 
 const ModalContext = createContext<ModalContextType | null>(null);
@@ -39,7 +40,7 @@ export function ModalProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <ModalContext.Provider value={{ openModal, closeModal }}>
+    <ModalContext.Provider value={{ openModal, closeModal, isOpen: open }}>
       {children}
       <ModalRoot close={closeModal} open={open} state={state} />
     </ModalContext.Provider>

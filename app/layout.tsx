@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import clsx from "clsx";
 import { Analytics } from "@vercel/analytics/next";
+import { ToastProvider } from "@heroui/toast";
 
 import { Providers } from "./providers";
 
@@ -49,6 +50,7 @@ export default function RootLayout({
           </ModalProvider>
         </Providers>
         <Analytics />
+        <ToastProvider />
       </body>
     </html>
   );

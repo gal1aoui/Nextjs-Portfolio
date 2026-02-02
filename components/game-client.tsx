@@ -1,7 +1,15 @@
 import { Game2048 } from "@agallaoui/game-2048";
+
+import { useModal } from "@/providers/modal-provider";
 import "@agallaoui/game-2048/styles.css";
 
 export default function GameClient() {
+  const { isOpen } = useModal();
+
+  if (isOpen) {
+    return null;
+  }
+
   return (
     <Game2048
       buttonPosition={{ bottom: 20, right: 20 }}
