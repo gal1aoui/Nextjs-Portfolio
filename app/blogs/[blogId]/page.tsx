@@ -9,6 +9,7 @@ import { Button } from "@heroui/button";
 import { Tooltip } from "@heroui/tooltip";
 import { Slider } from "@heroui/slider";
 import Link from "next/link";
+
 import { getBlogById } from "@/components/blogs/blogs-data";
 import {
   chunkText,
@@ -45,6 +46,7 @@ export default function BlogDetailPage() {
 
     const loadVoices = () => {
       const v = synth.getVoices();
+
       if (v.length > 0) {
         setVoices(v);
         setSpeechSupported(true);
@@ -66,14 +68,16 @@ export default function BlogDetailPage() {
     if (chunkIndexRef.current >= chunksRef.current.length) {
       setIsSpeaking(false);
       setIsPaused(false);
+
       return;
     }
 
     const utterance = new SpeechSynthesisUtterance(
-      chunksRef.current[chunkIndexRef.current]
+      chunksRef.current[chunkIndexRef.current],
     );
 
     const preferredVoice = getPreferredVoice(voices);
+
     if (preferredVoice) {
       utterance.voice = preferredVoice;
     }
@@ -87,8 +91,7 @@ export default function BlogDetailPage() {
       speakNextChunk();
     };
 
-    utterance.onerror = (e) => {
-      console.error("Speech error:", e.error);
+    utterance.onerror = (_) => {
       setIsSpeaking(false);
       setIsPaused(false);
     };
@@ -106,6 +109,7 @@ export default function BlogDetailPage() {
       synth.resume();
       setIsPaused(false);
       setIsSpeaking(true);
+
       return;
     }
 
@@ -113,12 +117,14 @@ export default function BlogDetailPage() {
       synth.pause();
       setIsPaused(true);
       setIsSpeaking(false);
+
       return;
     }
 
     synth.cancel();
 
     const text = getReadableContent(blog.content);
+
     chunksRef.current = chunkText(text);
     chunkIndexRef.current = 0;
 
@@ -136,6 +142,7 @@ export default function BlogDetailPage() {
 
   const handleVolumeChange = (value: number | number[]) => {
     const newVolume = Array.isArray(value) ? value[0] : value;
+
     setVolume(newVolume);
     if (utteranceRef.current) {
       utteranceRef.current.volume = newVolume;
@@ -152,17 +159,17 @@ export default function BlogDetailPage() {
     <section className="py-8 md:py-12">
       <div className="container mx-auto px-4 max-w-3xl">
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
           className="flex items-center justify-between mb-6"
+          initial={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.5 }}
         >
           <Button
             as={Link}
-            href="/blogs"
-            variant="light"
             className="-ml-2"
+            href="/blogs"
             startContent={<ArrowLeftIcon size={16} />}
+            variant="light"
           >
             Back to Blogs
           </Button>
@@ -171,21 +178,21 @@ export default function BlogDetailPage() {
             <div className="flex items-center gap-3">
               {(!isSpeaking || isPaused) && (
                 <div className="flex items-center gap-2 min-w-[140px]">
-                  <VolumeIcon size={18} className="text-default-500 shrink-0" />
+                  <VolumeIcon className="text-default-500 shrink-0" size={18} />
                   <Slider
-                    size="sm"
-                    step={0.1}
-                    maxValue={1}
-                    minValue={0}
-                    value={volume}
-                    onChange={handleVolumeChange}
-                    className="w-24"
                     aria-label="Volume"
+                    className="w-24"
                     classNames={{
                       track: "bg-default-200",
                       filler: "bg-gradient-to-r from-primary to-secondary",
                       thumb: "bg-primary shadow-md",
                     }}
+                    maxValue={1}
+                    minValue={0}
+                    size="sm"
+                    step={0.1}
+                    value={volume}
+                    onChange={handleVolumeChange}
                   />
                 </div>
               )}
@@ -197,8 +204,8 @@ export default function BlogDetailPage() {
               >
                 <Button
                   isIconOnly
-                  variant="flat"
                   color={isSpeaking ? "warning" : "primary"}
+                  variant="flat"
                   onPress={handlePlay}
                 >
                   {isSpeaking ? (
@@ -213,8 +220,8 @@ export default function BlogDetailPage() {
                 <Tooltip content="Stop">
                   <Button
                     isIconOnly
-                    variant="flat"
                     color="danger"
+                    variant="flat"
                     onPress={handleStop}
                   >
                     <StopIcon size={18} />
@@ -226,17 +233,17 @@ export default function BlogDetailPage() {
         </motion.div>
 
         <motion.article
-          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           <header className="mb-8">
             <div className="flex items-center gap-2 mb-4">
-              <Chip size="sm" variant="flat" color="primary">
+              <Chip color="primary" size="sm" variant="flat">
                 {blog.part}
               </Chip>
               {blog.readingTime && (
-                <Chip size="sm" variant="flat" className="bg-default-100">
+                <Chip className="bg-default-100" size="sm" variant="flat">
                   {blog.readingTime}
                 </Chip>
               )}
@@ -287,10 +294,10 @@ export default function BlogDetailPage() {
                 return (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.1 + index * 0.02 }}
                     className="my-6 p-4 bg-default-100/50 rounded-xl border border-default-200/50"
+                    initial={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.4, delay: 0.1 + index * 0.02 }}
                   >
                     <p className="font-bold text-primary mb-2">{title}</p>
                     <p className="text-default-600 leading-relaxed">
@@ -304,13 +311,14 @@ export default function BlogDetailPage() {
                 const items = paragraph
                   .split("\n")
                   .filter((item) => item.trim());
+
                 return (
                   <motion.ul
                     key={index}
-                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.1 + index * 0.02 }}
                     className="my-4 space-y-2 pl-4"
+                    initial={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.4, delay: 0.1 + index * 0.02 }}
                   >
                     {items.map((item, i) => (
                       <li key={i} className="text-default-600 leading-relaxed">
@@ -324,10 +332,10 @@ export default function BlogDetailPage() {
               return (
                 <motion.p
                   key={index}
-                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.1 + index * 0.02 }}
                   className="text-default-600 leading-relaxed mb-6"
+                  initial={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.4, delay: 0.1 + index * 0.02 }}
                 >
                   {paragraph}
                 </motion.p>
@@ -338,16 +346,16 @@ export default function BlogDetailPage() {
           <Divider className="my-8" />
 
           <motion.div
-            initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
             className="flex justify-center"
+            initial={{ opacity: 0 }}
+            transition={{ delay: 0.5 }}
           >
             <Button
               as={Link}
               href="/blogs"
-              variant="bordered"
               startContent={<ArrowLeftIcon size={16} />}
+              variant="bordered"
             >
               Back to All Posts
             </Button>

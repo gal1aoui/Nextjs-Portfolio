@@ -17,6 +17,7 @@ export const chunkText = (text: string, chunkSize = 180): string[] => {
   }
 
   if (current) chunks.push(current.trim());
+
   return chunks;
 };
 
@@ -28,8 +29,7 @@ export const getReadableContent = (content: string): string => {
   return content
     .split("\n\n")
     .filter(
-      (p) =>
-        !(p.startsWith("**") && p.includes(":**")) && !p.startsWith("•")
+      (p) => !(p.startsWith("**") && p.includes(":**")) && !p.startsWith("•"),
     )
     .join(". ");
 };
@@ -39,15 +39,15 @@ export const getReadableContent = (content: string): string => {
  * Prefers female voices for better listening experience.
  */
 export const getPreferredVoice = (
-  voices: SpeechSynthesisVoice[]
+  voices: SpeechSynthesisVoice[],
 ): SpeechSynthesisVoice | null => {
   return (
     voices.find(
       (v) =>
         v.lang.startsWith("en") &&
         /female|woman|zira|emma|susan|aria|google uk english female/i.test(
-          v.name
-        )
+          v.name,
+        ),
     ) ||
     voices.find((v) => v.lang.startsWith("en")) ||
     null

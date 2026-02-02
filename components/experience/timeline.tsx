@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
+
 import { ExperienceItem } from "./experience-data";
 import TimelineMilestone from "./timeline-milestone";
 

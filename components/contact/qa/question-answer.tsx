@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import {
   Drawer,
   DrawerContent,
@@ -16,6 +15,8 @@ import { Divider } from "@heroui/divider";
 
 import RecruiterQuestions from "./recruiter-questions";
 import { recruiterQA } from "./recruiter-qa";
+
+import { Button } from "@/components/ui/button";
 import { BotIcon } from "@/components/icons";
 import useWindowWidth from "@/hooks/useWindowWidth";
 
@@ -43,15 +44,14 @@ export default function QuestionAndAnswer() {
 
     setTimeout(() => {
       const answers = recruiterQA[question];
-      const random =
-        answers[Math.floor(Math.random() * answers.length)];
+      const random = answers[Math.floor(Math.random() * answers.length)];
 
       setHistory((prev) =>
         prev.map((item, idx) =>
           idx === prev.length - 1
             ? { ...item, answer: random, loading: false }
-            : item
-        )
+            : item,
+        ),
       );
     }, 2000);
   };
@@ -60,10 +60,10 @@ export default function QuestionAndAnswer() {
     <>
       <Tooltip closeDelay={2000} content="Get some Q&A about me">
         <Button
-          size="sm"
-          radius="full"
-          onPress={onOpen}
           isIconOnly={width < 640}
+          radius="full"
+          size="sm"
+          onPress={onOpen}
         >
           <BotIcon />
           <p className="hidden sm:block">Quick answers</p>
@@ -71,9 +71,9 @@ export default function QuestionAndAnswer() {
       </Tooltip>
 
       <Drawer
-        placement="left"
         backdrop="transparent"
         isOpen={isOpen}
+        placement="left"
         onOpenChange={onOpenChange}
       >
         <DrawerContent>
@@ -98,7 +98,7 @@ export default function QuestionAndAnswer() {
                 >
                   {history.length === 0 && (
                     <div className="flex flex-col items-center justify-center text-center gap-4 h-full">
-                      <Avatar src="./light-profile.png" size="lg" />
+                      <Avatar size="lg" src="./light-profile.png" />
                       <p className="text-base max-w-md">
                         Ask me any question from the list below and I’ll answer
                         as clearly as possible.
@@ -130,13 +130,13 @@ export default function QuestionAndAnswer() {
                 </div>
                 <RecruiterQuestions
                   recruiterQuestions={Object.keys(recruiterQA).filter(
-                    (q) => !new Set(history.map((h) => h.question)).has(q)
+                    (q) => !new Set(history.map((h) => h.question)).has(q),
                   )}
                   selectedQuestion={handleSelectQuestion}
                 />
               </DrawerBody>
               <DrawerFooter className="p-4">
-                <Button onPress={onClose} size="md">
+                <Button size="md" onPress={onClose}>
                   Close
                 </Button>
               </DrawerFooter>

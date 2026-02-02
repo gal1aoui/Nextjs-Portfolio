@@ -2,6 +2,7 @@ import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 import { Tooltip } from "@heroui/tooltip";
 import { useState } from "react";
+
 import { CopyCheckIcon, CopyIcon } from "../../icons";
 
 export default function CopyInput() {
@@ -18,28 +19,25 @@ export default function CopyInput() {
     <div className="w-full ">
       <Input
         isReadOnly
-        label="Copy Email"
-        variant="bordered"
-        defaultValue={valueToCopy}
-        labelPlacement="outside"
         classNames={{
           inputWrapper: "hover:border-primary transition-colors duration-200",
         }}
+        defaultValue={valueToCopy}
         endContent={
           <Tooltip
-            content="Copied!"
-            isOpen={copied}
-            color="foreground"
-            placement="top"
             showArrow
             closeDelay={0}
+            color="foreground"
+            content="Copied!"
+            isOpen={copied}
+            placement="top"
           >
             <Button
               isIconOnly
+              className="min-w-unit-8 w-8 h-8"
               size="sm"
               variant="light"
               onPress={handleCopy}
-              className="min-w-unit-8 w-8 h-8"
             >
               {copied ? (
                 <CopyCheckIcon
@@ -52,6 +50,9 @@ export default function CopyInput() {
             </Button>
           </Tooltip>
         }
+        label="Copy Email"
+        labelPlacement="outside"
+        variant="bordered"
       />
     </div>
   );

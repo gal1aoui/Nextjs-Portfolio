@@ -1,6 +1,7 @@
 import { Tooltip } from "@heroui/tooltip";
-import { Skill } from "./type";
 import { Card, CardBody } from "@heroui/card";
+
+import { Skill } from "./type";
 
 export default function SkillGrid({ skills }: { skills: Skill[] }) {
   return (
@@ -14,8 +15,8 @@ export default function SkillGrid({ skills }: { skills: Skill[] }) {
               <p className="text-xs text-default-500">{skill.description}</p>
             </div>
           }
-          placement="top"
           delay={300}
+          placement="top"
         >
           <Card className="rounded-2xl hover:-translate-y-1 hover:shadow-md transition-all">
             <CardBody className="p-4 flex flex-col items-center gap-3">

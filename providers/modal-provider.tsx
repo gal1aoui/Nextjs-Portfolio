@@ -1,17 +1,22 @@
 "use client";
 
+import {
+  createContext,
+  type ReactNode,
+  useCallback,
+  useContext,
+  useState,
+} from "react";
+
 import { ModalRoot } from "@/components/modal-root";
-import { createContext, type ReactNode, useCallback, useContext, useState } from "react";
 
 export type ModalState = {
   title?: string;
-  render?: (args: {
-    close: () => void;
-  }) => ReactNode;
+  render?: (args: { close: () => void }) => ReactNode;
 };
 
 type ModalContextType = {
-  openModal: <T>(config: {
+  openModal: (config: {
     title?: string;
     render: (args: { close: () => void }) => ReactNode;
   }) => void;
@@ -36,13 +41,15 @@ export function ModalProvider({ children }: { children: ReactNode }) {
   return (
     <ModalContext.Provider value={{ openModal, closeModal }}>
       {children}
-      <ModalRoot open={open} state={state} close={closeModal} />
+      <ModalRoot close={closeModal} open={open} state={state} />
     </ModalContext.Provider>
   );
 }
 
 export function useModal() {
   const ctx = useContext(ModalContext);
+
   if (!ctx) throw new Error("useModal must be used inside ModalProvider");
+
   return ctx;
 }

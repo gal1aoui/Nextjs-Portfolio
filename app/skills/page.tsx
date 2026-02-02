@@ -2,27 +2,28 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Chip } from "@heroui/chip";
+
 import { RandomizedTextEffect } from "@/components/randomized-text";
 import { skillCategories } from "@/components/skills/skills";
-import { Chip } from "@heroui/chip";
 import SkillGrid from "@/components/skills/skill-card";
 
 export default function SkillsPage() {
   const [selectedCategory, setSelectedCategory] = useState(
-    skillCategories[0].id
+    skillCategories[0].id,
   );
 
   const currentCategory = skillCategories.find(
-    (cat) => cat.id === selectedCategory
+    (cat) => cat.id === selectedCategory,
   );
 
   return (
     <section className="max-w-6xl mx-auto px-4 py-8 md:py-12">
       <motion.div
-        initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
         className="text-center mb-10"
+        initial={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.5 }}
       >
         <h1 className="text-3xl md:text-4xl font-extrabold mb-4">
           <RandomizedTextEffect text="Technical Expertise" />
@@ -35,34 +36,34 @@ export default function SkillsPage() {
 
       <div className="flex flex-col md:flex-row gap-6">
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
           className="md:w-64 shrink-0"
+          initial={{ opacity: 0, x: -20 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
         >
           <div className="md:sticky md:top-24 space-y-2">
             {skillCategories.map((category, index) => (
               <motion.button
                 key={category.id}
-                initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                onClick={() => setSelectedCategory(category.id)}
                 className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 flex items-center justify-between group ${
                   selectedCategory === category.id
                     ? "bg-primary text-primary-foreground shadow-lg"
                     : "bg-default-100/50 hover:bg-default-200/50"
                 }`}
+                initial={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                onClick={() => setSelectedCategory(category.id)}
               >
                 <span className="font-medium">{category.title}</span>
                 <Chip
-                  size="sm"
-                  variant={selectedCategory === category.id ? "solid" : "flat"}
                   className={`h-6 min-w-6 ${
                     selectedCategory === category.id
                       ? "bg-primary-foreground/20 text-primary-foreground"
                       : ""
                   }`}
+                  size="sm"
+                  variant={selectedCategory === category.id ? "solid" : "flat"}
                 >
                   {category.skills.length}
                 </Chip>
@@ -72,18 +73,18 @@ export default function SkillsPage() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
           className="flex-1 min-w-0"
+          initial={{ opacity: 0, x: 20 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
           <AnimatePresence mode="wait">
             {currentCategory && (
               <motion.div
                 key={currentCategory.id}
-                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.3 }}
               >
                 <div className="mb-6">

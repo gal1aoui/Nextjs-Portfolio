@@ -1,23 +1,42 @@
 "use client";
 
-import CopyInput from "./components/copy-input";
 import { Calendar } from "@heroui/calendar";
 import { TimeInput } from "@heroui/date-input";
-import { isWeekend, DateValue, Time, today, getLocalTimeZone, getDayOfWeek } from "@internationalized/date";
+import {
+  isWeekend,
+  DateValue,
+  Time,
+  today,
+  getLocalTimeZone,
+  getDayOfWeek,
+} from "@internationalized/date";
 import { useLocale } from "@react-aria/i18n";
-import ContactInput from "./components/contact-input";
-import { ClockCircleLinearIcon, RelatedContactIcon, SubjectIcon, UserIcon, ViewIcon } from "../icons";
 import { ModalFooter } from "@heroui/modal";
-import { Button } from "../ui/button";
 import { useState } from "react";
-import { useModal } from "@/providers/modal-provider";
 import dynamic from "next/dynamic";
+
+import { Button } from "../ui/button";
+import {
+  ClockCircleLinearIcon,
+  RelatedContactIcon,
+  SubjectIcon,
+  UserIcon,
+  ViewIcon,
+} from "../icons";
+
+import ContactInput from "./components/contact-input";
+import CopyInput from "./components/copy-input";
 import ContactConfirmSkeleton from "./contact-confirm-skeleton";
 
-const DynamicContactConfirmForm = dynamic(() => import("./contact-confirm-form"), {
-  loading: () => <ContactConfirmSkeleton />,
-  ssr: false
-});
+import { useModal } from "@/providers/modal-provider";
+
+const DynamicContactConfirmForm = dynamic(
+  () => import("./contact-confirm-form"),
+  {
+    loading: () => <ContactConfirmSkeleton />,
+    ssr: false,
+  },
+);
 
 export type ContactFormType = {
   date?: DateValue | undefined;
@@ -35,11 +54,14 @@ export default function ContactForm() {
 
   const getNextMonday = (date: DateValue) => {
     const daysUntilMonday =
-      getDayOfWeek(date, 'en-US') === 0 ? 1 : // Sunday → Monday
-      getDayOfWeek(date, 'en-US') === 6 ? 2 : // Saturday → Monday
-      0;
-    return date.add({days: daysUntilMonday});
-  }
+      getDayOfWeek(date, "en-US") === 0
+        ? 1 // Sunday → Monday
+        : getDayOfWeek(date, "en-US") === 6
+          ? 2 // Saturday → Monday
+          : 0;
+
+    return date.add({ days: daysUntilMonday });
+  };
 
   const [form, setForm] = useState<ContactFormType>({
     date: isWeekend(today(getLocalTimeZone()), locale)
@@ -58,8 +80,8 @@ export default function ContactForm() {
         <div className="flex flex-col sm:flex-row gap-4 w-full">
           <Calendar
             aria-label="Date (Unavailable)"
-            firstDayOfWeek="mon"
             className="flex-none mx-auto"
+            firstDayOfWeek="mon"
             isDateUnavailable={isDateUnavailable}
             value={form?.date}
             onChange={(date) =>
@@ -91,10 +113,8 @@ export default function ContactForm() {
               }
             />
             <ContactInput
-              placeholder="Enter your FullName"
-              type="text"
               icon={<UserIcon />}
-              value={form?.name}
+              placeholder="Enter your FullName"
               setValue={(e) =>
                 setForm((prev) => {
                   return {
@@ -103,12 +123,12 @@ export default function ContactForm() {
                   };
                 })
               }
+              type="text"
+              value={form?.name}
             />
             <ContactInput
-              placeholder="Enter your Email"
-              type="email"
               icon={<RelatedContactIcon />}
-              value={form?.email}
+              placeholder="Enter your Email"
               setValue={(e) =>
                 setForm((prev) => {
                   return {
@@ -117,12 +137,12 @@ export default function ContactForm() {
                   };
                 })
               }
+              type="email"
+              value={form?.email}
             />
             <ContactInput
-              placeholder="Enter your Subject"
-              type="text"
               icon={<SubjectIcon />}
-              value={form?.subject}
+              placeholder="Enter your Subject"
               setValue={(e) =>
                 setForm((prev) => {
                   return {
@@ -131,14 +151,16 @@ export default function ContactForm() {
                   };
                 })
               }
+              type="text"
+              value={form?.subject}
             />
           </div>
         </div>
       </div>
       <ModalFooter className="p-0">
         <Button
-          size="md"
           endContent={<ViewIcon />}
+          size="md"
           onClick={() =>
             openModal({
               title: "Email Body message",

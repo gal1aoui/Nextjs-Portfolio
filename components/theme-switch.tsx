@@ -8,7 +8,6 @@ import { useIsSSR } from "@react-aria/ssr";
 import clsx from "clsx";
 
 import { SunFilledIcon, MoonFilledIcon } from "@/components/icons";
-import { Button } from "./ui/button";
 
 export interface ThemeSwitchProps {
   className?: string;
@@ -45,7 +44,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
         className: clsx(
           "px-px transition-opacity hover:opacity-80 cursor-pointer",
           className,
-          classNames?.base
+          classNames?.base,
         ),
       })}
     >
@@ -66,16 +65,16 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
               "pt-px",
               "px-0",
               "mx-0",
-              "mt-1"
+              "mt-1",
             ],
-            classNames?.wrapper
+            classNames?.wrapper,
           ),
         })}
       >
         {!isSelected || isSSR ? (
-          <SunFilledIcon size={22} color="#fff" />
+          <SunFilledIcon color="#fff" size={22} />
         ) : (
-          <MoonFilledIcon size={22} color="#000" />
+          <MoonFilledIcon color="#000" size={22} />
         )}
       </div>
     </Component>

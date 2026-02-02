@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useCallback, useRef } from "react";
-import { useInView } from "framer-motion"
+
 import useWindowWidth from "@/hooks/useWindowWidth";
 
 const lettersAndSymbols = "abcdefghijklmnopqrstuvwxyz!@#$%^&*-_+=;:<>,";
@@ -13,13 +13,13 @@ interface AnimatedTextProps {
 export function RandomizedTextEffect({ text }: AnimatedTextProps) {
   const [animatedText, setAnimatedText] = useState("");
 
-  const ref = useRef(null)
+  const ref = useRef(null);
   const width = useWindowWidth();
 
   const getRandomChar = useCallback(
     () =>
       lettersAndSymbols[Math.floor(Math.random() * lettersAndSymbols.length)],
-    []
+    [],
   );
 
   const animateText = useCallback(async () => {
@@ -36,6 +36,7 @@ export function RandomizedTextEffect({ text }: AnimatedTextProps) {
     setAnimatedText(generateRandomText());
 
     const endTime = Date.now() + initialRandomDuration;
+
     while (Date.now() < endTime) {
       await new Promise((resolve) => setTimeout(resolve, duration));
       setAnimatedText(generateRandomText());
@@ -50,7 +51,7 @@ export function RandomizedTextEffect({ text }: AnimatedTextProps) {
             .slice(i + 1)
             .split("")
             .map(() => getRandomChar())
-            .join("")
+            .join(""),
       );
     }
   }, [text, getRandomChar]);

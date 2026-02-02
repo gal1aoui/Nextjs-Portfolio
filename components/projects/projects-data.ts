@@ -96,7 +96,8 @@ export const projects: Project[] = [
       "Docker",
     ],
     category: "fullstack",
-    repoUrl: "https://github.com/gal1aoui/Nextjs-Supabase-Project-Ticket-Management",
+    repoUrl:
+      "https://github.com/gal1aoui/Nextjs-Supabase-Project-Ticket-Management",
     gradient: "from-emerald-500 to-teal-600",
   },
   {
@@ -126,7 +127,8 @@ export const projects: Project[] = [
       "Zod",
     ],
     category: "fullstack",
-    repoUrl: "https://github.com/gal1aoui/Next.js-Supabase-Authentication-System",
+    repoUrl:
+      "https://github.com/gal1aoui/Next.js-Supabase-Authentication-System",
     gradient: "from-orange-500 to-amber-600",
   },
   {
@@ -145,14 +147,7 @@ export const projects: Project[] = [
       "CircleCI continuous integration",
       "NestJS Devtools for monitoring",
     ],
-    techStack: [
-      "NestJS",
-      "TypeScript",
-      "Node.js",
-      "JWT",
-      "CircleCI",
-      "AWS",
-    ],
+    techStack: ["NestJS", "TypeScript", "Node.js", "JWT", "CircleCI", "AWS"],
     category: "backend",
     repoUrl: "https://github.com/gal1aoui/Nest.js-Authentication-System",
     gradient: "from-red-500 to-rose-600",
@@ -203,7 +198,14 @@ export const projects: Project[] = [
       "Dark-themed interface with glowing visual elements",
       "No installation needed - runs directly in browser",
     ],
-    techStack: ["JavaScript ES6+", "HTML5", "CSS3", "Flexbox", "CSS Grid", "CSS Animations"],
+    techStack: [
+      "JavaScript ES6+",
+      "HTML5",
+      "CSS3",
+      "Flexbox",
+      "CSS Grid",
+      "CSS Animations",
+    ],
     category: "frontend",
     repoUrl: "https://github.com/gal1aoui/Find-the-short-path_JS-Game_",
     gradient: "from-indigo-500 to-blue-600",

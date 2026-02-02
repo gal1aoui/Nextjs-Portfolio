@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Card, CardBody, CardFooter } from "@heroui/card";
 import { Chip } from "@heroui/chip";
 import Link from "next/link";
+
 import { Blog } from "./types";
 
 interface BlogCardProps {
@@ -14,8 +15,8 @@ interface BlogCardProps {
 export default function BlogCard({ blog, index }: BlogCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 20 }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
     >
       <Link href={`/blogs/${blog.id}`}>
@@ -25,11 +26,11 @@ export default function BlogCard({ blog, index }: BlogCardProps) {
         >
           <CardBody className="p-6 gap-4">
             <div className="flex items-center gap-2">
-              <Chip size="sm" variant="flat" color="primary">
+              <Chip color="primary" size="sm" variant="flat">
                 {blog.part}
               </Chip>
               {blog.readingTime && (
-                <Chip size="sm" variant="flat" className="bg-default-100">
+                <Chip className="bg-default-100" size="sm" variant="flat">
                   {blog.readingTime}
                 </Chip>
               )}

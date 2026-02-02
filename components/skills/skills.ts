@@ -1,3 +1,5 @@
+import { GithubIcon } from "../icons";
+
 import { SkillCategory } from "./type";
 import {
   AngularIcon,
@@ -38,7 +40,6 @@ import {
   ZodIcon,
   ZustandIcon,
 } from "./icons";
-import { GithubIcon } from "../icons";
 
 export const skillCategories: SkillCategory[] = [
   {
@@ -328,7 +329,7 @@ export const skillCategories: SkillCategory[] = [
         description:
           "Modeling language for visualizing system architecture and relationships.",
         icon: UMLIcon,
-      }
+      },
     ],
   },
 
@@ -343,28 +344,28 @@ export const skillCategories: SkillCategory[] = [
         name: "Figma",
         description:
           "Collaborative design tool for UI/UX prototyping and handoff.",
-        icon: FigmaIcon
+        icon: FigmaIcon,
       },
       {
         id: "jira",
         name: "Jira",
         description:
           "Project management tool for agile planning and issue tracking.",
-        icon: JiraIcon
+        icon: JiraIcon,
       },
       {
         id: "scrum",
         name: "Agile/Scrum",
         description:
           "Iterative development framework focused on collaboration and continuous delivery.",
-        icon: ScrumIcon
+        icon: ScrumIcon,
       },
       {
         id: "kanban",
         name: "Kanban",
         description:
           "Workflow management method for visualizing tasks and optimizing flow.",
-        icon: KanbanIcon
+        icon: KanbanIcon,
       },
     ],
   },

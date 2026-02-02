@@ -88,7 +88,10 @@ I obtained my Master's degree, confident, prepared, and hungry for what comes ne
       { text: "Vue.js", color: "#4FC08D" },
       { text: "realtime notifications", color: "#FF9F43" },
       { text: "freelanced", color: "#A29BFE" },
-      { text: "Master's in Innovation and Project Management", color: "#FFD41D" },
+      {
+        text: "Master's in Innovation and Project Management",
+        color: "#FFD41D",
+      },
       { text: "Game Developer", color: "#FFD41D" },
       { text: "Full Stack PHP Developer", color: "#33A1E0" },
       { text: "16/20", color: "#4ECDC4" },

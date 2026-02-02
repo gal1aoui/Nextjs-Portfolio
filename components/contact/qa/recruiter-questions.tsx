@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 import { Chip } from "@heroui/chip";
 
 const VISIBLE_COUNT = 4;
@@ -11,10 +11,10 @@ export default function RecruiterQuestions({
   selectedQuestion: (question: string) => void;
 }) {
   const [available, setAvailable] = useState(
-    recruiterQuestions.slice(VISIBLE_COUNT)
+    recruiterQuestions.slice(VISIBLE_COUNT),
   );
   const [visible, setVisible] = useState(
-    recruiterQuestions.slice(0, VISIBLE_COUNT)
+    recruiterQuestions.slice(0, VISIBLE_COUNT),
   );
 
   const handleSelect = (question: string) => {
@@ -24,6 +24,7 @@ export default function RecruiterQuestions({
 
       if (available.length > 0) {
         const [next, ...rest] = available;
+
         setAvailable(rest);
         updated.push(next);
       }
@@ -37,16 +38,16 @@ export default function RecruiterQuestions({
       {visible.map((question) => (
         <Chip
           key={question}
-          onClick={() => handleSelect(question)}
-          variant="flat"
-          color="primary"
           className="cursor-pointer"
+          color="primary"
+          variant="flat"
+          onClick={() => handleSelect(question)}
         >
           {question}
         </Chip>
       ))}
       {available.length === 0 && (
-        <Chip variant="flat" color="warning" className="cursor-pointer">
+        <Chip className="cursor-pointer" color="warning" variant="flat">
           All Questions answered.
         </Chip>
       )}

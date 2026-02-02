@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const useWindowWidth = () => {
   const [windowWidth, setWindowWidth] = useState(0);
@@ -9,12 +9,13 @@ const useWindowWidth = () => {
     const handleResize = () => {
       setWindowWidth(document.body.clientWidth);
     };
+
     handleResize();
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 

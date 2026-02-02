@@ -3,8 +3,10 @@
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { Card, CardBody } from "@heroui/card";
 import { Chip } from "@heroui/chip";
-import { Project, categoryLabels, categoryColors } from "./projects-data";
+
 import { GithubIcon } from "../icons";
+
+import { Project, categoryLabels, categoryColors } from "./projects-data";
 
 interface ProjectCardProps {
   project: Project;
@@ -22,6 +24,7 @@ export default function ProjectCard({
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const { left, top } = e.currentTarget.getBoundingClientRect();
+
     mouseX.set(e.clientX - left);
     mouseY.set(e.clientY - top);
   };
@@ -36,20 +39,20 @@ export default function ProjectCard({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
+      className="group relative"
+      initial={{ opacity: 0, y: 30 }}
       transition={{
         duration: 0.5,
         delay: index * 0.1,
         ease: [0.25, 0.46, 0.45, 0.94],
       }}
-      className="group relative"
     >
       <Card
         isPressable
-        onPress={() => onSelect(project)}
-        onMouseMove={handleMouseMove}
         className="relative overflow-hidden rounded-2xl border border-default-200/50 bg-background/60 backdrop-blur-sm transition-all duration-300 hover:shadow-xl"
+        onMouseMove={handleMouseMove}
+        onPress={() => onSelect(project)}
       >
         <motion.div
           className="pointer-events-none absolute inset-0 z-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -68,9 +71,16 @@ export default function ProjectCard({
               <GithubIcon className="text-white" size={20} />
             </div>
             <Chip
+              color={
+                categoryColors[project.category] as
+                  | "primary"
+                  | "secondary"
+                  | "success"
+                  | "warning"
+                  | "danger"
+              }
               size="sm"
               variant="flat"
-              color={categoryColors[project.category] as "primary" | "secondary" | "success" | "warning" | "danger"}
             >
               {categoryLabels[project.category]}
             </Chip>
@@ -86,27 +96,22 @@ export default function ProjectCard({
 
           <div className="flex flex-wrap gap-1.5">
             {project.techStack.slice(0, 4).map((tech) => (
-              <Chip
-                key={tech}
-                size="sm"
-                variant="bordered"
-                className="text-xs"
-              >
+              <Chip key={tech} className="text-xs" size="sm" variant="bordered">
                 {tech}
               </Chip>
             ))}
             {project.techStack.length > 4 && (
-              <Chip size="sm" variant="bordered" className="text-xs">
+              <Chip className="text-xs" size="sm" variant="bordered">
                 +{project.techStack.length - 4}
               </Chip>
             )}
           </div>
 
           <motion.div
-            initial={{ scaleX: 0 }}
-            whileHover={{ scaleX: 1 }}
-            transition={{ duration: 0.3 }}
             className={`absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r ${project.gradient} origin-left`}
+            initial={{ scaleX: 0 }}
+            transition={{ duration: 0.3 }}
+            whileHover={{ scaleX: 1 }}
           />
         </CardBody>
       </Card>

@@ -5,6 +5,7 @@ import { useTheme } from "next-themes";
 import { Card, CardBody } from "@heroui/card";
 import { GitHubCalendar } from "react-github-calendar";
 import { Link } from "@heroui/link";
+
 import { GithubIcon } from "../icons";
 
 interface GithubContributionsProps {
@@ -20,10 +21,10 @@ export default function GithubContributions({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.4 }}
       className="w-full sm:w-fit overflow-x-auto mx-auto my-6"
+      initial={{ opacity: 0, y: 30 }}
+      transition={{ duration: 0.6, delay: 0.4 }}
     >
       <Card className="border border-default-200/50 bg-background/60">
         <CardBody className="p-6">
@@ -35,9 +36,9 @@ export default function GithubContributions({
               <div>
                 <h3 className="text-lg font-bold">GitHub Contributions</h3>
                 <Link
-                  href={`https://github.com/${username}`}
                   isExternal
                   className="text-sm text-default-500 hover:text-primary"
+                  href={`https://github.com/${username}`}
                 >
                   @{username}
                 </Link>
@@ -45,14 +46,14 @@ export default function GithubContributions({
             </div>
           </div>
           <GitHubCalendar
-            username={username}
-            colorScheme={colorScheme}
-            blockSize={12}
             blockMargin={4}
+            blockSize={12}
+            colorScheme={colorScheme}
             fontSize={14}
             style={{
               width: "100%",
             }}
+            username={username}
           />
         </CardBody>
       </Card>

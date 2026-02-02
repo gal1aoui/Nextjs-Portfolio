@@ -1,12 +1,6 @@
 import { useState } from "react";
-import ContactTextEditor from "./components/contact-text-editor";
 import { EditorState, LexicalEditor } from "lexical";
 import { $generateHtmlFromNodes, $generateNodesFromDOM } from "@lexical/html";
-import ExampleTheme from "./editor/configs/theme";
-import {
-  parseAllowedColor,
-  parseAllowedFontSize,
-} from "./editor/configs/styleConfig";
 import {
   $isTextNode,
   DOMConversionMap,
@@ -19,16 +13,25 @@ import {
   TextNode,
 } from "lexical";
 import { $getRoot, $createParagraphNode, $isElementNode } from "lexical";
-import { ContactFormType } from "./contact-form";
 import { ModalFooter } from "@heroui/modal";
+
 import { Button } from "../ui/button";
 import { SendIcon } from "../icons";
 
+import { ContactFormType } from "./contact-form";
+import {
+  parseAllowedColor,
+  parseAllowedFontSize,
+} from "./editor/configs/styleConfig";
+import ExampleTheme from "./editor/configs/theme";
+import ContactTextEditor from "./components/contact-text-editor";
+
 const removeStylesExportDOM = (
   editor: LexicalEditor,
-  target: LexicalNode
+  target: LexicalNode,
 ): DOMExportOutput => {
   const output = target.exportDOM(editor);
+
   if (output && isHTMLElement(output.element)) {
     for (const el of [
       output.element,
@@ -38,6 +41,7 @@ const removeStylesExportDOM = (
       el.removeAttribute("style");
     }
   }
+
   return output;
 };
 
@@ -54,6 +58,7 @@ const getExtraStyles = (element: HTMLElement): string => {
   const fontSize = parseAllowedFontSize(element.style.fontSize);
   const backgroundColor = parseAllowedColor(element.style.backgroundColor);
   const color = parseAllowedColor(element.style.color);
+
   if (fontSize !== "" && fontSize !== "15px") {
     extraStyles += `font-size: ${fontSize};`;
   }
@@ -63,6 +68,7 @@ const getExtraStyles = (element: HTMLElement): string => {
   if (color !== "" && color !== "rgb(0, 0, 0)") {
     extraStyles += `color: ${color};`;
   }
+
   return extraStyles;
 };
 
@@ -72,13 +78,16 @@ const constructImportMap = (): DOMConversionMap => {
   for (const [tag, fn] of Object.entries(TextNode.importDOM() || {})) {
     importMap[tag] = (importNode) => {
       const importer = fn(importNode);
+
       if (!importer) {
         return null;
       }
+
       return {
         ...importer,
         conversion: (element) => {
           const output = importer.conversion(element);
+
           if (
             output === null ||
             output.forChild === undefined ||
@@ -88,19 +97,24 @@ const constructImportMap = (): DOMConversionMap => {
             return output;
           }
           const extraStyles = getExtraStyles(element);
+
           if (extraStyles) {
             const { forChild } = output;
+
             return {
               ...output,
               forChild: (child, parent) => {
                 const textNode = forChild(child, parent);
+
                 if ($isTextNode(textNode)) {
                   textNode.setStyle(textNode.getStyle() + extraStyles);
                 }
+
                 return textNode;
               },
             };
           }
+
           return output;
         },
       };
@@ -139,7 +153,7 @@ export default function ContactConfirmForm({
     <b>Interview details:</b>
     <br />
     <p>
-    ${form?.date && `Date ${form.date?.day} ${monthNames[form.date?.month + 1]} ${form.date?.year === new Date().getFullYear() ? '' : form.date?.year}`}
+    ${form?.date && `Date ${form.date?.day} ${monthNames[form.date?.month + 1]} ${form.date?.year === new Date().getFullYear() ? "" : form.date?.year}`}
     ${form?.time && `Time ${form.time.hour}:${form.time.minute}`}
     </p>
     </p>
@@ -157,7 +171,7 @@ export default function ContactConfirmForm({
     <u>[companyName]</u>
   `;
   const [description, setDescription] = useState<string>("");
-  
+
   const onChange = (editorState: EditorState, editor: LexicalEditor) => {
     editorState.read(() => {
       const htmlString = $generateHtmlFromNodes(editor, null);
@@ -169,26 +183,28 @@ export default function ContactConfirmForm({
   };
 
   const prePopulate = (editor: LexicalEditor) => {
-  editor.update(() => {
-    const root = $getRoot();
-    root.clear();
+    editor.update(() => {
+      const root = $getRoot();
 
-    const parser = new DOMParser();
-    const dom = parser.parseFromString(autofill.trim(), 'text/html');
+      root.clear();
 
-    const nodes = $generateNodesFromDOM(editor, dom);
+      const parser = new DOMParser();
+      const dom = parser.parseFromString(autofill.trim(), "text/html");
 
-    nodes.forEach((node) => {
-      if ($isElementNode(node)) {
-        root.append(node);
-      } else {
-        const paragraph = $createParagraphNode();
-        paragraph.append(node);
-        root.append(paragraph);
-      }
+      const nodes = $generateNodesFromDOM(editor, dom);
+
+      nodes.forEach((node) => {
+        if ($isElementNode(node)) {
+          root.append(node);
+        } else {
+          const paragraph = $createParagraphNode();
+
+          paragraph.append(node);
+          root.append(paragraph);
+        }
+      });
     });
-  });
-};
+  };
 
   const editorConfig = {
     editorState: (editor: LexicalEditor) => prePopulate(editor),
@@ -206,10 +222,10 @@ export default function ContactConfirmForm({
 
   return (
     <div className="flex flex-col gap-4 items-center">
-      <ContactTextEditor onChange={onChange} editorConfig={editorConfig} />
+      <ContactTextEditor editorConfig={editorConfig} onChange={onChange} />
       <ModalFooter className="w-full p-0">
         <Button size="md" startContent={<SendIcon />}>
-            Send
+          Send
         </Button>
       </ModalFooter>
     </div>
