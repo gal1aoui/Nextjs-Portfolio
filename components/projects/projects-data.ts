@@ -69,6 +69,27 @@ export const projects: Project[] = [
     gradient: "from-cyan-500 to-blue-600",
   },
   {
+    id: "game-2048",
+    title: "@agallaoui/game-2048",
+    shortDescription:
+      "Lightweight, responsive 2048 game package for React with local score persistence.",
+    fullDescription:
+      "A minimal and performant implementation of the classic 2048 game designed as an npm package. Built for React with a focus on simplicity, responsiveness, and zero external dependencies. Player names and scores are persisted using localStorage, with smooth gameplay on both desktop and mobile devices.",
+    features: [
+      "Classic 2048 gameplay logic",
+      "Player name input before starting the game",
+      "Score and player name persisted in localStorage",
+      "Win modal displayed when reaching 2048 with continue option",
+      "Fully responsive layout (desktop & mobile)",
+      "Lightweight bundle with no external dependencies",
+      "Easy plug-and-play React integration",
+    ],
+    techStack: ["JavaScript", "React", "CSS", "LocalStorage API"],
+    category: "library",
+    repoUrl: "https://github.com/gal1aoui/2048-Package",
+    gradient: "from-blue-600 to-cyan-500",
+  },
+  {
     id: "ticket-management",
     title: "Project Ticket Management",
     shortDescription:
