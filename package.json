@@ -63,7 +63,7 @@
     "framer-motion": "11.18.2",
     "intl-messageformat": "10.7.16",
     "lexical": "^0.39.0",
-    "next": "^15.5.9",
+    "next": "^16.1.6",
     "next-themes": "0.4.6",
     "react": "18.3.1",
     "react-dom": "18.3.1",
@@ -73,7 +73,7 @@
     "resend": "^6.9.1"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^15.5.9",
+    "@next/eslint-plugin-next": "^15.5.11",
     "@react-types/shared": "3.32.1",
     "@tailwindcss/postcss": "4.1.11",
     "@types/node": "20.5.7",
