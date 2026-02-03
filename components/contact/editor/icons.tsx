@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 import { IconSvgProps } from "@/types";
 
 type ShapeType =
@@ -31,7 +33,7 @@ const IconsShape: Record<ShapeType, string> = {
     "M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
 };
 
-export const UndoIcon: React.FC<IconSvgProps & { disabled?: boolean }> = ({
+export const UndoIcon: FC<IconSvgProps & { disabled?: boolean }> = ({
   size = 18,
   disabled = false,
   width,
@@ -57,7 +59,7 @@ export const UndoIcon: React.FC<IconSvgProps & { disabled?: boolean }> = ({
   );
 };
 
-export const RedoIcon: React.FC<IconSvgProps & { disabled?: boolean }> = ({
+export const RedoIcon: FC<IconSvgProps & { disabled?: boolean }> = ({
   size = 18,
   disabled = false,
   width,
@@ -83,7 +85,7 @@ export const RedoIcon: React.FC<IconSvgProps & { disabled?: boolean }> = ({
   );
 };
 
-export const EditorActionIcon: React.FC<IconSvgProps & { type: ShapeType }> = ({
+export const EditorActionIcon: FC<IconSvgProps & { type: ShapeType }> = ({
   size = 18,
   type,
   width,
@@ -105,7 +107,7 @@ export const EditorActionIcon: React.FC<IconSvgProps & { type: ShapeType }> = ({
   );
 };
 
-export const JustifyAlignIcon: React.FC<IconSvgProps> = ({
+export const JustifyAlignIcon: FC<IconSvgProps> = ({
   size = 18,
   width,
   height,

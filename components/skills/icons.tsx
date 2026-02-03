@@ -1,6 +1,8 @@
+import { FC } from "react";
+
 import { IconSvgProps } from "@/types";
 
-export const ReactIcon: React.FC<IconSvgProps> = ({
+export const ReactIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -20,7 +22,7 @@ export const ReactIcon: React.FC<IconSvgProps> = ({
   );
 };
 
-export const NextJsIcon: React.FC<IconSvgProps> = ({
+export const NextJsIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -47,7 +49,7 @@ export const NextJsIcon: React.FC<IconSvgProps> = ({
   );
 };
 
-export const TypeScriptIcon: React.FC<IconSvgProps> = ({
+export const TypeScriptIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -71,7 +73,7 @@ export const TypeScriptIcon: React.FC<IconSvgProps> = ({
   );
 };
 
-export const AngularIcon: React.FC<IconSvgProps> = ({
+export const AngularIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -99,7 +101,7 @@ export const AngularIcon: React.FC<IconSvgProps> = ({
   );
 };
 
-export const MaterialUiIcon: React.FC<IconSvgProps> = ({
+export const MaterialUiIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -117,7 +119,7 @@ export const MaterialUiIcon: React.FC<IconSvgProps> = ({
     </svg>
   );
 };
-export const ZodIcon: React.FC<IconSvgProps> = ({
+export const ZodIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -133,7 +135,7 @@ export const ZodIcon: React.FC<IconSvgProps> = ({
     <path d="M19.088 2.477 24 7.606 12.521 20.485l-0.925 1.038L0 7.559l5.108 -5.082h13.98Zm-17.434 5.2 6.934 -4.003H5.601L1.619 7.636l0.035 0.041Zm12.117 -4.003L3.333 9.7l2.149 2.588 10.809 -6.241 -0.2 -0.346 2.851 -1.646 -0.365 -0.381h-4.806Zm7.52 2.834L8.257 14.034h5.101v-0.4h3.667l5.346 -5.998 -1.08 -1.128Zm-7.129 10.338H9.268l2.36 2.843 2.534 -2.843Z" />
   </svg>
 );
-export const ShadcnUiIcon: React.FC<IconSvgProps> = ({
+export const ShadcnUiIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -149,7 +151,7 @@ export const ShadcnUiIcon: React.FC<IconSvgProps> = ({
     <path d="M22.219 11.784 11.784 22.219c-0.407 0.407 -0.407 1.068 0 1.476 0.407 0.407 1.068 0.407 1.476 0L23.695 13.26c0.407 -0.408 0.407 -1.069 0 -1.476 -0.408 -0.407 -1.069 -0.407 -1.476 0ZM20.132 0.305 0.305 20.132c-0.407 0.407 -0.407 1.068 0 1.476 0.408 0.407 1.069 0.407 1.476 0L21.608 1.781c0.407 -0.407 0.407 -1.068 0 -1.476 -0.408 -0.407 -1.069 -0.407 -1.476 0Z" />
   </svg>
 );
-export const SpartanNgIcon: React.FC<IconSvgProps> = ({
+export const SpartanNgIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -166,7 +168,7 @@ export const SpartanNgIcon: React.FC<IconSvgProps> = ({
     <path d="M562.848 144.586L194.348 254.086L188.157 255.925L183.934 251.039L128.705 187.138L68.7839 219.781L60.0445 224.542L55.2416 215.826L14.7416 142.326L11.9592 137.276L14.9351 132.338L60.4351 56.8383L65.7181 48.0721L74.3593 53.5573L124.586 85.4401L183.943 16.9507L188.19 12.0506L194.396 13.9285L562.896 125.429L594.816 135.087Z" />
   </svg>
 );
-export const TailwindCssIcon: React.FC<IconSvgProps> = ({
+export const TailwindCssIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -194,7 +196,7 @@ export const TailwindCssIcon: React.FC<IconSvgProps> = ({
     transform="translate(.9778)"
   />
 </svg>;
-export const TanStackIcon: React.FC<IconSvgProps> = ({
+export const TanStackIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -214,7 +216,7 @@ export const TanStackIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const ZustandIcon: React.FC<IconSvgProps> = ({
+export const ZustandIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1182,7 +1184,7 @@ export const ZustandIcon: React.FC<IconSvgProps> = ({
   );
 };
 
-export const LaravelIcon: React.FC<IconSvgProps> = ({
+export const LaravelIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1199,7 +1201,7 @@ export const LaravelIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const SymfonyIcon: React.FC<IconSvgProps> = ({
+export const SymfonyIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1220,7 +1222,7 @@ export const SymfonyIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const SupabaseIcon: React.FC<IconSvgProps> = ({
+export const SupabaseIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1240,7 +1242,7 @@ export const SupabaseIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const NodeIcon: React.FC<IconSvgProps> = ({
+export const NodeIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1262,7 +1264,7 @@ export const NodeIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const ExpressIcon: React.FC<IconSvgProps> = ({
+export const ExpressIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1282,7 +1284,7 @@ export const ExpressIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const NestIcon: React.FC<IconSvgProps> = ({
+export const NestIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1302,7 +1304,7 @@ export const NestIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const DotNetIcon: React.FC<IconSvgProps> = ({
+export const DotNetIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1322,7 +1324,7 @@ export const DotNetIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const MySQLIcon: React.FC<IconSvgProps> = ({
+export const MySQLIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1342,7 +1344,7 @@ export const MySQLIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const MongoDBIcon: React.FC<IconSvgProps> = ({
+export const MongoDBIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1362,7 +1364,7 @@ export const MongoDBIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const PostgreIcon: React.FC<IconSvgProps> = ({
+export const PostgreIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1382,7 +1384,7 @@ export const PostgreIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const SQLiteIcon: React.FC<IconSvgProps> = ({
+export const SQLiteIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1402,7 +1404,7 @@ export const SQLiteIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const DockerIcon: React.FC<IconSvgProps> = ({
+export const DockerIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1422,7 +1424,7 @@ export const DockerIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const GitIcon: React.FC<IconSvgProps> = ({
+export const GitIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1442,7 +1444,7 @@ export const GitIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const GitLabIcon: React.FC<IconSvgProps> = ({
+export const GitLabIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1462,7 +1464,7 @@ export const GitLabIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const GitHubIcon: React.FC<IconSvgProps> = ({
+export const GitHubIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1482,7 +1484,7 @@ export const GitHubIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const CICDIcon: React.FC<IconSvgProps> = ({
+export const CICDIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1504,7 +1506,7 @@ export const CICDIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const RobotFrameworkIcon: React.FC<IconSvgProps> = ({
+export const RobotFrameworkIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1524,7 +1526,7 @@ export const RobotFrameworkIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const PostmanIcon: React.FC<IconSvgProps> = ({
+export const PostmanIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1544,7 +1546,7 @@ export const PostmanIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const JestIcon: React.FC<IconSvgProps> = ({
+export const JestIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1564,7 +1566,7 @@ export const JestIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const MochaIcon: React.FC<IconSvgProps> = ({
+export const MochaIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1584,7 +1586,7 @@ export const MochaIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const GraphqlIcon: React.FC<IconSvgProps> = ({
+export const GraphqlIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1604,7 +1606,7 @@ export const GraphqlIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const RestAPIIcon: React.FC<IconSvgProps> = ({
+export const RestAPIIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1616,7 +1618,7 @@ export const RestAPIIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const UMLIcon: React.FC<IconSvgProps> = ({
+export const UMLIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1636,7 +1638,7 @@ export const UMLIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const FigmaIcon: React.FC<IconSvgProps> = ({
+export const FigmaIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1656,7 +1658,7 @@ export const FigmaIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const JiraIcon: React.FC<IconSvgProps> = ({
+export const JiraIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1676,7 +1678,7 @@ export const JiraIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const ScrumIcon: React.FC<IconSvgProps> = ({
+export const ScrumIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -1693,7 +1695,7 @@ export const ScrumIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const KanbanIcon: React.FC<IconSvgProps> = ({
+export const KanbanIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,

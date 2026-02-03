@@ -3,6 +3,7 @@
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { Card, CardBody } from "@heroui/card";
 import { Chip } from "@heroui/chip";
+import { MouseEvent } from "react";
 
 import { GithubIcon } from "../icons";
 
@@ -22,7 +23,7 @@ export default function ProjectCard({
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     const { left, top } = e.currentTarget.getBoundingClientRect();
 
     mouseX.set(e.clientX - left);
