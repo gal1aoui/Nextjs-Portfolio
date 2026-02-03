@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
-.badge {
-    @apply border-2 border-default px-8 py-1 rounded-full hover:bg-default transition-all duration-500 cursor-pointer max-w-2xs font-bold;
-}
-
 @theme {
     --breakpoint-md: 80rem;
 }

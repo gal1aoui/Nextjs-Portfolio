@@ -17,6 +17,7 @@ import { Button } from "./ui/button";
 import PdfRendererSkeleton from "./pdf-renderer-skeleton";
 import ContactFormSkeleton from "./contact/contact-form-skeleton";
 import { RandomizedTextEffect } from "./randomized-text";
+import Roles from "./roles";
 
 import useWindowWidth from "@/hooks/useWindowWidth";
 import { useModal } from "@/providers/modal-provider";
@@ -54,11 +55,7 @@ export default function Introduction() {
         <RandomizedTextEffect text="Achref Gallaoui" />
       </h1>
 
-      <div className="flex flex-col md:flex-row gap-2 sm:my-12 my-6 mx-auto md:mx-0 text-center">
-        <span className="badge">Software Engineer</span>
-        <span className="badge">Full-Stack Developer</span>
-        <span className="badge">Frontend Specialist</span>
-      </div>
+      <Roles />
 
       <h3 className="text-2xl md:text-4xl antialiased md:subpixel-antialiased tracking-wide leading-12">
         <RoughNotationGroup show={roughNotationStarted}>
