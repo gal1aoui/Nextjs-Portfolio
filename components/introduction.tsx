@@ -1,9 +1,7 @@
 "use client";
 
 import { Tooltip } from "@heroui/tooltip";
-import { RoughNotation, RoughNotationGroup } from "react-rough-notation";
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
 import { Link } from "@heroui/link";
 
 import {
@@ -18,8 +16,8 @@ import PdfRendererSkeleton from "./pdf-renderer-skeleton";
 import ContactFormSkeleton from "./contact/contact-form-skeleton";
 import { RandomizedTextEffect } from "./randomized-text";
 import Roles from "./roles";
+import Bio from "./bio";
 
-import useWindowWidth from "@/hooks/useWindowWidth";
 import { useModal } from "@/providers/modal-provider";
 
 const DynamicPDFViewer = dynamic(() => import("./pdf-renderer"), {
@@ -33,20 +31,7 @@ const DynamicContactForm = dynamic(() => import("./contact/contact-form"), {
 });
 
 export default function Introduction() {
-  const [roughNotationStarted, setRoughNotationStarted] =
-    useState<boolean>(false);
   const { openModal } = useModal();
-  const roughNotationAnimationDelay = 500;
-
-  const windowWidth = useWindowWidth();
-
-  useEffect(() => {
-    if (windowWidth > 651) {
-      setTimeout(() => setRoughNotationStarted(true), 2000);
-    } else {
-      setRoughNotationStarted(false);
-    }
-  }, [windowWidth]);
 
   return (
     <div className="flex flex-col w-fit text-center md:text-start p-4">
@@ -56,65 +41,7 @@ export default function Introduction() {
       </h1>
 
       <Roles />
-
-      <h3 className="text-2xl md:text-4xl antialiased md:subpixel-antialiased tracking-wide leading-12">
-        <RoughNotationGroup show={roughNotationStarted}>
-          <RoughNotation color="#FFD41D" strokeWidth={2} type="highlight">
-            Full-Stack Developer
-          </RoughNotation>{" "}
-          with a{" "}
-          <RoughNotation
-            animationDelay={roughNotationAnimationDelay}
-            color={"red"}
-            strokeWidth={8}
-            type="box"
-          >
-            frontend specialization
-          </RoughNotation>{" "}
-          and{" "}
-          <RoughNotation
-            animationDelay={roughNotationAnimationDelay}
-            color="#33A1E0"
-            strokeWidth={4}
-            type="box"
-          >
-            3+ years
-          </RoughNotation>{" "}
-          of experience building and delivering complete solutions. Strong in
-          modern frontend frameworks,{" "}
-          <RoughNotation
-            multiline
-            animationDelay={roughNotationAnimationDelay}
-            color="#6AECE1"
-            strokeWidth={4}
-            type="underline"
-          >
-            performance optimization
-          </RoughNotation>
-          , and a focus on{" "}
-          <RoughNotation
-            multiline
-            animationDelay={roughNotationAnimationDelay}
-            color="#6AECE1"
-            strokeWidth={4}
-            type="underline"
-          >
-            clean, maintainable code
-          </RoughNotation>
-          , with{" "}
-          <RoughNotation
-            animationDelay={roughNotationAnimationDelay}
-            color="#26CCC2"
-            padding={[6, 16, 16, 6]}
-            strokeWidth={4}
-            type="circle"
-          >
-            solid backend
-          </RoughNotation>{" "}
-          experience across multiple projects.
-        </RoughNotationGroup>
-      </h3>
-
+      <Bio />
       <div className="flex flex-col md:flex-row mx-auto md:mx-0 gap-12 my-6 justify-between">
         <div className="flex gap-12">
           <Tooltip closeDelay={2000} content="Contact Me">
