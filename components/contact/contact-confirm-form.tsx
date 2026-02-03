@@ -151,7 +151,7 @@ export default function ContactConfirmForm({
 }: {
   form: ContactFormType;
 }) {
-  const { openModal } = useModal();
+  const { openModal, closeModal } = useModal();
 
   const autofill = `<b>Dear Achref,</b>
     <br />
@@ -239,6 +239,7 @@ export default function ContactConfirmForm({
         variant: "bordered",
       });
     } else {
+      closeModal();
       addToast({
         title: "Thank you for reaching out. I will get back to you soon.",
         color: "success",
