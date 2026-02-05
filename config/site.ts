@@ -2,68 +2,72 @@ export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
   name: "Achref Gallaoui | Full-Stack Developer",
-  description: "Full-Stack Developer Portfolio",
+  url: "https://achref-gallaoui.vercel.app",
+  description:
+    "Achref Gallaoui — Full-Stack Developer specializing in JavaScript, TypeScript, React, and Angular. Building scalable web applications with modern frontend technologies.",
+  keywords: [
+    "Achref Gallaoui",
+    "Full-Stack Developer",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Angular",
+    "Frontend Specialist",
+    "Scalable Web Applications",
+    "Next.js",
+    "Portfolio",
+    "Web Developer",
+    "PHP Developer",
+    "Laravel Developer",
+  ],
+  author: "Achref Gallaoui",
   navItems: [
     {
-      label: "Home",
+      label: "About",
       href: "/",
     },
     {
-      label: "Docs",
-      href: "/docs",
+      label: "Skills",
+      href: "/skills",
     },
     {
-      label: "Pricing",
-      href: "/pricing",
-    },
-    {
-      label: "Blog",
-      href: "/blog",
-    },
-    {
-      label: "About",
-      href: "/about",
-    },
-  ],
-  navMenuItems: [
-    {
-      label: "Profile",
-      href: "/profile",
-    },
-    {
-      label: "Dashboard",
-      href: "/dashboard",
+      label: "Experience",
+      href: "/experience",
     },
     {
       label: "Projects",
       href: "/projects",
     },
     {
-      label: "Team",
-      href: "/team",
+      label: "Blogs",
+      href: "/blogs",
+    },
+  ],
+  navMenuItems: [
+    {
+      label: "About",
+      href: "/",
     },
     {
-      label: "Calendar",
-      href: "/calendar",
+      label: "Skills",
+      href: "/skills",
     },
     {
-      label: "Settings",
-      href: "/settings",
+      label: "Experience",
+      href: "/experience",
     },
     {
-      label: "Help & Feedback",
-      href: "/help-feedback",
+      label: "Projects",
+      href: "/projects",
     },
     {
-      label: "Logout",
-      href: "/logout",
+      label: "Blogs",
+      href: "/blogs",
     },
   ],
   links: {
-    github: "https://github.com/heroui-inc/heroui",
-    twitter: "https://twitter.com/hero_ui",
-    docs: "https://heroui.com",
-    discord: "https://discord.gg/9b6yyZKmH4",
-    sponsor: "https://patreon.com/jrgarciadev",
+    linkedin: "https://www.linkedin.com/in/ashraf-gallaoui/",
+    github: "https://github.com/gal1aoui",
+    medium: "https://medium.com/@aga1laoui",
   },
 };
