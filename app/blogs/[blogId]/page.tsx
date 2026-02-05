@@ -7,8 +7,8 @@ import { Chip } from "@heroui/chip";
 import { Divider } from "@heroui/divider";
 import { Button } from "@heroui/button";
 import { Tooltip } from "@heroui/tooltip";
-import { Slider } from "@heroui/slider";
-import Link from "next/link";
+import { Link } from "@heroui/link";
+import NextLink from "next/link";
 
 import { getBlogById } from "@/components/blogs/blogs-data";
 import {
@@ -21,7 +21,6 @@ import {
   PlayIcon,
   PauseIcon,
   StopIcon,
-  VolumeIcon,
 } from "@/components/icons";
 
 export default function BlogDetailPage() {
@@ -33,7 +32,6 @@ export default function BlogDetailPage() {
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [volume, setVolume] = useState(0.8);
 
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
   const chunkIndexRef = useRef(0);
@@ -81,7 +79,7 @@ export default function BlogDetailPage() {
     if (preferredVoice) {
       utterance.voice = preferredVoice;
     }
-    utterance.volume = volume;
+    utterance.volume = 0.8;
     utterance.rate = 0.85;
     utterance.pitch = 1.05;
     utterance.lang = "en-US";
@@ -140,15 +138,6 @@ export default function BlogDetailPage() {
     chunkIndexRef.current = 0;
   };
 
-  const handleVolumeChange = (value: number | number[]) => {
-    const newVolume = Array.isArray(value) ? value[0] : value;
-
-    setVolume(newVolume);
-    if (utteranceRef.current) {
-      utteranceRef.current.volume = newVolume;
-    }
-  };
-
   if (!blog) {
     notFound();
   }
@@ -164,39 +153,38 @@ export default function BlogDetailPage() {
           initial={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.5 }}
         >
-          <Button
-            as={Link}
-            className="-ml-2"
-            href="/blogs"
-            startContent={<ArrowLeftIcon size={16} />}
-            variant="light"
-          >
-            Back to Blogs
-          </Button>
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1 text-sm">
+            <Link
+              as={NextLink}
+              className="text-default-500 hover:text-primary transition-colors"
+              href="/blogs"
+              size="sm"
+              underline="hover"
+            >
+              Blogs
+            </Link>
+            <span className="text-default-400 mx-1">
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M9 5l7 7-7 7"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+            <span className="text-foreground font-medium truncate max-w-[250px] sm:max-w-none">
+              {blog.title}
+            </span>
+          </nav>
 
           {speechSupported && (
             <div className="flex items-center gap-3">
-              {(!isSpeaking || isPaused) && (
-                <div className="flex items-center gap-2 min-w-[140px]">
-                  <VolumeIcon className="text-default-500 shrink-0" size={18} />
-                  <Slider
-                    aria-label="Volume"
-                    className="w-24"
-                    classNames={{
-                      track: "bg-default-200",
-                      filler: "bg-gradient-to-r from-primary to-secondary",
-                      thumb: "bg-primary shadow-md",
-                    }}
-                    maxValue={1}
-                    minValue={0}
-                    size="sm"
-                    step={0.1}
-                    value={volume}
-                    onChange={handleVolumeChange}
-                  />
-                </div>
-              )}
-
               <Tooltip
                 content={
                   isSpeaking ? "Pause" : isPaused ? "Resume" : "Listen to Story"
@@ -352,7 +340,7 @@ export default function BlogDetailPage() {
             transition={{ delay: 0.5 }}
           >
             <Button
-              as={Link}
+              as={NextLink}
               href="/blogs"
               startContent={<ArrowLeftIcon size={16} />}
               variant="bordered"
