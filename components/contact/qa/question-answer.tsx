@@ -8,7 +8,6 @@ import {
   DrawerBody,
   DrawerFooter,
 } from "@heroui/drawer";
-import { useDisclosure } from "@heroui/modal";
 import { Tooltip } from "@heroui/tooltip";
 import { Avatar } from "@heroui/avatar";
 import { Divider } from "@heroui/divider";
@@ -18,6 +17,7 @@ import { recruiterQA } from "./recruiter-qa";
 
 import { Button } from "@/components/ui/button";
 import { BotIcon } from "@/components/icons";
+import { useModal } from "@/providers/modal-provider";
 
 type QAHistory = {
   question: string;
@@ -26,7 +26,7 @@ type QAHistory = {
 };
 
 export default function QuestionAndAnswer() {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { isQAOpen, onTriggerQA } = useModal();
   const [history, setHistory] = useState<QAHistory[]>([]);
   const chatRef = useRef<HTMLDivElement>(null);
 
@@ -61,7 +61,7 @@ export default function QuestionAndAnswer() {
           className="sm:px-3 max-sm:min-w-0 max-sm:w-8 max-sm:h-8 max-sm:p-0"
           radius="full"
           size="sm"
-          onPress={onOpen}
+          onPress={onTriggerQA}
         >
           <BotIcon />
           <p className="hidden sm:block">Quick answers</p>
@@ -70,9 +70,9 @@ export default function QuestionAndAnswer() {
 
       <Drawer
         backdrop="transparent"
-        isOpen={isOpen}
+        isOpen={isQAOpen}
         placement="left"
-        onOpenChange={onOpenChange}
+        onOpenChange={onTriggerQA}
       >
         <DrawerContent>
           {(onClose) => (

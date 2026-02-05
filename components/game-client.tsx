@@ -1,14 +1,22 @@
+import { useEffect, useState } from "react";
 import { Game2048 } from "@agallaoui/game-2048";
-
-import { useModal } from "@/providers/modal-provider";
 import "@agallaoui/game-2048/styles.css";
 
-export default function GameClient() {
-  const { isOpen } = useModal();
+import { useModal } from "@/providers/modal-provider";
 
-  if (isOpen) {
-    return null;
-  }
+export default function GameClient() {
+  const { isOpen, isDrawerOpen, isQAOpen } = useModal();
+  const [isGameOpen, setIsGameOpen] = useState(true);
+
+  useEffect(
+    () =>
+      isOpen || isQAOpen || isDrawerOpen
+        ? setIsGameOpen(false)
+        : setIsGameOpen(true),
+    [isOpen, isQAOpen, isDrawerOpen],
+  );
+
+  if (!isGameOpen) return null;
 
   return (
     <Game2048

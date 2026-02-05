@@ -24,7 +24,10 @@ export const Navbar = () => {
 
   return (
     <>
-      <div className="flex text-center items-center px-2 py-2 shadow-sm">
+      <nav
+        aria-label="Main navigation"
+        className="flex text-center items-center px-2 py-2 shadow-sm"
+      >
         <NextLink
           className="hidden sm:flex justify-start items-center"
           href="/"
@@ -99,7 +102,7 @@ export const Navbar = () => {
           <Tab key="mode" aria-label="Toggle theme" title={<ThemeSwitch />} />
         </Tabs>
         <QuestionAndAnswer />
-      </div>
+      </nav>
       <GameClient />
     </>
   );
