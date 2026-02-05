@@ -18,7 +18,6 @@ import { recruiterQA } from "./recruiter-qa";
 
 import { Button } from "@/components/ui/button";
 import { BotIcon } from "@/components/icons";
-import useWindowWidth from "@/hooks/useWindowWidth";
 
 type QAHistory = {
   question: string;
@@ -30,7 +29,6 @@ export default function QuestionAndAnswer() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [history, setHistory] = useState<QAHistory[]>([]);
   const chatRef = useRef<HTMLDivElement>(null);
-  const width = useWindowWidth();
 
   useEffect(() => {
     chatRef.current?.scrollTo({
@@ -60,7 +58,7 @@ export default function QuestionAndAnswer() {
     <>
       <Tooltip closeDelay={2000} content="Get some Q&A about me">
         <Button
-          isIconOnly={width < 640}
+          className="sm:px-3 max-sm:min-w-0 max-sm:w-8 max-sm:h-8 max-sm:p-0"
           radius="full"
           size="sm"
           onPress={onOpen}
@@ -81,7 +79,7 @@ export default function QuestionAndAnswer() {
             <>
               <DrawerHeader className="flex flex-col gap-2 p-2">
                 <div className="flex gap-4 items-center">
-                  <Avatar isBordered src="./light-profile.png" />
+                  <Avatar isBordered src="/avatar-profile.webp" />
                   <div className="flex flex-col">
                     <h3 className="text-xl">Achref Gallaoui</h3>
                     <p className="text-xs font-light">
@@ -98,7 +96,7 @@ export default function QuestionAndAnswer() {
                 >
                   {history.length === 0 && (
                     <div className="flex flex-col items-center justify-center text-center gap-4 h-full">
-                      <Avatar size="lg" src="./light-profile.png" />
+                      <Avatar size="lg" src="/avatar-profile.webp" />
                       <p className="text-base max-w-md">
                         Ask me any question from the list below and I’ll answer
                         as clearly as possible.

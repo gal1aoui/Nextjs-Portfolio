@@ -36,9 +36,9 @@ export default function Introduction() {
   return (
     <div className="flex flex-col w-fit text-center md:text-start p-4">
       <h1 className="text-4xl md:text-6xl">Hi there, I am</h1>
-      <h1 className="text-6xl md:text-8xl font-bold">
+      <h2 className="text-6xl md:text-8xl font-bold">
         <RandomizedTextEffect text="Achref Gallaoui" />
-      </h1>
+      </h2>
 
       <Roles />
       <Bio />
@@ -78,6 +78,7 @@ export default function Introduction() {
           <Tooltip content="LinkedIn" placement="top">
             <Link
               isExternal
+              aria-label="LinkedIn"
               color="foreground"
               href="https://www.linkedin.com/in/ashraf-gallaoui/"
             >
@@ -88,6 +89,7 @@ export default function Introduction() {
           <Tooltip content="Github" placement="top">
             <Link
               isExternal
+              aria-label="GitHub"
               color="foreground"
               href="https://github.com/gal1aoui"
             >
@@ -97,6 +99,7 @@ export default function Introduction() {
           <Tooltip content="Medium" placement="top">
             <Link
               isExternal
+              aria-label="Medium"
               color="foreground"
               href="https://medium.com/@aga1laoui"
             >

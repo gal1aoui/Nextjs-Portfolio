@@ -2,11 +2,13 @@
 
 import { usePathname } from "next/navigation";
 import NextLink from "next/link";
+import dynamic from "next/dynamic";
 import { Tabs, Tab } from "@heroui/tabs";
 
 import { ThemeSwitch } from "./theme-switch";
 import QuestionAndAnswer from "./contact/qa/question-answer";
-import GameClient from "./game-client";
+
+const GameClient = dynamic(() => import("./game-client"), { ssr: false });
 
 import {
   AboutIcon,
@@ -41,6 +43,7 @@ export const Navbar = () => {
         >
           <Tab
             key="/"
+            aria-label="About"
             href="/"
             title={
               <div className="flex items-center gap-1">
@@ -51,6 +54,7 @@ export const Navbar = () => {
           />
           <Tab
             key="/skills"
+            aria-label="Skills"
             href="/skills"
             title={
               <div className="flex gap-1 items-center">
@@ -61,6 +65,7 @@ export const Navbar = () => {
           />
           <Tab
             key="/experience"
+            aria-label="Experience"
             href="/experience"
             title={
               <div className="flex gap-1 items-center">
@@ -71,6 +76,7 @@ export const Navbar = () => {
           />
           <Tab
             key="/projects"
+            aria-label="Projects"
             href="/projects"
             title={
               <div className="flex gap-1 items-center">
@@ -81,6 +87,7 @@ export const Navbar = () => {
           />
           <Tab
             key="/blogs"
+            aria-label="Blogs"
             href="/blogs"
             title={
               <div className="flex gap-1 items-center">
@@ -89,7 +96,7 @@ export const Navbar = () => {
               </div>
             }
           />
-          <Tab key="mode" title={<ThemeSwitch />} />
+          <Tab key="mode" aria-label="Toggle theme" title={<ThemeSwitch />} />
         </Tabs>
         <QuestionAndAnswer />
       </div>

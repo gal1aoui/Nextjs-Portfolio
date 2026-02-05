@@ -21,7 +21,7 @@ export default function Bio() {
   const notationDelay = 0.7;
 
   return (
-    <motion.h3
+    <motion.h2
       className="text-2xl md:text-4xl antialiased md:subpixel-antialiased tracking-wide leading-12"
       initial={{ opacity: 0, y: 15 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
@@ -43,10 +43,12 @@ export default function Bio() {
         </RoughNotation>{" "}
         and{" "}
         <RoughNotation
+          multiline
           animationDelay={notationDelay}
+          brackets={["left", "right"]}
           color="#33A1E0"
           strokeWidth={4}
-          type="box"
+          type="bracket"
         >
           3+ years
         </RoughNotation>{" "}
@@ -83,6 +85,6 @@ export default function Bio() {
         </RoughNotation>{" "}
         experience across multiple projects.
       </RoughNotationGroup>
-    </motion.h3>
+    </motion.h2>
   );
 }

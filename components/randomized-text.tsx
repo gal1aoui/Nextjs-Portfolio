@@ -2,8 +2,6 @@
 
 import React, { useEffect, useState, useCallback, useRef } from "react";
 
-import useWindowWidth from "@/hooks/useWindowWidth";
-
 const lettersAndSymbols = "abcdefghijklmnopqrstuvwxyz!@#$%^&*-_+=;:<>,";
 
 interface AnimatedTextProps {
@@ -11,10 +9,12 @@ interface AnimatedTextProps {
 }
 
 export function RandomizedTextEffect({ text }: AnimatedTextProps) {
-  const [animatedText, setAnimatedText] = useState("");
-
+  const [animatedText, setAnimatedText] = useState(text);
   const ref = useRef(null);
-  const width = useWindowWidth();
+  const shouldAnimate = useRef(
+    typeof window !== "undefined" &&
+      window.matchMedia("(min-width: 651px)").matches,
+  );
 
   const getRandomChar = useCallback(
     () =>
@@ -23,6 +23,8 @@ export function RandomizedTextEffect({ text }: AnimatedTextProps) {
   );
 
   const animateText = useCallback(async () => {
+    if (!shouldAnimate.current) return;
+
     const duration = 50;
     const revealDuration = 80;
     const initialRandomDuration = 300;
@@ -60,13 +62,12 @@ export function RandomizedTextEffect({ text }: AnimatedTextProps) {
     animateText();
   }, [text, animateText]);
 
-  if (width < 651) {
-    return <div className="relative inline-block">{text}</div>;
-  }
-
   return (
-    <div ref={ref} className="relative inline-block">
-      {animatedText}
-    </div>
+    <>
+      <span className="relative inline-block sm:hidden">{text}</span>
+      <span ref={ref} className="relative hidden sm:inline-block">
+        {animatedText}
+      </span>
+    </>
   );
 }
