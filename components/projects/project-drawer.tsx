@@ -176,7 +176,9 @@ export default function ProjectDrawer({
                 size="md"
               >
                 <GithubIcon size={18} />
-                View Repository
+                {project.repoUrl.includes("github.com")
+                  ? "View Repository"
+                  : "Visit Project"}
               </Button>
             </DrawerFooter>
           </>

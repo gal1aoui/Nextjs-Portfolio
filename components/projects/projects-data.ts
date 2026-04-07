@@ -12,6 +12,116 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "ticket-management",
+    title: "WeConnect Enterprise",
+    shortDescription:
+      "Enterprise-grade project management platform with Kanban, time tracking, collaboration, and real-time workflows.",
+    fullDescription:
+      "A comprehensive enterprise project management platform designed to streamline team collaboration, workflow organization, and productivity. Built with Next.js 16 and Supabase, the system goes beyond traditional ticketing by integrating Kanban boards, sprint management, time tracking, messaging, notifications, and role-based access control into a unified, real-time experience powered by modern frontend architecture and scalable backend services.",
+    features: [
+      "Advanced Kanban board with drag-and-drop and optimistic UI updates",
+      "Full ticket management system with comments, priorities, and assignments",
+      "Sprint management with progress tracking and burndown insights",
+      "Integrated time tracking system with timer, reports, and cost calculation",
+      "Real-time notifications and messaging system for team collaboration",
+      "Role-Based Access Control (RBAC) with granular permissions",
+      "Project member management with invitations and role assignment",
+      "Interactive calendar with event scheduling and attendee management",
+      "Repository integration for linking projects with version control",
+      "Analytics dashboards with project KPIs and performance insights",
+      "Email system with OTP authentication and automated notifications",
+      "Scalable architecture using TanStack Query, service layer, and Supabase RLS",
+      "For a demo view, login in with: admin@admin.com / a123456A",
+    ],
+    techStack: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Supabase",
+      "PostgreSQL",
+      "TanStack Query",
+      "Shadcn/ui",
+      "Tailwind CSS",
+      "Zod",
+      "Resend",
+      "Recharts",
+      "Docker",
+    ],
+    category: "fullstack",
+    repoUrl: "https://we-connectproject.vercel.app/",
+    gradient: "from-blue-600 to-cyan-500",
+  },
+  {
+    id: "boudokhane-doors",
+    title: "Boudokhane Doors",
+    shortDescription:
+      "Full-featured e-commerce platform for custom door ordering with real-time tracking and admin management.",
+    fullDescription:
+      "A specialized e-commerce platform built for a door manufacturing business, enabling customers to browse products, place custom dimension-based orders, and track them in real time. The system includes a robust admin dashboard for managing products, orders, analytics, and inventory, powered by a secure Supabase backend with real-time capabilities.",
+    features: [
+      "Custom product ordering with dynamic dimension-based pricing",
+      "Real-time order tracking using unique tracking tokens",
+      "Comprehensive admin dashboard for products, orders, and analytics",
+      "Full CRUD product and category management system",
+      "Order lifecycle management with multi-stage status tracking",
+      "Secure authentication and role-based access via Supabase Auth",
+      "Row Level Security (RLS) for fine-grained data protection",
+      "Responsive UI optimized for mobile, tablet, and desktop",
+      "Image management system for product galleries",
+      "Real-time updates using PostgreSQL subscriptions",
+    ],
+    techStack: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS",
+      "Material UI (MUI)",
+      "Supabase",
+      "PostgreSQL",
+      "Emotion",
+      "Vercel",
+      "GitHub Actions",
+    ],
+    category: "fullstack",
+    repoUrl: "https://door-shop-sigma.vercel.app/",
+    gradient: "from-gray-600 to-stone-700",
+  },
+  {
+    id: "angular-file-manager",
+    title: "Angular File Manager",
+    shortDescription:
+      "Modern full-stack file management system with drag-and-drop uploads and real-time state management.",
+    fullDescription:
+      "A full-stack file management application built with Angular 19, designed to handle complex file and folder operations within a hierarchical structure. Developed as a technical assessment, the project demonstrates advanced frontend architecture using NgRx for state management, reactive programming with RxJS, and a modular component-driven design. It includes a mock backend powered by Express for handling file storage and RESTful operations.",
+    features: [
+      "Hierarchical file and folder navigation with breadcrumb support",
+      "Drag-and-drop and multi-file upload capabilities",
+      "Full CRUD operations for files and folders",
+      "File download handling with native browser integration",
+      "Advanced state management using NgRx (actions, reducers, effects)",
+      "Real-time UI updates with reactive programming (RxJS)",
+      "Move and rename operations with conflict detection",
+      "Toast notifications and robust error handling system",
+      "Responsive UI with reusable component architecture",
+      "Custom UI component library integration (Spartan-NG)",
+    ],
+    techStack: [
+      "Angular 19",
+      "TypeScript",
+      "RxJS",
+      "NgRx",
+      "Tailwind CSS",
+      "SCSS",
+      "Spartan-NG",
+      "Express.js",
+      "Node.js",
+      "REST API",
+    ],
+    category: "fullstack",
+    repoUrl: "https://github.com/gal1aoui/front-technical-test",
+    gradient: "from-emerald-500 to-teal-600",
+  },
+  {
     id: "saas-directory-agent",
     title: "SaaS Directory Agent",
     shortDescription:
@@ -90,38 +200,6 @@ export const projects: Project[] = [
     gradient: "from-blue-600 to-cyan-500",
   },
   {
-    id: "ticket-management",
-    title: "Project Ticket Management",
-    shortDescription:
-      "Full-featured project and ticket management system with Kanban board and drag-and-drop.",
-    fullDescription:
-      "A modern, full-featured project and ticket management system built with Next.js 15, Supabase, TanStack Query, and Pragmatic Drag-and-Drop. Enables teams to organize work through intuitive interfaces.",
-    features: [
-      "Create, update, delete projects with custom color coding",
-      "Kanban board with drag-and-drop between ticket states",
-      "Real-time optimistic rendering with smooth animations",
-      "Custom ticket states and priorities per project",
-      "Full CRUD capabilities with rich detail fields",
-      "Row-level security with Supabase authentication",
-      "Statistical analytics and user tracking",
-    ],
-    techStack: [
-      "Next.js 16",
-      "TypeScript",
-      "Supabase",
-      "TanStack Query",
-      "Shadcn/ui",
-      "Tailwind CSS",
-      "Pragmatic DnD",
-      "Zod",
-      "Docker",
-    ],
-    category: "fullstack",
-    repoUrl:
-      "https://github.com/gal1aoui/Nextjs-Supabase-Project-Ticket-Management",
-    gradient: "from-emerald-500 to-teal-600",
-  },
-  {
     id: "nextjs-auth",
     title: "Next.js Auth System",
     shortDescription:
@@ -150,7 +228,7 @@ export const projects: Project[] = [
     category: "fullstack",
     repoUrl:
       "https://github.com/gal1aoui/Next.js-Supabase-Authentication-System",
-    gradient: "from-orange-500 to-amber-600",
+    gradient: "from-amber-500 to-orange-600",
   },
   {
     id: "nestjs-auth",
@@ -202,7 +280,7 @@ export const projects: Project[] = [
     ],
     category: "devops",
     repoUrl: "https://github.com/gal1aoui/Dockerized-Laravel-Reminder-App",
-    gradient: "from-pink-500 to-fuchsia-600",
+    gradient: "from-orange-500 to-pink-500",
   },
   {
     id: "rabbit-run-game",
@@ -229,7 +307,7 @@ export const projects: Project[] = [
     ],
     category: "frontend",
     repoUrl: "https://github.com/gal1aoui/Find-the-short-path_JS-Game_",
-    gradient: "from-indigo-500 to-blue-600",
+    gradient: "from-purple-500 to-indigo-500",
   },
 ];
 
