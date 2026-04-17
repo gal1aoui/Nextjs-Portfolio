@@ -4,8 +4,12 @@ import { motion } from "framer-motion";
 import { Card, CardBody, CardFooter } from "@heroui/card";
 import { Chip } from "@heroui/chip";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 
 import { Blog } from "./types";
+
+import { localizePath } from "@/i18n/routing";
+import { fallbackLng, isLanguage } from "@/i18n/settings";
 
 interface BlogCardProps {
   blog: Blog;
@@ -13,13 +17,20 @@ interface BlogCardProps {
 }
 
 export default function BlogCard({ blog, index }: BlogCardProps) {
+  const params = useParams<{ lng?: string }>();
+  const lng =
+    typeof params?.lng === "string" && isLanguage(params.lng)
+      ? params.lng
+      : fallbackLng;
+  const dateLocale = lng === "fr" ? "fr-FR" : "en-US";
+
   return (
     <motion.div
       animate={{ opacity: 1, y: 0 }}
       initial={{ opacity: 0, y: 20 }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
     >
-      <Link href={`/blogs/${blog.id}`}>
+      <Link href={localizePath(lng, `/blogs/${blog.id}`)}>
         <Card
           isPressable
           className="group border border-default-200/50 bg-background/60 backdrop-blur-sm hover:border-primary/50 hover:shadow-xl transition-all duration-300 h-full"
@@ -62,7 +73,7 @@ export default function BlogCard({ blog, index }: BlogCardProps) {
             </div>
             {blog.publishedAt && (
               <span className="text-xs text-default-400">
-                {new Date(blog.publishedAt).toLocaleDateString("en-US", {
+                {new Date(blog.publishedAt).toLocaleDateString(dateLocale, {
                   month: "short",
                   day: "numeric",
                   year: "numeric",

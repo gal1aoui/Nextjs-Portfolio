@@ -29,6 +29,7 @@ import ContactInput from "./components/contact-input";
 import CopyInput from "./components/copy-input";
 import ContactConfirmSkeleton from "./contact-confirm-skeleton";
 
+import { useTranslation } from "@/i18n/client";
 import { useModal } from "@/providers/modal-provider";
 
 const DynamicContactConfirmForm = dynamic(
@@ -54,6 +55,7 @@ export default function ContactForm({
   formFill?: ContactFormType;
 }) {
   const { openModal } = useModal();
+  const { t } = useTranslation("common");
 
   const { locale } = useLocale();
   const isDateUnavailable = (date: DateValue) => isWeekend(date, locale);
@@ -94,25 +96,25 @@ export default function ContactForm({
     let isValid = true;
 
     if (!form.name.trim()) {
-      newErrors.name = "Name is required";
+      newErrors.name = t("contact.errors.nameRequired");
       isValid = false;
     }
 
     if (!form.email.trim()) {
-      newErrors.email = "Email is required";
+      newErrors.email = t("contact.errors.emailRequired");
       isValid = false;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      newErrors.email = "Please enter a valid email";
+      newErrors.email = t("contact.errors.emailInvalid");
       isValid = false;
     }
 
     if (!form.subject.trim()) {
-      newErrors.subject = "Subject is required";
+      newErrors.subject = t("contact.errors.subjectRequired");
       isValid = false;
     }
 
     if (!form.company.trim()) {
-      newErrors.company = "Company name is required";
+      newErrors.company = t("contact.errors.companyRequired");
       isValid = false;
     }
 
@@ -129,7 +131,7 @@ export default function ContactForm({
           errorMessage={errors.company as string}
           icon={<CompanyIcon />}
           isInvalid={!!errors.company}
-          placeholder="Enter your Company Name"
+          placeholder={t("contact.companyPlaceholder")}
           setValue={(e) =>
             setForm((prev) => {
               return {
@@ -144,7 +146,7 @@ export default function ContactForm({
 
         <div className="flex flex-col sm:flex-row gap-4 w-full">
           <Calendar
-            aria-label="Date (Unavailable)"
+            aria-label={t("contact.calendarLabel")}
             className="flex-none mx-auto"
             firstDayOfWeek="mon"
             isDateUnavailable={isDateUnavailable}
@@ -162,7 +164,7 @@ export default function ContactForm({
           <div className="grow flex flex-col gap-4">
             <TimeInput
               defaultValue={new Time(15, 0)}
-              label="Meeting Time"
+              label={t("contact.timeLabel")}
               labelPlacement="inside"
               startContent={
                 <ClockCircleLinearIcon className="text-xl pointer-events-none shrink-0" />
@@ -181,7 +183,7 @@ export default function ContactForm({
               errorMessage={errors.name as string}
               icon={<UserIcon />}
               isInvalid={!!errors.name}
-              placeholder="Enter your FullName"
+              placeholder={t("contact.namePlaceholder")}
               setValue={(e) =>
                 setForm((prev) => {
                   return {
@@ -197,7 +199,7 @@ export default function ContactForm({
               errorMessage={errors.email as string}
               icon={<RelatedContactIcon />}
               isInvalid={!!errors.email}
-              placeholder="Enter your Email"
+              placeholder={t("contact.emailPlaceholder")}
               setValue={(e) =>
                 setForm((prev) => {
                   return {
@@ -213,7 +215,7 @@ export default function ContactForm({
               errorMessage={errors.subject as string}
               icon={<SubjectIcon />}
               isInvalid={!!errors.subject}
-              placeholder="Enter your Subject"
+              placeholder={t("contact.subjectPlaceholder")}
               setValue={(e) =>
                 setForm((prev) => {
                   return {
@@ -235,13 +237,13 @@ export default function ContactForm({
           onClick={() => {
             if (validateForm()) {
               openModal({
-                title: "Email Body message",
+                title: t("contact.emailBodyTitle"),
                 render: () => <DynamicContactConfirmForm form={form} />,
               });
             }
           }}
         >
-          Confirm
+          {t("contact.confirm")}
         </Button>
       </ModalFooter>
     </>

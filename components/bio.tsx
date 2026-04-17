@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import { RoughNotation, RoughNotationGroup } from "react-rough-notation";
 import { motion } from "framer-motion";
 
+import { useTranslation } from "@/i18n/client";
 import useWindowWidth from "@/hooks/useWindowWidth";
 
 export default function Bio() {
+  const { t } = useTranslation("home");
   const [roughNotationStarted, setRoughNotationStarted] = useState(false);
   const windowWidth = useWindowWidth();
 
@@ -30,18 +32,18 @@ export default function Bio() {
     >
       <RoughNotationGroup show={roughNotationStarted}>
         <RoughNotation color="#FFD41D" strokeWidth={2} type="highlight">
-          Full-Stack Developer
+          {t("bio.highlightRole")}
         </RoughNotation>{" "}
-        with a{" "}
+        {t("bio.beforeSpecialization")}{" "}
         <RoughNotation
           animationDelay={notationDelay}
           color={"red"}
           strokeWidth={8}
           type="box"
         >
-          frontend specialization
+          {t("bio.specialization")}
         </RoughNotation>{" "}
-        and{" "}
+        {t("bio.beforeExperience")}{" "}
         <RoughNotation
           multiline
           animationDelay={notationDelay}
@@ -50,10 +52,9 @@ export default function Bio() {
           strokeWidth={4}
           type="bracket"
         >
-          3+ years
+          {t("bio.experience")}
         </RoughNotation>{" "}
-        of experience building and delivering complete solutions. Strong in
-        modern frontend frameworks,{" "}
+        {t("bio.beforePerformance")}{" "}
         <RoughNotation
           multiline
           animationDelay={notationDelay}
@@ -61,9 +62,9 @@ export default function Bio() {
           strokeWidth={4}
           type="underline"
         >
-          performance optimization
+          {t("bio.performance")}
         </RoughNotation>
-        , and a focus on{" "}
+        {t("bio.beforeMaintainable")}{" "}
         <RoughNotation
           multiline
           animationDelay={notationDelay}
@@ -71,9 +72,9 @@ export default function Bio() {
           strokeWidth={4}
           type="underline"
         >
-          clean, maintainable code
+          {t("bio.maintainable")}
         </RoughNotation>
-        , with{" "}
+        {t("bio.beforeBackend")}{" "}
         <RoughNotation
           animationDelay={notationDelay}
           color="#26CCC2"
@@ -81,9 +82,9 @@ export default function Bio() {
           strokeWidth={4}
           type="circle"
         >
-          solid backend
+          {t("bio.backend")}
         </RoughNotation>{" "}
-        experience across multiple projects.
+        {t("bio.afterBackend")}
       </RoughNotationGroup>
     </motion.h2>
   );

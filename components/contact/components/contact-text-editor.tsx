@@ -14,7 +14,7 @@ import { LexicalEditor } from "lexical";
 
 import ToolbarPlugin from "../editor/plugins/ToolbarPlugin";
 
-const placeholder = "Enter some rich text...";
+import { useTranslation } from "@/i18n/client";
 
 export default function ContactTextEditor({
   onChange,
@@ -23,6 +23,9 @@ export default function ContactTextEditor({
   onChange: (editorState: EditorState, editor: LexicalEditor) => void;
   editorConfig: any;
 }) {
+  const { t } = useTranslation("common");
+  const placeholder = t("contact.editorPlaceholder");
+
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container w-full border-2 border-default">

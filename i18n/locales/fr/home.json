@@ -1,0 +1,34 @@
+{
+  "intro": {
+    "greeting": "Bonjour, je suis",
+    "name": "Achref Gallaoui",
+    "contactTooltip": "Me contacter",
+    "contact": "Contact",
+    "resumeTooltip": "Voir mon CV",
+    "resume": "CV",
+    "social": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "medium": "Medium"
+    }
+  },
+  "roles": [
+    "Ingenieur logiciel",
+    "Developpeur Full Stack",
+    "Specialiste Frontend"
+  ],
+  "bio": {
+    "highlightRole": "Developpeur Full Stack",
+    "beforeSpecialization": "avec une",
+    "specialization": "specialisation frontend",
+    "beforeExperience": "et",
+    "experience": "plus de 3 ans",
+    "beforePerformance": "d'experience dans la conception et la livraison de solutions completes. Solide sur les frameworks frontend modernes,",
+    "performance": "l'optimisation des performances",
+    "beforeMaintainable": ", avec un vrai souci du",
+    "maintainable": "code propre et maintenable",
+    "beforeBackend": ", ainsi qu'une",
+    "backend": "base backend solide",
+    "afterBackend": "sur plusieurs projets."
+  }
+}

@@ -4,36 +4,36 @@ import SkillGrid from "../skill-card";
 import { FigmaIcon, JiraIcon, KanbanIcon, ScrumIcon } from "../icons";
 import { Skill } from "../type";
 
-const skills: Skill[] = [
-  {
-    id: "figma",
-    name: "Figma",
-    description: "Collaborative design tool for UI/UX prototyping and handoff.",
-    icon: FigmaIcon,
-  },
-  {
-    id: "jira",
-    name: "Jira",
-    description:
-      "Project management tool for agile planning and issue tracking.",
-    icon: JiraIcon,
-  },
-  {
-    id: "scrum",
-    name: "Agile/Scrum",
-    description:
-      "Iterative development framework focused on collaboration and continuous delivery.",
-    icon: ScrumIcon,
-  },
-  {
-    id: "kanban",
-    name: "Kanban",
-    description:
-      "Workflow management method for visualizing tasks and optimizing flow.",
-    icon: KanbanIcon,
-  },
-];
+import { useTranslation } from "@/i18n/client";
 
 export default function CollaborationSkills() {
+  const { t } = useTranslation("skills");
+  const skills: Skill[] = [
+    {
+      id: "figma",
+      name: "Figma",
+      description: t("items.figma"),
+      icon: FigmaIcon,
+    },
+    {
+      id: "jira",
+      name: "Jira",
+      description: t("items.jira"),
+      icon: JiraIcon,
+    },
+    {
+      id: "scrum",
+      name: "Agile/Scrum",
+      description: t("items.scrum"),
+      icon: ScrumIcon,
+    },
+    {
+      id: "kanban",
+      name: "Kanban",
+      description: t("items.kanban"),
+      icon: KanbanIcon,
+    },
+  ];
+
   return <SkillGrid skills={skills} />;
 }

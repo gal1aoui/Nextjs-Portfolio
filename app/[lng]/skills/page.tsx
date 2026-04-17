@@ -10,6 +10,7 @@ import {
   skillCategoryMeta,
   type SkillCategoryId,
 } from "@/components/skills/category-meta";
+import { useTranslation } from "@/i18n/client";
 
 const skillCategoryPanels: Record<SkillCategoryId, ComponentType> = {
   frontend: dynamic(() => import("@/components/skills/categories/frontend")),
@@ -24,6 +25,7 @@ const skillCategoryPanels: Record<SkillCategoryId, ComponentType> = {
 };
 
 export default function SkillsPage() {
+  const { t } = useTranslation("skills");
   const [selectedCategory, setSelectedCategory] = useState<SkillCategoryId>(
     skillCategoryMeta[0].id,
   );
@@ -44,11 +46,10 @@ export default function SkillsPage() {
         transition={{ duration: 0.5 }}
       >
         <h1 className="text-3xl md:text-4xl font-extrabold mb-4">
-          <RandomizedTextEffect text="Technical Expertise" />
+          <RandomizedTextEffect text={t("title")} />
         </h1>
         <p className="text-default-500 max-w-2xl mx-auto leading-relaxed">
-          A curated overview of the technologies, tools, and practices I use to
-          design, build, and maintain modern web applications.
+          {t("description")}
         </p>
       </motion.div>
 
@@ -73,7 +74,9 @@ export default function SkillsPage() {
                 transition={{ duration: 0.3, delay: index * 0.05 }}
                 onClick={() => setSelectedCategory(category.id)}
               >
-                <span className="font-medium">{category.title}</span>
+                <span className="font-medium">
+                  {t(`categories.${category.id}.title`)}
+                </span>
                 <Chip
                   className={`h-6 min-w-6 ${
                     selectedCategory === category.id
@@ -107,9 +110,11 @@ export default function SkillsPage() {
               >
                 <div className="mb-6">
                   <h2 className="text-2xl font-bold mb-2">
-                    {currentCategory.title}
+                    {t(`categories.${currentCategory.id}.title`)}
                   </h2>
-                  <p className="text-default-500">{currentCategory.summary}</p>
+                  <p className="text-default-500">
+                    {t(`categories.${currentCategory.id}.summary`)}
+                  </p>
                 </div>
 
                 {CurrentCategoryPanel ? <CurrentCategoryPanel /> : null}

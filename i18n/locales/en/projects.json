@@ -1,0 +1,21 @@
+{
+  "title": "My Personal Projects",
+  "description": "A collection of personal projects showcasing my skills in full-stack development, DevOps, and open-source contributions.",
+  "sections": {
+    "about": "About",
+    "features": "Key Features",
+    "stack": "Tech Stack"
+  },
+  "actions": {
+    "close": "Close",
+    "viewRepository": "View Repository",
+    "visitProject": "Visit Project"
+  },
+  "categories": {
+    "fullstack": "Full Stack",
+    "backend": "Backend",
+    "frontend": "Frontend",
+    "library": "Library",
+    "devops": "DevOps"
+  }
+}

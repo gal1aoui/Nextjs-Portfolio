@@ -5,6 +5,7 @@ import { Tooltip } from "@heroui/tooltip";
 
 import { BotIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/i18n/client";
 
 type QuestionAnswerDrawerComponent = ComponentType<{
   isOpen: boolean;
@@ -12,6 +13,7 @@ type QuestionAnswerDrawerComponent = ComponentType<{
 }>;
 
 export default function QuestionAndAnswer() {
+  const { t } = useTranslation("common");
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [DrawerComponent, setDrawerComponent] =
@@ -40,7 +42,7 @@ export default function QuestionAndAnswer() {
 
   return (
     <>
-      <Tooltip closeDelay={2000} content="Get some Q&A about me">
+      <Tooltip closeDelay={2000} content={t("qa.tooltip")}>
         <Button
           className="sm:px-3 max-sm:min-w-0 max-sm:w-8 max-sm:h-8 max-sm:p-0"
           isDisabled={isLoading}
@@ -50,7 +52,7 @@ export default function QuestionAndAnswer() {
         >
           <BotIcon />
           <p className="hidden sm:block">
-            {isLoading ? "Loading..." : "Quick answers"}
+            {isLoading ? t("qa.loading") : t("qa.button")}
           </p>
         </Button>
       </Tooltip>

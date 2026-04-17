@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@heroui/button";
 import { Tooltip } from "@heroui/tooltip";
+import { useParams } from "next/navigation";
 
 import {
   chunkText,
@@ -11,8 +12,16 @@ import {
 } from "./speech-utils";
 
 import { PauseIcon, PlayIcon, StopIcon } from "@/components/icons";
+import { useTranslation } from "@/i18n/client";
+import { fallbackLng, isLanguage } from "@/i18n/settings";
 
 export default function BlogSpeechControls({ content }: { content: string }) {
+  const params = useParams<{ lng?: string }>();
+  const lng =
+    typeof params?.lng === "string" && isLanguage(params.lng)
+      ? params.lng
+      : fallbackLng;
+  const { t } = useTranslation("blogs");
   const [speechSupported, setSpeechSupported] = useState(false);
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -66,7 +75,7 @@ export default function BlogSpeechControls({ content }: { content: string }) {
     utterance.volume = 0.8;
     utterance.rate = 0.85;
     utterance.pitch = 1.05;
-    utterance.lang = "en-US";
+    utterance.lang = lng === "fr" ? "fr-FR" : "en-US";
     utterance.onend = () => {
       chunkIndexRef.current += 1;
       speakNextChunk();
@@ -123,7 +132,13 @@ export default function BlogSpeechControls({ content }: { content: string }) {
   return (
     <div className="flex items-center gap-3">
       <Tooltip
-        content={isSpeaking ? "Pause" : isPaused ? "Resume" : "Listen to Story"}
+        content={
+          isSpeaking
+            ? t("speech.pause")
+            : isPaused
+              ? t("speech.resume")
+              : t("speech.listen")
+        }
       >
         <Button
           isIconOnly
@@ -136,7 +151,7 @@ export default function BlogSpeechControls({ content }: { content: string }) {
       </Tooltip>
 
       {isSpeaking || isPaused ? (
-        <Tooltip content="Stop">
+        <Tooltip content={t("speech.stop")}>
           <Button isIconOnly color="danger" variant="flat" onPress={handleStop}>
             <StopIcon size={18} />
           </Button>

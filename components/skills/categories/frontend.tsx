@@ -16,86 +16,78 @@ import {
 } from "../icons";
 import { Skill } from "../type";
 
-const skills: Skill[] = [
-  {
-    id: "react",
-    name: "React",
-    description:
-      "Component-based library for building fast, interactive, and reusable user interfaces.",
-    icon: ReactIcon,
-  },
-  {
-    id: "nextjs",
-    name: "Next.js",
-    description:
-      "React framework for production-grade applications with SSR, routing, and performance optimizations.",
-    icon: NextJsIcon,
-  },
-  {
-    id: "typescript",
-    name: "TypeScript",
-    description:
-      "Strongly typed JavaScript that improves code reliability, scalability, and developer experience.",
-    icon: TypeScriptIcon,
-  },
-  {
-    id: "angular",
-    name: "Angular",
-    description:
-      "Full-featured frontend framework for building scalable, enterprise-level applications.",
-    icon: AngularIcon,
-  },
-  {
-    id: "spartan-ng",
-    name: "Spartan NG",
-    description:
-      "Headless, accessible UI primitives for Angular, focused on performance and flexibility.",
-    icon: SpartanNgIcon,
-  },
-  {
-    id: "tailwind",
-    name: "Tailwind CSS",
-    description:
-      "Utility-first CSS framework for rapidly building responsive and consistent user interfaces.",
-    icon: TailwindCssIcon,
-  },
-  {
-    id: "shadcn",
-    name: "shadcn/ui",
-    description:
-      "Composable, accessible UI components built on Radix and Tailwind for modern React apps.",
-    icon: ShadcnUiIcon,
-  },
-  {
-    id: "material-ui",
-    name: "Material UI",
-    description:
-      "Popular React component library implementing Google's Material Design system.",
-    icon: MaterialUiIcon,
-  },
-  {
-    id: "tanstack",
-    name: "TanStack",
-    description:
-      "High-performance data management libraries for tables, queries, and state handling.",
-    icon: TanStackIcon,
-  },
-  {
-    id: "zod",
-    name: "Zod",
-    description:
-      "Type-safe schema validation for forms, APIs, and runtime data integrity.",
-    icon: ZodIcon,
-  },
-  {
-    id: "zustand",
-    name: "Zustand",
-    description:
-      "Lightweight and scalable state management library for React applications with minimal boilerplate.",
-    icon: ZustandIcon,
-  },
-];
+import { useTranslation } from "@/i18n/client";
 
 export default function FrontendSkills() {
+  const { t } = useTranslation("skills");
+  const skills: Skill[] = [
+    {
+      id: "react",
+      name: "React",
+      description: t("items.react"),
+      icon: ReactIcon,
+    },
+    {
+      id: "nextjs",
+      name: "Next.js",
+      description: t("items.nextjs"),
+      icon: NextJsIcon,
+    },
+    {
+      id: "typescript",
+      name: "TypeScript",
+      description: t("items.typescript"),
+      icon: TypeScriptIcon,
+    },
+    {
+      id: "angular",
+      name: "Angular",
+      description: t("items.angular"),
+      icon: AngularIcon,
+    },
+    {
+      id: "spartan-ng",
+      name: "Spartan NG",
+      description: t("items.spartanng"),
+      icon: SpartanNgIcon,
+    },
+    {
+      id: "tailwind",
+      name: "Tailwind CSS",
+      description: t("items.tailwind"),
+      icon: TailwindCssIcon,
+    },
+    {
+      id: "shadcn",
+      name: "shadcn/ui",
+      description: t("items.shadcn"),
+      icon: ShadcnUiIcon,
+    },
+    {
+      id: "material-ui",
+      name: "Material UI",
+      description: t("items.materialui"),
+      icon: MaterialUiIcon,
+    },
+    {
+      id: "tanstack",
+      name: "TanStack",
+      description: t("items.tanstack"),
+      icon: TanStackIcon,
+    },
+    {
+      id: "zod",
+      name: "Zod",
+      description: t("items.zod"),
+      icon: ZodIcon,
+    },
+    {
+      id: "zustand",
+      name: "Zustand",
+      description: t("items.zustand"),
+      icon: ZustandIcon,
+    },
+  ];
+
   return <SkillGrid skills={skills} />;
 }

@@ -1,0 +1,74 @@
+{
+  "title": "Technical Expertise",
+  "description": "A curated overview of the technologies, tools, and practices I use to design, build, and maintain modern web applications.",
+  "categories": {
+    "frontend": {
+      "title": "Frontend",
+      "summary": "Modern UI development, scalable component systems, and high-performance web applications."
+    },
+    "backend": {
+      "title": "Backend",
+      "summary": "Server-side development, APIs, authentication, business logic, and scalable architectures."
+    },
+    "databases": {
+      "title": "Databases",
+      "summary": "Relational and NoSQL databases, data modeling, querying, and performance optimization."
+    },
+    "devops": {
+      "title": "DevOps & Tools",
+      "summary": "Containerization, version control, CI/CD pipelines, and deployment workflows."
+    },
+    "testing": {
+      "title": "Testing",
+      "summary": "Automated testing, API validation, and quality assurance for reliable systems."
+    },
+    "api": {
+      "title": "API Design & Conception",
+      "summary": "Designing, modeling, and documenting APIs with clear standards and contracts."
+    },
+    "collaboration": {
+      "title": "Collaboration & Design",
+      "summary": "Agile collaboration, task management, and design-to-development workflows."
+    }
+  },
+  "items": {
+    "graphql": "Designing typed APIs with flexible queries and strong frontend integration.",
+    "restapi": "Building predictable REST endpoints with clean contracts and scalable resource modeling.",
+    "uml": "Modeling systems, flows, and architecture decisions with clear technical diagrams.",
+    "laravel": "Shipping robust PHP applications with clean structure, APIs, and product-ready workflows.",
+    "symfony": "Building maintainable backend systems with solid architecture and reusable services.",
+    "supabase": "Using hosted Postgres, auth, storage, and realtime features to accelerate product delivery.",
+    "nodejs": "Creating scalable server-side services and APIs with JavaScript and TypeScript.",
+    "expressjs": "Building lightweight HTTP APIs and middleware-driven backend services.",
+    "nestjs": "Structuring enterprise-grade backend applications with modules, DI, and TypeScript.",
+    "dotnet": "Working with .NET applications across desktop and backend use cases.",
+    "figma": "Collaborating with product and design teams from wireframes to polished UI decisions.",
+    "jira": "Tracking delivery, priorities, and execution across structured product workflows.",
+    "scrum": "Planning and delivering work through iterative sprints, ceremonies, and shared accountability.",
+    "kanban": "Managing flow, work in progress, and delivery visibility with lean processes.",
+    "mysql": "Designing relational schemas and queries for reliable transactional systems.",
+    "mongodb": "Modeling flexible document data for products that benefit from schema freedom.",
+    "postgresql": "Using advanced SQL capabilities for performant, scalable production systems.",
+    "sqlite": "Working with lightweight embedded databases for simple apps and prototyping.",
+    "docker": "Containerizing apps and services for consistent local and production environments.",
+    "git": "Managing version control, branching, and collaborative development workflows.",
+    "gitlab": "Using GitLab for source control, CI pipelines, and team collaboration.",
+    "github": "Building and shipping through GitHub repositories, issues, reviews, and Actions.",
+    "cicd": "Automating testing, validation, and deployment with reliable delivery pipelines.",
+    "react": "Building modern component-driven interfaces with strong state and rendering patterns.",
+    "nextjs": "Shipping production-ready React apps with server rendering, routing, and performance in mind.",
+    "typescript": "Writing safer, more maintainable JavaScript with strong static typing.",
+    "angular": "Developing structured frontend applications with a full framework approach.",
+    "spartanng": "Using Spartan NG to compose accessible Angular interfaces with headless primitives.",
+    "tailwind": "Designing fast, consistent UIs with utility-first styling.",
+    "shadcn": "Composing modern React interfaces with reusable primitives and clean design systems.",
+    "materialui": "Building polished interfaces quickly with a mature React component ecosystem.",
+    "tanstack": "Managing complex async state, tables, and data-heavy frontend workflows.",
+    "zod": "Defining validation schemas that keep forms, APIs, and types aligned.",
+    "zustand": "Managing lightweight client state with simple, scalable store patterns.",
+    "robot": "Automating end-to-end and workflow tests with readable keyword-driven suites.",
+    "postman": "Designing, testing, and validating API behavior during development.",
+    "jest": "Writing unit and integration tests for reliable frontend and backend logic.",
+    "mocha": "Testing JavaScript applications with flexible assertion and runner setups."
+  }
+}

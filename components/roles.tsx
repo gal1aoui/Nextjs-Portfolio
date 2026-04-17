@@ -1,12 +1,15 @@
 import { motion } from "framer-motion";
 
-const roles = [
-  "Software Engineer",
-  "Full-Stack Developer",
-  "Frontend Specialist",
-];
+import { useTranslation } from "@/i18n/client";
 
 export default function Roles() {
+  const { t, ready } = useTranslation("home");
+  const translatedRoles = t("roles", {
+    returnObjects: true,
+    defaultValue: [],
+  });
+  const roles = ready && Array.isArray(translatedRoles) ? translatedRoles : [];
+
   return (
     <motion.div
       animate="show"

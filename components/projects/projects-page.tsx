@@ -3,13 +3,16 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-import ProjectCard from "@/components/projects/project-card";
-import ProjectDrawer from "@/components/projects/project-drawer";
-import GithubContributions from "@/components/projects/github-calendar";
-import { projects, Project } from "@/components/projects/projects-data";
-import { RandomizedTextEffect } from "@/components/randomized-text";
+import GithubContributions from "./github-calendar";
+import ProjectCard from "./project-card";
+import ProjectDrawer from "./project-drawer";
+import { Project } from "./projects-data";
 
-export default function ProjectsPage() {
+import { RandomizedTextEffect } from "@/components/randomized-text";
+import { useTranslation } from "@/i18n/client";
+
+export default function ProjectsPage({ projects }: { projects: Project[] }) {
+  const { t } = useTranslation("projects");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
@@ -34,7 +37,7 @@ export default function ProjectsPage() {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-3xl md:text-4xl font-extrabold mb-4">
-              <RandomizedTextEffect text="My Personal Projects" />
+              <RandomizedTextEffect text={t("title")} />
             </h1>
             <motion.p
               animate={{ opacity: 1 }}
@@ -42,8 +45,7 @@ export default function ProjectsPage() {
               initial={{ opacity: 0 }}
               transition={{ delay: 0.2 }}
             >
-              A collection of personal projects showcasing my skills in
-              full-stack development, DevOps, and open-source contributions.
+              {t("description")}
             </motion.p>
           </motion.div>
 

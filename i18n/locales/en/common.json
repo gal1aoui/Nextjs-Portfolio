@@ -1,0 +1,76 @@
+{
+  "navbar": {
+    "logo": "CHREF.",
+    "about": "About",
+    "skills": "Skills",
+    "experience": "Experience",
+    "projects": "Projects",
+    "blogs": "Blogs",
+    "themeToggle": "Toggle theme",
+    "languageSwitch": "Switch language"
+  },
+  "language": {
+    "en": "EN",
+    "fr": "FR",
+    "switchTo": {
+      "en": "Switch to English",
+      "fr": "Switch to French"
+    }
+  },
+  "contact": {
+    "copyEmail": "Copy email",
+    "copied": "Copied!",
+    "calendarLabel": "Meeting date",
+    "timeLabel": "Meeting time",
+    "companyPlaceholder": "Enter your company name",
+    "namePlaceholder": "Enter your full name",
+    "emailPlaceholder": "Enter your email",
+    "subjectPlaceholder": "Enter your subject",
+    "errors": {
+      "nameRequired": "Name is required",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email",
+      "subjectRequired": "Subject is required",
+      "companyRequired": "Company name is required"
+    },
+    "emailBodyTitle": "Email body message",
+    "editInformationTitle": "Edit your information",
+    "confirm": "Confirm",
+    "return": "Return",
+    "send": "Send",
+    "editorPlaceholder": "Write your message here...",
+    "sendError": "Failed to send email.",
+    "sendSuccess": "Thank you for reaching out. I will get back to you soon.",
+    "template": {
+      "greeting": "Dear Achref,",
+      "intro": "I'm <b>{{name}}</b> from <u>{{company}}</u>, we are pleased to invite you to an interview as part of our recruitment process.",
+      "interviewDetails": "Interview details:",
+      "date": "Date {{date}}",
+      "time": "Time {{time}}",
+      "interviewType": "The interview will be conducted <u>[interviewType]</u>.",
+      "availability": "Please confirm your availability by replying to this email.",
+      "closing": "We look forward to speaking with you."
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or may have been moved.",
+    "cta": "Back to home"
+  },
+  "game": {
+    "tooltip": "Load the 2048 mini-game",
+    "play": "Play 2048",
+    "loading": "Loading..."
+  },
+  "qa": {
+    "tooltip": "Get some Q&A about me",
+    "button": "Quick answers",
+    "loading": "Loading...",
+    "title": "Achref Gallaoui",
+    "subtitle": "I'm here to answer common recruiter questions",
+    "empty": "Ask me any question from the list below and I'll answer as clearly as possible.",
+    "thinking": "Thinking...",
+    "close": "Close",
+    "allAnswered": "All questions answered."
+  }
+}

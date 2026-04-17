@@ -5,7 +5,10 @@ import { useState } from "react";
 
 import { CopyCheckIcon, CopyIcon } from "../../icons";
 
+import { useTranslation } from "@/i18n/client";
+
 export default function CopyInput() {
+  const { t } = useTranslation("common");
   const [copied, setCopied] = useState(false);
   const valueToCopy = "achref.gallaoui.dev@gmail.com";
 
@@ -28,7 +31,7 @@ export default function CopyInput() {
             showArrow
             closeDelay={0}
             color="foreground"
-            content="Copied!"
+            content={t("contact.copied")}
             isOpen={copied}
             placement="top"
           >
@@ -50,7 +53,7 @@ export default function CopyInput() {
             </Button>
           </Tooltip>
         }
-        label="Copy Email"
+        label={t("contact.copyEmail")}
         labelPlacement="outside"
         variant="bordered"
       />

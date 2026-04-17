@@ -31,6 +31,7 @@ import ContactTextEditor from "./components/contact-text-editor";
 import { EditorActionIcon } from "./editor/icons";
 
 import { sendEmail } from "@/lib/mailer";
+import { useTranslation } from "@/i18n/client";
 import { useModal } from "@/providers/modal-provider";
 
 const removeStylesExportDOM = (
@@ -131,52 +132,82 @@ const constructImportMap = (): DOMConversionMap => {
   return importMap;
 };
 
-const monthNames = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
 export default function ContactConfirmForm({
   form,
 }: {
   form: ContactFormType;
 }) {
   const { openModal, closeModal } = useModal();
+  const { i18n, t } = useTranslation("common");
+  const dateLocale = i18n.resolvedLanguage === "fr" ? "fr-FR" : "en-US";
 
-  const autofill = `<b>Dear Achref,</b>
+  const formatInterviewDate = () => {
+    if (!form.date) {
+      return null;
+    }
+
+    const interviewDate = new Date(
+      Date.UTC(form.date.year, form.date.month - 1, form.date.day),
+    );
+
+    return new Intl.DateTimeFormat(dateLocale, {
+      day: "numeric",
+      month: "long",
+      year: form.date.year === new Date().getFullYear() ? undefined : "numeric",
+    }).format(interviewDate);
+  };
+
+  const formatInterviewTime = () => {
+    if (!form.time) {
+      return null;
+    }
+
+    return `${String(form.time.hour).padStart(2, "0")}:${String(
+      form.time.minute,
+    ).padStart(2, "0")}`;
+  };
+
+  const detailLines = [
+    formatInterviewDate()
+      ? t("contact.template.date", {
+          date: formatInterviewDate(),
+        })
+      : null,
+    formatInterviewTime()
+      ? t("contact.template.time", {
+          time: formatInterviewTime(),
+        })
+      : null,
+  ]
+    .filter(Boolean)
+    .join("<br />");
+
+  const autofill = `<b>${t("contact.template.greeting")}</b>
     <br />
     <p>
-    I'm <b>${form.name}</b> from <u>${form.company}</u>, we are pleased to invite you to an interview as part of our recruitment process.
+    ${t("contact.template.intro", {
+      company: form.company,
+      name: form.name,
+    })}
     </p>
     <p>
-    <b>Interview details:</b>
+    <b>${t("contact.template.interviewDetails")}</b>
     <br />
-    <p>
-    ${form.date && `Date ${form.date.day} ${monthNames[form.date.month + 1]} ${form.date.year === new Date().getFullYear() ? "" : form.date.year}`}
-    ${form.time && `Time ${form.time.hour}:${form.time.minute}`}
-    </p>
+    ${detailLines}
     </p>
     <p>
-    The interview will be conducted <u>[interviewType].</u>
+    ${t("contact.template.interviewType")}
     </p>
     <p>
-    Please confirm your availability by replying to this email.
+    ${t("contact.template.availability")}
     </p>
     <p>
-    We look forward to speaking with you.
+    ${t("contact.template.closing")}
     </p>
     <b>${form.name}</b>
+    <br />
     ${form.email}
+    <br />
     <u>${form.company}</u>
   `;
   const [description, setDescription] = useState<string>("");
@@ -234,14 +265,14 @@ export default function ContactConfirmForm({
 
     if (result.error) {
       addToast({
-        title: "Failed to send email.",
+        title: t("contact.sendError"),
         color: "danger",
         variant: "bordered",
       });
     } else {
       closeModal();
       addToast({
-        title: "Thank you for reaching out. I will get back to you soon.",
+        title: t("contact.sendSuccess"),
         color: "success",
         variant: "bordered",
       });
@@ -258,15 +289,15 @@ export default function ContactConfirmForm({
           startContent={<EditorActionIcon type="leftArrow" />}
           onPress={() =>
             openModal({
-              title: "Edit your information",
+              title: t("contact.editInformationTitle"),
               render: () => <ContactForm formFill={form} />,
             })
           }
         >
-          Return
+          {t("contact.return")}
         </Button>
         <Button size="md" startContent={<SendIcon />} onPress={handleSendEmail}>
-          Send
+          {t("contact.send")}
         </Button>
       </ModalFooter>
     </div>

@@ -1,33 +1,70 @@
 import NextLink from "next/link";
 import { notFound } from "next/navigation";
 
+import { getBlogById, getBlogIds } from "@/components/blogs/blogs-data";
 import BlogSpeechControls from "@/components/blogs/blog-speech-controls";
-import { blogs, getBlogById } from "@/components/blogs/blogs-data";
 import { ArrowLeftIcon } from "@/components/icons";
+import { localizePath } from "@/i18n/routing";
+import { getTranslator } from "@/i18n/server";
+import { isLanguage } from "@/i18n/settings";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return blogs.map((blog) => ({
-    blogId: blog.id,
+  return getBlogIds().map((blogId) => ({
+    blogId,
   }));
 }
 
 type BlogDetailPageProps = {
   params: Promise<{
+    lng: string;
     blogId: string;
   }>;
 };
 
+function isBulletParagraph(paragraph: string) {
+  const items = paragraph
+    .split("\n")
+    .map((item) => item.trim())
+    .filter(Boolean);
+
+  return (
+    items.length > 0 &&
+    items.every(
+      (item) =>
+        item.startsWith("- ") ||
+        item.startsWith("* ") ||
+        item.startsWith("\u2022 "),
+    )
+  );
+}
+
+function getBulletItems(paragraph: string) {
+  return paragraph
+    .split("\n")
+    .map((item) => item.trim())
+    .filter(Boolean)
+    .map((item) => item.replace(/^[-*\u2022]\s*/, ""));
+}
+
 export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
-  const { blogId } = await params;
-  const blog = getBlogById(blogId);
+  const { lng, blogId } = await params;
+
+  if (!isLanguage(lng)) {
+    notFound();
+  }
+
+  const { t } = await getTranslator(lng, "blogs");
+  const blog = getBlogById(lng, blogId);
 
   if (!blog) {
     notFound();
   }
 
   const paragraphs = blog.content.split("\n\n");
+  const localizedBlogsPath = localizePath(lng, "/blogs");
+  const dateLocale = lng === "fr" ? "fr-FR" : "en-US";
 
   return (
     <section className="py-8 md:py-12">
@@ -39,9 +76,9 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
           >
             <NextLink
               className="text-default-500 hover:text-primary transition-colors"
-              href="/blogs"
+              href={localizedBlogsPath}
             >
-              Blogs
+              {t("blogs:breadcrumb")}
             </NextLink>
             <span className="text-default-400 mx-1">
               <svg
@@ -97,11 +134,14 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                   <p className="font-medium">{blog.author}</p>
                   {blog.publishedAt ? (
                     <p className="text-sm text-default-400">
-                      {new Date(blog.publishedAt).toLocaleDateString("en-US", {
-                        month: "long",
-                        day: "numeric",
-                        year: "numeric",
-                      })}
+                      {new Date(blog.publishedAt).toLocaleDateString(
+                        dateLocale,
+                        {
+                          month: "long",
+                          day: "numeric",
+                          year: "numeric",
+                        },
+                      )}
                     </p>
                   ) : null}
                 </div>
@@ -124,29 +164,27 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                 return (
                   <div
                     key={index}
-                    className="my-6 p-4 bg-default-100/50 rounded-xl border border-default-200/50"
+                    className="my-6 rounded-xl border border-default-200/50 bg-default-100/50 p-4"
                   >
-                    <p className="font-bold text-primary mb-2">{title}</p>
-                    <p className="text-default-600 leading-relaxed">
+                    <p className="mb-2 font-bold text-primary">{title}</p>
+                    <p className="leading-relaxed text-default-600">
                       {content}
                     </p>
                   </div>
                 );
               }
 
-              if (paragraph.startsWith("â€¢")) {
-                const items = paragraph
-                  .split("\n")
-                  .filter((item) => item.trim());
+              if (isBulletParagraph(paragraph)) {
+                const items = getBulletItems(paragraph);
 
                 return (
                   <ul key={index} className="my-4 space-y-2 pl-4">
                     {items.map((item, itemIndex) => (
                       <li
                         key={itemIndex}
-                        className="text-default-600 leading-relaxed"
+                        className="leading-relaxed text-default-600"
                       >
-                        {item.replace("â€¢", "").trim()}
+                        {item}
                       </li>
                     ))}
                   </ul>
@@ -156,7 +194,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
               return (
                 <p
                   key={index}
-                  className="text-default-600 leading-relaxed mb-6"
+                  className="mb-6 leading-relaxed text-default-600"
                 >
                   {paragraph}
                 </p>
@@ -169,10 +207,10 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
           <div className="flex justify-center">
             <NextLink
               className="inline-flex items-center gap-2 rounded-full border border-default-200 px-4 py-2 text-sm font-medium transition-colors hover:border-primary hover:text-primary"
-              href="/blogs"
+              href={localizedBlogsPath}
             >
               <ArrowLeftIcon size={16} />
-              Back to All Posts
+              {t("blogs:backToAllPosts")}
             </NextLink>
           </div>
         </article>

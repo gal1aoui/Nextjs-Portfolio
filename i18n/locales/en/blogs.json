@@ -1,0 +1,13 @@
+{
+  "title": "Blog & Insights",
+  "description": "Stories, experiences, and lessons learned throughout my journey in software development and project management.",
+  "empty": "No blog posts yet. Stay tuned!",
+  "breadcrumb": "Blogs",
+  "backToAllPosts": "Back to All Posts",
+  "speech": {
+    "pause": "Pause",
+    "resume": "Resume",
+    "listen": "Listen to story",
+    "stop": "Stop"
+  }
+}

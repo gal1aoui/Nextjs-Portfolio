@@ -2,11 +2,15 @@
 
 import { motion } from "framer-motion";
 
-import { RandomizedTextEffect } from "@/components/randomized-text";
-import { blogs } from "@/components/blogs/blogs-data";
-import BlogCard from "@/components/blogs/blog-card";
+import BlogCard from "./blog-card";
+import { Blog } from "./types";
 
-export default function BlogsPage() {
+import { RandomizedTextEffect } from "@/components/randomized-text";
+import { useTranslation } from "@/i18n/client";
+
+export default function BlogsPage({ blogs }: { blogs: Blog[] }) {
+  const { t } = useTranslation("blogs");
+
   return (
     <section className="py-8 md:py-12">
       <div className="container mx-auto px-4 max-w-4xl">
@@ -17,7 +21,7 @@ export default function BlogsPage() {
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-3xl md:text-4xl font-extrabold mb-4">
-            <RandomizedTextEffect text="Blog & Insights" />
+            <RandomizedTextEffect text={t("title")} />
           </h1>
           <motion.p
             animate={{ opacity: 1 }}
@@ -25,8 +29,7 @@ export default function BlogsPage() {
             initial={{ opacity: 0 }}
             transition={{ delay: 0.2 }}
           >
-            Stories, experiences, and lessons learned throughout my journey in
-            software development and project management.
+            {t("description")}
           </motion.p>
         </motion.div>
 
@@ -47,7 +50,7 @@ export default function BlogsPage() {
             className="text-center py-12"
             initial={{ opacity: 0 }}
           >
-            <p className="text-default-400">No blog posts yet. Stay tuned!</p>
+            <p className="text-default-400">{t("empty")}</p>
           </motion.div>
         )}
       </div>

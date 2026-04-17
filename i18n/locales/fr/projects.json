@@ -1,0 +1,21 @@
+{
+  "title": "Mes projets personnels",
+  "description": "Une selection de projets personnels qui mettent en avant mes competences en developpement full stack, DevOps et open source.",
+  "sections": {
+    "about": "A propos",
+    "features": "Fonctionnalites cles",
+    "stack": "Stack technique"
+  },
+  "actions": {
+    "close": "Fermer",
+    "viewRepository": "Voir le depot",
+    "visitProject": "Voir le projet"
+  },
+  "categories": {
+    "fullstack": "Full Stack",
+    "backend": "Backend",
+    "frontend": "Frontend",
+    "library": "Bibliotheque",
+    "devops": "DevOps"
+  }
+}

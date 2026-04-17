@@ -7,7 +7,9 @@ import { MouseEvent } from "react";
 
 import { GithubIcon } from "../icons";
 
-import { Project, categoryLabels, categoryColors } from "./projects-data";
+import { Project, categoryColors } from "./projects-data";
+
+import { useTranslation } from "@/i18n/client";
 
 interface ProjectCardProps {
   project: Project;
@@ -20,6 +22,7 @@ export default function ProjectCard({
   index,
   onSelect,
 }: ProjectCardProps) {
+  const { t } = useTranslation("projects");
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -83,7 +86,7 @@ export default function ProjectCard({
               size="sm"
               variant="flat"
             >
-              {categoryLabels[project.category]}
+              {t(`categories.${project.category}`)}
             </Chip>
           </div>
 

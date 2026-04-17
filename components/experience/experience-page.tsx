@@ -2,11 +2,19 @@
 
 import { motion } from "framer-motion";
 
-import { RandomizedTextEffect } from "@/components/randomized-text";
-import Timeline from "@/components/experience/timeline";
-import { experiences } from "@/components/experience/experience-data";
+import { ExperienceItem } from "./experience-data";
+import Timeline from "./timeline";
 
-export default function ExperiencePage() {
+import { RandomizedTextEffect } from "@/components/randomized-text";
+import { useTranslation } from "@/i18n/client";
+
+export default function ExperiencePage({
+  experiences,
+}: {
+  experiences: ExperienceItem[];
+}) {
+  const { t } = useTranslation("experience");
+
   return (
     <section className="py-8 md:py-12">
       <div className="container mx-auto px-4 max-w-6xl">
@@ -17,7 +25,7 @@ export default function ExperiencePage() {
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-3xl md:text-4xl font-extrabold mb-4">
-            <RandomizedTextEffect text="My Journey" />
+            <RandomizedTextEffect text={t("title")} />
           </h1>
           <motion.p
             animate={{ opacity: 1 }}
@@ -25,8 +33,7 @@ export default function ExperiencePage() {
             initial={{ opacity: 0 }}
             transition={{ delay: 0.2 }}
           >
-            From creative coding experiments to enterprise frontend architecture
-            — a story of continuous learning and growth.
+            {t("description")}
           </motion.p>
         </motion.div>
 

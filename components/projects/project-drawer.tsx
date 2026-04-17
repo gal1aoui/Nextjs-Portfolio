@@ -14,9 +14,10 @@ import { Link } from "@heroui/link";
 
 import { GithubIcon } from "../icons";
 
-import { Project, categoryLabels, categoryColors } from "./projects-data";
+import { Project, categoryColors } from "./projects-data";
 
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/i18n/client";
 
 interface ProjectDrawerProps {
   project: Project | null;
@@ -29,6 +30,8 @@ export default function ProjectDrawer({
   isOpen,
   onClose,
 }: ProjectDrawerProps) {
+  const { t } = useTranslation("projects");
+
   if (!project) return null;
 
   return (
@@ -78,7 +81,7 @@ export default function ProjectDrawer({
                       size="sm"
                       variant="flat"
                     >
-                      {categoryLabels[project.category]}
+                      {t(`categories.${project.category}`)}
                     </Chip>
                   </motion.div>
                 </div>
@@ -103,7 +106,7 @@ export default function ProjectDrawer({
                 >
                   <div>
                     <h3 className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
-                      About
+                      {t("sections.about")}
                     </h3>
                     <p className="text-default-600 leading-relaxed">
                       {project.fullDescription}
@@ -114,7 +117,7 @@ export default function ProjectDrawer({
 
                   <div>
                     <h3 className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
-                      Key Features
+                      {t("sections.features")}
                     </h3>
                     <ul className="space-y-2">
                       {project.features.map((feature, i) => (
@@ -138,7 +141,7 @@ export default function ProjectDrawer({
 
                   <div>
                     <h3 className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
-                      Tech Stack
+                      {t("sections.stack")}
                     </h3>
                     <div className="flex flex-wrap gap-2">
                       {project.techStack.map((tech, i) => (
@@ -166,7 +169,7 @@ export default function ProjectDrawer({
                 variant="bordered"
                 onPress={onCloseDrawer}
               >
-                Close
+                {t("actions.close")}
               </Button>
               <Button
                 isExternal
@@ -177,8 +180,8 @@ export default function ProjectDrawer({
               >
                 <GithubIcon size={18} />
                 {project.repoUrl.includes("github.com")
-                  ? "View Repository"
-                  : "Visit Project"}
+                  ? t("actions.viewRepository")
+                  : t("actions.visitProject")}
               </Button>
             </DrawerFooter>
           </>

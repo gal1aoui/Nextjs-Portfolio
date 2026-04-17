@@ -18,6 +18,7 @@ import { RandomizedTextEffect } from "./randomized-text";
 import Roles from "./roles";
 import Bio from "./bio";
 
+import { useTranslation } from "@/i18n/client";
 import { useModal } from "@/providers/modal-provider";
 
 const DynamicPDFViewer = dynamic(() => import("./pdf-renderer"), {
@@ -32,34 +33,35 @@ const DynamicContactForm = dynamic(() => import("./contact/contact-form"), {
 
 export default function Introduction() {
   const { openModal } = useModal();
+  const { t } = useTranslation("home");
 
   return (
     <div className="flex flex-col w-fit text-center md:text-start p-4">
-      <h1 className="text-4xl md:text-6xl">Hi there, I am</h1>
+      <h1 className="text-4xl md:text-6xl">{t("intro.greeting")}</h1>
       <h2 className="text-6xl md:text-8xl font-bold">
-        <RandomizedTextEffect text="Achref Gallaoui" />
+        <RandomizedTextEffect text={t("intro.name")} />
       </h2>
 
       <Roles />
       <Bio />
       <div className="flex flex-col md:flex-row mx-auto md:mx-0 gap-12 my-6 justify-between">
         <div className="flex gap-12">
-          <Tooltip closeDelay={2000} content="Contact Me">
+          <Tooltip closeDelay={2000} content={t("intro.contactTooltip")}>
             <Button
               endContent={<RelatedContactIcon size={18} />}
               radius="full"
               size="md"
               onClick={() =>
                 openModal({
-                  title: "Contact",
+                  title: t("intro.contact"),
                   render: () => <DynamicContactForm />,
                 })
               }
             >
-              Contact
+              {t("intro.contact")}
             </Button>
           </Tooltip>
-          <Tooltip closeDelay={2000} content="See My Resume">
+          <Tooltip closeDelay={2000} content={t("intro.resumeTooltip")}>
             <Button
               endContent={<RelatedResumeIcon size={18} />}
               size="md"
@@ -69,16 +71,16 @@ export default function Introduction() {
                 })
               }
             >
-              Resume
+              {t("intro.resume")}
             </Button>
           </Tooltip>
         </div>
 
         <div className="flex gap-12 items-center mx-auto md:mx-0 mb-4">
-          <Tooltip content="LinkedIn" placement="top">
+          <Tooltip content={t("intro.social.linkedin")} placement="top">
             <Link
               isExternal
-              aria-label="LinkedIn"
+              aria-label={t("intro.social.linkedin")}
               color="foreground"
               href="https://www.linkedin.com/in/ashraf-gallaoui/"
             >
@@ -86,20 +88,20 @@ export default function Introduction() {
             </Link>
           </Tooltip>
 
-          <Tooltip content="Github" placement="top">
+          <Tooltip content={t("intro.social.github")} placement="top">
             <Link
               isExternal
-              aria-label="GitHub"
+              aria-label={t("intro.social.github")}
               color="foreground"
               href="https://github.com/gal1aoui"
             >
               <GithubIcon size={48} />
             </Link>
           </Tooltip>
-          <Tooltip content="Medium" placement="top">
+          <Tooltip content={t("intro.social.medium")} placement="top">
             <Link
               isExternal
-              aria-label="Medium"
+              aria-label={t("intro.social.medium")}
               color="foreground"
               href="https://medium.com/@aga1laoui"
             >

@@ -9,6 +9,8 @@ import { SkillsIcon } from "../icons";
 
 import { ExperienceItem } from "./experience-data";
 
+import { useTranslation } from "@/i18n/client";
+
 interface TimelineMilestoneProps {
   experience: ExperienceItem;
   index: number;
@@ -30,6 +32,7 @@ export default function TimelineMilestone({
   experience,
   index,
 }: TimelineMilestoneProps) {
+  const { t } = useTranslation("experience");
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-20% 0px -20% 0px" });
 
@@ -110,7 +113,7 @@ export default function TimelineMilestone({
                   size="sm"
                   variant="flat"
                 >
-                  {experience.type}
+                  {t(`types.${experience.type}`)}
                 </Chip>
                 <span className="text-xs text-muted-foreground">
                   {experience.period}
@@ -139,7 +142,7 @@ export default function TimelineMilestone({
               {/* What I Learned */}
               <div className="mb-4">
                 <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-2">
-                  What I Learned
+                  {t("whatILearned")}
                 </h4>
                 <ul className="space-y-1">
                   {experience.learned.map((item, i) => (

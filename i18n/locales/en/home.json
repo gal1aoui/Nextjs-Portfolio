@@ -1,0 +1,34 @@
+{
+  "intro": {
+    "greeting": "Hi there, I am",
+    "name": "Achref Gallaoui",
+    "contactTooltip": "Contact me",
+    "contact": "Contact",
+    "resumeTooltip": "See my resume",
+    "resume": "Resume",
+    "social": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "medium": "Medium"
+    }
+  },
+  "roles": [
+    "Software Engineer",
+    "Full-Stack Developer",
+    "Frontend Specialist"
+  ],
+  "bio": {
+    "highlightRole": "Full-Stack Developer",
+    "beforeSpecialization": "with a",
+    "specialization": "frontend specialization",
+    "beforeExperience": "and",
+    "experience": "3+ years",
+    "beforePerformance": "of experience building and delivering complete solutions. Strong in modern frontend frameworks,",
+    "performance": "performance optimization",
+    "beforeMaintainable": ", and a focus on",
+    "maintainable": "clean, maintainable code",
+    "beforeBackend": ", with",
+    "backend": "solid backend",
+    "afterBackend": "experience across multiple projects."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "title": "My Journey",
+  "description": "From creative coding experiments to enterprise frontend architecture - a story of continuous learning and growth.",
+  "whatILearned": "What I Learned",
+  "types": {
+    "full-time": "full-time",
+    "part-time": "part-time",
+    "internship": "internship",
+    "freelance": "freelance",
+    "contract": "contract"
+  }
+}

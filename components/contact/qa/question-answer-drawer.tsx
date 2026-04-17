@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Avatar } from "@heroui/avatar";
 import { Divider } from "@heroui/divider";
+import { useParams } from "next/navigation";
 import {
   Drawer,
   DrawerBody,
@@ -12,12 +13,14 @@ import {
 } from "@heroui/drawer";
 
 import RecruiterQuestions from "./recruiter-questions";
-import { getRandomAnswer, recruiterQA } from "./recruiter-qa";
+import { getRandomAnswer, getRecruiterQa } from "./recruiter-qa";
 
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/i18n/client";
+import { fallbackLng, isLanguage } from "@/i18n/settings";
 
 type QAHistory = {
-  question: string;
+  questionId: string;
   answer?: string;
   loading: boolean;
 };
@@ -31,8 +34,19 @@ export default function QuestionAnswerDrawer({
   isOpen,
   onOpenChange,
 }: QuestionAnswerDrawerProps) {
+  const { t } = useTranslation("common");
+  const params = useParams<{ lng?: string }>();
+  const language =
+    typeof params?.lng === "string" && isLanguage(params.lng)
+      ? params.lng
+      : fallbackLng;
+  const recruiterQuestions = getRecruiterQa(language);
   const [history, setHistory] = useState<QAHistory[]>([]);
   const chatRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setHistory([]);
+  }, [language]);
 
   useEffect(() => {
     chatRef.current?.scrollTo({
@@ -42,15 +56,21 @@ export default function QuestionAnswerDrawer({
   }, [history]);
 
   const answeredQuestions = useMemo(
-    () => new Set(history.map((item) => item.question)),
+    () => new Set(history.map((item) => item.questionId)),
     [history],
   );
 
-  const handleSelectQuestion = (question: string) => {
-    setHistory((prev) => [...prev, { question, loading: true }]);
+  const questionsById = useMemo(
+    () =>
+      new Map(recruiterQuestions.map((question) => [question.id, question])),
+    [recruiterQuestions],
+  );
+
+  const handleSelectQuestion = (questionId: string) => {
+    setHistory((prev) => [...prev, { questionId, loading: true }]);
 
     setTimeout(() => {
-      const answer = getRandomAnswer(question);
+      const answer = getRandomAnswer(language, questionId);
 
       setHistory((prev) =>
         prev.map((item, idx) =>
@@ -74,10 +94,8 @@ export default function QuestionAnswerDrawer({
               <div className="flex gap-4 items-center">
                 <Avatar isBordered src="/avatar-profile.webp" />
                 <div className="flex flex-col">
-                  <h3 className="text-xl">Achref Gallaoui</h3>
-                  <p className="text-xs font-light">
-                    I&apos;m here to answer common recruiter questions
-                  </p>
+                  <h3 className="text-xl">{t("qa.title")}</h3>
+                  <p className="text-xs font-light">{t("qa.subtitle")}</p>
                 </div>
               </div>
               <Divider />
@@ -90,10 +108,7 @@ export default function QuestionAnswerDrawer({
                 {history.length === 0 ? (
                   <div className="flex flex-col items-center justify-center text-center gap-4 h-full">
                     <Avatar size="lg" src="/avatar-profile.webp" />
-                    <p className="text-base max-w-md">
-                      Ask me any question from the list below and I&apos;ll
-                      answer as clearly as possible.
-                    </p>
+                    <p className="text-base max-w-md">{t("qa.empty")}</p>
                   </div>
                 ) : null}
 
@@ -101,14 +116,14 @@ export default function QuestionAnswerDrawer({
                   <div key={index} className="flex flex-col gap-2">
                     <div className="flex justify-end">
                       <div className="max-w-xs rounded-2xl bg-primary-100 px-3 py-2 text-sm leading-relaxed">
-                        {item.question}
+                        {questionsById.get(item.questionId)?.question}
                       </div>
                     </div>
 
                     <div className="flex justify-start">
                       {item.loading ? (
                         <div className="max-w-xs rounded-2xl bg-default-100 px-3 py-2 text-sm animate-pulse">
-                          Thinking...
+                          {t("qa.thinking")}
                         </div>
                       ) : (
                         <div className="max-w-xs rounded-2xl bg-default-100 px-3 py-2 text-sm leading-relaxed animate-appearance-in">
@@ -121,15 +136,15 @@ export default function QuestionAnswerDrawer({
               </div>
 
               <RecruiterQuestions
-                recruiterQuestions={Object.keys(recruiterQA).filter(
-                  (question) => !answeredQuestions.has(question),
+                recruiterQuestions={recruiterQuestions.filter(
+                  (question) => !answeredQuestions.has(question.id),
                 )}
                 selectedQuestion={handleSelectQuestion}
               />
             </DrawerBody>
             <DrawerFooter className="p-4">
               <Button size="md" onPress={() => onOpenChange(false)}>
-                Close
+                {t("qa.close")}
               </Button>
             </DrawerFooter>
           </>
