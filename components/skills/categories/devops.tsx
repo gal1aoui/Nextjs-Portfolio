@@ -1,11 +1,11 @@
 "use client";
 
+import { GithubIcon } from "@/components/icons";
+import { useTranslation } from "@/i18n/client";
+
 import SkillGrid from "../skill-card";
 import { CICDIcon, DockerIcon, GitIcon, GitLabIcon } from "../icons";
 import { Skill } from "../type";
-
-import { GithubIcon } from "@/components/icons";
-import { useTranslation } from "@/i18n/client";
 
 export default function DevOpsSkills() {
   const { t } = useTranslation("skills");

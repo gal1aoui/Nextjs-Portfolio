@@ -6,10 +6,10 @@ import { Chip } from "@heroui/chip";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
-import { Blog } from "./types";
-
 import { localizePath } from "@/i18n/routing";
 import { fallbackLng, isLanguage } from "@/i18n/settings";
+
+import { Blog } from "./types";
 
 interface BlogCardProps {
   blog: Blog;

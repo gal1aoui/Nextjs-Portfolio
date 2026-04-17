@@ -4,6 +4,9 @@ import { Tooltip } from "@heroui/tooltip";
 import dynamic from "next/dynamic";
 import { Link } from "@heroui/link";
 
+import { useTranslation } from "@/i18n/client";
+import { useModal } from "@/providers/modal-provider";
+
 import {
   GithubIcon,
   LinkedInIcon,
@@ -17,9 +20,6 @@ import ContactFormSkeleton from "./contact/contact-form-skeleton";
 import { RandomizedTextEffect } from "./randomized-text";
 import Roles from "./roles";
 import Bio from "./bio";
-
-import { useTranslation } from "@/i18n/client";
-import { useModal } from "@/providers/modal-provider";
 
 const DynamicPDFViewer = dynamic(() => import("./pdf-renderer"), {
   loading: () => <PdfRendererSkeleton />,

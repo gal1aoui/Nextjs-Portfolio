@@ -3,13 +3,13 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
+import { RandomizedTextEffect } from "@/components/randomized-text";
+import { useTranslation } from "@/i18n/client";
+
 import GithubContributions from "./github-calendar";
 import ProjectCard from "./project-card";
 import ProjectDrawer from "./project-drawer";
 import { Project } from "./projects-data";
-
-import { RandomizedTextEffect } from "@/components/randomized-text";
-import { useTranslation } from "@/i18n/client";
 
 export default function ProjectsPage({ projects }: { projects: Project[] }) {
   const { t } = useTranslation("projects");

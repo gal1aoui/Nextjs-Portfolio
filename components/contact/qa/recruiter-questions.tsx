@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Chip } from "@heroui/chip";
 
-import { RecruiterQuestion } from "./recruiter-qa";
-
 import { useTranslation } from "@/i18n/client";
+
+import { RecruiterQuestion } from "./recruiter-qa";
 
 const VISIBLE_COUNT = 4;
 

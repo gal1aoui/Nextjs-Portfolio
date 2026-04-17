@@ -1,15 +1,11 @@
-import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-import clsx from "clsx";
-import { Analytics } from "@vercel/analytics/next";
 import { ToastProvider } from "@heroui/toast";
 import { ReactNode } from "react";
 
 import { Providers } from "@/app/providers";
 import { Navbar } from "@/components/navbar";
 import { siteConfig } from "@/config/site";
-import { fontSans } from "@/config/fonts";
 import { getAbsoluteLocalizedUrl } from "@/i18n/routing";
 import { getTranslator } from "@/i18n/server";
 import { isLanguage, languages } from "@/i18n/settings";
@@ -94,7 +90,7 @@ export const viewport: Viewport = {
   ],
 };
 
-export default async function RootLayout({
+export default async function LocaleLayout({
   children,
   params,
 }: LocaleLayoutProps) {
@@ -105,23 +101,14 @@ export default async function RootLayout({
   }
 
   return (
-    <html suppressHydrationWarning lang={lng}>
-      <head />
-      <body
-        className={clsx(
-          "min-h-screen text-foreground bg-background font-sans antialiased overflow-auto",
-          fontSans.variable,
-        )}
-      >
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <ModalProvider>
-            <Navbar />
-            <main className="p-0 md:px-4 md:pt-6">{children}</main>
-          </ModalProvider>
-        </Providers>
-        <Analytics />
-        <ToastProvider />
-      </body>
-    </html>
+    <>
+      <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+        <ModalProvider>
+          <Navbar />
+          <main className="p-0 md:px-4 md:pt-6">{children}</main>
+        </ModalProvider>
+      </Providers>
+      <ToastProvider />
+    </>
   );
 }

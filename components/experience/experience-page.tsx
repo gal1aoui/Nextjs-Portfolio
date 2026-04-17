@@ -2,11 +2,11 @@
 
 import { motion } from "framer-motion";
 
-import { ExperienceItem } from "./experience-data";
-import Timeline from "./timeline";
-
 import { RandomizedTextEffect } from "@/components/randomized-text";
 import { useTranslation } from "@/i18n/client";
+
+import { ExperienceItem } from "./experience-data";
+import Timeline from "./timeline";
 
 export default function ExperiencePage({
   experiences,

@@ -12,12 +12,12 @@ import {
   DrawerHeader,
 } from "@heroui/drawer";
 
-import RecruiterQuestions from "./recruiter-questions";
-import { getRandomAnswer, getRecruiterQa } from "./recruiter-qa";
-
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/i18n/client";
 import { fallbackLng, isLanguage } from "@/i18n/settings";
+
+import { getRandomAnswer, getRecruiterQa } from "./recruiter-qa";
+import RecruiterQuestions from "./recruiter-questions";
 
 type QAHistory = {
   questionId: string;

@@ -1,10 +1,10 @@
 "use client";
 
+import { useTranslation } from "@/i18n/client";
+
 import SkillGrid from "../skill-card";
 import { MongoDBIcon, MySQLIcon, PostgreIcon, SQLiteIcon } from "../icons";
 import { Skill } from "../type";
-
-import { useTranslation } from "@/i18n/client";
 
 export default function DatabaseSkills() {
   const { t } = useTranslation("skills");

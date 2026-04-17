@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslation } from "@/i18n/client";
+
 import SkillGrid from "../skill-card";
 import {
   AngularIcon,
@@ -15,8 +17,6 @@ import {
   ZustandIcon,
 } from "../icons";
 import { Skill } from "../type";
-
-import { useTranslation } from "@/i18n/client";
 
 export default function FrontendSkills() {
   const { t } = useTranslation("skills");

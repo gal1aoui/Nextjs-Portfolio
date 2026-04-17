@@ -5,15 +5,15 @@ import { Button } from "@heroui/button";
 import { Tooltip } from "@heroui/tooltip";
 import { useParams } from "next/navigation";
 
+import { PauseIcon, PlayIcon, StopIcon } from "@/components/icons";
+import { useTranslation } from "@/i18n/client";
+import { fallbackLng, isLanguage } from "@/i18n/settings";
+
 import {
   chunkText,
   getPreferredVoice,
   getReadableContent,
 } from "./speech-utils";
-
-import { PauseIcon, PlayIcon, StopIcon } from "@/components/icons";
-import { useTranslation } from "@/i18n/client";
-import { fallbackLng, isLanguage } from "@/i18n/settings";
 
 export default function BlogSpeechControls({ content }: { content: string }) {
   const params = useParams<{ lng?: string }>();

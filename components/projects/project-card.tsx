@@ -5,11 +5,11 @@ import { Card, CardBody } from "@heroui/card";
 import { Chip } from "@heroui/chip";
 import { MouseEvent } from "react";
 
+import { useTranslation } from "@/i18n/client";
+
 import { GithubIcon } from "../icons";
 
 import { Project, categoryColors } from "./projects-data";
-
-import { useTranslation } from "@/i18n/client";
 
 interface ProjectCardProps {
   project: Project;

@@ -1,6 +1,6 @@
-import { Blog } from "./types";
-
 import { type AppLanguage } from "@/i18n/settings";
+
+import { Blog } from "./types";
 
 type LocalizedBlogContent = Omit<
   Blog,

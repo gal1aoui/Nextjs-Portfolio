@@ -1,6 +1,6 @@
-import { fallbackLng, isLanguage, type AppLanguage } from "./settings";
-
 import { siteConfig } from "@/config/site";
+
+import { fallbackLng, isLanguage, type AppLanguage } from "./settings";
 
 export function localizePath(lng: AppLanguage, path: string) {
   const normalizedPath = path === "/" ? "" : path.replace(/\/+$/, "");

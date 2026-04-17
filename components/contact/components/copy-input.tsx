@@ -3,9 +3,9 @@ import { Input } from "@heroui/input";
 import { Tooltip } from "@heroui/tooltip";
 import { useState } from "react";
 
-import { CopyCheckIcon, CopyIcon } from "../../icons";
-
 import { useTranslation } from "@/i18n/client";
+
+import { CopyCheckIcon, CopyIcon } from "../../icons";
 
 export default function CopyInput() {
   const { t } = useTranslation("common");

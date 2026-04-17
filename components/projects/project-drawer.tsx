@@ -12,12 +12,12 @@ import { Chip } from "@heroui/chip";
 import { Divider } from "@heroui/divider";
 import { Link } from "@heroui/link";
 
+import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/i18n/client";
+
 import { GithubIcon } from "../icons";
 
 import { Project, categoryColors } from "./projects-data";
-
-import { Button } from "@/components/ui/button";
-import { useTranslation } from "@/i18n/client";
 
 interface ProjectDrawerProps {
   project: Project | null;

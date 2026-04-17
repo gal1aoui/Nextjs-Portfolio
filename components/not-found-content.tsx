@@ -15,8 +15,8 @@ export default function NotFoundContent() {
   return (
     <section className="min-h-[70vh] px-4 py-16">
       <div className="container mx-auto flex max-w-3xl flex-col items-center justify-center text-center">
-        <div className="mb-8 flex items-center gap-4 rounded-full border border-default-200 bg-default-100/60 px-6 py-4 backdrop-blur-md">
-          <Logo size={52} />
+        <div className="mb-8 flex items-center rounded-full border border-default-200 bg-default-100/60 px-6 py-4 backdrop-blur-md">
+          <Logo />
           <span className="text-3xl font-bold tracking-tight">
             {t("navbar.logo")}
           </span>

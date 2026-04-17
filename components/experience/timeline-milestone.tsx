@@ -5,11 +5,11 @@ import { useRef } from "react";
 import { Card, CardBody } from "@heroui/card";
 import { Chip } from "@heroui/chip";
 
+import { useTranslation } from "@/i18n/client";
+
 import { SkillsIcon } from "../icons";
 
 import { ExperienceItem } from "./experience-data";
-
-import { useTranslation } from "@/i18n/client";
 
 interface TimelineMilestoneProps {
   experience: ExperienceItem;

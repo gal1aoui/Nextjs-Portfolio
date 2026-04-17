@@ -2,11 +2,11 @@
 
 import { motion } from "framer-motion";
 
-import BlogCard from "./blog-card";
-import { Blog } from "./types";
-
 import { RandomizedTextEffect } from "@/components/randomized-text";
 import { useTranslation } from "@/i18n/client";
+
+import BlogCard from "./blog-card";
+import { Blog } from "./types";
 
 export default function BlogsPage({ blogs }: { blogs: Blog[] }) {
   const { t } = useTranslation("blogs");

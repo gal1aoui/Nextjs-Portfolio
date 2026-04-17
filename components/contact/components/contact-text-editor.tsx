@@ -12,9 +12,9 @@ import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { LexicalEditor } from "lexical";
 
-import ToolbarPlugin from "../editor/plugins/ToolbarPlugin";
-
 import { useTranslation } from "@/i18n/client";
+
+import ToolbarPlugin from "../editor/plugins/ToolbarPlugin";
 
 export default function ContactTextEditor({
   onChange,

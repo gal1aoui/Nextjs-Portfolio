@@ -15,6 +15,9 @@ import { ModalFooter } from "@heroui/modal";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 
+import { useTranslation } from "@/i18n/client";
+import { useModal } from "@/providers/modal-provider";
+
 import { Button } from "../ui/button";
 import {
   ClockCircleLinearIcon,
@@ -28,9 +31,6 @@ import {
 import ContactInput from "./components/contact-input";
 import CopyInput from "./components/copy-input";
 import ContactConfirmSkeleton from "./contact-confirm-skeleton";
-
-import { useTranslation } from "@/i18n/client";
-import { useModal } from "@/providers/modal-provider";
 
 const DynamicContactConfirmForm = dynamic(
   () => import("./contact-confirm-form"),

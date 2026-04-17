@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslation } from "@/i18n/client";
+
 import SkillGrid from "../skill-card";
 import {
   DotNetIcon,
@@ -11,8 +13,6 @@ import {
   SymfonyIcon,
 } from "../icons";
 import { Skill } from "../type";
-
-import { useTranslation } from "@/i18n/client";
 
 export default function BackendSkills() {
   const { t } = useTranslation("skills");

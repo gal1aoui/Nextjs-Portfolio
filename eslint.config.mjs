@@ -130,7 +130,7 @@ export default defineConfig([
           ],
           pathGroups: [
             {
-              pattern: "~/**",
+              pattern: "@/**",
               group: "external",
               position: "after",
             },

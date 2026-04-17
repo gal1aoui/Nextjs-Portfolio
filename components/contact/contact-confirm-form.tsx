@@ -18,6 +18,10 @@ import { $getRoot, $createParagraphNode, $isElementNode } from "lexical";
 import { ModalFooter } from "@heroui/modal";
 import { addToast } from "@heroui/toast";
 
+import { sendEmail } from "@/lib/mailer";
+import { useTranslation } from "@/i18n/client";
+import { useModal } from "@/providers/modal-provider";
+
 import { Button } from "../ui/button";
 import { SendIcon } from "../icons";
 
@@ -29,10 +33,6 @@ import {
 import ExampleTheme from "./editor/configs/theme";
 import ContactTextEditor from "./components/contact-text-editor";
 import { EditorActionIcon } from "./editor/icons";
-
-import { sendEmail } from "@/lib/mailer";
-import { useTranslation } from "@/i18n/client";
-import { useModal } from "@/providers/modal-provider";
 
 const removeStylesExportDOM = (
   editor: LexicalEditor,

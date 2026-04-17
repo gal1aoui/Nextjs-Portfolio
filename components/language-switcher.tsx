@@ -27,7 +27,7 @@ export default function LanguageSwitcher() {
   return (
     <Button
       aria-label={t(`language.switchTo.${nextLanguage}`)}
-      className="min-w-0 px-3"
+      className="min-w-0 px-2"
       radius="full"
       size="sm"
       variant="light"

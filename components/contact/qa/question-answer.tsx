@@ -12,7 +12,7 @@ type QuestionAnswerDrawerComponent = ComponentType<{
   onOpenChange: (open: boolean) => void;
 }>;
 
-export default function QuestionAndAnswer() {
+export default function QuestionAndAnswer({ variant }: { variant?: boolean }) {
   const { t } = useTranslation("common");
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -48,6 +48,7 @@ export default function QuestionAndAnswer() {
           isDisabled={isLoading}
           radius="full"
           size="sm"
+          variant={variant ? "light" : "default"}
           onPress={handleOpen}
         >
           <BotIcon />

@@ -1,10 +1,10 @@
 "use client";
 
+import { useTranslation } from "@/i18n/client";
+
 import SkillGrid from "../skill-card";
 import { GraphqlIcon, RestAPIIcon, UMLIcon } from "../icons";
 import { Skill } from "../type";
-
-import { useTranslation } from "@/i18n/client";
 
 export default function ApiSkills() {
   const { t } = useTranslation("skills");
