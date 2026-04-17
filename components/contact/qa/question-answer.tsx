@@ -1,57 +1,41 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerBody,
-  DrawerFooter,
-} from "@heroui/drawer";
+import { ComponentType, useState } from "react";
 import { Tooltip } from "@heroui/tooltip";
-import { Avatar } from "@heroui/avatar";
-import { Divider } from "@heroui/divider";
 
-import RecruiterQuestions from "./recruiter-questions";
-import { recruiterQA } from "./recruiter-qa";
-
-import { Button } from "@/components/ui/button";
 import { BotIcon } from "@/components/icons";
-import { useModal } from "@/providers/modal-provider";
+import { Button } from "@/components/ui/button";
 
-type QAHistory = {
-  question: string;
-  answer?: string;
-  loading: boolean;
-};
+type QuestionAnswerDrawerComponent = ComponentType<{
+  isOpen: boolean;
+  onOpenChange: (open: boolean) => void;
+}>;
 
 export default function QuestionAndAnswer() {
-  const { isQAOpen, onTriggerQA } = useModal();
-  const [history, setHistory] = useState<QAHistory[]>([]);
-  const chatRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [DrawerComponent, setDrawerComponent] =
+    useState<QuestionAnswerDrawerComponent | null>(null);
 
-  useEffect(() => {
-    chatRef.current?.scrollTo({
-      top: chatRef.current.scrollHeight,
-      behavior: "smooth",
-    });
-  }, [history]);
+  const handleOpen = async () => {
+    if (DrawerComponent) {
+      setIsOpen(true);
 
-  const handleSelectQuestion = (question: string) => {
-    setHistory((prev) => [...prev, { question, loading: true }]);
+      return;
+    }
 
-    setTimeout(() => {
-      const answers = recruiterQA[question];
-      const random = answers[Math.floor(Math.random() * answers.length)];
+    setIsLoading(true);
 
-      setHistory((prev) =>
-        prev.map((item, idx) =>
-          idx === prev.length - 1
-            ? { ...item, answer: random, loading: false }
-            : item,
-        ),
+    try {
+      const questionAnswerDrawerModule = await import(
+        "./question-answer-drawer"
       );
-    }, 2000);
+
+      setDrawerComponent(() => questionAnswerDrawerModule.default);
+      setIsOpen(true);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -59,89 +43,21 @@ export default function QuestionAndAnswer() {
       <Tooltip closeDelay={2000} content="Get some Q&A about me">
         <Button
           className="sm:px-3 max-sm:min-w-0 max-sm:w-8 max-sm:h-8 max-sm:p-0"
+          isDisabled={isLoading}
           radius="full"
           size="sm"
-          onPress={onTriggerQA}
+          onPress={handleOpen}
         >
           <BotIcon />
-          <p className="hidden sm:block">Quick answers</p>
+          <p className="hidden sm:block">
+            {isLoading ? "Loading..." : "Quick answers"}
+          </p>
         </Button>
       </Tooltip>
 
-      <Drawer
-        backdrop="transparent"
-        isOpen={isQAOpen}
-        placement="left"
-        onOpenChange={onTriggerQA}
-      >
-        <DrawerContent>
-          {(onClose) => (
-            <>
-              <DrawerHeader className="flex flex-col gap-2 p-2">
-                <div className="flex gap-4 items-center">
-                  <Avatar isBordered src="/avatar-profile.webp" />
-                  <div className="flex flex-col">
-                    <h3 className="text-xl">Achref Gallaoui</h3>
-                    <p className="text-xs font-light">
-                      I’m here to answer common recruiter questions
-                    </p>
-                  </div>
-                </div>
-                <Divider />
-              </DrawerHeader>
-              <DrawerBody className="p-2">
-                <div
-                  ref={chatRef}
-                  className="h-[50vh] w-full border-1 rounded-lg border-default overflow-auto p-4 space-y-6"
-                >
-                  {history.length === 0 && (
-                    <div className="flex flex-col items-center justify-center text-center gap-4 h-full">
-                      <Avatar size="lg" src="/avatar-profile.webp" />
-                      <p className="text-base max-w-md">
-                        Ask me any question from the list below and I’ll answer
-                        as clearly as possible.
-                      </p>
-                    </div>
-                  )}
-
-                  {history.map((item, index) => (
-                    <div key={index} className="flex flex-col gap-2">
-                      <div className="flex justify-end">
-                        <div className="max-w-xs rounded-2xl bg-primary-100 px-3 py-2 text-sm leading-relaxed">
-                          {item.question}
-                        </div>
-                      </div>
-
-                      <div className="flex justify-start">
-                        {item.loading ? (
-                          <div className="max-w-xs rounded-2xl bg-default-100 px-3 py-2 text-sm animate-pulse">
-                            Thinking…
-                          </div>
-                        ) : (
-                          <div className="max-w-xs rounded-2xl bg-default-100 px-3 py-2 text-sm leading-relaxed animate-appearance-in">
-                            {item.answer}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <RecruiterQuestions
-                  recruiterQuestions={Object.keys(recruiterQA).filter(
-                    (q) => !new Set(history.map((h) => h.question)).has(q),
-                  )}
-                  selectedQuestion={handleSelectQuestion}
-                />
-              </DrawerBody>
-              <DrawerFooter className="p-4">
-                <Button size="md" onPress={onClose}>
-                  Close
-                </Button>
-              </DrawerFooter>
-            </>
-          )}
-        </DrawerContent>
-      </Drawer>
+      {DrawerComponent ? (
+        <DrawerComponent isOpen={isOpen} onOpenChange={setIsOpen} />
+      ) : null}
     </>
   );
 }

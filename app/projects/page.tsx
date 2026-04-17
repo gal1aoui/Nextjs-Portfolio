@@ -8,20 +8,19 @@ import ProjectDrawer from "@/components/projects/project-drawer";
 import GithubContributions from "@/components/projects/github-calendar";
 import { projects, Project } from "@/components/projects/projects-data";
 import { RandomizedTextEffect } from "@/components/randomized-text";
-import { useModal } from "@/providers/modal-provider";
 
 export default function ProjectsPage() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const { isDrawerOpen, onTriggerDrawer } = useModal();
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const handleSelectProject = (project: Project) => {
     setSelectedProject(project);
-    onTriggerDrawer();
+    setIsDrawerOpen(true);
   };
 
   const handleCloseDrawer = () => {
+    setIsDrawerOpen(false);
     setTimeout(() => setSelectedProject(null), 300);
-    onTriggerDrawer();
   };
 
   return (

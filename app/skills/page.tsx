@@ -1,21 +1,39 @@
 "use client";
 
-import { useState } from "react";
+import { ComponentType, useState } from "react";
+import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 import { Chip } from "@heroui/chip";
 
 import { RandomizedTextEffect } from "@/components/randomized-text";
-import { skillCategories } from "@/components/skills/skills";
-import SkillGrid from "@/components/skills/skill-card";
+import {
+  skillCategoryMeta,
+  type SkillCategoryId,
+} from "@/components/skills/category-meta";
+
+const skillCategoryPanels: Record<SkillCategoryId, ComponentType> = {
+  frontend: dynamic(() => import("@/components/skills/categories/frontend")),
+  backend: dynamic(() => import("@/components/skills/categories/backend")),
+  databases: dynamic(() => import("@/components/skills/categories/databases")),
+  devops: dynamic(() => import("@/components/skills/categories/devops")),
+  testing: dynamic(() => import("@/components/skills/categories/testing")),
+  api: dynamic(() => import("@/components/skills/categories/api")),
+  collaboration: dynamic(
+    () => import("@/components/skills/categories/collaboration"),
+  ),
+};
 
 export default function SkillsPage() {
-  const [selectedCategory, setSelectedCategory] = useState(
-    skillCategories[0].id,
+  const [selectedCategory, setSelectedCategory] = useState<SkillCategoryId>(
+    skillCategoryMeta[0].id,
   );
 
-  const currentCategory = skillCategories.find(
+  const currentCategory = skillCategoryMeta.find(
     (cat) => cat.id === selectedCategory,
   );
+  const CurrentCategoryPanel = currentCategory
+    ? skillCategoryPanels[currentCategory.id]
+    : null;
 
   return (
     <section className="max-w-6xl mx-auto px-4 py-8 md:py-12">
@@ -42,7 +60,7 @@ export default function SkillsPage() {
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <div className="md:sticky md:top-24 space-y-2">
-            {skillCategories.map((category, index) => (
+            {skillCategoryMeta.map((category, index) => (
               <motion.button
                 key={category.id}
                 animate={{ opacity: 1, x: 0 }}
@@ -65,7 +83,7 @@ export default function SkillsPage() {
                   size="sm"
                   variant={selectedCategory === category.id ? "solid" : "flat"}
                 >
-                  {category.skills.length}
+                  {category.count}
                 </Chip>
               </motion.button>
             ))}
@@ -94,7 +112,7 @@ export default function SkillsPage() {
                   <p className="text-default-500">{currentCategory.summary}</p>
                 </div>
 
-                <SkillGrid skills={currentCategory.skills} />
+                {CurrentCategoryPanel ? <CurrentCategoryPanel /> : null}
               </motion.div>
             )}
           </AnimatePresence>

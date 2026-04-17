@@ -2,13 +2,11 @@
 
 import { usePathname } from "next/navigation";
 import NextLink from "next/link";
-import dynamic from "next/dynamic";
 import { Tabs, Tab } from "@heroui/tabs";
 
+import GameLauncher from "./game-launcher";
 import { ThemeSwitch } from "./theme-switch";
 import QuestionAndAnswer from "./contact/qa/question-answer";
-
-const GameClient = dynamic(() => import("./game-client"), { ssr: false });
 
 import {
   AboutIcon,
@@ -103,7 +101,7 @@ export const Navbar = () => {
         </Tabs>
         <QuestionAndAnswer />
       </nav>
-      <GameClient />
+      <GameLauncher />
     </>
   );
 };
