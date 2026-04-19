@@ -1,74 +1,74 @@
 {
   "title": "Expertise technique",
-  "description": "Une vue d'ensemble des technologies, outils et pratiques que j'utilise pour concevoir, developper et maintenir des applications web modernes.",
+  "description": "Une vue d'ensemble des technologies, outils et pratiques que j'utilise pour concevoir, développer et maintenir des applications web modernes.",
   "categories": {
     "frontend": {
       "title": "Frontend",
-      "summary": "Developpement UI moderne, systemes de composants evolutifs et applications web haute performance."
+      "summary": "Développement UI moderne, systèmes de composants évolutifs et applications web haute performance."
     },
     "backend": {
       "title": "Backend",
-      "summary": "Developpement cote serveur, APIs, authentification, logique metier et architectures evolutives."
+      "summary": "Développement côté serveur, APIs, authentification, logique métier et architectures évolutives."
     },
     "databases": {
-      "title": "Bases de donnees",
-      "summary": "Bases relationnelles et NoSQL, modelisation des donnees, requetage et optimisation des performances."
+      "title": "Bases de données",
+      "summary": "Bases relationnelles et NoSQL, modélisation des données, requêtage et optimisation des performances."
     },
     "devops": {
       "title": "DevOps et outils",
-      "summary": "Conteneurisation, controle de version, pipelines CI/CD et workflows de deploiement."
+      "summary": "Conteneurisation, contrôle de version, pipelines CI/CD et workflows de déploiement."
     },
     "testing": {
       "title": "Tests",
-      "summary": "Tests automatises, validation d'API et assurance qualite pour des systemes fiables."
+      "summary": "Tests automatisés, validation d'API et assurance qualité pour des systèmes fiables."
     },
     "api": {
       "title": "Conception d'API",
-      "summary": "Concevoir, modeliser et documenter des APIs avec des standards et des contrats clairs."
+      "summary": "Concevoir, modéliser et documenter des APIs avec des standards et des contrats clairs."
     },
     "collaboration": {
       "title": "Collaboration et design",
-      "summary": "Collaboration agile, gestion des taches et workflow de la conception jusqu'au developpement."
+      "summary": "Collaboration agile, gestion des tâches et workflow de la conception jusqu'au développement."
     }
   },
   "items": {
-    "graphql": "Concevoir des APIs typees avec des requetes flexibles et une integration frontend propre.",
-    "restapi": "Construire des endpoints REST previsibles avec des contrats clairs et une bonne modelisation des ressources.",
-    "uml": "Modeliser les systemes, les flux et les decisions d'architecture avec des diagrammes lisibles.",
+    "graphql": "Concevoir des APIs typées avec des requêtes flexibles et une intégration frontend propre.",
+    "restapi": "Construire des endpoints REST prévisibles avec des contrats clairs et une bonne modélisation des ressources.",
+    "uml": "Modéliser les systèmes, les flux et les décisions d'architecture avec des diagrammes lisibles.",
     "laravel": "Livrer des applications PHP robustes avec une structure propre, des APIs et des workflows prets pour le produit.",
-    "symfony": "Construire des backends maintenables avec une architecture solide et des services reutilisables.",
-    "supabase": "Exploiter Postgres, l'auth, le stockage et le realtime heberges pour accelerer la livraison produit.",
-    "nodejs": "Creer des services serveur et des APIs evolutifs avec JavaScript et TypeScript.",
-    "expressjs": "Developper des APIs HTTP legeres et des services backend bases sur des middlewares.",
-    "nestjs": "Structurer des applications backend de niveau entreprise avec modules, injection de dependances et TypeScript.",
+    "symfony": "Construire des backends maintenables avec une architecture solide et des services réutilisables.",
+    "supabase": "Exploiter Postgres, l'auth, le stockage et le realtime hébergés pour accélérer la livraison produit.",
+    "nodejs": "Créer des services serveur et des APIs évolutifs avec JavaScript et TypeScript.",
+    "expressjs": "Développer des APIs HTTP légères et des services backend basés sur des middlewares.",
+    "nestjs": "Structurer des applications backend de niveau entreprise avec modules, injection de dépendances et TypeScript.",
     "dotnet": "Travailler sur des applications .NET cote desktop comme cote backend.",
     "figma": "Collaborer avec le produit et le design, des wireframes jusqu'aux decisions UI finales.",
     "jira": "Suivre la livraison, les priorites et l'execution dans des workflows produit structures.",
     "scrum": "Planifier et livrer par iterations avec sprints, ceremonies et responsabilite partagee.",
-    "kanban": "Piloter le flux, le travail en cours et la visibilite de livraison avec une approche lean.",
+    "kanban": "Piloter le flux, le travail en cours et la visibilité de livraison avec une approche lean.",
     "mysql": "Concevoir des schemas relationnels et des requetes fiables pour des systemes transactionnels.",
-    "mongodb": "Modeliser des donnees documentaires flexibles pour des produits qui beneficient d'un schema souple.",
+    "mongodb": "Modéliser des données documentaires flexibles pour des produits qui bénéficient d'un schéma souple.",
     "postgresql": "Utiliser les capacites avancees de SQL pour des systemes de production performants et evolutifs.",
-    "sqlite": "Utiliser une base embarquee legere pour des applications simples et du prototypage.",
+    "sqlite": "Utiliser une base embarquée légère pour des applications simples et du prototypage.",
     "docker": "Conteneuriser les applications et services pour des environnements coherents en local et en production.",
-    "git": "Gerer le versioning, les branches et les workflows collaboratifs de developpement.",
+    "git": "Gérer le versioning, les branches et les workflows collaboratifs de développement.",
     "gitlab": "Utiliser GitLab pour le code source, les pipelines CI et la collaboration d'equipe.",
-    "github": "Construire et livrer via GitHub avec depots, issues, reviews et Actions.",
-    "cicd": "Automatiser les tests, la validation et le deploiement avec des pipelines fiables.",
-    "react": "Construire des interfaces modernes par composants avec de bons patterns d'etat et de rendu.",
-    "nextjs": "Livrer des applications React pretes pour la production avec rendu serveur, routage et performance.",
-    "typescript": "Ecrire un JavaScript plus sur et plus maintenable grace au typage statique.",
-    "angular": "Developper des applications frontend structurees avec une approche framework complete.",
+    "github": "Construire et livrer via GitHub avec dépôts, issues, reviews et Actions.",
+    "cicd": "Automatiser les tests, la validation et le déploiement avec des pipelines fiables.",
+    "react": "Construire des interfaces modernes par composants avec de bons patterns d'état et de rendu.",
+    "nextjs": "Livrer des applications React prêtes pour la production avec rendu serveur, routage et performance.",
+    "typescript": "Écrire un JavaScript plus sûr et plus maintenable grâce au typage statique.",
+    "angular": "Développer des applications frontend structurées avec une approche framework complète.",
     "spartanng": "Utiliser Spartan NG pour composer des interfaces Angular accessibles avec des primitives headless.",
-    "tailwind": "Concevoir des interfaces rapides et coherentes avec une approche utility-first.",
+    "tailwind": "Concevoir des interfaces rapides et cohérentes avec une approche utility-first.",
     "shadcn": "Composer des interfaces React modernes avec des primitives reutilisables et un design system propre.",
     "materialui": "Construire rapidement des interfaces soignees avec un ecosysteme React mature.",
-    "tanstack": "Gerer des etats asynchrones complexes, des tableaux et des flux frontend riches en donnees.",
-    "zod": "Definir des schemas de validation qui alignent formulaires, APIs et types.",
+    "tanstack": "Gérer des états asynchrones complexes, des tableaux et des flux frontend riches en données.",
+    "zod": "Définir des schémas de validation qui alignent formulaires, APIs et types.",
     "zustand": "Gerer un state client leger avec des stores simples et evolutifs.",
-    "robot": "Automatiser des tests end-to-end et de workflow avec des suites lisibles orientees mots-cles.",
-    "postman": "Concevoir, tester et valider le comportement des APIs pendant le developpement.",
-    "jest": "Ecrire des tests unitaires et d'integration pour une logique frontend et backend fiable.",
+    "robot": "Automatiser des tests end-to-end et de workflow avec des suites lisibles orientées mots-clés.",
+    "postman": "Concevoir, tester et valider le comportement des APIs pendant le développement.",
+    "jest": "Écrire des tests unitaires et d'intégration pour une logique frontend et backend fiable.",
     "mocha": "Tester des applications JavaScript avec une configuration souple du runner et des assertions."
   }
 }

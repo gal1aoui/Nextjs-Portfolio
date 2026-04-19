@@ -13,17 +13,17 @@
     }
   },
   "roles": [
-    "Ingenieur logiciel",
-    "Developpeur Full Stack",
-    "Specialiste Frontend"
+    "Ingénieur logiciel",
+    "Développeur Full Stack",
+    "Spécialiste Frontend"
   ],
   "bio": {
-    "highlightRole": "Developpeur Full Stack",
+    "highlightRole": "Développeur Full Stack",
     "beforeSpecialization": "avec une",
-    "specialization": "specialisation frontend",
+    "specialization": "spécialisation frontend",
     "beforeExperience": "et",
     "experience": "plus de 3 ans",
-    "beforePerformance": "d'experience dans la conception et la livraison de solutions completes. Solide sur les frameworks frontend modernes,",
+    "beforePerformance": "d'expérience dans la conception et la livraison de solutions complètes Solide sur les frameworks frontend modernes,",
     "performance": "l'optimisation des performances",
     "beforeMaintainable": ", avec un vrai souci du",
     "maintainable": "code propre et maintenable",

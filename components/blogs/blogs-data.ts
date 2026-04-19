@@ -123,94 +123,94 @@ I earned my Master's degree feeling confident, prepared, and hungry for what wou
       title: "Mon parcours",
       part: "Partie 1",
       subtitle:
-        "Ping-pong, Processing.js, Mercure, et l'appel qui a tout change",
-      content: `J'avais 19 ans en 2018 lorsque j'ai obtenu mon baccalaureat en informatique. Avec une valise, la tete pleine d'ambition et tres peu d'idee de ce qui m'attendait, j'ai quitte ma ville pour m'installer a Sfax et commencer mon parcours universitaire a l'Institut Superieur d'Informatique et de Multimedia de Sfax.
+        "Ping-pong, Processing.js, Mercure, et l'appel qui a tout changé",
+      content: `J'avais 19 ans en 2018 lorsque j'ai obtenu mon baccalauréat en informatique. Avec une valise, la tête pleine d'ambition et très peu d'idée de ce qui m'attendait, j'ai quitté ma ville pour m'installer à Sfax et commencer mon parcours universitaire à l'Institut Supérieur d'Informatique et de Multimédia de Sfax.
 
-La premiere annee a ressemble a l'ouverture d'une porte vers un nouveau monde. J'y ai decouvert le langage C, HTML, CSS, jQuery et JavaScript. Puis un vrai tournant est arrive : nous devions choisir entre l'audiovisuel et le developpement de jeux. Je n'ai pas hesite. J'ai choisi le game development parce que j'avais un reve tres simple : comprendre comment les jeux fonctionnent reellement derriere l'ecran.
+La première année a ressemblé à l'ouverture d'une porte vers un nouveau monde. J'y ai découvert le langage C, HTML, CSS, jQuery et JavaScript. Puis un vrai tournant est arrivé : nous devions choisir entre l'audiovisuel et le développement de jeux. Je n'ai pas hésité. J'ai choisi le game development parce que j'avais un rêve très simple : comprendre comment les jeux fonctionnent réellement derrière l'écran.
 
-Cette annee-la n'a pas ete faite seulement de code. D'une certaine facon, je suis aussi devenu "le gars du ping-pong" a l'universite. Depuis l'enfance, j'avais passe d'innombrables heures a jouer et a faire de la competition dans mon club de quartier, et ce bagage m'a suivi jusqu'au campus. Je me suis fait des amis facilement, j'ai gagne le respect de mes camarades, et meme certains enseignants ont remarque ma capacite d'apprentissage et mon esprit sportif, parfois plus que mes notes. Ma premiere annee s'est terminee avec de la confiance, de vraies amities et le sentiment d'etre a ma place.
+Cette année-là n'a pas été faite seulement de code. D'une certaine façon, je suis aussi devenu "le gars du ping-pong" à l'université. Depuis l'enfance, j'avais passe d'innombrables heures a jouer et a faire de la competition dans mon club de quartier, et ce bagage m'a suivi jusqu'au campus. Je me suis fait des amis facilement, j'ai gagné le respect de mes camarades, et même certains enseignants ont remarqué ma capacité d'apprentissage et mon esprit sportif, parfois plus que mes notes. Ma première année s'est terminée avec de la confiance, de vraies amitiés et le sentiment d'être à ma place.
 
-La deuxieme annee a ete plus brutale que prevu. Le premier semestre s'est termine sur un echec : 8/20. Ce fut un reveil. Au lieu d'abandonner, je me suis recentre, j'ai repris le controle et je me suis battu. Au second semestre, je suis remonte presque a 14/20 et j'ai valide l'annee.
+La deuxième année a été plus brutale que prévu. Le premier semestre s'est terminé sur un échec : 8/20. Ce fut un réveil. Au lieu d'abandonner, je me suis recentré, j'ai repris le contrôle et je me suis battu. Au second semestre, je suis remonté presque à 14/20 et j'ai validé l'année.
 
-Sur le plan academique, tout est devenu plus serieux. Mathematiques avancees, conception de systemes, notions d'architecture, algorithmes de tri, bases reseaux, SQL, electronique et composants informatiques remplissaient mes journees. C'est aussi a ce moment que j'ai decouvert mon premier framework, Laravel, et que j'ai commence a concevoir des interfaces avec Bootstrap en 2020. C'etait dense, mais passionnant.
+Sur le plan académique, tout est devenu plus sérieux. Mathématiques avancées, conception de systèmes, notions d'architecture, algorithmes de tri, bases réseaux, SQL, électronique et composants informatiques remplissaient mes journées. C'est aussi à ce moment que j'ai découvert mon premier framework, Laravel, et que j'ai commencé à concevoir des interfaces avec Bootstrap en 2020. C'était dense, mais passionnant.
 
-Cet ete-la, j'ai rejoint TADA comme stagiaire Processing.js. Mon role consistait a appliquer de la logique mathematique pour produire des graphiques animes a partir de formes vectorielles. Processing.js est devenu mon terrain de jeu pour comprendre la programmation orientee objet et l'abstraction dans un cadre creatif. J'ai appris vite, j'ai beaucoup experimente, et l'equipe a apprecie mon travail, surtout compte tenu de mon age.
+Cet été-là, j'ai rejoint TADA comme stagiaire Processing.js. Mon rôle consistait à appliquer de la logique mathématique pour produire des graphiques animés à partir de formes vectorielles. Processing.js est devenu mon terrain de jeu pour comprendre la programmation orientée objet et l'abstraction dans un cadre créatif. J'ai appris vite, j'ai beaucoup expérimenté, et l'équipe a apprécié mon travail, surtout compte tenu de mon âge.
 
-**Petite note sur Processing.js et pourquoi c'etait important :** Processing.js est une version JavaScript de l'environnement Processing. A l'origine, Processing a ete pense pour permettre aux designers et artistes de dessiner avec du code. Avec Processing.js, cette idee arrive dans le navigateur via le canvas HTML5, et l'animation devient quelque chose de visuel, presque immediat. Pour quelqu'un qui apprend l'abstraction, voir le code produire du mouvement rend les concepts beaucoup plus concrets.
+**Petite note sur Processing.js et pourquoi c'était important :** Processing.js est une version JavaScript de l'environnement Processing. À l'origine, Processing a été pensé pour permettre aux designers et artistes de dessiner avec du code. Avec Processing.js, cette idée arrive dans le navigateur via le canvas HTML5, et l'animation devient quelque chose de visuel, presque immédiat. Pour quelqu'un qui apprend l'abstraction, voir le code produire du mouvement rend les concepts beaucoup plus concrets.
 
-Mon stage s'est tres bien passe. L'equipe aimait les experimentations visuelles que je produisais, et j'y ai vraiment appris l'OOP et l'abstraction en construisant des visuels ludiques et mathematiques. Leur reaction m'a donne un vrai boost de confiance.
+Mon stage s'est très bien passé. L'équipe aimait les expérimentations visuelles que je produisais, et j'y ai vraiment appris l'OOP et l'abstraction en construisant des visuels ludiques et mathématiques. Leur réaction m'a donné un vrai boost de confiance.
 
-La troisieme et derniere annee de licence a ete intense. Le premier semestre est entre directement dans le dur : OOP avancee, base de donnees a un niveau plus exigeant, frameworks, projets de jeux comptes dans la note, bases Android, concepts d'IA, pathfinding avec Dijkstra, architecture MVC et APIs REST. J'avais l'impression de traverser en acceleration tout ce qui constitue une formation moderne en informatique.
+La troisième et dernière année de licence a été intense. Le premier semestre est entré directement dans le dur : OOP avancée, base de données à un niveau plus exigeant, frameworks, projets de jeux comptés dans la note, bases Android, concepts d'IA, pathfinding avec Dijkstra, architecture MVC et APIs REST. J'avais l'impression de traverser en accélération tout ce qui constitue une formation moderne en informatique.
 
-**Une explication rapide :** l'algorithme de Dijkstra sert a trouver le plus court chemin entre des noeuds dans un graphe. En developpement de jeux, il est souvent utilise pour le pathfinding, par exemple lorsqu'un NPC doit trouver efficacement sa route sur une carte.
+**Une explication rapide :** l'algorithme de Dijkstra sert à trouver le plus court chemin entre des nœuds dans un graphe. En développement de jeux, il est souvent utilisé pour le pathfinding, par exemple lorsqu'un NPC doit trouver efficacement sa route sur une carte.
 
-Le second semestre exigeait un long stage de six a sept mois, qui servait de pont vers la diplomation. J'avais recu plusieurs propositions de professeurs, mais je voulais une experience plus industrielle et plus proche de chez moi. J'ai rejoint Development Engineering Services comme stagiaire en developpement web. Mon stack etait Symfony pour le backend, Vue.js pour le frontend et MySQL pour la base de donnees. Un ami s'occupait de la partie mobile pendant que je construisais l'interface web, et nous partagions le meme modele de donnees.
+Le second semestre exigeait un long stage de six à sept mois, qui servait de pont vers la diplomation. J'avais reçu plusieurs propositions de professeurs, mais je voulais une expérience plus industrielle et plus proche de chez moi. J'ai rejoint Development Engineering Services comme stagiaire en développement web. Mon stack était Symfony pour le backend, Vue.js pour le frontend et MySQL pour la base de données. Un ami s'occupait de la partie mobile pendant que je construisais l'interface web, et nous partagions le même modèle de données.
 
-Le produit etait une plateforme de mise en relation pour l'emploi : des entreprises publiaient des offres, des candidats postulaient, et les deux parties pouvaient se noter. J'ai travaille sur la gestion des utilisateurs, les roles et permissions, l'authentification, et surtout cette partie toujours sensible mais indispensable : les notifications en temps reel.
+Le produit était une plateforme de mise en relation pour l'emploi : des entreprises publiaient des offres, des candidats postulaient, et les deux parties pouvaient se noter. J'ai travaillé sur la gestion des utilisateurs, les rôles et permissions, l'authentification, et surtout cette partie toujours sensible mais indispensable : les notifications en temps réel.
 
-Le temps reel etait justement la partie la plus delicate. Apres beaucoup de recherche et d'essais, j'ai fini par implementer les mises a jour live avec Mercure.
+Le temps réel était justement la partie la plus délicate. Après beaucoup de recherche et d'essais, j'ai fini par implémenter les mises à jour live avec Mercure.
 
-**Petit resume sur Mercure :** Mercure est un systeme publish/subscribe souvent utilise avec Symfony pour pousser des mises a jour temps reel vers le navigateur. Il repose sur les Server-Sent Events (SSE), qui sont plus simples que les WebSockets pour beaucoup de cas d'usage unidirectionnels comme les notifications ou les compteurs en direct.
+**Petit résumé sur Mercure :** Mercure est un système publish/subscribe souvent utilisé avec Symfony pour pousser des mises à jour temps réel vers le navigateur. Il repose sur les Server-Sent Events (SSE), qui sont plus simples que les WebSockets pour beaucoup de cas d'usage unidirectionnels comme les notifications ou les compteurs en direct.
 
-Pendant ce stage, presque tout a ete appris en autonomie. J'ai appris Symfony et Vue.js sur le tas en lisant la documentation, en posant des questions sur StackOverflow, en clonant des projets GitHub, et en passant des nuits entieres sur des tutoriels YouTube. Au bout de six mois, le produit fonctionnait, j'ai livre mon travail de stage et j'ai obtenu mon diplome.
+Pendant ce stage, presque tout a été appris en autonomie. J'ai appris Symfony et Vue.js sur le tas en lisant la documentation, en posant des questions sur StackOverflow, en clonant des projets GitHub, et en passant des nuits entières sur des tutoriels YouTube. Au bout de six mois, le produit fonctionnait, j'ai livré mon travail de stage et j'ai obtenu mon diplôme.
 
-Apres la licence, j'ai travaille en freelance sur differents sujets : plateformes scolaires, sites d'hotels, et bien d'autres. Si une nouvelle stack arrivait devant moi, je l'ouvrais. Ma boite a outils s'est elargie : Docker, Laravel, les debuts de Tailwind, Vue.js, Git, Trello, Jira, Teams, Slack, Monday, et oui, meme WhatsApp pour les discussions rapides avec les clients. J'ai aussi travaille sur des projets React legacy.
+Après la licence, j'ai travaillé en freelance sur différents sujets : plateformes scolaires, sites d'hôtels, et bien d'autres. Si une nouvelle stack arrivait devant moi, je l'ouvrais. Ma boîte à outils s'est élargie : Docker, Laravel, les débuts de Tailwind, Vue.js, Git, Trello, Jira, Teams, Slack, Monday, et oui, même WhatsApp pour les discussions rapides avec les clients. J'ai aussi travaillé sur des projets React legacy.
 
-**Une note sur les lifecycle methods de l'ancien React :** avant les Hooks, les composants de classe reposaient sur des methodes comme componentWillMount, componentWillReceiveProps ou componentWillUpdate. React en a ensuite deprecie plusieurs parce qu'elles pouvaient generer des comportements incoherents. Maintenir un ancien projet React demande souvent de comprendre ces anciens cycles de vie avant de les refactorer proprement.
+**Une note sur les lifecycle methods de l'ancien React :** avant les Hooks, les composants de classe reposaient sur des méthodes comme componentWillMount, componentWillReceiveProps ou componentWillUpdate. React en a ensuite dépprécié plusieurs parce qu'elles pouvaient générer des comportements incohérents. Maintenir un ancien projet React demande souvent de comprendre ces anciens cycles de vie avant de les refactorer proprement.
 
-A un moment, je me suis pose une question plus large : et si j'etudiais non seulement la facon de construire un logiciel, mais aussi la facon de planifier un projet, de l'executer et de l'amener jusqu'au marche ? C'est pour cela qu'en 2021 j'ai choisi de poursuivre un master en innovation et management de projet.
+À un moment, je me suis posé une question plus large : et si j'étudiais non seulement la façon de construire un logiciel, mais aussi la façon de planifier un projet, de l'exécuter et de l'amener jusqu'au marché ? C'est pour cela qu'en 2021 j'ai choisi de poursuivre un master en innovation et management de projet.
 
-Nous y avons etudie Scrum, Kanban et Crystal, ainsi que des approches plus traditionnelles comme Waterfall et le V-model.
+Nous y avons étudié Scrum, Kanban et Crystal, ainsi que des approches plus traditionnelles comme Waterfall et le V-model.
 
-**Definitions rapides pour clarifier :** Waterfall est un processus sequentiel qui avance des besoins vers la conception, l'implementation, les tests puis le deploiement. Le V-model insiste sur la verification et la validation a chaque etape. Scrum est un cadre Agile base sur des sprints, des roles et des ceremonies. Kanban met l'accent sur le flux et la visualisation. Crystal est plus leger et centre sur l'humain. Le bon cadre depend toujours du contexte et du niveau de risque.
+**Définitions rapides pour clarifier :** Waterfall est un processus séquentiel qui avance des besoins vers la conception, l'implémentation, les tests puis le déploiement. Le V-model insiste sur la vérification et la validation à chaque étape. Scrum est un cadre Agile basé sur des sprints, des rôles et des cérémonies. Kanban met l'accent sur le flux et la visualisation. Crystal est plus léger et centré sur l'humain. Le bon cadre dépend toujours du contexte et du niveau de risque.
 
-Dans ce master, j'ai appris la gestion des risques, l'estimation de charge, la preparation de backlog, le ticketing et la conduite de reunions efficaces. J'ai aussi etudie les roles d'equipe de facon plus approfondie.
+Dans ce master, j'ai appris la gestion des risques, l'estimation de charge, la préparation de backlog, le ticketing et la conduite de réunions efficaces. J'ai aussi étudié les rôles d'équipe de façon plus approfond ie.
 
-**Petit resume des roles et evenements Scrum :**
+**Petit résumé des rôles et événements Scrum :**
 - Product Owner : il porte la vision produit et priorise le backlog.
-- Scrum Master : il facilite le travail de l'equipe, leve les blocages et protege le cadre.
-- Scrum Team : c'est l'equipe pluridisciplinaire qui construit le produit.
+- Scrum Master : il facilite le travail de l'équipe, lève les blocages et protège le cadre.
+- Scrum Team : c'est l'équipe pluridisciplinaire qui construit le produit.
 
-Parmi les ceremonies, on retrouve Sprint Planning, Daily Scrum, Sprint Review et Retrospective. Le Product Backlog represente le travail priorise, et le Sprint Backlog correspond a ce que l'equipe s'engage a realiser pendant le sprint.
+Parmi les cérémonies, on retrouve Sprint Planning, Daily Scrum, Sprint Review et Retrospective. Le Product Backlog représente le travail priorisé, et le Sprint Backlog correspond à ce que l'équipe s'engage à réaliser pendant le sprint.
 
-Avant de commencer la deuxieme annee du master, j'ai effectue un stage de deux mois et demi chez Meducol comme developpeur de jeux. J'y ai renforce mes competences en C# et j'ai meme convaincu le formateur d'essayer Scrum. J'y ai tenu un role de Product Owner tout en developpant, ce qui etait assez amusant, mais nous avons bien livre.
+Avant de commencer la deuxième année du master, j'ai effectué un stage de deux mois et demi chez Meducol comme développeur de jeux. J'y ai renforcé mes compétences en C# et j'ai même convaincu le formateur d'essayer Scrum. J'y ai tenu un rôle de Product Owner tout en développant, ce qui était assez amusant, mais nous avons bien livré.
 
-Apres cette annee, j'ai recu une proposition de mission chez Global Web Marketing comme developpeur Full Stack PHP. Je travaillais a la fois sur le frontend et le backend, j'ecrivais des scripts d'automatisation avec Selenium et Robot Framework, et je faisais aussi de l'automatisation desktop via la RPA.
+Après cette année, j'ai reçu une proposition de mission chez Global Web Marketing comme développeur Full Stack PHP. Je travaillais à la fois sur le frontend et le backend, j'écrivais des scripts d'automatisation avec Selenium et Robot Framework, et je faisais aussi de l'automatisation desktop via la RPA.
 
-**Explication rapide sur ces outils :** Selenium automatise les interactions avec le navigateur pour tester les interfaces. Robot Framework est un framework open source qui permet d'ecrire des cas de test lisibles. La RPA automatise des taches repetitives sur desktop, en particulier lorsque certains outils imposent encore des workflows proches du manuel.
+**Explication rapide sur ces outils :** Selenium automatise les interactions avec le navigateur pour tester les interfaces. Robot Framework est un framework open source qui permet d'écrire des cas de test lisibles. La RPA automatise des tâches répétitives sur desktop, en particulier lorsque certains outils imposent encore des workflows proches du manuel.
 
-En continuant mon master, j'ai aussi appris le marketing strategique : ecriture de scripts pour des videos produit, reflexion sur les angles de prise de vue, UI/UX, etude des audiences cibles, analyse SEO, et plus largement la facon dont une idee devient un produit visible sur le marche. J'ai egalement appris Java, Spring Boot, et j'ai compris comment des ORMs comme Hibernate relient le code aux bases de donnees.
+En continuant mon master, j'ai aussi appris le marketing stratégique : écriture de scripts pour des vidéos produit, réflexion sur les angles de prise de vue, UI/UX, étude des audiences cibles, analyse SEO, et plus largement la façon dont une idée devient un produit visible sur le marché. J'ai également appris Java, Spring Boot, et j'ai compris comment des ORMs comme Hibernate relient le code aux bases de données.
 
-**A propos de Spring Boot, Hibernate et JavaBeans :** Spring Boot est un framework Java base sur la convention qui simplifie le setup et l'injection de dependances. Hibernate est un ORM qui mappe les objets Java aux tables de base de donnees. Les JavaBeans sont des classes reutilisables qui suivent des conventions de getters et setters et s'integrent bien avec les frameworks.
+**À propos de Spring Boot, Hibernate et JavaBeans :** Spring Boot est un framework Java basé sur la convention qui simplifie le setup et l'injection de dépendances. Hibernate est un ORM qui mappe les objets Java aux tables de base de données. Les JavaBeans sont des classes réutilisables qui suivent des conventions de getters et setters et s'intègrent bien avec les frameworks.
 
-J'ai de nouveau choisi le game development et j'ai approfondi Unity. J'ai valide le semestre avec un 16/20 puis j'ai entame ma phase finale de stage : six mois chez Primatec Engineering comme stagiaire developpeur logiciel. J'y travaillais avec C# WinForms et je construisais une application Unity qui devait interoperer avec leur logiciel desktop.
+J'ai de nouveau choisi le game development et j'ai approfondi Unity. J'ai validé le semestre avec un 16/20 puis j'ai entamé ma phase finale de stage : six mois chez Primatec Engineering comme stagiaire développeur logiciel. J'y travaillais avec C# WinForms et je construisais une application Unity qui devait interopérer avec leur logiciel desktop.
 
-**Comment j'ai relie Unity et WinForms en pratique :** on peut faire communiquer ce type d'applications via des bibliotheques partagees, des DLL, de l'IPC local ou des WebSockets. La bonne solution depend toujours des contraintes du produit, du deploiement et des performances attendues.
+**Comment j'ai relié Unity et WinForms en pratique :** on peut faire communiquer ce type d'applications via des bibliothèques partagées, des DLL, de l'IPC local ou des WebSockets. La bonne solution dépend toujours des contraintes du produit, du déploiement et des performances attendues.
 
-J'ai termine mes taches rapidement, j'ai aide mes coequipiers et j'ai depasse les attentes. Le retour que j'ai recu etait clair : ils ne s'attendaient pas a ce niveau d'output de la part d'un stagiaire. Ce moment a renforce une conviction que je garde encore aujourd'hui : peu importe la stack, je suis pret.
+J'ai terminé mes tâches rapidement, j'ai aidé mes coéquipiers et j'ai dépassé les attentes. Le retour que j'ai reçu était clair : ils ne s'attendaient pas à ce niveau d'output de la part d'un stagiaire. Ce moment a renforcé une conviction que je garde encore aujourd'hui : peu importe la stack, je suis prêt.
 
-J'ai obtenu mon master avec le sentiment d'etre pret, confiant et tres motive pour la suite. Une semaine apres la remise du diplome, mon telephone a sonne. Un recruteur. Et c'est la que commence la Partie 2.`,
+J'ai obtenu mon master avec le sentiment d'être prêt, confiant et très motivé pour la suite. Une semaine après la remise du diplôme, mon téléphone a sonné. Un recruteur. Et c'est là que commence la Partie 2.`,
       readingTime: "12 min de lecture",
       highlights: [
-        { text: "Developpement de jeux", color: "#FFD41D" },
+        { text: "Développement de jeux", color: "#FFD41D" },
         { text: "ping-pong", color: "#6AECE1" },
         { text: "8/20", color: "#FF6B6B" },
         { text: "14/20", color: "#4ECDC4" },
         { text: "Stage Processing.js", color: "#FFD41D" },
-        { text: "Stage developpement web", color: "#FFD41D" },
+        { text: "Stage développement web", color: "#FFD41D" },
         { text: "Symfony", color: "#33A1E0" },
         { text: "Vue.js", color: "#4FC08D" },
-        { text: "notifications temps reel", color: "#FF9F43" },
+        { text: "notifications temps réel", color: "#FF9F43" },
         { text: "freelance", color: "#A29BFE" },
         {
           text: "Master en innovation et management de projet",
           color: "#FFD41D",
         },
-        { text: "Developpeur de jeux", color: "#FFD41D" },
-        { text: "Developpeur Full Stack PHP", color: "#33A1E0" },
+        { text: "Développeur de jeux", color: "#FFD41D" },
+        { text: "Développeur Full Stack PHP", color: "#33A1E0" },
         { text: "16/20", color: "#4ECDC4" },
-        { text: "Stagiaire developpeur logiciel", color: "#FFD41D" },
-        { text: "Peu importe la stack, je suis pret", color: "#26CCC2" },
+        { text: "Stagiaire développeur logiciel", color: "#FFD41D" },
+        { text: "Peu importe la stack, je suis prêt", color: "#26CCC2" },
         { text: "La Partie 2 commence", color: "#FF6B6B" },
       ],
     },

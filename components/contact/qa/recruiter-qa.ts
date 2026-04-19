@@ -147,96 +147,96 @@ const recruiterQaByLanguage: Record<AppLanguage, RecruiterQuestion[]> = {
   fr: [
     {
       id: "about",
-      question: "Pouvez-vous vous presenter ?",
+      question: "Pouvez-vous vous présenter ?",
       answers: [
-        "Je suis ingenieur logiciel senior avec une forte expertise en architecture frontend, specialise en React et Angular. Je concois et livre des applications web evolutives et performantes utilisees en production.",
-        "J'ai une base academique solide en informatique et en gestion de projet, combinee a une experience terrain en freelance comme sur des produits concrets.",
-        "Je mets l'accent sur l'architecture propre, l'optimisation des performances et la construction de systemes maintenables qui accompagnent la croissance produit.",
+        "Je suis ingénieur logiciel senior avec une forte expertise en architecture frontend, spécialisé en React et Angular. Je conçois et livre des applications web évolutives et performantes utilisées en production.",
+        "J'ai une base académique solide en informatique et en gestion de projet, combinée à une expérience terrain en freelance comme sur des produits concrets.",
+        "Je mets l'accent sur l'architecture propre, l'optimisation des performances et la construction de systèmes maintenables qui accompagnent la croissance produit.",
       ],
     },
     {
       id: "current-work",
       question: "Sur quoi travaillez-vous en ce moment ?",
       answers: [
-        "Je concois et maintiens activement des packages npm prets pour la production, avec une forte attention aux performances, a la taille de bundle et a l'experience developpeur.",
-        "Je travaille sur de vrais systemes frontend, en ameliorant les composants reutilisables et l'architecture applicative.",
-        "J'investis en continu dans la scalabilite frontend, l'outillage et la maintenabilite long terme.",
+        "Je conçois et maintiens activement des packages npm prêts pour la production, avec une forte attention aux performances, à la taille de bundle et à l'expérience développeur.",
+        "Je travaille sur de vrais systèmes frontend, en améliorant les composants réutilisables et l'architecture applicative.",
+        "J'investis en continu dans la scalabilité frontend, l'outillage et la maintenabilité long terme.",
       ],
     },
     {
       id: "technologies",
-      question: "Avec quelles technologies etes-vous le plus a l'aise ?",
+      question: "Avec quelles technologies êtes-vous le plus à l'aise ?",
       answers: [
-        "Mon stack principal repose sur TypeScript, JavaScript, React et Angular, avec une experience approfondie des outils et patterns frontend modernes.",
-        "J'ai une bonne experience en gestion d'etat, optimisation des performances et conception d'interfaces evolutives.",
-        "Cote backend, j'ai travaille avec Node.js, PHP, Laravel et des APIs REST, ce qui me permet de collaborer efficacement sur toute la stack.",
+        "Mon stack principal repose sur TypeScript, JavaScript, React et Angular, avec une expérience approfondie des outils et patterns frontend modernes.",
+        "J'ai une bonne expérience en gestion d'état, optimisation des performances et conception d'interfaces évolutives.",
+        "Côté backend, j'ai travaillé avec Node.js, PHP, Laravel et des APIs REST, ce qui me permet de collaborer efficacement sur toute la stack.",
       ],
     },
     {
       id: "role",
       question: "Quel type de poste recherchez-vous ?",
       answers: [
-        "Je recherche un role senior frontend ou full stack ou je peux porter des decisions techniques et contribuer a l'architecture comme a la qualite produit.",
-        "Je suis attire par les equipes qui valorisent le code propre, la scalabilite et des compromis d'ingenierie bien penses.",
-        "Je veux travailler sur des produits ou la qualite technique a un impact direct sur l'utilisateur et le business.",
+        "Je recherche un rôle senior frontend ou full stack où je peux porter des décisions techniques et contribuer à l'architecture comme à la qualité produit.",
+        "Je suis attiré par les équipes qui valorisent le code propre, la scalabilité et des compromis d'ingénierie bien pensés.",
+        "Je veux travailler sur des produits où la qualité technique a un impact direct sur l'utilisateur et le business.",
       ],
     },
     {
       id: "challenging-project",
       question:
-        "Pouvez-vous decrire un projet difficile sur lequel vous avez travaille ?",
+        "Pouvez-vous décrire un projet difficile sur lequel vous avez travaillé ?",
       answers: [
-        "J'ai concu et publie des packages npm utilises comme briques reutilisables, ou la performance, la stabilite et la DX etaient cruciales.",
-        "J'ai mene des refontes sur des codebases frontend complexes pour gagner en scalabilite et en maintenabilite sans casser la production.",
-        "J'ai livre des systemes de l'idee a la production sous delais serres tout en gardant la dette technique sous controle.",
+        "J'ai conçu et publié des packages npm utilisés comme briques réutilisables, où la performance, la stabilité et la DX étaient cruciales.",
+        "J'ai mené des refontes sur des codebases frontend complexes pour gagner en scalabilité et en maintenabilité sans casser la production.",
+        "J'ai livré des systèmes de l'idée à la production sous délais serrés tout en gardant la dette technique sous contrôle.",
       ],
     },
     {
       id: "deadlines",
-      question: "Comment gerez-vous les delais serres ?",
+      question: "Comment gérez-vous les délais serrés ?",
       answers: [
-        "Je commence par prioriser, evaluer les risques et livrer d'abord ce qui a le plus d'impact.",
-        "Je communique clairement avec les parties prenantes et je rends les compromis explicites pour proteger la qualite du systeme sur le long terme.",
-        "J'ai l'habitude de travailler sous pression tout en gardant un niveau d'exigence eleve.",
+        "Je commence par prioriser, évaluer les risques et livrer d'abord ce qui a le plus d'impact.",
+        "Je communique clairement avec les parties prenantes et je rends les compromis explicites pour protéger la qualité du système sur le long terme.",
+        "J'ai l'habitude de travailler sous pression tout en gardant un niveau d'exigence élevé.",
       ],
     },
     {
       id: "teamwork",
       question:
-        "Quelle est votre experience du travail en equipe et de la collaboration ?",
+        "Quelle est votre expérience du travail en équipe et de la collaboration ?",
       answers: [
-        "J'ai travaille de pres avec des designers, des backend engineers et des stakeholders produit, aussi bien en freelance qu'au sein d'equipes structurees.",
-        "Je valorise la communication claire, la responsabilite partagee et les decisions pragmatiques.",
-        "Je suis a l'aise avec le mentorat, la revue de code et les discussions techniques.",
+        "J'ai travaillé de près avec des designers, des backend engineers et des stakeholders produit, aussi bien en freelance qu'au sein d'équipes structurées.",
+        "Je valorise la communication claire, la responsabilité partagée et les décisions pragmatiques.",
+        "Je suis à l'aise avec le mentorat, la revue de code et les discussions techniques.",
       ],
     },
     {
       id: "strengths",
-      question: "Quelles sont vos forces en tant que developpeur ?",
+      question: "Quelles sont vos forces en tant que développeur ?",
       answers: [
-        "Une forte capacite en architecture frontend, une vraie aptitude a resoudre les problemes et un grand souci du detail.",
-        "Je suis a l'aise pour transformer des besoins complexes en solutions propres, evolutives et maintenables.",
-        "Je prends mes responsabilites, je livre de facon fiable et j'essaie toujours de tirer la qualite vers le haut.",
+        "Une forte capacité en architecture frontend, une vraie aptitude à résoudre les problèmes et un grand souci du détail.",
+        "Je suis à l'aise pour transformer des besoins complexes en solutions propres, évolutives et maintenables.",
+        "Je prends mes responsabilités, je livre de façon fiable et j'essaie toujours de tirer la qualité vers le haut.",
       ],
     },
     {
       id: "improving",
       question:
-        "Quels sont les domaines que vous cherchez actuellement a renforcer ?",
+        "Quels sont les domaines que vous cherchez actuellement à renforcer ?",
       answers: [
-        "J'approfondis mon expertise en conception de systemes frontend a grande echelle et en performance a l'echelle.",
-        "J'ameliore encore mes strategies de test et mes approches de maintenabilite long terme pour les interfaces complexes.",
-        "J'evalue en continu de nouveaux outils et patterns pour ameliorer l'experience developpeur et la fiabilite.",
+        "J'approfondis mon expertise en conception de systèmes frontend à grande échelle et en performance à l'échelle.",
+        "J'améliore encore mes stratégies de test et mes approches de maintenabilité long terme pour les interfaces complexes.",
+        "J'évalue en continu de nouveaux outils et patterns pour améliorer l'expérience développeur et la fiabilité.",
       ],
     },
     {
       id: "production",
       question:
-        "Avez-vous deja travaille avec des delais reels ou des systemes en production ?",
+        "Avez-vous déjà travaillé avec des délais réels ou des systèmes en production ?",
       answers: [
-        "Oui, largement. J'ai travaille sur des systemes en production avec de vrais utilisateurs et de vraies contraintes.",
-        "Je comprends l'importance de la stabilite, du monitoring, de la backward compatibility et des deploiements securises.",
-        "Je suis a l'aise avec la responsabilite liee au code de qualite production.",
+        "Oui, largement. J'ai travaillé sur des systèmes en production avec de vrais utilisateurs et de vraies contraintes.",
+        "Je comprends l'importance de la stabilité, du monitoring, de la backward compatibility et des déploiements sécurisés.",
+        "Je suis à l'aise avec la responsabilité liée au code de qualité production.",
       ],
     },
     {
@@ -245,43 +245,43 @@ const recruiterQaByLanguage: Record<AppLanguage, RecruiterQuestion[]> = {
         "Comment abordez-vous l'apprentissage d'une nouvelle technologie ?",
       answers: [
         "Je commence par les concepts de base et l'architecture, pas seulement par la syntaxe.",
-        "Je valide une technologie en l'appliquant a des cas reels et en mesurant sa valeur.",
-        "Je cherche surtout a comprendre les compromis et les implications a long terme.",
+        "Je valide une technologie en l'appliquant à des cas réels et en mesurant sa valeur.",
+        "Je cherche surtout à comprendre les compromis et les implications à long terme.",
       ],
     },
     {
       id: "environment",
-      question: "Quel type d'environnement de travail preferez-vous ?",
+      question: "Quel type d'environnement de travail préférez-vous ?",
       answers: [
         "Je suis meilleur dans des environnements qui valorisent l'autonomie technique et la communication claire.",
-        "J'apprecie les equipes qui donnent de l'importance a la qualite du code, a la scalabilite et a l'amelioration continue.",
-        "Je suis a l'aise avec l'autonomie tant que les attentes et les objectifs sont clairs.",
+        "J'apprécie les équipes qui donnent de l'importance à la qualité du code, à la scalabilité et à l'amélioration continue.",
+        "Je suis à l'aise avec l'autonomie tant que les attentes et les objectifs sont clairs.",
       ],
     },
     {
       id: "remote",
-      question: "Etes-vous ouvert au remote ou a la relocalisation ?",
+      question: "Êtes-vous ouvert au remote ou à la relocalisation ?",
       answers: [
-        "Oui, je suis ouvert au travail a distance et aux opportunites internationales.",
-        "Je reste flexible selon l'equipe, le produit et le potentiel de croissance a long terme.",
-        "Je suis ouvert a discuter de formats hybrides ou de relocalisation s'il y a un bon alignement.",
+        "Oui, je suis ouvert au travail à distance et aux opportunités internationales.",
+        "Je reste flexible selon l'équipe, le produit et le potentiel de croissance à long terme.",
+        "Je suis ouvert à discuter de formats hybrides ou de relocalisation s'il y a un bon alignement.",
       ],
     },
     {
       id: "salary",
       question: "Quelles sont vos attentes salariales ?",
       answers: [
-        "Je vise une remuneration coherente avec un role senior et avec l'impact que je peux apporter.",
-        "Je suis ouvert a la discussion selon le scope, les responsabilites et les perspectives de croissance.",
-        "Je prefere aligner les attentes une fois que j'ai bien compris le role et ses enjeux.",
+        "Je vise une rémunération cohérente avec un rôle senior et avec l'impact que je peux apporter.",
+        "Je suis ouvert à la discussion selon le scope, les responsabilités et les perspectives de croissance.",
+        "Je préfère aligner les attentes une fois que j'ai bien compris le rôle et ses enjeux.",
       ],
     },
     {
       id: "availability",
       question: "Quand seriez-vous disponible pour commencer ?",
       answers: [
-        "Je peux commencer apres une courte periode de preavis si necessaire.",
-        "Je peux aussi demarrer rapidement selon l'alignement.",
+        "Je peux commencer après une courte période de préavis si nécessaire.",
+        "Je peux aussi démarrer rapidement selon l'alignement.",
         "Je reste flexible et heureux de m'organiser selon les besoins du projet.",
       ],
     },
@@ -302,7 +302,7 @@ export function getRandomAnswer(
 
   if (!question) {
     return language === "fr"
-      ? "Aucune reponse disponible."
+      ? "Aucune réponse disponible."
       : "No answer available.";
   }
 

@@ -1,12 +1,12 @@
 {
   "navbar": {
     "logo": "CHREF.",
-    "about": "A propos",
-    "skills": "Competences",
-    "experience": "Experience",
+    "about": "À propos",
+    "skills": "Compétences",
+    "experience": "Expérience",
     "projects": "Projets",
     "blogs": "Blogs",
-    "themeToggle": "Changer le theme",
+    "themeToggle": "Changer le thème",
     "languageSwitch": "Changer la langue"
   },
   "language": {
@@ -14,7 +14,7 @@
     "fr": "FR",
     "switchTo": {
       "en": "Passer en anglais",
-      "fr": "Passer en francais"
+      "fr": "Passer en français"
     }
   },
   "contact": {
@@ -24,53 +24,53 @@
     "timeLabel": "Heure de l'entretien",
     "companyPlaceholder": "Saisissez le nom de votre entreprise",
     "namePlaceholder": "Saisissez votre nom complet",
-    "emailPlaceholder": "Saisissez votre email",
+    "emailPlaceholder": "Saisissez votre e-mail",
     "subjectPlaceholder": "Saisissez votre sujet",
     "errors": {
       "nameRequired": "Le nom est requis",
-      "emailRequired": "L'email est requis",
-      "emailInvalid": "Veuillez saisir un email valide",
+      "emailRequired": "L'e-mail est requis",
+      "emailInvalid": "Veuillez saisir un e-mail valide",
       "subjectRequired": "Le sujet est requis",
       "companyRequired": "Le nom de l'entreprise est requis"
     },
-    "emailBodyTitle": "Contenu du message email",
+    "emailBodyTitle": "Contenu du message e-mail",
     "editInformationTitle": "Modifier vos informations",
     "confirm": "Confirmer",
     "return": "Retour",
     "send": "Envoyer",
-    "editorPlaceholder": "Ecrivez votre message ici...",
-    "sendError": "Echec de l'envoi de l'email.",
-    "sendSuccess": "Merci pour votre message. Je vous repondrai rapidement.",
+    "editorPlaceholder": "Écrivez votre message ici...",
+    "sendError": "Échec de l'envoi de l'e-mail.",
+    "sendSuccess": "Merci pour votre message. Je vous répondrai rapidement.",
     "template": {
       "greeting": "Bonjour Achref,",
-      "intro": "Je suis <b>{{name}}</b> de <u>{{company}}</u>, nous avons le plaisir de vous inviter a un entretien dans le cadre de notre processus de recrutement.",
-      "interviewDetails": "Details de l'entretien :",
+      "intro": "Je suis <b>{{name}}</b> de <u>{{company}}</u>, nous avons le plaisir de vous inviter à un entretien dans le cadre de notre processus de recrutement.",
+      "interviewDetails": "Détails de l'entretien :",
       "date": "Date {{date}}",
       "time": "Heure {{time}}",
-      "interviewType": "L'entretien se deroulera <u>[typeEntretien]</u>.",
-      "availability": "Merci de confirmer votre disponibilite en repondant a cet email.",
-      "closing": "Au plaisir d'echanger avec vous."
+      "interviewType": "L'entretien se déroulera <u>[typeEntretien]</u>.",
+      "availability": "Merci de confirmer votre disponibilité en répondant à cet e-mail.",
+      "closing": "Au plaisir d'échanger avec vous."
     }
   },
   "notFound": {
     "title": "Page introuvable",
-    "description": "La page que vous cherchez n'existe pas ou a peut-etre ete deplacee.",
-    "cta": "Retour a l'accueil"
+    "description": "La page que vous cherchez n'existe pas ou a peut-être été déplacée.",
+    "cta": "Retour à l'accueil"
   },
   "game": {
     "tooltip": "Charger le mini-jeu 2048",
-    "play": "Jouer a 2048",
+    "play": "Jouer à 2048",
     "loading": "Chargement..."
   },
   "qa": {
-    "tooltip": "Voir quelques reponses rapides sur mon profil",
-    "button": "Reponses rapides",
+    "tooltip": "Voir quelques réponses rapides sur mon profil",
+    "button": "Réponses rapides",
     "loading": "Chargement...",
     "title": "Achref Gallaoui",
-    "subtitle": "Je suis la pour repondre aux questions courantes des recruteurs",
-    "empty": "Choisissez une question dans la liste ci-dessous et j'y repondrai aussi clairement que possible.",
-    "thinking": "Je reflechis...",
+    "subtitle": "Je suis là pour répondre aux questions courantes des recruteurs",
+    "empty": "Choisissez une question dans la liste ci-dessous et j'y répondrai aussi clairement que possible.",
+    "thinking": "Je réfléchis...",
     "close": "Fermer",
-    "allAnswered": "Toutes les questions ont une reponse."
+    "allAnswered": "Toutes les questions ont une réponse."
   }
 }

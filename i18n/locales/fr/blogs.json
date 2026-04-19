@@ -1,13 +1,13 @@
 {
-  "title": "Blog et reflexions",
-  "description": "Histoires, experiences et lecons apprises tout au long de mon parcours en developpement logiciel et en gestion de projet.",
-  "empty": "Aucun article pour le moment. Revenez bientot !",
+  "title": "Blog et réflexions",
+  "description": "Histoires, expériences et leçons apprises tout au long de mon parcours en développement logiciel et en gestion de projet.",
+  "empty": "Aucun article pour le moment. Revenez bientôt !",
   "breadcrumb": "Blogs",
-  "backToAllPosts": "Retour a tous les articles",
+  "backToAllPosts": "Retour à tous les articles",
   "speech": {
     "pause": "Pause",
     "resume": "Reprendre",
     "listen": "Ecouter l'histoire",
-    "stop": "Arreter"
+    "stop": "Arrêter"
   }
 }
