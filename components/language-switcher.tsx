@@ -10,6 +10,7 @@ import {
 } from "@/i18n/routing";
 import { useTranslation } from "@/i18n/client";
 import { cookieName, type AppLanguage } from "@/i18n/settings";
+import { trackLanguageChange } from "@/lib/analytics";
 
 export default function LanguageSwitcher() {
   const pathname = usePathname();
@@ -20,6 +21,7 @@ export default function LanguageSwitcher() {
   const nextLanguage: AppLanguage = currentLanguage === "en" ? "fr" : "en";
 
   const handleLanguageChange = (nextLanguage: AppLanguage) => {
+    trackLanguageChange(nextLanguage);
     document.cookie = `${cookieName}=${nextLanguage}; path=/; max-age=31536000; samesite=lax`;
     router.replace(localizePath(nextLanguage, currentPath));
   };

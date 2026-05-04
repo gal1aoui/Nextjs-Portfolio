@@ -21,6 +21,7 @@ import { addToast } from "@heroui/toast";
 import { sendEmail } from "@/lib/mailer";
 import { useTranslation } from "@/i18n/client";
 import { useModal } from "@/providers/modal-provider";
+import { trackEmailSent } from "@/lib/analytics";
 
 import { Button } from "../ui/button";
 import { SendIcon } from "../icons";
@@ -261,15 +262,20 @@ export default function ContactConfirmForm({
   };
 
   const handleSendEmail = async () => {
+    const startTime = performance.now();
     const result = await sendEmail(form, description);
+    const endTime = performance.now();
+    const submissionTime = endTime - startTime;
 
     if (result.error) {
+      trackEmailSent(false, form.email);
       addToast({
         title: t("contact.sendError"),
         color: "danger",
         variant: "bordered",
       });
     } else {
+      trackEmailSent(true, form.email);
       closeModal();
       addToast({
         title: t("contact.sendSuccess"),

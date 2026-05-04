@@ -1,9 +1,11 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 
 import { RandomizedTextEffect } from "@/components/randomized-text";
 import { useTranslation } from "@/i18n/client";
+import { trackExperiencePageViewed } from "@/lib/analytics";
 
 import { ExperienceItem } from "./experience-data";
 import Timeline from "./timeline";
@@ -14,6 +16,10 @@ export default function ExperiencePage({
   experiences: ExperienceItem[];
 }) {
   const { t } = useTranslation("experience");
+
+  useEffect(() => {
+    trackExperiencePageViewed();
+  }, []);
 
   return (
     <section className="py-8 md:py-12">

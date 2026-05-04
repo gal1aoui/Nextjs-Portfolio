@@ -1,10 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 import { RandomizedTextEffect } from "@/components/randomized-text";
 import { useTranslation } from "@/i18n/client";
+import {
+  trackProjectsPageViewed,
+  trackProjectDrawerOpened,
+  trackProjectDrawerClosed,
+  trackGithubContributionsViewed,
+} from "@/lib/analytics";
 
 import GithubContributions from "./github-calendar";
 import ProjectCard from "./project-card";
@@ -16,12 +22,22 @@ export default function ProjectsPage({ projects }: { projects: Project[] }) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
+  // Track page view on mount
+  useEffect(() => {
+    trackProjectsPageViewed();
+    trackGithubContributionsViewed("gal1aoui");
+  }, []);
+
   const handleSelectProject = (project: Project) => {
+    trackProjectDrawerOpened(project.id, project.title, project.category);
     setSelectedProject(project);
     setIsDrawerOpen(true);
   };
 
   const handleCloseDrawer = () => {
+    if (selectedProject) {
+      trackProjectDrawerClosed(selectedProject.id);
+    }
     setIsDrawerOpen(false);
     setTimeout(() => setSelectedProject(null), 300);
   };

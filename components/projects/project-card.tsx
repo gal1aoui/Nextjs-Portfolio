@@ -6,6 +6,10 @@ import { Chip } from "@heroui/chip";
 import { MouseEvent } from "react";
 
 import { useTranslation } from "@/i18n/client";
+import {
+  trackProjectCardClick,
+  trackProjectCardHover,
+} from "@/lib/analytics";
 
 import { GithubIcon } from "../icons";
 
@@ -31,6 +35,12 @@ export default function ProjectCard({
 
     mouseX.set(e.clientX - left);
     mouseY.set(e.clientY - top);
+    trackProjectCardHover(project.id, project.title);
+  };
+
+  const handleCardClick = () => {
+    trackProjectCardClick(project.id, project.title);
+    onSelect(project);
   };
 
   const background = useMotionTemplate`
@@ -56,7 +66,7 @@ export default function ProjectCard({
         isPressable
         className="relative overflow-hidden rounded-2xl border border-default-200/50 bg-background/60 backdrop-blur-sm transition-all duration-300 hover:shadow-xl"
         onMouseMove={handleMouseMove}
-        onPress={() => onSelect(project)}
+        onPress={handleCardClick}
       >
         <motion.div
           className="pointer-events-none absolute inset-0 z-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"

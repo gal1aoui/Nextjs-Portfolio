@@ -27,6 +27,7 @@ import {
   localizePath,
 } from "@/i18n/routing";
 import { useTranslation } from "@/i18n/client";
+import { trackMobileMenuToggle } from "@/lib/analytics";
 
 import GameLauncher from "./game-launcher";
 import QuestionAndAnswer from "./contact/qa/question-answer";
@@ -151,7 +152,10 @@ export const Navbar = () => {
             isIconOnly
             aria-label="Open menu"
             variant="light"
-            onPress={() => setIsSidebarOpen(true)}
+            onPress={() => {
+              trackMobileMenuToggle(true);
+              setIsSidebarOpen(true);
+            }}
           >
             <MenuIcon className="h-6 w-6" />
           </Button>

@@ -1,15 +1,21 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 
 import { RandomizedTextEffect } from "@/components/randomized-text";
 import { useTranslation } from "@/i18n/client";
+import { trackBlogPageViewed } from "@/lib/analytics";
 
 import BlogCard from "./blog-card";
 import { Blog } from "./types";
 
 export default function BlogsPage({ blogs }: { blogs: Blog[] }) {
   const { t } = useTranslation("blogs");
+
+  useEffect(() => {
+    trackBlogPageViewed();
+  }, []);
 
   return (
     <section className="py-8 md:py-12">

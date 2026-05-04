@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
@@ -9,6 +9,13 @@ import { Button as EditorButton } from "@heroui/button";
 import { ZoomInIcon, ZoomOutIcon } from "./icons";
 import PdfRendererSkeleton from "./pdf-renderer-skeleton";
 import { EditorActionIcon } from "./contact/editor/icons";
+import {
+  trackResumePdfOpened,
+  trackResumePdfPageChanged,
+  trackResumePdfZoom,
+  trackResumePdfDownloaded,
+  trackResumePdfTimeSpent,
+} from "@/lib/analytics";
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.mjs",
@@ -21,8 +28,11 @@ export default function ResumeViewer() {
   const [scale, setScale] = useState(1.0);
   const [isPageChanging, setIsPageChanging] = useState(false);
   const [renderedPages, setRenderedPages] = useState<Set<number>>(new Set([1]));
+  const pdfOpenTimeRef = useRef<number>(Date.now());
+  const previousPageRef = useRef<number>(1);
 
   const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
+    trackResumePdfOpened();
     setNumPages(numPages);
     setPageNumber(1);
     setRenderedPages(new Set([1, 2]));
@@ -42,6 +52,8 @@ export default function ResumeViewer() {
       setRenderedPages(pagesToRender);
 
       setTimeout(() => {
+        trackResumePdfPageChanged(previousPageRef.current, newPage, numPages);
+        previousPageRef.current = newPage;
         setPageNumber(newPage);
         setIsPageChanging(false);
       }, 50);
@@ -52,14 +64,43 @@ export default function ResumeViewer() {
   const previousPage = () => changePage(pageNumber - 1);
   const nextPage = () => changePage(pageNumber + 1);
 
-  const zoomIn = () => setScale((prev) => Math.min(prev + 0.25, 2.5));
-  const zoomOut = () => setScale((prev) => Math.max(prev - 0.25, 0.5));
-  const resetZoom = () => setScale(1.0);
+  const zoomIn = () => {
+    setScale((prev) => {
+      const newScale = Math.min(prev + 0.25, 2.5);
+      trackResumePdfZoom("in", newScale);
+      return newScale;
+    });
+  };
+  const zoomOut = () => {
+    setScale((prev) => {
+      const newScale = Math.max(prev - 0.25, 0.5);
+      trackResumePdfZoom("out", newScale);
+      return newScale;
+    });
+  };
+  const resetZoom = () => {
+    trackResumePdfZoom("reset", 1.0);
+    setScale(1.0);
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") previousPage();
-      if (e.key === "ArrowRight") nextPage();
+      if (e.key === "ArrowLeft") {
+        previousPage();
+        trackResumePdfPageChanged(
+          pageNumber,
+          Math.max(1, pageNumber - 1),
+          numPages,
+        );
+      }
+      if (e.key === "ArrowRight") {
+        nextPage();
+        trackResumePdfPageChanged(
+          pageNumber,
+          Math.min(numPages, pageNumber + 1),
+          numPages,
+        );
+      }
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -75,7 +116,20 @@ export default function ResumeViewer() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    trackResumePdfDownloaded();
   };
+
+  // Track time spent on PDF when component unmounts
+  useEffect(() => {
+    return () => {
+      const timeSpentMs = Date.now() - pdfOpenTimeRef.current;
+      const timeSpentSeconds = Math.round(timeSpentMs / 1000);
+      if (timeSpentSeconds > 2) {
+        // Only track if spent more than 2 seconds
+        trackResumePdfTimeSpent(timeSpentSeconds);
+      }
+    };
+  }, []);
 
   return (
     <>

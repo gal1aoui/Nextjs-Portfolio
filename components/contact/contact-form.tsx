@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { Calendar } from "@heroui/calendar";
 import { TimeInput } from "@heroui/date-input";
 import {
@@ -17,6 +18,10 @@ import dynamic from "next/dynamic";
 
 import { useTranslation } from "@/i18n/client";
 import { useModal } from "@/providers/modal-provider";
+import {
+  trackContactFormOpened,
+  trackContactFormStep,
+} from "@/lib/analytics";
 
 import { Button } from "../ui/button";
 import {
@@ -90,6 +95,11 @@ export default function ContactForm({
     subject: undefined,
     company: undefined,
   });
+
+  // Track form opened on mount
+  useEffect(() => {
+    trackContactFormOpened();
+  }, []);
 
   const validateForm = () => {
     const newErrors: Partial<ContactFormType> = {};
@@ -236,10 +246,13 @@ export default function ContactForm({
           size="md"
           onClick={() => {
             if (validateForm()) {
+              trackContactFormStep("confirmation", true);
               openModal({
                 title: t("contact.emailBodyTitle"),
                 render: () => <DynamicContactConfirmForm form={form} />,
               });
+            } else {
+              trackContactFormStep("validation", false);
             }
           }}
         >

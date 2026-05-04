@@ -14,6 +14,7 @@ import { Link } from "@heroui/link";
 
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/i18n/client";
+import { trackProjectGithubClick } from "@/lib/analytics";
 
 import { GithubIcon } from "../icons";
 
@@ -33,6 +34,10 @@ export default function ProjectDrawer({
   const { t } = useTranslation("projects");
 
   if (!project) return null;
+
+  const handleGithubClick = () => {
+    trackProjectGithubClick(project.id, project.title, project.repoUrl);
+  };
 
   return (
     <Drawer
@@ -176,6 +181,7 @@ export default function ProjectDrawer({
                 as={Link}
                 className={`flex-1 bg-gradient-to-r ${project.gradient} text-white shadow-lg`}
                 href={project.repoUrl}
+                onClick={handleGithubClick}
                 size="md"
               >
                 <GithubIcon size={18} />

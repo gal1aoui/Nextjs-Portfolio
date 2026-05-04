@@ -5,6 +5,7 @@ import { Tooltip } from "@heroui/tooltip";
 
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/i18n/client";
+import { trackGameOpened } from "@/lib/analytics";
 
 type GameClientComponent = ComponentType<{
   onClose: () => void;
@@ -19,6 +20,7 @@ export default function GameLauncher() {
 
   const handleOpen = async () => {
     if (GameClientComponent) {
+      trackGameOpened();
       setIsVisible(true);
 
       return;
@@ -30,6 +32,7 @@ export default function GameLauncher() {
       const gameClientModule = await import("./game-client");
 
       setGameClientComponent(() => gameClientModule.default);
+      trackGameOpened();
       setIsVisible(true);
     } finally {
       setIsLoading(false);
@@ -37,7 +40,13 @@ export default function GameLauncher() {
   };
 
   if (isVisible && GameClientComponent) {
-    return <GameClientComponent onClose={() => setIsVisible(false)} />;
+    return (
+      <GameClientComponent
+        onClose={() => {
+          setIsVisible(false);
+        }}
+      />
+    );
   }
 
   return (
