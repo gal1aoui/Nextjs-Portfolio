@@ -84,7 +84,12 @@ export default function Introduction() {
               aria-label={t("intro.social.linkedin")}
               color="foreground"
               href="https://www.linkedin.com/in/ashraf-gallaoui/"
-              onClick={() => trackSocialLinkClicked("linkedin", "https://www.linkedin.com/in/ashraf-gallaoui/")}
+              onClick={() =>
+                trackSocialLinkClicked(
+                  "linkedin",
+                  "https://www.linkedin.com/in/ashraf-gallaoui/",
+                )
+              }
             >
               <LinkedInIcon size={40} />
             </Link>
@@ -96,7 +101,9 @@ export default function Introduction() {
               aria-label={t("intro.social.github")}
               color="foreground"
               href="https://github.com/gal1aoui"
-              onClick={() => trackSocialLinkClicked("github", "https://github.com/gal1aoui")}
+              onClick={() =>
+                trackSocialLinkClicked("github", "https://github.com/gal1aoui")
+              }
             >
               <GithubIcon size={48} />
             </Link>

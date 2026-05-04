@@ -15,10 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/i18n/client";
 import { fallbackLng, isLanguage } from "@/i18n/settings";
-import {
-  trackQADrawerOpened,
-  trackQAQuestionAsked,
-} from "@/lib/analytics";
+import { trackQADrawerOpened, trackQAQuestionAsked } from "@/lib/analytics";
 
 import { getRandomAnswer, getRecruiterQa } from "./recruiter-qa";
 import RecruiterQuestions from "./recruiter-questions";
@@ -78,6 +75,7 @@ export default function QuestionAnswerDrawer({
 
   const handleSelectQuestion = (questionId: string) => {
     const question = questionsById.get(questionId);
+
     if (question) {
       trackQAQuestionAsked(questionId, question.question);
     }
@@ -88,9 +86,7 @@ export default function QuestionAnswerDrawer({
 
       setHistory((prev) =>
         prev.map((item, idx) =>
-          idx === prev.length - 1
-            ? { ...item, answer, loading: false }
-            : item,
+          idx === prev.length - 1 ? { ...item, answer, loading: false } : item,
         ),
       );
     }, 2000);

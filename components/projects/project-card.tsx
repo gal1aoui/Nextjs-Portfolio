@@ -6,10 +6,7 @@ import { Chip } from "@heroui/chip";
 import { MouseEvent } from "react";
 
 import { useTranslation } from "@/i18n/client";
-import {
-  trackProjectCardClick,
-  trackProjectCardHover,
-} from "@/lib/analytics";
+import { trackProjectCardClick, trackProjectCardHover } from "@/lib/analytics";
 
 import { GithubIcon } from "../icons";
 

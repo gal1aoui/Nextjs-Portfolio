@@ -22,7 +22,7 @@ export const trackAnalyticsEvent = ({
   value,
 }: AnalyticsEventProps) => {
   const eventName = `${category}_${action}`;
-  
+
   track(eventName, {
     category,
     action,
@@ -63,7 +63,10 @@ export const trackMobileMenuToggle = (opened: boolean) => {
 // PROJECT EVENTS
 // ============================================
 
-export const trackProjectCardClick = (projectId: string, projectTitle: string) => {
+export const trackProjectCardClick = (
+  projectId: string,
+  projectTitle: string,
+) => {
   trackAnalyticsEvent({
     category: "projects",
     action: "card_clicked",
@@ -72,7 +75,10 @@ export const trackProjectCardClick = (projectId: string, projectTitle: string) =
   });
 };
 
-export const trackProjectCardHover = (projectId: string, projectTitle: string) => {
+export const trackProjectCardHover = (
+  projectId: string,
+  projectTitle: string,
+) => {
   trackAnalyticsEvent({
     category: "projects",
     action: "card_hovered",
@@ -83,7 +89,7 @@ export const trackProjectCardHover = (projectId: string, projectTitle: string) =
 export const trackProjectDrawerOpened = (
   projectId: string,
   projectTitle: string,
-  category: string
+  category: string,
 ) => {
   trackAnalyticsEvent({
     category: "projects",
@@ -103,7 +109,7 @@ export const trackProjectDrawerClosed = (projectId: string) => {
 export const trackProjectGithubClick = (
   projectId: string,
   projectTitle: string,
-  url: string
+  url: string,
 ) => {
   trackAnalyticsEvent({
     category: "projects",
@@ -167,7 +173,7 @@ export const trackContactFormStep = (step: string, completed: boolean) => {
 
 export const trackContactFormSubmitted = (
   submissionTime: number,
-  hasMessage: boolean
+  hasMessage: boolean,
 ) => {
   trackAnalyticsEvent({
     category: "contact",
@@ -177,11 +183,15 @@ export const trackContactFormSubmitted = (
   });
 };
 
-export const trackEmailSent = (success: boolean, recipient: string) => {
+export const trackEmailSent = (
+  success: boolean,
+  recipient: string,
+  submissionTime?: number,
+) => {
   trackAnalyticsEvent({
     category: "contact",
     action: "email_sent",
-    label: `${success ? "success" : "failed"} - ${recipient}`,
+    label: `${success ? "success" : "failed"} - ${recipient} - ${submissionTime ? `time_${submissionTime}ms` : ""}`,
     value: success ? 1 : 0,
   });
 };
@@ -194,7 +204,10 @@ export const trackQADrawerOpened = () => {
   });
 };
 
-export const trackQAQuestionAsked = (questionId: string, questionText: string) => {
+export const trackQAQuestionAsked = (
+  questionId: string,
+  questionText: string,
+) => {
   trackAnalyticsEvent({
     category: "contact",
     action: "qa_question_asked",
@@ -217,17 +230,20 @@ export const trackResumePdfOpened = () => {
 export const trackResumePdfPageChanged = (
   fromPage: number,
   toPage: number,
-  totalPages: number
+  totalPages: number,
 ) => {
   trackAnalyticsEvent({
     category: "resume",
     action: "pdf_page_changed",
-    label: `${fromPage}-${toPage}`,
+    label: `${fromPage}-${toPage} of ${totalPages}`,
     value: toPage,
   });
 };
 
-export const trackResumePdfZoom = (action: "in" | "out" | "reset", scale: number) => {
+export const trackResumePdfZoom = (
+  action: "in" | "out" | "reset",
+  scale: number,
+) => {
   trackAnalyticsEvent({
     category: "resume",
     action: `pdf_zoom_${action}`,
@@ -282,7 +298,10 @@ export const trackGameWon = (score: number) => {
   });
 };
 
-export const trackGameClosed = (timePlayedSeconds: number, finalScore: number) => {
+export const trackGameClosed = (
+  timePlayedSeconds: number,
+  finalScore: number,
+) => {
   trackAnalyticsEvent({
     category: "game",
     action: "game_closed",
@@ -312,7 +331,10 @@ export const trackBlogArticleOpened = (blogId: string, blogTitle: string) => {
   });
 };
 
-export const trackBlogReadingTimeTracked = (blogId: string, timeInSeconds: number) => {
+export const trackBlogReadingTimeTracked = (
+  blogId: string,
+  timeInSeconds: number,
+) => {
   trackAnalyticsEvent({
     category: "blog",
     action: "reading_time_tracked",
@@ -347,7 +369,7 @@ export const trackSocialLinkClicked = (platform: string, url: string) => {
   trackAnalyticsEvent({
     category: "ui",
     action: "social_link_clicked",
-    label: platform,
+    label: `${platform} - ${url}`,
   });
 };
 
@@ -374,7 +396,7 @@ export const trackExperiencePageViewed = () => {
 
 export const trackExperienceTimelineInteraction = (
   companyName: string,
-  action: "expanded" | "collapsed"
+  action: "expanded" | "collapsed",
 ) => {
   trackAnalyticsEvent({
     category: "experience",
@@ -390,7 +412,7 @@ export const trackExperienceTimelineInteraction = (
 
 export const trackComponentLoadTime = (
   componentName: string,
-  loadTimeMs: number
+  loadTimeMs: number,
 ) => {
   trackAnalyticsEvent({
     category: "performance",

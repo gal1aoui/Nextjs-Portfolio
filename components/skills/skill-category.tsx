@@ -2,8 +2,9 @@ import { Card, CardBody, CardHeader } from "@heroui/card";
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 
-import { RandomizedTextEffect } from "../randomized-text";
 import { trackSkillsCategoryViewed } from "@/lib/analytics";
+
+import { RandomizedTextEffect } from "../randomized-text";
 
 import { SkillCategory } from "./type";
 import SkillGrid from "./skill-card";
@@ -26,6 +27,7 @@ export default function SkillCategoryCard({
       hasTrackedRef.current = true;
     }
   }, [category.title]);
+
   return (
     <motion.section
       className="w-full h-[90vh] sticky top-20 p-2"

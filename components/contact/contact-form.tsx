@@ -18,10 +18,7 @@ import dynamic from "next/dynamic";
 
 import { useTranslation } from "@/i18n/client";
 import { useModal } from "@/providers/modal-provider";
-import {
-  trackContactFormOpened,
-  trackContactFormStep,
-} from "@/lib/analytics";
+import { trackContactFormOpened, trackContactFormStep } from "@/lib/analytics";
 
 import { Button } from "../ui/button";
 import {

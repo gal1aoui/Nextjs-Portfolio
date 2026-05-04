@@ -6,9 +6,6 @@ import "react-pdf/dist/Page/TextLayer.css";
 import { Divider } from "@heroui/divider";
 import { Button as EditorButton } from "@heroui/button";
 
-import { ZoomInIcon, ZoomOutIcon } from "./icons";
-import PdfRendererSkeleton from "./pdf-renderer-skeleton";
-import { EditorActionIcon } from "./contact/editor/icons";
 import {
   trackResumePdfOpened,
   trackResumePdfPageChanged,
@@ -16,6 +13,10 @@ import {
   trackResumePdfDownloaded,
   trackResumePdfTimeSpent,
 } from "@/lib/analytics";
+
+import { ZoomInIcon, ZoomOutIcon } from "./icons";
+import PdfRendererSkeleton from "./pdf-renderer-skeleton";
+import { EditorActionIcon } from "./contact/editor/icons";
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.mjs",
@@ -67,14 +68,18 @@ export default function ResumeViewer() {
   const zoomIn = () => {
     setScale((prev) => {
       const newScale = Math.min(prev + 0.25, 2.5);
+
       trackResumePdfZoom("in", newScale);
+
       return newScale;
     });
   };
   const zoomOut = () => {
     setScale((prev) => {
       const newScale = Math.max(prev - 0.25, 0.5);
+
       trackResumePdfZoom("out", newScale);
+
       return newScale;
     });
   };
@@ -124,6 +129,7 @@ export default function ResumeViewer() {
     return () => {
       const timeSpentMs = Date.now() - pdfOpenTimeRef.current;
       const timeSpentSeconds = Math.round(timeSpentMs / 1000);
+
       if (timeSpentSeconds > 2) {
         // Only track if spent more than 2 seconds
         trackResumePdfTimeSpent(timeSpentSeconds);

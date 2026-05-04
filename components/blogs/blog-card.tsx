@@ -31,7 +31,10 @@ export default function BlogCard({ blog, index }: BlogCardProps) {
       initial={{ opacity: 0, y: 20 }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
     >
-      <Link href={localizePath(lng, `/blogs/${blog.id}`)} onClick={() => trackBlogArticleOpened(blog.id, blog.title)}>
+      <Link
+        href={localizePath(lng, `/blogs/${blog.id}`)}
+        onClick={() => trackBlogArticleOpened(blog.id, blog.title)}
+      >
         <Card
           isPressable
           className="group border border-default-200/50 bg-background/60 backdrop-blur-sm hover:border-primary/50 hover:shadow-xl transition-all duration-300 h-full"

@@ -268,14 +268,14 @@ export default function ContactConfirmForm({
     const submissionTime = endTime - startTime;
 
     if (result.error) {
-      trackEmailSent(false, form.email);
+      trackEmailSent(false, form.email, submissionTime);
       addToast({
         title: t("contact.sendError"),
         color: "danger",
         variant: "bordered",
       });
     } else {
-      trackEmailSent(true, form.email);
+      trackEmailSent(true, form.email, submissionTime);
       closeModal();
       addToast({
         title: t("contact.sendSuccess"),

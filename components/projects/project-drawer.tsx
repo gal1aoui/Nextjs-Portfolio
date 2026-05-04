@@ -181,8 +181,8 @@ export default function ProjectDrawer({
                 as={Link}
                 className={`flex-1 bg-gradient-to-r ${project.gradient} text-white shadow-lg`}
                 href={project.repoUrl}
-                onClick={handleGithubClick}
                 size="md"
+                onClick={handleGithubClick}
               >
                 <GithubIcon size={18} />
                 {project.repoUrl.includes("github.com")
