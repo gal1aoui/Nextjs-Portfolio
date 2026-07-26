@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Tab, Tabs } from "@heroui/tabs";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { RandomizedTextEffect } from "@/components/randomized-text";
 import { useTranslation } from "@/i18n/client";
@@ -37,7 +37,6 @@ export default function ProjectsPage({ projects }: { projects: Project[] }) {
   const { t } = useTranslation("projects");
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>("all");
@@ -50,11 +49,15 @@ export default function ProjectsPage({ projects }: { projects: Project[] }) {
   }, []);
 
   // Deep link: /projects?project=<id> auto-opens the drawer once on mount.
+  // Read from window.location instead of useSearchParams — the hook forces a
+  // CSR bailout that would stop the whole grid from being prerendered.
   useEffect(() => {
     if (deepLinkHandled.current) return;
     deepLinkHandled.current = true;
 
-    const projectId = searchParams.get("project");
+    const projectId = new URLSearchParams(window.location.search).get(
+      "project",
+    );
 
     if (!projectId) return;
 
@@ -65,7 +68,7 @@ export default function ProjectsPage({ projects }: { projects: Project[] }) {
       setSelectedProject(project);
       setIsDrawerOpen(true);
     }
-  }, [projects, searchParams]);
+  }, [projects]);
 
   const filteredProjects = useMemo(
     () =>

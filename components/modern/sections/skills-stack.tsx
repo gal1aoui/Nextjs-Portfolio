@@ -171,7 +171,7 @@ export default function SkillsStack() {
               className="sticky"
               style={{ top: `calc(5rem + ${index * 1.25}rem)` }}
             >
-              <div className="mb-8 flex min-h-[55vh] flex-col rounded-3xl border border-default-200/70 bg-background p-7 sm:p-10">
+              <div className="mb-8 flex min-h-[45vh] flex-col justify-center rounded-3xl border border-default-200/70 bg-background p-7 sm:p-10">
                 <div className="mb-8 flex items-start justify-between gap-4">
                   <div>
                     <p className="mb-2 font-display text-sm text-default-400">
@@ -207,7 +207,7 @@ export default function SkillsStack() {
                   })}
                 </div>
 
-                <p className="mt-auto pt-8 text-xs uppercase tracking-[0.3em] text-default-400">
+                <p className="mt-8 text-xs uppercase tracking-[0.3em] text-default-400">
                   {skillsData[categoryId].length}{" "}
                   {tModern("about.stats.skills")}
                 </p>

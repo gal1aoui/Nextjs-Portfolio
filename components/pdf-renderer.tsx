@@ -29,8 +29,32 @@ export default function ResumeViewer() {
   const [scale, setScale] = useState(1.0);
   const [isPageChanging, setIsPageChanging] = useState(false);
   const [renderedPages, setRenderedPages] = useState<Set<number>>(new Set([1]));
+  const [containerWidth, setContainerWidth] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
   const pdfOpenTimeRef = useRef<number>(Date.now());
   const previousPageRef = useRef<number>(1);
+
+  // Fit-to-width rendering: pages are drawn at the measured container width
+  // (so the resume always fits phones and tablets), and zoom multiplies from
+  // that fitted base instead of the PDF's natural ~800px size.
+  useEffect(() => {
+    const element = containerRef.current;
+
+    if (!element) return;
+
+    const measure = () => setContainerWidth(element.clientWidth);
+
+    measure();
+
+    const observer = new ResizeObserver(measure);
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const basePageWidth = containerWidth > 0 ? Math.min(containerWidth, 680) : 0;
+  const pageWidth = Math.round(basePageWidth * scale);
 
   const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
     trackResumePdfOpened();
@@ -139,7 +163,10 @@ export default function ResumeViewer() {
 
   return (
     <>
-      <div className="flex flex-col items-center">
+      <div
+        ref={containerRef}
+        className="flex w-[88vw] max-w-3xl flex-col items-center sm:w-[76vw]"
+      >
         <div className="sticky top-2 left-1/2 -translate-x-1/2 z-20">
           <div className="flex items-center gap-1.5 sm:gap-2 p-1.5 bg-default-100/80 backdrop-blur-sm rounded-full shadow-sm">
             <EditorButton
@@ -178,7 +205,7 @@ export default function ResumeViewer() {
             />
           </div>
         </div>
-        <div className="flex items-center justify-between w-full">
+        <div className="relative flex w-full items-center justify-between">
           <EditorButton
             isIconOnly
             className="hidden sm:flex rounded-full absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-default-100/80 backdrop-blur-sm shadow-md"
@@ -186,44 +213,51 @@ export default function ResumeViewer() {
             startContent={<EditorActionIcon type="leftArrow" />}
             onPress={previousPage}
           />
-          <div className="shadow-md mx-auto">
-            <Document
-              error={
-                <div className="flex items-center w-full justify-center p-20 text-red-500">
-                  <p>
-                    Failed to load PDF. Please make sure the file exists in the
-                    public folder.
-                  </p>
-                </div>
-              }
-              file="resume.pdf"
-              loading={<PdfRendererSkeleton />}
-              onLoadSuccess={onDocumentLoadSuccess}
-            >
-              {Array.from(renderedPages).map((pageNum) => (
-                <div
-                  key={pageNum}
-                  className={`${pageNum === pageNumber ? "block" : "hidden"}`}
-                >
-                  <Page
-                    loading={
+          <div className="w-full max-w-full overflow-auto">
+            <div className="mx-auto w-fit shadow-md">
+              <Document
+                error={
+                  <div className="flex items-center w-full justify-center p-20 text-red-500">
+                    <p>
+                      Failed to load PDF. Please make sure the file exists in
+                      the public folder.
+                    </p>
+                  </div>
+                }
+                file="/resume.pdf"
+                loading={<PdfRendererSkeleton />}
+                onLoadSuccess={onDocumentLoadSuccess}
+              >
+                {basePageWidth > 0
+                  ? Array.from(renderedPages).map((pageNum) => (
                       <div
-                        className="flex items-center justify-center"
-                        style={{ aspectRatio: "1/1.414" }}
+                        key={pageNum}
+                        className={`${pageNum === pageNumber ? "block" : "hidden"}`}
                       >
-                        <div className="animate-pulse text-default-400">
-                          Loading...
-                        </div>
+                        <Page
+                          loading={
+                            <div
+                              className="flex items-center justify-center"
+                              style={{
+                                aspectRatio: "1/1.414",
+                                width: pageWidth,
+                              }}
+                            >
+                              <div className="animate-pulse text-default-400">
+                                Loading...
+                              </div>
+                            </div>
+                          }
+                          pageNumber={pageNum}
+                          renderAnnotationLayer={false}
+                          renderTextLayer={false}
+                          width={pageWidth}
+                        />
                       </div>
-                    }
-                    pageNumber={pageNum}
-                    renderAnnotationLayer={false}
-                    renderTextLayer={false}
-                    scale={scale}
-                  />
-                </div>
-              ))}
-            </Document>
+                    ))
+                  : null}
+              </Document>
+            </div>
           </div>
           <EditorButton
             isIconOnly

@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { Suspense } from "react";
 import { notFound } from "next/navigation";
 
 import ProjectsPage from "@/components/projects/projects-page";
@@ -39,9 +38,5 @@ export default async function ProjectsRoute({
     notFound();
   }
 
-  return (
-    <Suspense>
-      <ProjectsPage projects={getProjects(lng)} />
-    </Suspense>
-  );
+  return <ProjectsPage projects={getProjects(lng)} />;
 }

@@ -53,6 +53,31 @@ export const projectContentEn: Record<ProjectId, LocalizedProjectContent> = {
       "Modern data layer using Supabase Realtime and TanStack Query",
     ],
   },
+  menumate: {
+    title: "MenuMate",
+    shortDescription:
+      "A restaurant SaaS for branded QR menus, real-time ordering, menu management, staff access, and multiple locations.",
+    fullDescription:
+      "MenuMate helps restaurants and cafés launch a branded digital menu and start receiving customer orders without requiring an app. Businesses can create menu categories and items, update pricing or availability instantly, generate table QR codes, manage dine-in and delivery requests, and operate multiple locations from one account. The platform combines a public mobile menu with an operational dashboard designed to modernize service while keeping setup simple for non-technical owners.",
+    role: "Founder & solo full-stack developer",
+    highlights: [
+      "QR ordering with zero app download",
+      "Multi-location management from one account",
+      "Instant menu, price & availability updates",
+      "Real-time order notifications",
+    ],
+    features: [
+      "Branded public menu with a dedicated restaurant URL and generated QR codes",
+      "Dine-in table orders and delivery requests submitted from customer phones",
+      "Real-time order notifications and order-status management",
+      "Instant updates for dishes, photos, prices, categories, and availability",
+      "Staff roles, permissions, and multi-location restaurant management",
+      "Custom branding, colors, themes, and responsive menu presentation",
+      "Customer ratings and reviews for individual menu items",
+      "PDF menu export and table-specific QR code generation",
+      "Mobile-first experience requiring no customer application download",
+    ],
+  },
   "solarix-pro": {
     title: "SolarixPro",
     shortDescription:
@@ -121,31 +146,6 @@ export const projectContentEn: Record<ProjectId, LocalizedProjectContent> = {
       "Confidentiality, NDA, response-time, and onboarding assurances",
       "French, English, and Arabic support highlighted throughout the journey",
       "Responsive, SEO-oriented interface for Swiss SMEs and independent professionals",
-    ],
-  },
-  menumate: {
-    title: "MenuMate",
-    shortDescription:
-      "A restaurant SaaS for branded QR menus, real-time ordering, menu management, staff access, and multiple locations.",
-    fullDescription:
-      "MenuMate helps restaurants and cafés launch a branded digital menu and start receiving customer orders without requiring an app. Businesses can create menu categories and items, update pricing or availability instantly, generate table QR codes, manage dine-in and delivery requests, and operate multiple locations from one account. The platform combines a public mobile menu with an operational dashboard designed to modernize service while keeping setup simple for non-technical owners.",
-    role: "Founder & solo full-stack developer",
-    highlights: [
-      "QR ordering with zero app download",
-      "Multi-location management from one account",
-      "Instant menu, price & availability updates",
-      "Real-time order notifications",
-    ],
-    features: [
-      "Branded public menu with a dedicated restaurant URL and generated QR codes",
-      "Dine-in table orders and delivery requests submitted from customer phones",
-      "Real-time order notifications and order-status management",
-      "Instant updates for dishes, photos, prices, categories, and availability",
-      "Staff roles, permissions, and multi-location restaurant management",
-      "Custom branding, colors, themes, and responsive menu presentation",
-      "Customer ratings and reviews for individual menu items",
-      "PDF menu export and table-specific QR code generation",
-      "Mobile-first experience requiring no customer application download",
     ],
   },
   "boudokhane-doors": {

@@ -24,7 +24,10 @@ export default function ProjectCover({
   priority = false,
 }: ProjectCoverProps) {
   const [failed, setFailed] = useState(false);
-  const cover = project.images?.cover;
+  // Convention: covers optimized by `npm run covers:optimize` land at
+  // /projects/<id>/cover.webp; an explicit images.cover always wins, and a
+  // missing file falls back to the gradient placeholder via onError.
+  const cover = project.images?.cover ?? `/projects/${project.id}/cover.webp`;
 
   if (cover && !failed) {
     return (

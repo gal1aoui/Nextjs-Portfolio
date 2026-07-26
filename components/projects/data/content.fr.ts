@@ -53,6 +53,31 @@ export const projectContentFr: Record<ProjectId, LocalizedProjectContent> = {
       "Couche de données moderne avec Supabase Realtime et TanStack Query",
     ],
   },
+  menumate: {
+    title: "MenuMate",
+    shortDescription:
+      "Un SaaS pour restaurants avec menus QR personnalisés, commandes en temps réel, gestion du menu, équipes et multi-établissements.",
+    fullDescription:
+      "MenuMate permet aux restaurants et cafés de lancer un menu numérique à leur image et de recevoir des commandes sans imposer d'application aux clients. Les établissements peuvent créer catégories et produits, modifier instantanément prix ou disponibilité, générer des QR codes par table, gérer les commandes sur place ou en livraison et piloter plusieurs adresses depuis un même compte. La plateforme combine un menu public mobile et un tableau de bord opérationnel simple pour les restaurateurs non techniques.",
+    role: "Fondateur et développeur full-stack en solo",
+    highlights: [
+      "Commande par QR sans application à installer",
+      "Multi-établissements depuis un seul compte",
+      "Menus, prix et disponibilités mis à jour instantanément",
+      "Notifications de commandes en temps réel",
+    ],
+    features: [
+      "Menu public personnalisé avec URL dédiée et QR codes générés",
+      "Commandes à table et demandes de livraison depuis le téléphone du client",
+      "Notifications et suivi du statut des commandes en temps réel",
+      "Mise à jour instantanée des plats, photos, prix, catégories et disponibilités",
+      "Rôles du personnel, permissions et gestion de plusieurs établissements",
+      "Personnalisation de la marque, des couleurs, thèmes et présentation responsive",
+      "Notes et avis clients pour chaque élément du menu",
+      "Export PDF du menu et génération de QR codes spécifiques aux tables",
+      "Expérience mobile sans téléchargement d'application côté client",
+    ],
+  },
   "solarix-pro": {
     title: "SolarixPro",
     shortDescription:
@@ -121,31 +146,6 @@ export const projectContentFr: Record<ProjectId, LocalizedProjectContent> = {
       "Engagements de confidentialité, NDA, réactivité et mise en route",
       "Support en français, anglais et arabe valorisé dans le parcours",
       "Interface responsive et orientée SEO pour PME et indépendants suisses",
-    ],
-  },
-  menumate: {
-    title: "MenuMate",
-    shortDescription:
-      "Un SaaS pour restaurants avec menus QR personnalisés, commandes en temps réel, gestion du menu, équipes et multi-établissements.",
-    fullDescription:
-      "MenuMate permet aux restaurants et cafés de lancer un menu numérique à leur image et de recevoir des commandes sans imposer d'application aux clients. Les établissements peuvent créer catégories et produits, modifier instantanément prix ou disponibilité, générer des QR codes par table, gérer les commandes sur place ou en livraison et piloter plusieurs adresses depuis un même compte. La plateforme combine un menu public mobile et un tableau de bord opérationnel simple pour les restaurateurs non techniques.",
-    role: "Fondateur et développeur full-stack en solo",
-    highlights: [
-      "Commande par QR sans application à installer",
-      "Multi-établissements depuis un seul compte",
-      "Menus, prix et disponibilités mis à jour instantanément",
-      "Notifications de commandes en temps réel",
-    ],
-    features: [
-      "Menu public personnalisé avec URL dédiée et QR codes générés",
-      "Commandes à table et demandes de livraison depuis le téléphone du client",
-      "Notifications et suivi du statut des commandes en temps réel",
-      "Mise à jour instantanée des plats, photos, prix, catégories et disponibilités",
-      "Rôles du personnel, permissions et gestion de plusieurs établissements",
-      "Personnalisation de la marque, des couleurs, thèmes et présentation responsive",
-      "Notes et avis clients pour chaque élément du menu",
-      "Export PDF du menu et génération de QR codes spécifiques aux tables",
-      "Expérience mobile sans téléchargement d'application côté client",
     ],
   },
   "boudokhane-doors": {

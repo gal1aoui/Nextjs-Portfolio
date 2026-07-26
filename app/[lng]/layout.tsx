@@ -119,10 +119,20 @@ export default async function LocaleLayout({
     ],
   };
 
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteConfig.author,
+    url: siteConfig.url,
+    inLanguage: lng === "fr" ? "fr-FR" : "en-US",
+  };
+
   return (
     <>
       <script
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([personJsonLd, websiteJsonLd]),
+        }}
         type="application/ld+json"
       />
       <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>

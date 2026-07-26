@@ -2,32 +2,43 @@ import { MetadataRoute } from "next";
 
 import { getBlogIds } from "@/components/blogs/blogs-data";
 import { getAbsoluteLocalizedUrl } from "@/i18n/routing";
-import { languages } from "@/i18n/settings";
+import { languages, type AppLanguage } from "@/i18n/settings";
+
+function sitemapEntry(
+  lng: AppLanguage,
+  path: string,
+  priority: number,
+): MetadataRoute.Sitemap[number] {
+  return {
+    url: getAbsoluteLocalizedUrl(lng, path),
+    lastModified: new Date().toISOString(),
+    changeFrequency: "monthly",
+    priority,
+    alternates: {
+      languages: {
+        en: getAbsoluteLocalizedUrl("en", path),
+        fr: getAbsoluteLocalizedUrl("fr", path),
+        "x-default": getAbsoluteLocalizedUrl("en", path),
+      },
+    },
+  };
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseRoutes = ["/", "/projects", "/blogs", "/experience", "/skills"];
-  const topLevelRoutes = languages.flatMap((lng) =>
-    baseRoutes.map((route) => ({
-      url: getAbsoluteLocalizedUrl(lng, route),
-      lastModified: new Date().toISOString(),
-      changeFrequency: "monthly" as const,
-      priority: route === "/" ? 1 : 0.8,
-    })),
-  );
-  const modernRoutes = languages.map((lng) => ({
-    url: getAbsoluteLocalizedUrl(lng, "/modern"),
-    lastModified: new Date().toISOString(),
-    changeFrequency: "monthly" as const,
-    priority: 0.6,
-  }));
-  const blogRoutes = languages.flatMap((lng) =>
-    getBlogIds().map((blogId) => ({
-      url: getAbsoluteLocalizedUrl(lng, `/blogs/${blogId}`),
-      lastModified: new Date().toISOString(),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    })),
-  );
+  const routes: Array<[path: string, priority: number]> = [
+    ["/", 1],
+    ["/projects", 0.8],
+    ["/blogs", 0.8],
+    ["/experience", 0.8],
+    ["/skills", 0.8],
+    ["/modern", 0.6],
+    ...getBlogIds().map((blogId): [string, number] => [
+      `/blogs/${blogId}`,
+      0.7,
+    ]),
+  ];
 
-  return [...topLevelRoutes, ...modernRoutes, ...blogRoutes];
+  return routes.flatMap(([path, priority]) =>
+    languages.map((lng) => sitemapEntry(lng, path, priority)),
+  );
 }
