@@ -15,6 +15,7 @@ import {
 } from "@/lib/analytics";
 
 import { ScrollTrigger } from "./gsap/gsap-config";
+import BackgroundGlow from "./chrome/background-glow";
 import CustomCursor from "./chrome/custom-cursor";
 import GrainOverlay from "./chrome/grain-overlay";
 import ModernNav from "./chrome/modern-nav";
@@ -118,7 +119,9 @@ function ModernExperienceInner({ lng }: { lng: AppLanguage }) {
 
   return (
     <div
-      className={`${fontDisplay.variable} relative bg-background text-foreground`}
+      // isolate creates a stacking context so the -z-10 background glow
+      // paints above this div's background instead of vanishing behind it.
+      className={`${fontDisplay.variable} relative isolate bg-background text-foreground`}
     >
       {showPreloader ? (
         <Preloader
@@ -127,6 +130,7 @@ function ModernExperienceInner({ lng }: { lng: AppLanguage }) {
         />
       ) : null}
 
+      <BackgroundGlow />
       <GrainOverlay />
       <CustomCursor />
       <ScrollProgress />

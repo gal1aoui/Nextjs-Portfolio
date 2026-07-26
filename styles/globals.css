@@ -10,6 +10,14 @@
     --breakpoint-md: 80rem;
 }
 
+/* Pre-hydration cover for the first-visit experience gate: the inline boot
+   script in the classic layout sets this attribute before the shell paints,
+   and the gate removes it once its overlay is on screen. */
+html[data-gate-pending] [data-gate-blank] {
+    opacity: 0;
+    pointer-events: none;
+}
+
 ::-webkit-scrollbar
 {
 	width: 3px;

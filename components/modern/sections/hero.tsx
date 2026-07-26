@@ -120,7 +120,28 @@ export default function Hero({ introReady }: { introReady: boolean }) {
       className="relative flex min-h-screen items-center overflow-hidden px-6 pt-20 sm:px-10"
       id="hero"
     >
-      <div className="mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[1.4fr_1fr]">
+      <div className="mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[1fr_1.4fr]">
+        <div
+          ref={portraitRef}
+          className="relative hidden justify-center lg:flex"
+        >
+          <div className="relative">
+            <div
+              aria-hidden
+              className="absolute inset-x-4 bottom-0 top-12 rounded-[3rem] bg-gradient-to-br from-violet-600/35 via-cyan-500/25 to-transparent blur-2xl"
+            />
+            <NextImage
+              priority
+              alt={t("intro.name")}
+              className="relative object-contain contrast-110 drop-shadow-2xl"
+              height={520}
+              sizes="(max-width: 1023px) 0px, 420px"
+              src={profile}
+              width={430}
+            />
+          </div>
+        </div>
+
         <div>
           <p className="mb-4 text-sm font-medium uppercase tracking-[0.35em] text-default-500">
             {tModern("hero.eyebrow")}
@@ -149,21 +170,6 @@ export default function Hero({ introReady }: { introReady: boolean }) {
           <p className="mt-6 max-w-xl text-base leading-relaxed text-default-500 sm:text-lg">
             {tModern("hero.tagline")}
           </p>
-        </div>
-
-        <div ref={portraitRef} className="hidden justify-center lg:flex">
-          <NextImage
-            priority
-            alt={t("intro.name")}
-            className="animate-blob bg-default contrast-110 object-cover"
-            height={480}
-            sizes="(max-width: 1023px) 0px, 380px"
-            src={profile}
-            style={{
-              borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%",
-            }}
-            width={400}
-          />
         </div>
       </div>
 

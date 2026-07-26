@@ -32,6 +32,7 @@ import { trackMobileMenuToggle } from "@/lib/analytics";
 import GameLauncher from "./game-launcher";
 import QuestionAndAnswer from "./contact/qa/question-answer";
 import ExperienceModeToggle from "./experience-mode/experience-mode-toggle";
+import { useScrollHidden } from "./hooks/use-scroll-hidden";
 import LanguageSwitcher from "./language-switcher";
 import { ThemeSwitch } from "./theme-switch";
 
@@ -41,6 +42,9 @@ export const Navbar = () => {
   const selectedKey = getNavbarSelectedKey(pathname);
   const { t } = useTranslation("common");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const isScrollHidden = useScrollHidden();
+  // Never hide while the mobile drawer is open.
+  const isHidden = isScrollHidden && !isSidebarOpen;
 
   const navigationTabs = [
     {
@@ -82,87 +86,96 @@ export const Navbar = () => {
 
   return (
     <>
-      {/* Desktop Navbar */}
-      <nav
-        aria-label="Main navigation"
-        className="hidden sm:flex text-center items-center gap-2 px-2 py-2 shadow-sm"
+      {/* Sticky shell: fades out on scroll down, back in on scroll up. */}
+      <header
+        className={`sticky top-0 z-50 bg-background/80 backdrop-blur-md transition-opacity duration-300 motion-reduce:transition-none ${
+          isHidden ? "pointer-events-none opacity-0" : "opacity-100"
+        }`}
       >
-        <NextLink
-          className="flex justify-start items-center"
-          href={localizePath(currentLanguage, "/")}
+        {/* Desktop Navbar (lg+: below that its content overflows the viewport) */}
+        <nav
+          aria-label="Main navigation"
+          className="hidden lg:flex text-center items-center gap-2 px-2 py-2 shadow-sm"
         >
-          <Logo />
-          <p className="font-bold text-inherit text-2xl">{t("navbar.logo")}</p>
-        </NextLink>
-
-        <Tabs
-          className="mx-auto"
-          color="primary"
-          radius="full"
-          selectedKey={selectedKey}
-          size="lg"
-          variant="bordered"
-        >
-          {navigationTabs.map((tab) => (
-            <Tab
-              key={tab.key}
-              aria-label={tab.ariaLabel}
-              href={tab.href}
-              title={
-                <div className="flex items-center gap-1">
-                  {tab.icon}
-                  <p className="hidden md:block">{tab.label}</p>
-                </div>
-              }
-            />
-          ))}
-          <Tab
-            key="mode"
-            aria-label={t("navbar.themeToggle")}
-            title={<ThemeSwitch />}
-          />
-        </Tabs>
-
-        <div className="flex items-center gap-2">
-          <ExperienceModeToggle placement="navbar" />
-          <LanguageSwitcher />
-          <QuestionAndAnswer />
-        </div>
-      </nav>
-
-      {/* Mobile Navbar */}
-      <nav
-        aria-label="Main navigation"
-        className="flex sm:hidden items-center justify-between px-2 py-2 shadow-sm"
-      >
-        <NextLink
-          className="flex items-center"
-          href={localizePath(currentLanguage, "/")}
-        >
-          <Logo />
-          <p className="font-bold text-inherit text-xl ml-2">
-            {t("navbar.logo")}
-          </p>
-        </NextLink>
-
-        <div className="flex items-center gap-4">
-          <ThemeSwitch className="mb-1" />
-          <LanguageSwitcher />
-          <QuestionAndAnswer variant />
-
-          <Button
-            isIconOnly
-            aria-label="Open menu"
-            variant="light"
-            onPress={() => {
-              trackMobileMenuToggle(true);
-              setIsSidebarOpen(true);
-            }}
+          <NextLink
+            className="flex justify-start items-center"
+            href={localizePath(currentLanguage, "/")}
           >
-            <MenuIcon className="h-6 w-6" />
-          </Button>
-        </div>
-      </nav>
+            <Logo />
+            <p className="font-bold text-inherit text-2xl">
+              {t("navbar.logo")}
+            </p>
+          </NextLink>
+
+          <Tabs
+            className="mx-auto"
+            color="primary"
+            radius="full"
+            selectedKey={selectedKey}
+            size="lg"
+            variant="bordered"
+          >
+            {navigationTabs.map((tab) => (
+              <Tab
+                key={tab.key}
+                aria-label={tab.ariaLabel}
+                href={tab.href}
+                title={
+                  <div className="flex items-center gap-1">
+                    {tab.icon}
+                    <p className="hidden md:block">{tab.label}</p>
+                  </div>
+                }
+              />
+            ))}
+            <Tab
+              key="mode"
+              aria-label={t("navbar.themeToggle")}
+              title={<ThemeSwitch />}
+            />
+          </Tabs>
+
+          <div className="flex items-center gap-2">
+            <ExperienceModeToggle placement="navbar" />
+            <LanguageSwitcher />
+            <QuestionAndAnswer />
+          </div>
+        </nav>
+
+        {/* Mobile Navbar */}
+        <nav
+          aria-label="Main navigation"
+          className="flex lg:hidden items-center justify-between px-2 py-2 shadow-sm"
+        >
+          <NextLink
+            className="flex items-center"
+            href={localizePath(currentLanguage, "/")}
+          >
+            <Logo />
+            <p className="font-bold text-inherit text-xl ml-2">
+              {t("navbar.logo")}
+            </p>
+          </NextLink>
+
+          <div className="flex items-center gap-4">
+            <ThemeSwitch className="mb-1" />
+            <LanguageSwitcher />
+            <QuestionAndAnswer variant />
+
+            <Button
+              isIconOnly
+              aria-label="Open menu"
+              variant="light"
+              onPress={() => {
+                trackMobileMenuToggle(true);
+                setIsSidebarOpen(true);
+              }}
+            >
+              <MenuIcon className="h-6 w-6" />
+            </Button>
+          </div>
+        </nav>
+      </header>
       <GameLauncher />
       {/* Mobile Sidebar */}
       <Drawer

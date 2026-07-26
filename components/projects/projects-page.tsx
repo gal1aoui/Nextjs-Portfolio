@@ -123,9 +123,12 @@ export default function ProjectsPage({ projects }: { projects: Project[] }) {
 
           <GithubContributions username={GITHUB_USERNAME} />
 
-          <div className="mb-8 flex justify-center overflow-x-auto">
+          {/* Auto margins (not justify-center) so the row is centered when it
+              fits but stays fully scrollable from the first tab on mobile. */}
+          <div className="mb-8 w-full overflow-x-auto pb-1">
             <Tabs
               aria-label={t("filters.all")}
+              className="mx-auto w-fit"
               color="primary"
               radius="full"
               selectedKey={categoryFilter}

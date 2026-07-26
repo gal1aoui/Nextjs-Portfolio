@@ -50,12 +50,18 @@ export default function ExperienceGate() {
         hasTrackedShown.current = true;
         trackExperienceGateShown();
       }
+    } else {
+      // Not showing: release the pre-hydration cover set by the boot script.
+      document.documentElement.removeAttribute("data-gate-pending");
     }
   }, [pathname]);
 
   useEffect(() => {
     if (isVisible) {
       classicRef.current?.focus();
+      // The overlay is committed at this point, so the classic shell can be
+      // revealed behind it without a flash.
+      document.documentElement.removeAttribute("data-gate-pending");
     }
   }, [isVisible]);
 
