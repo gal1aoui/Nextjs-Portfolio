@@ -31,6 +31,7 @@ import { trackMobileMenuToggle } from "@/lib/analytics";
 
 import GameLauncher from "./game-launcher";
 import QuestionAndAnswer from "./contact/qa/question-answer";
+import ExperienceModeToggle from "./experience-mode/experience-mode-toggle";
 import LanguageSwitcher from "./language-switcher";
 import { ThemeSwitch } from "./theme-switch";
 
@@ -123,6 +124,7 @@ export const Navbar = () => {
         </Tabs>
 
         <div className="flex items-center gap-2">
+          <ExperienceModeToggle placement="navbar" />
           <LanguageSwitcher />
           <QuestionAndAnswer />
         </div>
@@ -196,6 +198,10 @@ export const Navbar = () => {
                   </NextLink>
                 ))}
               </div>
+              <ExperienceModeToggle
+                className="w-full"
+                placement="navbar-mobile"
+              />
             </div>
           </DrawerBody>
         </DrawerContent>

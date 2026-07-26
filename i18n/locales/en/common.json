@@ -57,6 +57,11 @@
     "description": "The page you are looking for does not exist or may have been moved.",
     "cta": "Back to home"
   },
+  "error": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred. Please try again.",
+    "retry": "Try again"
+  },
   "game": {
     "tooltip": "Load the 2048 mini-game",
     "play": "Play 2048",
@@ -71,6 +76,16 @@
     "empty": "Ask me any question from the list below and I'll answer as clearly as possible.",
     "thinking": "Thinking...",
     "close": "Close",
-    "allAnswered": "All questions answered."
+    "allAnswered": "All questions answered.",
+    "placeholder": "Ask me anything about Achref…",
+    "send": "Send",
+    "stop": "Stop",
+    "retry": "Retry",
+    "aiDisclaimer": "AI answers can make mistakes.",
+    "offline": "Live AI answers are offline right now, but the quick questions below still work.",
+    "rateLimited": "The assistant is taking a short break. Try again in a minute.",
+    "aiError": "Something went wrong answering that.",
+    "resting": "The assistant is taking a break for this session. The quick answers below still work.",
+    "inputLabel": "Your question"
   }
 }

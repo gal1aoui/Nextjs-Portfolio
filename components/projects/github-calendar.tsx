@@ -5,6 +5,7 @@ import { useTheme } from "next-themes";
 import { Card, CardBody } from "@heroui/card";
 import { GitHubCalendar } from "react-github-calendar";
 import { Link } from "@heroui/link";
+import { useEffect, useState } from "react";
 
 import { GithubIcon } from "../icons";
 
@@ -15,9 +16,14 @@ interface GithubContributionsProps {
 export default function GithubContributions({
   username,
 }: GithubContributionsProps) {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  const colorScheme = theme === "dark" ? "dark" : "light";
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const colorScheme = resolvedTheme === "light" ? "light" : "dark";
 
   return (
     <motion.div
@@ -45,16 +51,20 @@ export default function GithubContributions({
               </div>
             </div>
           </div>
-          <GitHubCalendar
-            blockMargin={4}
-            blockSize={12}
-            colorScheme={colorScheme}
-            fontSize={14}
-            style={{
-              width: "100%",
-            }}
-            username={username}
-          />
+          {mounted ? (
+            <GitHubCalendar
+              blockMargin={4}
+              blockSize={12}
+              colorScheme={colorScheme}
+              fontSize={14}
+              style={{
+                width: "100%",
+              }}
+              username={username}
+            />
+          ) : (
+            <div aria-hidden className="h-[140px] w-full" />
+          )}
         </CardBody>
       </Card>
     </motion.div>

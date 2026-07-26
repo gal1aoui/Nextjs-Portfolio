@@ -4,9 +4,7 @@ import { ToastProvider } from "@heroui/toast";
 import { ReactNode } from "react";
 
 import { Providers } from "@/app/providers";
-import { Navbar } from "@/components/navbar";
 import { siteConfig } from "@/config/site";
-import { getAbsoluteLocalizedUrl } from "@/i18n/routing";
 import { getTranslator } from "@/i18n/server";
 import { isLanguage, languages } from "@/i18n/settings";
 import { ModalProvider } from "@/providers/modal-provider";
@@ -36,6 +34,8 @@ export async function generateMetadata({
   const description = t("seo:siteDescription") as string;
   const keywords = t("seo:keywords", { returnObjects: true }) as string[];
 
+  // Site-wide defaults only — canonical/alternates and per-page titles are
+  // owned by each page's generateMetadata.
   return {
     metadataBase: new URL(siteConfig.url),
     title: {
@@ -52,7 +52,6 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       locale: lng === "fr" ? "fr_FR" : "en_US",
-      url: getAbsoluteLocalizedUrl(lng, "/"),
       title,
       description,
       siteName: title,
@@ -71,13 +70,6 @@ export async function generateMetadata({
         "max-video-preview": -1,
         "max-image-preview": "large",
         "max-snippet": -1,
-      },
-    },
-    alternates: {
-      canonical: getAbsoluteLocalizedUrl(lng, "/"),
-      languages: {
-        en: getAbsoluteLocalizedUrl("en", "/"),
-        fr: getAbsoluteLocalizedUrl("fr", "/"),
       },
     },
   };
@@ -100,15 +92,43 @@ export default async function LocaleLayout({
     notFound();
   }
 
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: siteConfig.author,
+    url: siteConfig.url,
+    image: `${siteConfig.url}/avatar-profile.webp`,
+    jobTitle:
+      lng === "fr"
+        ? "Ingénieur Logiciel Fullstack"
+        : "Fullstack Software Engineer",
+    sameAs: [
+      siteConfig.links.linkedin,
+      siteConfig.links.github,
+      siteConfig.links.medium,
+    ],
+    knowsAbout: [
+      "Node.js",
+      "React",
+      "TypeScript",
+      "Next.js",
+      "Angular",
+      "PostgreSQL",
+      "Supabase",
+      "Docker",
+    ],
+  };
+
   return (
     <>
+      <script
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        type="application/ld+json"
+      />
       <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-        <ModalProvider>
-          <Navbar />
-          <main className="p-0 md:px-4 md:pt-6">{children}</main>
-        </ModalProvider>
+        <ModalProvider>{children}</ModalProvider>
+        <ToastProvider />
       </Providers>
-      <ToastProvider />
     </>
   );
 }

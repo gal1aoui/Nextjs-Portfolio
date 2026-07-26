@@ -1,0 +1,84 @@
+{
+  "gate": {
+    "title": "Choisissez votre expérience",
+    "subtitle": "Un même portfolio, deux personnalités.",
+    "hint": "Vous pourrez changer à tout moment depuis l'en-tête.",
+    "classic": {
+      "label": "Classique",
+      "description": "Multi-pages, familier, droit au but.",
+      "cta": "Entrer en classique"
+    },
+    "modern": {
+      "label": "Moderne",
+      "description": "Une seule page. Faites défiler l'histoire.",
+      "cta": "Entrer en moderne"
+    }
+  },
+  "toggle": {
+    "toClassic": "Mode classique",
+    "toModern": "Mode moderne",
+    "ariaLabel": "Changer de mode d'expérience"
+  },
+  "preloader": {
+    "loading": "Chargement"
+  },
+  "nav": {
+    "ariaLabel": "Sections",
+    "sections": {
+      "hero": "Intro",
+      "about": "À propos",
+      "skills": "Compétences",
+      "experience": "Parcours",
+      "projects": "Projets",
+      "blog": "Écriture",
+      "contact": "Contact"
+    }
+  },
+  "hero": {
+    "eyebrow": "Ingénieur Logiciel Fullstack",
+    "tagline": "Peu importe la stack, je suis prêt à m'adapter, à apprendre vite et à apporter une vraie valeur.",
+    "scrollHint": "Défiler"
+  },
+  "about": {
+    "heading": "À propos",
+    "stats": {
+      "years": "Années d'expérience",
+      "projects": "Projets livrés",
+      "skills": "Technologies",
+      "companies": "Entreprises"
+    }
+  },
+  "skills": {
+    "heading": "Compétences",
+    "subheading": "Les outils que j'utilise, de l'interface à l'infrastructure."
+  },
+  "experience": {
+    "heading": "Parcours",
+    "present": "Aujourd'hui"
+  },
+  "projects": {
+    "heading": "Projets choisis",
+    "viewAll": "Tous les projets",
+    "openProject": "Voir les détails",
+    "dragHint": "Faites défiler pour explorer"
+  },
+  "blog": {
+    "heading": "Écriture",
+    "readPost": "Lire l'article"
+  },
+  "contact": {
+    "heading": "Discutons",
+    "subheading": "Un projet, un poste ou simplement une question ?",
+    "cta": "Envoyer un message",
+    "or": "ou",
+    "askAi": "Demander à mon assistant IA"
+  },
+  "footer": {
+    "backToTop": "Retour en haut",
+    "builtWith": "Conçu et développé par Achref Gallaoui"
+  },
+  "seo": {
+    "title": "Expérience moderne",
+    "description": "Une visite en une seule page, au fil du scroll, du travail d'Achref Gallaoui : projets, compétences, parcours et écriture."
+  }
+}

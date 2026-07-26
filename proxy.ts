@@ -7,6 +7,10 @@ import {
   headerName,
   languages,
 } from "@/i18n/settings";
+import {
+  experienceModeCookieName,
+  isExperienceMode,
+} from "@/lib/experience-mode";
 
 acceptLanguage.languages([...languages]);
 
@@ -23,6 +27,12 @@ function getPreferredLanguage(request: NextRequest) {
   );
 }
 
+function prefersModernExperience(request: NextRequest) {
+  const mode = request.cookies.get(experienceModeCookieName)?.value;
+
+  return Boolean(mode && isExperienceMode(mode) && mode === "modern");
+}
+
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const hasLanguage = languages.some(
@@ -33,10 +43,17 @@ export function proxy(request: NextRequest) {
     const preferredLanguage = getPreferredLanguage(request);
     const redirectUrl = request.nextUrl.clone();
 
-    redirectUrl.pathname =
-      pathname === "/"
-        ? `/${preferredLanguage}`
-        : `/${preferredLanguage}${pathname}`;
+    // Sticky modern mode: send the bare home path straight to the modern
+    // experience in a single hop. Deep links stay classic; crawlers and
+    // cookie-less visitors always get the classic default.
+    if (pathname === "/" && prefersModernExperience(request)) {
+      redirectUrl.pathname = `/${preferredLanguage}/modern`;
+    } else {
+      redirectUrl.pathname =
+        pathname === "/"
+          ? `/${preferredLanguage}`
+          : `/${preferredLanguage}${pathname}`;
+    }
 
     return NextResponse.redirect(redirectUrl);
   }
@@ -45,6 +62,12 @@ export function proxy(request: NextRequest) {
     languages.find(
       (lng) => pathname === `/${lng}` || pathname.startsWith(`/${lng}/`),
     ) || fallbackLng;
+
+  // Note: /{lng} is deliberately NOT redirected for modern-cookie users —
+  // the classic navbar/footer link Home to /{lng}, and redirecting it would
+  // make the classic home unreachable from within the classic UI. Stickiness
+  // applies to the bare domain entry ("/") only.
+
   const requestHeaders = new Headers(request.headers);
 
   requestHeaders.set(headerName, currentLanguage);

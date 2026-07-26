@@ -1,128 +1,41 @@
-"use client";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
-import { ComponentType, useState } from "react";
-import dynamic from "next/dynamic";
-import { motion, AnimatePresence } from "framer-motion";
-import { Chip } from "@heroui/chip";
+import SkillsPage from "@/components/skills/skills-page";
+import { buildLanguageAlternates } from "@/i18n/routing";
+import { getTranslator } from "@/i18n/server";
+import { isLanguage } from "@/i18n/settings";
 
-import { RandomizedTextEffect } from "@/components/randomized-text";
-import {
-  skillCategoryMeta,
-  type SkillCategoryId,
-} from "@/components/skills/category-meta";
-import { useTranslation } from "@/i18n/client";
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lng: string }>;
+}): Promise<Metadata> {
+  const { lng } = await params;
 
-const skillCategoryPanels: Record<SkillCategoryId, ComponentType> = {
-  frontend: dynamic(() => import("@/components/skills/categories/frontend")),
-  backend: dynamic(() => import("@/components/skills/categories/backend")),
-  databases: dynamic(() => import("@/components/skills/categories/databases")),
-  devops: dynamic(() => import("@/components/skills/categories/devops")),
-  testing: dynamic(() => import("@/components/skills/categories/testing")),
-  api: dynamic(() => import("@/components/skills/categories/api")),
-  collaboration: dynamic(
-    () => import("@/components/skills/categories/collaboration"),
-  ),
-};
+  if (!isLanguage(lng)) {
+    return {};
+  }
 
-export default function SkillsPage() {
-  const { t } = useTranslation("skills");
-  const [selectedCategory, setSelectedCategory] = useState<SkillCategoryId>(
-    skillCategoryMeta[0].id,
-  );
+  const { t } = await getTranslator(lng, "seo");
 
-  const currentCategory = skillCategoryMeta.find(
-    (cat) => cat.id === selectedCategory,
-  );
-  const CurrentCategoryPanel = currentCategory
-    ? skillCategoryPanels[currentCategory.id]
-    : null;
+  return {
+    title: t("seo:pages.skills.title") as string,
+    description: t("seo:pages.skills.description") as string,
+    alternates: buildLanguageAlternates(lng, "/skills"),
+  };
+}
 
-  return (
-    <section className="max-w-6xl mx-auto px-4 py-8 md:py-12">
-      <motion.div
-        animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-10"
-        initial={{ opacity: 0, y: -20 }}
-        transition={{ duration: 0.5 }}
-      >
-        <h1 className="text-3xl md:text-4xl font-extrabold mb-4">
-          <RandomizedTextEffect text={t("title")} />
-        </h1>
-        <p className="text-default-500 max-w-2xl mx-auto leading-relaxed">
-          {t("description")}
-        </p>
-      </motion.div>
+export default async function SkillsRoute({
+  params,
+}: {
+  params: Promise<{ lng: string }>;
+}) {
+  const { lng } = await params;
 
-      <div className="flex flex-col md:flex-row gap-6">
-        <motion.div
-          animate={{ opacity: 1, x: 0 }}
-          className="md:w-64 shrink-0"
-          initial={{ opacity: 0, x: -20 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          <div className="md:sticky md:top-24 space-y-2">
-            {skillCategoryMeta.map((category, index) => (
-              <motion.button
-                key={category.id}
-                animate={{ opacity: 1, x: 0 }}
-                className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 flex items-center justify-between group ${
-                  selectedCategory === category.id
-                    ? "bg-primary text-primary-foreground shadow-lg"
-                    : "bg-default-100/50 hover:bg-default-200/50"
-                }`}
-                initial={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                onClick={() => setSelectedCategory(category.id)}
-              >
-                <span className="font-medium">
-                  {t(`categories.${category.id}.title`)}
-                </span>
-                <Chip
-                  className={`h-6 min-w-6 ${
-                    selectedCategory === category.id
-                      ? "bg-primary-foreground/20 text-primary-foreground"
-                      : ""
-                  }`}
-                  size="sm"
-                  variant={selectedCategory === category.id ? "solid" : "flat"}
-                >
-                  {category.count}
-                </Chip>
-              </motion.button>
-            ))}
-          </div>
-        </motion.div>
+  if (!isLanguage(lng)) {
+    notFound();
+  }
 
-        <motion.div
-          animate={{ opacity: 1, x: 0 }}
-          className="flex-1 min-w-0"
-          initial={{ opacity: 0, x: 20 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <AnimatePresence mode="wait">
-            {currentCategory && (
-              <motion.div
-                key={currentCategory.id}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                initial={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="mb-6">
-                  <h2 className="text-2xl font-bold mb-2">
-                    {t(`categories.${currentCategory.id}.title`)}
-                  </h2>
-                  <p className="text-default-500">
-                    {t(`categories.${currentCategory.id}.summary`)}
-                  </p>
-                </div>
-
-                {CurrentCategoryPanel ? <CurrentCategoryPanel /> : null}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
-      </div>
-    </section>
-  );
+  return <SkillsPage />;
 }

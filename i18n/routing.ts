@@ -46,3 +46,18 @@ export function getNavbarSelectedKey(pathname: string) {
 export function getAbsoluteLocalizedUrl(lng: AppLanguage, path: string) {
   return `${siteConfig.url}${localizePath(lng, path)}`;
 }
+
+/**
+ * Per-page canonical + hreflang alternates for `generateMetadata`.
+ * `path` is the language-less route path (e.g. "/projects").
+ */
+export function buildLanguageAlternates(lng: AppLanguage, path: string) {
+  return {
+    canonical: getAbsoluteLocalizedUrl(lng, path),
+    languages: {
+      en: getAbsoluteLocalizedUrl("en", path),
+      fr: getAbsoluteLocalizedUrl("fr", path),
+      "x-default": getAbsoluteLocalizedUrl("en", path),
+    },
+  };
+}

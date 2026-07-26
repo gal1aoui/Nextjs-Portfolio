@@ -7,6 +7,7 @@ import { Link } from "@heroui/link";
 import { useTranslation } from "@/i18n/client";
 import { useModal } from "@/providers/modal-provider";
 import { trackSocialLinkClicked } from "@/lib/analytics";
+import { siteConfig } from "@/config/site";
 
 import {
   GithubIcon,
@@ -83,12 +84,9 @@ export default function Introduction() {
               isExternal
               aria-label={t("intro.social.linkedin")}
               color="foreground"
-              href="https://www.linkedin.com/in/ashraf-gallaoui/"
+              href={siteConfig.links.linkedin}
               onClick={() =>
-                trackSocialLinkClicked(
-                  "linkedin",
-                  "https://www.linkedin.com/in/ashraf-gallaoui/",
-                )
+                trackSocialLinkClicked("linkedin", siteConfig.links.linkedin)
               }
             >
               <LinkedInIcon size={40} />
@@ -100,9 +98,9 @@ export default function Introduction() {
               isExternal
               aria-label={t("intro.social.github")}
               color="foreground"
-              href="https://github.com/gal1aoui"
+              href={siteConfig.links.github}
               onClick={() =>
-                trackSocialLinkClicked("github", "https://github.com/gal1aoui")
+                trackSocialLinkClicked("github", siteConfig.links.github)
               }
             >
               <GithubIcon size={48} />
@@ -113,7 +111,10 @@ export default function Introduction() {
               isExternal
               aria-label={t("intro.social.medium")}
               color="foreground"
-              href="https://medium.com/@aga1laoui"
+              href={siteConfig.links.medium}
+              onClick={() =>
+                trackSocialLinkClicked("medium", siteConfig.links.medium)
+              }
             >
               <MediumIcon size={42} />
             </Link>

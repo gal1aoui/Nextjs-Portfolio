@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/*
+ * ⚠️ NON-STANDARD BREAKPOINT: `md:` fires at 1280px in this repo, not 768px.
+ * Every existing `md:` utility was authored against 1280px — do not "fix"
+ * this value without a full visual pass. New code (especially under
+ * components/modern/) should use `sm:` (640px) and `lg:` (1024px) instead.
+ */
 @theme {
     --breakpoint-md: 80rem;
 }

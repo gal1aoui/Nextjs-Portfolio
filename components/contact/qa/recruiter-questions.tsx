@@ -1,4 +1,7 @@
+"use client";
+
 import { useEffect, useState } from "react";
+import { Button } from "@heroui/button";
 import { Chip } from "@heroui/chip";
 
 import { useTranslation } from "@/i18n/client";
@@ -10,9 +13,11 @@ const VISIBLE_COUNT = 4;
 export default function RecruiterQuestions({
   recruiterQuestions,
   selectedQuestion,
+  isDisabled = false,
 }: {
   recruiterQuestions: Pick<RecruiterQuestion, "id" | "question">[];
   selectedQuestion: (questionId: string) => void;
+  isDisabled?: boolean;
 }) {
   const { t } = useTranslation("common");
   const [available, setAvailable] = useState(
@@ -28,6 +33,9 @@ export default function RecruiterQuestions({
   }, [recruiterQuestions]);
 
   const handleSelect = (questionId: string) => {
+    // Never consume a chip while a response is in flight — the parent's
+    // askCanned no-ops in that state and the question would vanish unasked.
+    if (isDisabled) return;
     selectedQuestion(questionId);
     setVisible((prev) => {
       const updated = prev.filter((question) => question.id !== questionId);
@@ -44,20 +52,23 @@ export default function RecruiterQuestions({
   };
 
   return (
-    <div className="flex flex-wrap gap-3 justify-center">
+    <div className="flex flex-wrap justify-center gap-2">
       {visible.map((question) => (
-        <Chip
+        <Button
           key={question.id}
-          className="cursor-pointer"
+          className="h-auto whitespace-normal px-3 py-1.5 text-xs"
           color="primary"
+          isDisabled={isDisabled}
+          radius="full"
+          size="sm"
           variant="flat"
-          onClick={() => handleSelect(question.id)}
+          onPress={() => handleSelect(question.id)}
         >
           {question.question}
-        </Chip>
+        </Button>
       ))}
-      {available.length === 0 && (
-        <Chip className="cursor-pointer" color="warning" variant="flat">
+      {visible.length === 0 && available.length === 0 && (
+        <Chip color="warning" variant="flat">
           {t("qa.allAnswered")}
         </Chip>
       )}

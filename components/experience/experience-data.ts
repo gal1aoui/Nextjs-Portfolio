@@ -25,18 +25,28 @@ type ExperienceDefinition = Omit<
 
 const experienceDefinitions: ExperienceDefinition[] = [
   {
-    id: "kpit-frontend",
-    year: "2024",
-    company: "KPIT Technologies",
+    id: "founder",
+    year: "2025",
+    company: "Octopora · MenuMate · 9hiwa.tn",
     type: "full-time",
-    techStack: ["React", "Angular", "TypeScript", "GitLab CI/CD"],
+    techStack: [
+      "Node.js",
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Supabase",
+      "PostgreSQL",
+      "WebRTC",
+      "Docker",
+      "Nginx",
+    ],
   },
   {
-    id: "kpit-fullstack",
+    id: "kpit",
     year: "2023",
     company: "KPIT Technologies",
     type: "full-time",
-    techStack: ["React", "Angular", "TypeScript", ".NET"],
+    techStack: ["React", "Angular", "TypeScript", "Node.js", "GitLab CI/CD"],
   },
   {
     id: "primatec",
@@ -50,7 +60,14 @@ const experienceDefinitions: ExperienceDefinition[] = [
     year: "2022",
     company: "Global Web Marketing",
     type: "part-time",
-    techStack: ["PHP", "Robot Framework", "Selenium"],
+    techStack: [
+      "PHP",
+      "Laravel",
+      "MySQL",
+      "Tailwind CSS",
+      "Robot Framework",
+      "Selenium",
+    ],
   },
   {
     id: "meducol",
@@ -94,30 +111,32 @@ const experienceContentByLanguage: Record<
   Record<string, LocalizedExperienceContent>
 > = {
   en: {
-    "kpit-frontend": {
-      title: "Full-stack Developer | Frontend Focus",
-      location: "Sfax, Tunisia",
-      period: "Feb 2024 - Aug 2025",
+    founder: {
+      title: "Founder & Fullstack Engineer",
+      location: "Remote",
+      period: "Aug 2025 - Present",
       story:
-        "This is where I truly found my calling. After proving myself as a full-stack developer, I was trusted to lead frontend architecture decisions. I specialized in React and Angular, optimizing performance across multiple enterprise modules. I mentored junior developers and contributed to internal tooling that improved our entire team's productivity.",
+        "I now build and run my own products end to end: Octopora, MenuMate and 9hiwa.tn, from prototyping and UI/UX design through development, testing and production. I work directly with users and stakeholders to shape each product: a B2B workspace backed by REST APIs and async workers, a restaurant platform with QR menus and online ordering, and a real-time multiplayer platform handling live game state at scale. Alongside them I deliver full-cycle freelance work, from design and development to hosting, SEO and analytics.",
       learned: [
-        "Frontend architecture at scale",
-        "Performance optimization patterns",
-        "Technical mentorship",
-        "Building developer tools (VS Code extensions)",
+        "Owning a product end to end, from prototype to production",
+        "Designing interactive prototypes and iterating on UI/UX with real user feedback",
+        "Running real-time systems: live game state, queues and async workers",
+        "Deploying and operating with Docker, Nginx and CI/CD",
+        "Using AI coding agents daily to move faster without compromising quality",
       ],
     },
-    "kpit-fullstack": {
-      title: "Full-stack Developer",
+    kpit: {
+      title: "Software Engineer",
       location: "Sfax, Tunisia",
-      period: "Aug 2023 - Feb 2024",
+      period: "Aug 2023 - Aug 2025",
       story:
-        "My first step into enterprise software development. I joined an international team and quickly adapted to professional workflows - Agile ceremonies, code reviews, and CI/CD pipelines became second nature. This experience transformed my understanding of building software that scales.",
+        "Two years shipping features across the stack in React, Angular, TypeScript and Node.js, improving delivery speed and runtime performance on enterprise modules. I carried out technical analysis for new developments and proposed design decisions with the team, took part in tech RUNs covering bug fixing, maintenance and tech-debt management, and kept quality high through code reviews and testing. I also configured and maintained our GitLab CI/CD pipelines and mentored interns and junior developers.",
       learned: [
-        "Enterprise-grade development practices",
-        "Cross-functional team collaboration",
-        "Agile/Scrum methodology in practice",
-        "Code review culture",
+        "Technical analysis and design decisions with the team",
+        "Cross-stack delivery in React, Angular, TypeScript and Node.js",
+        "GitLab CI/CD pipelines: reliable builds, less manual deployment",
+        "Enforcing quality through code reviews and testing",
+        "Mentoring interns and junior developers",
       ],
     },
     primatec: {
@@ -133,16 +152,16 @@ const experienceContentByLanguage: Record<
       ],
     },
     gwm: {
-      title: "Full Stack PHP Developer",
+      title: "Fullstack Developer",
       location: "Ariana, Tunisia",
-      period: "Jun 2022 - Jun 2023",
+      period: "Jun 2021 - Jun 2023",
       story:
-        "While pursuing my Master's, I balanced academics with real-world development. I discovered the power of automation testing with Robot Framework - writing tests that saved hours of manual QA work. This role solidified my belief that quality code is tested code.",
+        "While pursuing my Master's, I built and modernized ERP and business platforms in PHP, Laravel, MySQL and Tailwind CSS, improving usability for the people who used them daily. I worked directly with stakeholders to define and prioritize features, managing tasks, bugs and feedback through Jira in Agile teams, and I automated testing workflows with unit and functional tests that cut manual QA effort.",
       learned: [
-        "Test automation mindset",
-        "Robot Framework & Selenium",
-        "Balancing work and education",
-        "Professional PHP development",
+        "Building and modernizing ERP platforms for daily business users",
+        "Defining and prioritizing features directly with stakeholders",
+        "Agile task, bug and feedback management through Jira",
+        "Test automation with Robot Framework and Selenium",
       ],
     },
     meducol: {
@@ -210,30 +229,32 @@ const experienceContentByLanguage: Record<
     },
   },
   fr: {
-    "kpit-frontend": {
-      title: "Développeur Full Stack | Focus Frontend",
-      location: "Sfax, Tunisie",
-      period: "Fév 2024 - Août 2025",
+    founder: {
+      title: "Fondateur & Ingénieur Fullstack",
+      location: "Remote",
+      period: "Août 2025 - Aujourd'hui",
       story:
-        "C'est là que j'ai vraiment trouvé ma voie. Après avoir fait mes preuves comme développeur full stack, on m'a confié des décisions d'architecture frontend. Je me suis spécialisé en React et Angular, en optimisant les performances de plusieurs modules d'entreprise. J'ai aussi accompagné des juniors et contribué à des outils internes utiles à toute l'équipe.",
+        "Je construis et je fais vivre désormais mes propres produits de bout en bout : Octopora, MenuMate et 9hiwa.tn, du prototypage et du design UI/UX jusqu'au développement, aux tests et à la production. Je travaille directement avec les utilisateurs et les parties prenantes pour façonner chaque produit : un espace de travail B2B appuyé sur des APIs REST et des workers asynchrones, une plateforme de restauration avec menus QR et commande en ligne, et une plateforme multijoueur temps réel qui gère l'état de jeu en direct à l'échelle. En parallèle, je livre des missions freelance complètes, du design à l'hébergement, au SEO et à l'analytics.",
       learned: [
-        "Architecture frontend à grande échelle",
-        "Patterns d'optimisation des performances",
-        "Mentorat technique",
-        "Création d'outils pour développeurs (extensions VS Code)",
+        "Porter un produit de bout en bout, du prototype à la production",
+        "Concevoir des prototypes interactifs et itérer sur l'UI/UX avec de vrais retours",
+        "Exploiter des systèmes temps réel : état de jeu en direct, files, workers asynchrones",
+        "Déployer et opérer avec Docker, Nginx et la CI/CD",
+        "Utiliser des agents IA de code au quotidien sans compromis sur la qualité",
       ],
     },
-    "kpit-fullstack": {
-      title: "Développeur Full Stack",
+    kpit: {
+      title: "Ingénieur Logiciel",
       location: "Sfax, Tunisie",
-      period: "Août 2023 - Fév 2024",
+      period: "Août 2023 - Août 2025",
       story:
-        "Mon premier vrai pas dans le logiciel d'entreprise. J'ai rejoint une équipe internationale et je me suis rapidement adapté aux workflows professionnels : cérémonies Agile, revues de code et pipelines CI/CD sont devenus naturels. Cette expérience a profondément changé ma façon de comprendre les logiciels qui doivent tenir à l'échelle.",
+        "Deux ans à livrer des fonctionnalités sur toute la stack (React, Angular, TypeScript et Node.js), en améliorant la vitesse de livraison et les performances de modules d'entreprise. J'ai mené des analyses techniques pour les nouveaux développements et proposé des décisions de conception avec l'équipe, puis participé aux RUNs techniques : correction de bugs, maintenance et gestion de la dette technique, avec des revues de code et des tests pour garantir la qualité. J'ai aussi configuré et maintenu nos pipelines GitLab CI/CD et accompagné stagiaires et développeurs juniors.",
       learned: [
-        "Pratiques de développement de niveau entreprise",
-        "Collaboration dans des équipes pluridisciplinaires",
-        "Méthode Agile/Scrum appliquée au quotidien",
-        "Culture de la revue de code",
+        "Analyses techniques et décisions de conception en équipe",
+        "Livraison cross-stack en React, Angular, TypeScript et Node.js",
+        "Pipelines GitLab CI/CD : builds fiables, moins de déploiements manuels",
+        "Qualité garantie par les revues de code et les tests",
+        "Mentorat de stagiaires et de développeurs juniors",
       ],
     },
     primatec: {
@@ -241,7 +262,7 @@ const experienceContentByLanguage: Record<
       location: "Sfax, Tunisie",
       period: "Fév 2023 - Juin 2023",
       story:
-        "Un défi original qui a repoussé mes limites. J'ai intégré des builds Unity 3D dans une application desktop, en faisant le lien entre moteur de jeu et logiciel d'entreprise. Ce projet m'a appris que les meilleures solutions naissent souvent du croisement de technologies inatten dues.",
+        "Un défi original qui a repoussé mes limites. J'ai intégré des builds Unity 3D dans une application desktop, en faisant le lien entre moteur de jeu et logiciel d'entreprise. Ce projet m'a appris que les meilleures solutions naissent souvent du croisement de technologies inattendues.",
       learned: [
         "Intégration cross-platform (Unity + WinForms)",
         "Communication temps réel avec WebSockets",
@@ -249,16 +270,16 @@ const experienceContentByLanguage: Record<
       ],
     },
     gwm: {
-      title: "Développeur Full Stack PHP",
+      title: "Développeur Fullstack",
       location: "Ariana, Tunisie",
-      period: "Juin 2022 - Juin 2023",
+      period: "Juin 2021 - Juin 2023",
       story:
-        "Pendant mon master, j'ai mené de front les études et le développement réel. J'y ai découvert la puissance de l'automatisation des tests avec Robot Framework : écrire des scénarios qui économisent des heures de QA manuelle. Ce rôle a renforcé ma conviction qu'un code de qualité est un code testé.",
+        "Pendant mon master, j'ai construit et modernisé des plateformes ERP et métiers en PHP, Laravel, MySQL et Tailwind CSS, en améliorant l'usage quotidien pour les équipes. J'ai travaillé directement avec les parties prenantes pour définir et prioriser les fonctionnalités, avec la gestion des tâches, bugs et retours via Jira en équipe Agile, et j'ai automatisé les tests avec des tests unitaires et fonctionnels qui ont réduit la QA manuelle.",
       learned: [
-        "État d'esprit orienté automatisation des tests",
-        "Robot Framework et Selenium",
-        "Equilibre entre travail et études",
-        "Développement PHP en contexte professionnel",
+        "Construction et modernisation de plateformes ERP",
+        "Définition et priorisation des fonctionnalités avec les parties prenantes",
+        "Gestion Agile des tâches, bugs et retours via Jira",
+        "Automatisation des tests avec Robot Framework et Selenium",
       ],
     },
     meducol: {

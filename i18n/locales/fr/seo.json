@@ -1,19 +1,39 @@
 {
-  "siteTitle": "Achref Gallaoui | Développeur Full Stack",
-  "siteDescription": "Achref Gallaoui - Développeur Full Stack spécialisé en JavaScript, TypeScript, React et Angular. Je construis des applications web évolutives avec des technologies frontend modernes.",
+  "siteTitle": "Achref Gallaoui | Ingénieur Logiciel Fullstack",
+  "siteDescription": "Ingénieur logiciel fullstack avec plus de 4 ans d'expérience, spécialisé en Node.js, React et TypeScript. Fondateur d'Octopora, MenuMate et 9hiwa.tn, disponible pour des missions freelance.",
   "keywords": [
     "Achref Gallaoui",
+    "Ingénieur Logiciel Fullstack",
     "Développeur Full Stack",
-    "JavaScript",
-    "TypeScript",
+    "Node.js",
     "React",
-    "Angular",
-    "Spécialiste Frontend",
-    "Applications Web Évolutives",
+    "TypeScript",
     "Next.js",
-    "Portfolio",
+    "Angular",
+    "Supabase",
+    "PostgreSQL",
+    "Développeur Freelance",
     "Développeur Web",
-    "Développeur PHP",
-    "Développeur Laravel"
-  ]
+    "Portfolio",
+    "Octopora",
+    "MenuMate"
+  ],
+  "pages": {
+    "skills": {
+      "title": "Compétences",
+      "description": "Les technologies avec lesquelles Achref Gallaoui travaille, du frontend au backend, en passant par les bases de données, le DevOps, les tests et la conception d'API."
+    },
+    "experience": {
+      "title": "Expérience",
+      "description": "Le parcours d'Achref Gallaoui comme ingénieur logiciel fullstack, des premiers stages à la création de ses propres produits."
+    },
+    "projects": {
+      "title": "Projets",
+      "description": "Produits, projets clients et open source d'Achref Gallaoui : plateformes SaaS, applications temps réel, packages npm et plus encore."
+    },
+    "blogs": {
+      "title": "Blogs",
+      "description": "Articles et récits autour du développement logiciel, écrits par Achref Gallaoui."
+    }
+  }
 }

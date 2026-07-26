@@ -3,6 +3,7 @@ export type SiteConfig = typeof siteConfig;
 export const siteConfig = {
   url: "https://achref-gallaoui.vercel.app",
   author: "Achref Gallaoui",
+  yearsOfExperience: 4,
   links: {
     linkedin: "https://www.linkedin.com/in/ashraf-gallaoui/",
     github: "https://github.com/gal1aoui",

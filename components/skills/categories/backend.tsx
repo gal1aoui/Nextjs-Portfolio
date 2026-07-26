@@ -1,6 +1,9 @@
 "use client";
 
+import { FC } from "react";
+
 import { useTranslation } from "@/i18n/client";
+import { IconSvgProps } from "@/types";
 
 import SkillGrid from "../skill-card";
 import {
@@ -12,54 +15,27 @@ import {
   SupabaseIcon,
   SymfonyIcon,
 } from "../icons";
+import { skillsData } from "../skills-data";
 import { Skill } from "../type";
+
+const icons: Record<string, FC<IconSvgProps>> = {
+  laravel: LaravelIcon,
+  symfony: SymfonyIcon,
+  supabase: SupabaseIcon,
+  "node.js": NodeIcon,
+  "express.js": ExpressIcon,
+  "nest.js": NestIcon,
+  ".net": DotNetIcon,
+};
 
 export default function BackendSkills() {
   const { t } = useTranslation("skills");
-  const skills: Skill[] = [
-    {
-      id: "laravel",
-      name: "Laravel",
-      description: t("items.laravel"),
-      icon: LaravelIcon,
-    },
-    {
-      id: "symfony",
-      name: "Symfony",
-      description: t("items.symfony"),
-      icon: SymfonyIcon,
-    },
-    {
-      id: "supabase",
-      name: "Supabase",
-      description: t("items.supabase"),
-      icon: SupabaseIcon,
-    },
-    {
-      id: "node.js",
-      name: "Node.js",
-      description: t("items.nodejs"),
-      icon: NodeIcon,
-    },
-    {
-      id: "express.js",
-      name: "Express.js",
-      description: t("items.expressjs"),
-      icon: ExpressIcon,
-    },
-    {
-      id: "nest.js",
-      name: "Nest.js",
-      description: t("items.nestjs"),
-      icon: NestIcon,
-    },
-    {
-      id: ".net",
-      name: ".NET",
-      description: t("items.dotnet"),
-      icon: DotNetIcon,
-    },
-  ];
+  const skills: Skill[] = skillsData.backend.map((entry) => ({
+    id: entry.id,
+    name: entry.name,
+    description: t(entry.translationKey),
+    icon: icons[entry.id],
+  }));
 
   return <SkillGrid skills={skills} />;
 }

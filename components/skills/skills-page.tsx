@@ -1,0 +1,130 @@
+"use client";
+
+import { ComponentType, useState } from "react";
+import dynamic from "next/dynamic";
+import { motion, AnimatePresence } from "framer-motion";
+import { Chip } from "@heroui/chip";
+
+import { RandomizedTextEffect } from "@/components/randomized-text";
+import {
+  skillCategoryIds,
+  skillsData,
+  type SkillCategoryId,
+} from "@/components/skills/skills-data";
+import { useTranslation } from "@/i18n/client";
+import { trackSkillsCategoryViewed } from "@/lib/analytics";
+
+const skillCategoryPanels: Record<SkillCategoryId, ComponentType> = {
+  frontend: dynamic(() => import("@/components/skills/categories/frontend")),
+  backend: dynamic(() => import("@/components/skills/categories/backend")),
+  databases: dynamic(() => import("@/components/skills/categories/databases")),
+  devops: dynamic(() => import("@/components/skills/categories/devops")),
+  testing: dynamic(() => import("@/components/skills/categories/testing")),
+  api: dynamic(() => import("@/components/skills/categories/api")),
+  collaboration: dynamic(
+    () => import("@/components/skills/categories/collaboration"),
+  ),
+};
+
+export default function SkillsPage() {
+  const { t } = useTranslation("skills");
+  const [selectedCategory, setSelectedCategory] = useState<SkillCategoryId>(
+    skillCategoryIds[0],
+  );
+
+  const CurrentCategoryPanel = skillCategoryPanels[selectedCategory];
+
+  const handleSelectCategory = (categoryId: SkillCategoryId) => {
+    if (categoryId !== selectedCategory) {
+      trackSkillsCategoryViewed(categoryId);
+    }
+    setSelectedCategory(categoryId);
+  };
+
+  return (
+    <section className="max-w-6xl mx-auto px-4 py-8 md:py-12">
+      <motion.div
+        animate={{ opacity: 1, y: 0 }}
+        className="text-center mb-10"
+        initial={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h1 className="text-3xl md:text-4xl font-extrabold mb-4">
+          <RandomizedTextEffect text={t("title")} />
+        </h1>
+        <p className="text-default-500 max-w-2xl mx-auto leading-relaxed">
+          {t("description")}
+        </p>
+      </motion.div>
+
+      <div className="flex flex-col md:flex-row gap-6">
+        <motion.div
+          animate={{ opacity: 1, x: 0 }}
+          className="md:w-64 shrink-0"
+          initial={{ opacity: 0, x: -20 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <div className="md:sticky md:top-24 space-y-2">
+            {skillCategoryIds.map((categoryId, index) => (
+              <motion.button
+                key={categoryId}
+                animate={{ opacity: 1, x: 0 }}
+                className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 flex items-center justify-between group ${
+                  selectedCategory === categoryId
+                    ? "bg-primary text-primary-foreground shadow-lg"
+                    : "bg-default-100/50 hover:bg-default-200/50"
+                }`}
+                initial={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                onClick={() => handleSelectCategory(categoryId)}
+              >
+                <span className="font-medium">
+                  {t(`categories.${categoryId}.title`)}
+                </span>
+                <Chip
+                  className={`h-6 min-w-6 ${
+                    selectedCategory === categoryId
+                      ? "bg-primary-foreground/20 text-primary-foreground"
+                      : ""
+                  }`}
+                  size="sm"
+                  variant={selectedCategory === categoryId ? "solid" : "flat"}
+                >
+                  {skillsData[categoryId].length}
+                </Chip>
+              </motion.button>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          animate={{ opacity: 1, x: 0 }}
+          className="flex-1 min-w-0"
+          initial={{ opacity: 0, x: 20 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selectedCategory}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="mb-6">
+                <h2 className="text-2xl font-bold mb-2">
+                  {t(`categories.${selectedCategory}.title`)}
+                </h2>
+                <p className="text-default-500">
+                  {t(`categories.${selectedCategory}.summary`)}
+                </p>
+              </div>
+
+              {CurrentCategoryPanel ? <CurrentCategoryPanel /> : null}
+            </motion.div>
+          </AnimatePresence>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

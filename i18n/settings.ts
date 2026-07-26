@@ -12,6 +12,7 @@ export const namespaces = [
   "skills",
   "blogs",
   "seo",
+  "modern",
 ] as const;
 
 export const cookieName = "i18next";

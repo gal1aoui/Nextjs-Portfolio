@@ -1,19 +1,39 @@
 {
-  "siteTitle": "Achref Gallaoui | Full-Stack Developer",
-  "siteDescription": "Achref Gallaoui - Full-Stack Developer specializing in JavaScript, TypeScript, React, and Angular. Building scalable web applications with modern frontend technologies.",
+  "siteTitle": "Achref Gallaoui | Fullstack Software Engineer",
+  "siteDescription": "Fullstack software engineer with 4+ years shipping products in Node.js, React and TypeScript. Founder of Octopora, MenuMate and 9hiwa.tn, and available for freelance work.",
   "keywords": [
     "Achref Gallaoui",
+    "Fullstack Software Engineer",
     "Full-Stack Developer",
-    "JavaScript",
-    "TypeScript",
+    "Node.js",
     "React",
-    "Angular",
-    "Frontend Specialist",
-    "Scalable Web Applications",
+    "TypeScript",
     "Next.js",
-    "Portfolio",
+    "Angular",
+    "Supabase",
+    "PostgreSQL",
+    "Freelance Developer",
     "Web Developer",
-    "PHP Developer",
-    "Laravel Developer"
-  ]
+    "Portfolio",
+    "Octopora",
+    "MenuMate"
+  ],
+  "pages": {
+    "skills": {
+      "title": "Skills",
+      "description": "The technologies Achref Gallaoui works with, from frontend and backend to databases, DevOps, testing and API design."
+    },
+    "experience": {
+      "title": "Experience",
+      "description": "Achref Gallaoui's journey as a fullstack software engineer, from first internships to founding his own products."
+    },
+    "projects": {
+      "title": "Projects",
+      "description": "Products, client work and open source by Achref Gallaoui: SaaS platforms, real-time apps, npm packages and more."
+    },
+    "blogs": {
+      "title": "Blogs",
+      "description": "Articles and stories about software development, written by Achref Gallaoui."
+    }
+  }
 }

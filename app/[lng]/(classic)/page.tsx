@@ -1,7 +1,26 @@
+import { Metadata } from "next";
 import NextImage from "next/image";
 
 import profile from "@/public/dark-profile.webp";
 import Introduction from "@/components/introduction";
+import { buildLanguageAlternates } from "@/i18n/routing";
+import { isLanguage } from "@/i18n/settings";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lng: string }>;
+}): Promise<Metadata> {
+  const { lng } = await params;
+
+  if (!isLanguage(lng)) {
+    return {};
+  }
+
+  return {
+    alternates: buildLanguageAlternates(lng, "/"),
+  };
+}
 
 export default function Home() {
   return (

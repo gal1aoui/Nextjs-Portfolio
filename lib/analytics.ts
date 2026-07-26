@@ -1,8 +1,13 @@
 import { track } from "@vercel/analytics";
+import { sendGAEvent } from "@next/third-parties/google";
+
+import { getMixpanel } from "./mixpanel-client";
 
 /**
- * Analytics event tracking utility
- * Wraps Vercel Analytics with custom event naming conventions
+ * Analytics event tracking utility.
+ * Every event fans out to Vercel Analytics plus — when configured via env —
+ * Google Analytics 4 (NEXT_PUBLIC_GA_ID) and Mixpanel
+ * (NEXT_PUBLIC_MIXPANEL_TOKEN).
  */
 
 export interface AnalyticsEventProps {
@@ -12,9 +17,6 @@ export interface AnalyticsEventProps {
   value?: number;
 }
 
-/**
- * Track a custom event with Vercel Analytics
- */
 export const trackAnalyticsEvent = ({
   category,
   action,
@@ -22,26 +24,27 @@ export const trackAnalyticsEvent = ({
   value,
 }: AnalyticsEventProps) => {
   const eventName = `${category}_${action}`;
-
-  track(eventName, {
+  const properties = {
     category,
     action,
     ...(label && { label }),
     ...(value !== undefined && { value }),
+  };
+
+  track(eventName, properties);
+
+  if (process.env.NEXT_PUBLIC_GA_ID) {
+    sendGAEvent("event", eventName, properties);
+  }
+
+  void getMixpanel()?.then((mixpanel) => {
+    mixpanel?.track(eventName, properties);
   });
 };
 
 // ============================================
 // NAVIGATION EVENTS
 // ============================================
-
-export const trackNavigationPageView = (pageName: string) => {
-  trackAnalyticsEvent({
-    category: "navigation",
-    action: "page_view",
-    label: pageName,
-  });
-};
 
 export const trackLanguageChange = (language: string) => {
   trackAnalyticsEvent({
@@ -56,6 +59,96 @@ export const trackMobileMenuToggle = (opened: boolean) => {
     category: "navigation",
     action: "mobile_menu_toggle",
     label: opened ? "opened" : "closed",
+  });
+};
+
+// ============================================
+// EXPERIENCE MODE EVENTS
+// ============================================
+
+export const trackExperienceGateShown = () => {
+  trackAnalyticsEvent({
+    category: "experience_mode",
+    action: "gate_shown",
+    value: 1,
+  });
+};
+
+export const trackExperienceGateChoice = (mode: "classic" | "modern") => {
+  trackAnalyticsEvent({
+    category: "experience_mode",
+    action: "gate_choice",
+    label: mode,
+  });
+};
+
+export const trackExperienceModeSwitched = (
+  from: "classic" | "modern",
+  to: "classic" | "modern",
+  placement: string,
+) => {
+  trackAnalyticsEvent({
+    category: "experience_mode",
+    action: "mode_switched",
+    label: `${from}_to_${to}_${placement}`,
+  });
+};
+
+// ============================================
+// MODERN EXPERIENCE EVENTS
+// ============================================
+
+export const trackModernSectionViewed = (sectionId: string) => {
+  trackAnalyticsEvent({
+    category: "modern",
+    action: "section_viewed",
+    label: sectionId,
+  });
+};
+
+export const trackModernProjectOpened = (
+  projectId: string,
+  projectTitle: string,
+) => {
+  trackAnalyticsEvent({
+    category: "modern",
+    action: "project_opened",
+    label: projectTitle,
+  });
+};
+
+export const trackModernProjectLinkClick = (
+  projectId: string,
+  kind: "live" | "repo",
+) => {
+  trackAnalyticsEvent({
+    category: "modern",
+    action: "project_link_clicked",
+    label: `${projectId}_${kind}`,
+  });
+};
+
+export const trackModernContactCtaClick = (source: "cta" | "ai") => {
+  trackAnalyticsEvent({
+    category: "modern",
+    action: "contact_cta_clicked",
+    label: source,
+  });
+};
+
+export const trackModernPreloaderCompleted = (skipped: boolean) => {
+  trackAnalyticsEvent({
+    category: "modern",
+    action: "preloader_completed",
+    label: skipped ? "skipped" : "played",
+  });
+};
+
+export const trackModernBlogTeaserClick = (blogId: string) => {
+  trackAnalyticsEvent({
+    category: "modern",
+    action: "blog_teaser_clicked",
+    label: blogId,
   });
 };
 
@@ -118,6 +211,18 @@ export const trackProjectGithubClick = (
   });
 };
 
+export const trackProjectLiveClick = (
+  projectId: string,
+  projectTitle: string,
+  url: string,
+) => {
+  trackAnalyticsEvent({
+    category: "projects",
+    action: "live_link_clicked",
+    label: `${projectTitle} - ${url}`,
+  });
+};
+
 export const trackProjectCategoryFilter = (category: string) => {
   trackAnalyticsEvent({
     category: "projects",
@@ -154,32 +259,12 @@ export const trackContactFormOpened = () => {
   });
 };
 
-export const trackContactFormStarted = () => {
-  trackAnalyticsEvent({
-    category: "contact",
-    action: "form_started",
-    value: 1,
-  });
-};
-
 export const trackContactFormStep = (step: string, completed: boolean) => {
   trackAnalyticsEvent({
     category: "contact",
     action: "form_step_completed",
     label: step,
     value: completed ? 1 : 0,
-  });
-};
-
-export const trackContactFormSubmitted = (
-  submissionTime: number,
-  hasMessage: boolean,
-) => {
-  trackAnalyticsEvent({
-    category: "contact",
-    action: "form_submitted",
-    label: `time_${submissionTime}ms`,
-    value: hasMessage ? 1 : 0,
   });
 };
 
@@ -212,6 +297,48 @@ export const trackQAQuestionAsked = (
     category: "contact",
     action: "qa_question_asked",
     label: questionText.substring(0, 50),
+  });
+};
+
+export const trackQAAiMessageSent = (messageLength: number) => {
+  trackAnalyticsEvent({
+    category: "contact",
+    action: "qa_ai_message_sent",
+    value: messageLength,
+  });
+};
+
+export const trackQAAiMessageCompleted = (durationMs: number) => {
+  trackAnalyticsEvent({
+    category: "contact",
+    action: "qa_ai_message_completed",
+    value: Math.round(durationMs),
+  });
+};
+
+export const trackQAAiMessageErrored = (
+  reason: "rate_limited" | "upstream" | "network" | "unavailable",
+) => {
+  trackAnalyticsEvent({
+    category: "contact",
+    action: "qa_ai_message_errored",
+    label: reason,
+  });
+};
+
+export const trackQAAiStopped = () => {
+  trackAnalyticsEvent({
+    category: "contact",
+    action: "qa_ai_stopped",
+    value: 1,
+  });
+};
+
+export const trackQAAiFallbackShown = () => {
+  trackAnalyticsEvent({
+    category: "contact",
+    action: "qa_ai_fallback_shown",
+    value: 1,
   });
 };
 
@@ -278,35 +405,6 @@ export const trackGameOpened = () => {
     category: "game",
     action: "game_opened",
     value: 1,
-  });
-};
-
-export const trackGameStarted = () => {
-  trackAnalyticsEvent({
-    category: "game",
-    action: "game_started",
-    value: 1,
-  });
-};
-
-export const trackGameWon = (score: number) => {
-  trackAnalyticsEvent({
-    category: "game",
-    action: "game_won",
-    label: `score_${score}`,
-    value: score,
-  });
-};
-
-export const trackGameClosed = (
-  timePlayedSeconds: number,
-  finalScore: number,
-) => {
-  trackAnalyticsEvent({
-    category: "game",
-    action: "game_closed",
-    label: `${timePlayedSeconds}s_${finalScore}`,
-    value: timePlayedSeconds,
   });
 };
 
@@ -391,51 +489,5 @@ export const trackExperiencePageViewed = () => {
     category: "experience",
     action: "page_viewed",
     value: 1,
-  });
-};
-
-export const trackExperienceTimelineInteraction = (
-  companyName: string,
-  action: "expanded" | "collapsed",
-) => {
-  trackAnalyticsEvent({
-    category: "experience",
-    action: `timeline_${action}`,
-    label: companyName,
-    value: action === "expanded" ? 1 : 0,
-  });
-};
-
-// ============================================
-// PERFORMANCE EVENTS
-// ============================================
-
-export const trackComponentLoadTime = (
-  componentName: string,
-  loadTimeMs: number,
-) => {
-  trackAnalyticsEvent({
-    category: "performance",
-    action: "component_load_time",
-    label: componentName,
-    value: loadTimeMs,
-  });
-};
-
-export const trackFormSubmissionTime = (formName: string, timeMs: number) => {
-  trackAnalyticsEvent({
-    category: "performance",
-    action: "form_submission_time",
-    label: formName,
-    value: timeMs,
-  });
-};
-
-export const trackPageLoadTime = (pageName: string, timeMs: number) => {
-  trackAnalyticsEvent({
-    category: "performance",
-    action: "page_load_time",
-    label: pageName,
-    value: timeMs,
   });
 };

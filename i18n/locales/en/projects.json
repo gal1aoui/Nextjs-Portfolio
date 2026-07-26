@@ -4,18 +4,34 @@
   "sections": {
     "about": "About",
     "features": "Key Features",
-    "stack": "Tech Stack"
+    "stack": "Tech Stack",
+    "highlights": "Highlights",
+    "role": "Role"
   },
   "actions": {
     "close": "Close",
     "viewRepository": "View Repository",
-    "visitProject": "Visit Project"
+    "visitLive": "Visit Live Site"
   },
   "categories": {
+    "all": "All",
     "fullstack": "Full Stack",
     "backend": "Backend",
     "frontend": "Frontend",
     "library": "Library",
     "devops": "DevOps"
+  },
+  "status": {
+    "live": "Live",
+    "in-progress": "In progress",
+    "archived": "Completed"
+  },
+  "types": {
+    "client": "Client work",
+    "personal": "Personal product",
+    "open-source": "Open source"
+  },
+  "filters": {
+    "all": "All"
   }
 }

@@ -1,10 +1,11 @@
+import { Metadata } from "next";
 import NextLink from "next/link";
 import { notFound } from "next/navigation";
 
 import { getBlogById, getBlogIds } from "@/components/blogs/blogs-data";
 import BlogSpeechControls from "@/components/blogs/blog-speech-controls";
 import { ArrowLeftIcon } from "@/components/icons";
-import { localizePath } from "@/i18n/routing";
+import { buildLanguageAlternates, localizePath } from "@/i18n/routing";
 import { getTranslator } from "@/i18n/server";
 import { isLanguage } from "@/i18n/settings";
 
@@ -22,6 +23,28 @@ type BlogDetailPageProps = {
     blogId: string;
   }>;
 };
+
+export async function generateMetadata({
+  params,
+}: BlogDetailPageProps): Promise<Metadata> {
+  const { lng, blogId } = await params;
+
+  if (!isLanguage(lng)) {
+    return {};
+  }
+
+  const blog = getBlogById(lng, blogId);
+
+  if (!blog) {
+    return {};
+  }
+
+  return {
+    title: blog.title,
+    description: blog.subtitle,
+    alternates: buildLanguageAlternates(lng, `/blogs/${blogId}`),
+  };
+}
 
 function isBulletParagraph(paragraph: string) {
   const items = paragraph

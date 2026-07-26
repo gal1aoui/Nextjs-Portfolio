@@ -14,11 +14,15 @@ import { Link } from "@heroui/link";
 
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/i18n/client";
-import { trackProjectGithubClick } from "@/lib/analytics";
+import {
+  trackProjectGithubClick,
+  trackProjectLiveClick,
+} from "@/lib/analytics";
 
-import { GithubIcon } from "../icons";
+import { ExternalLinkIcon, GithubIcon, ProjectsIcon } from "../icons";
 
-import { Project, categoryColors } from "./projects-data";
+import { Project, categoryColors, statusColors } from "./data";
+import ProjectCover from "./project-cover";
 
 interface ProjectDrawerProps {
   project: Project | null;
@@ -36,7 +40,15 @@ export default function ProjectDrawer({
   if (!project) return null;
 
   const handleGithubClick = () => {
-    trackProjectGithubClick(project.id, project.title, project.repoUrl);
+    if (project.repoUrl) {
+      trackProjectGithubClick(project.id, project.title, project.repoUrl);
+    }
+  };
+
+  const handleLiveClick = () => {
+    if (project.liveUrl) {
+      trackProjectLiveClick(project.id, project.title, project.liveUrl);
+    }
   };
 
   return (
@@ -48,9 +60,21 @@ export default function ProjectDrawer({
       onOpenChange={(open) => !open && onClose()}
     >
       <DrawerContent className="max-w-lg">
-        {(onCloseDrawer) => (
+        {() => (
           <>
             <DrawerHeader className="flex flex-col gap-4 p-6 pb-0">
+              <motion.div
+                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.97 }}
+                transition={{ delay: 0.05 }}
+              >
+                <ProjectCover
+                  className="rounded-2xl"
+                  project={project}
+                  sizes="(max-width: 640px) 100vw, 512px"
+                />
+              </motion.div>
+
               <div className="flex items-start gap-4">
                 <motion.div
                   animate={{ scale: 1, opacity: 1 }}
@@ -58,35 +82,56 @@ export default function ProjectDrawer({
                   initial={{ scale: 0.8, opacity: 0 }}
                   transition={{ delay: 0.1 }}
                 >
-                  <GithubIcon className="text-white" size={28} />
+                  {project.liveUrl ? (
+                    <ExternalLinkIcon className="text-white" size={28} />
+                  ) : project.repoUrl ? (
+                    <GithubIcon className="text-white" size={28} />
+                  ) : (
+                    <ProjectsIcon className="text-white" size={28} />
+                  )}
                 </motion.div>
-                <div className="flex-1 min-w-0">
+                <div className="min-w-0 flex-1">
                   <motion.h2
                     animate={{ y: 0, opacity: 1 }}
-                    className="text-2xl font-bold mb-1"
+                    className="mb-1 text-2xl font-bold"
                     initial={{ y: 10, opacity: 0 }}
                     transition={{ delay: 0.15 }}
                   >
                     {project.title}
                   </motion.h2>
+                  <motion.p
+                    animate={{ y: 0, opacity: 1 }}
+                    className="mb-2 text-sm text-default-500"
+                    initial={{ y: 10, opacity: 0 }}
+                    transition={{ delay: 0.18 }}
+                  >
+                    {project.role}
+                  </motion.p>
                   <motion.div
                     animate={{ y: 0, opacity: 1 }}
+                    className="flex flex-wrap gap-1.5"
                     initial={{ y: 10, opacity: 0 }}
                     transition={{ delay: 0.2 }}
                   >
                     <Chip
-                      color={
-                        categoryColors[project.category] as
-                          | "primary"
-                          | "secondary"
-                          | "success"
-                          | "warning"
-                          | "danger"
-                      }
+                      color={categoryColors[project.category]}
                       size="sm"
                       variant="flat"
                     >
                       {t(`categories.${project.category}`)}
+                    </Chip>
+                    <Chip
+                      color={statusColors[project.status]}
+                      size="sm"
+                      variant="dot"
+                    >
+                      {t(`status.${project.status}`)}
+                    </Chip>
+                    <Chip size="sm" variant="bordered">
+                      {t(`types.${project.type}`)}
+                    </Chip>
+                    <Chip size="sm" variant="bordered">
+                      {project.year}
                     </Chip>
                   </motion.div>
                 </div>
@@ -100,7 +145,7 @@ export default function ProjectDrawer({
               />
             </DrawerHeader>
 
-            <DrawerBody className="p-6 overflow-y-auto">
+            <DrawerBody className="overflow-y-auto p-6">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={project.id}
@@ -110,10 +155,36 @@ export default function ProjectDrawer({
                   transition={{ delay: 0.2 }}
                 >
                   <div>
-                    <h3 className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
+                    <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-primary">
+                      {t("sections.highlights")}
+                    </h3>
+                    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                      {project.highlights.map((highlight, i) => (
+                        <motion.div
+                          key={i}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="flex items-start gap-2 rounded-xl border border-default-200/50 bg-default-50/50 px-3 py-2"
+                          initial={{ opacity: 0, y: 8 }}
+                          transition={{ delay: 0.25 + i * 0.05 }}
+                        >
+                          <span
+                            className={`mt-1.5 h-2 w-2 shrink-0 rounded-full bg-gradient-to-r ${project.gradient}`}
+                          />
+                          <span className="text-sm text-default-600">
+                            {highlight}
+                          </span>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <Divider />
+
+                  <div>
+                    <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-primary">
                       {t("sections.about")}
                     </h3>
-                    <p className="text-default-600 leading-relaxed">
+                    <p className="leading-relaxed text-default-600">
                       {project.fullDescription}
                     </p>
                   </div>
@@ -121,7 +192,7 @@ export default function ProjectDrawer({
                   <Divider />
 
                   <div>
-                    <h3 className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
+                    <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-primary">
                       {t("sections.features")}
                     </h3>
                     <ul className="space-y-2">
@@ -145,7 +216,7 @@ export default function ProjectDrawer({
                   <Divider />
 
                   <div>
-                    <h3 className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
+                    <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-primary">
                       {t("sections.stack")}
                     </h3>
                     <div className="flex flex-wrap gap-2">
@@ -167,28 +238,34 @@ export default function ProjectDrawer({
               </AnimatePresence>
             </DrawerBody>
 
-            <DrawerFooter className="p-6 pt-0 gap-3">
-              <Button
-                className="flex-1"
-                size="md"
-                variant="bordered"
-                onPress={onCloseDrawer}
-              >
-                {t("actions.close")}
-              </Button>
-              <Button
-                isExternal
-                as={Link}
-                className={`flex-1 bg-gradient-to-r ${project.gradient} text-white shadow-lg`}
-                href={project.repoUrl}
-                size="md"
-                onClick={handleGithubClick}
-              >
-                <GithubIcon size={18} />
-                {project.repoUrl.includes("github.com")
-                  ? t("actions.viewRepository")
-                  : t("actions.visitProject")}
-              </Button>
+            <DrawerFooter className="gap-3 p-6 pt-0">
+              {project.liveUrl ? (
+                <Button
+                  isExternal
+                  as={Link}
+                  className={`flex-1 bg-gradient-to-r ${project.gradient} text-white shadow-lg`}
+                  href={project.liveUrl}
+                  size="md"
+                  onClick={handleLiveClick}
+                >
+                  <ExternalLinkIcon size={18} />
+                  {t("actions.visitLive")}
+                </Button>
+              ) : null}
+              {project.repoUrl ? (
+                <Button
+                  isExternal
+                  as={Link}
+                  className="flex-1"
+                  href={project.repoUrl}
+                  size="md"
+                  variant="bordered"
+                  onClick={handleGithubClick}
+                >
+                  <GithubIcon size={18} />
+                  {t("actions.viewRepository")}
+                </Button>
+              ) : null}
             </DrawerFooter>
           </>
         )}

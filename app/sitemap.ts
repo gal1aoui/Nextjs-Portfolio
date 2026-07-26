@@ -14,6 +14,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: route === "/" ? 1 : 0.8,
     })),
   );
+  const modernRoutes = languages.map((lng) => ({
+    url: getAbsoluteLocalizedUrl(lng, "/modern"),
+    lastModified: new Date().toISOString(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
   const blogRoutes = languages.flatMap((lng) =>
     getBlogIds().map((blogId) => ({
       url: getAbsoluteLocalizedUrl(lng, `/blogs/${blogId}`),
@@ -23,5 +29,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   );
 
-  return [...topLevelRoutes, ...blogRoutes];
+  return [...topLevelRoutes, ...modernRoutes, ...blogRoutes];
 }

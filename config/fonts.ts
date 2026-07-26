@@ -1,11 +1,16 @@
-import { Fira_Code as FontMono, Inter as FontSans } from "next/font/google";
+import {
+  Inter as FontSans,
+  Space_Grotesk as FontDisplay,
+} from "next/font/google";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 });
 
-export const fontMono = FontMono({
+// Display font for the modern experience + intro gate only. Its CSS variable is
+// applied on those roots, so classic pages never download it.
+export const fontDisplay = FontDisplay({
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-display",
 });

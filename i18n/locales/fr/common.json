@@ -57,6 +57,11 @@
     "description": "La page que vous cherchez n'existe pas ou a peut-être été déplacée.",
     "cta": "Retour à l'accueil"
   },
+  "error": {
+    "title": "Une erreur est survenue",
+    "description": "Une erreur inattendue s'est produite. Veuillez réessayer.",
+    "retry": "Réessayer"
+  },
   "game": {
     "tooltip": "Charger le mini-jeu 2048",
     "play": "Jouer à 2048",
@@ -71,6 +76,16 @@
     "empty": "Choisissez une question dans la liste ci-dessous et j'y répondrai aussi clairement que possible.",
     "thinking": "Je réfléchis...",
     "close": "Fermer",
-    "allAnswered": "Toutes les questions ont une réponse."
+    "allAnswered": "Toutes les questions ont une réponse.",
+    "placeholder": "Posez-moi une question sur Achref…",
+    "send": "Envoyer",
+    "stop": "Arrêter",
+    "retry": "Réessayer",
+    "aiDisclaimer": "Les réponses de l'IA peuvent contenir des erreurs.",
+    "offline": "Les réponses IA sont indisponibles pour le moment, mais les questions rapides ci-dessous fonctionnent toujours.",
+    "rateLimited": "L'assistant fait une courte pause. Réessayez dans une minute.",
+    "aiError": "Une erreur est survenue en répondant.",
+    "resting": "L'assistant fait une pause pour cette session. Les réponses rapides ci-dessous restent disponibles.",
+    "inputLabel": "Votre question"
   }
 }

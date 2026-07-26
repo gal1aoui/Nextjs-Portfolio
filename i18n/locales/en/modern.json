@@ -1,0 +1,84 @@
+{
+  "gate": {
+    "title": "Choose your experience",
+    "subtitle": "Same portfolio, two personalities.",
+    "hint": "You can switch anytime from the header.",
+    "classic": {
+      "label": "Classic",
+      "description": "Multi-page, familiar, straight to the point.",
+      "cta": "Enter classic"
+    },
+    "modern": {
+      "label": "Modern",
+      "description": "One page. Scroll the story.",
+      "cta": "Enter modern"
+    }
+  },
+  "toggle": {
+    "toClassic": "Classic mode",
+    "toModern": "Modern mode",
+    "ariaLabel": "Switch experience mode"
+  },
+  "preloader": {
+    "loading": "Loading"
+  },
+  "nav": {
+    "ariaLabel": "Sections",
+    "sections": {
+      "hero": "Intro",
+      "about": "About",
+      "skills": "Skills",
+      "experience": "Journey",
+      "projects": "Work",
+      "blog": "Writing",
+      "contact": "Contact"
+    }
+  },
+  "hero": {
+    "eyebrow": "Fullstack Software Engineer",
+    "tagline": "No matter the stack, I'm ready to adapt, learn quickly, and deliver real value.",
+    "scrollHint": "Scroll"
+  },
+  "about": {
+    "heading": "About",
+    "stats": {
+      "years": "Years of experience",
+      "projects": "Projects shipped",
+      "skills": "Technologies",
+      "companies": "Companies"
+    }
+  },
+  "skills": {
+    "heading": "Skills",
+    "subheading": "The tools I reach for, from interface to infrastructure."
+  },
+  "experience": {
+    "heading": "Journey",
+    "present": "Present"
+  },
+  "projects": {
+    "heading": "Selected work",
+    "viewAll": "All projects",
+    "openProject": "View details",
+    "dragHint": "Scroll to explore"
+  },
+  "blog": {
+    "heading": "Writing",
+    "readPost": "Read the post"
+  },
+  "contact": {
+    "heading": "Let's talk",
+    "subheading": "Have a project, a role, or just a question?",
+    "cta": "Send a message",
+    "or": "or",
+    "askAi": "Ask my AI assistant"
+  },
+  "footer": {
+    "backToTop": "Back to top",
+    "builtWith": "Designed & built by Achref Gallaoui"
+  },
+  "seo": {
+    "title": "Modern Experience",
+    "description": "A one-page, scroll-driven tour of Achref Gallaoui's work: projects, skills, experience and writing, all in one cinematic page."
+  }
+}

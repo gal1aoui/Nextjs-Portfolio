@@ -54,6 +54,43 @@ export const Logo: React.FC<IconSvgProps> = ({
   </svg>
 );
 
+export const ExternalLinkIcon: React.FC<IconSvgProps> = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}) => (
+  <svg
+    fill="none"
+    height={size || height}
+    viewBox="0 0 24 24"
+    width={size || width}
+    {...props}
+  >
+    <path
+      d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+    />
+    <path
+      d="M15 3h6v6"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+    />
+    <path
+      d="M10 14 21 3"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+    />
+  </svg>
+);
+
 export const GithubIcon: React.FC<IconSvgProps> = ({
   size = 24,
   width,

@@ -1,6 +1,9 @@
 "use client";
 
+import { FC } from "react";
+
 import { useTranslation } from "@/i18n/client";
+import { IconSvgProps } from "@/types";
 
 import SkillGrid from "../skill-card";
 import {
@@ -16,78 +19,31 @@ import {
   ZodIcon,
   ZustandIcon,
 } from "../icons";
+import { skillsData } from "../skills-data";
 import { Skill } from "../type";
+
+const icons: Record<string, FC<IconSvgProps>> = {
+  react: ReactIcon,
+  nextjs: NextJsIcon,
+  typescript: TypeScriptIcon,
+  angular: AngularIcon,
+  "spartan-ng": SpartanNgIcon,
+  tailwind: TailwindCssIcon,
+  shadcn: ShadcnUiIcon,
+  "material-ui": MaterialUiIcon,
+  tanstack: TanStackIcon,
+  zod: ZodIcon,
+  zustand: ZustandIcon,
+};
 
 export default function FrontendSkills() {
   const { t } = useTranslation("skills");
-  const skills: Skill[] = [
-    {
-      id: "react",
-      name: "React",
-      description: t("items.react"),
-      icon: ReactIcon,
-    },
-    {
-      id: "nextjs",
-      name: "Next.js",
-      description: t("items.nextjs"),
-      icon: NextJsIcon,
-    },
-    {
-      id: "typescript",
-      name: "TypeScript",
-      description: t("items.typescript"),
-      icon: TypeScriptIcon,
-    },
-    {
-      id: "angular",
-      name: "Angular",
-      description: t("items.angular"),
-      icon: AngularIcon,
-    },
-    {
-      id: "spartan-ng",
-      name: "Spartan NG",
-      description: t("items.spartanng"),
-      icon: SpartanNgIcon,
-    },
-    {
-      id: "tailwind",
-      name: "Tailwind CSS",
-      description: t("items.tailwind"),
-      icon: TailwindCssIcon,
-    },
-    {
-      id: "shadcn",
-      name: "shadcn/ui",
-      description: t("items.shadcn"),
-      icon: ShadcnUiIcon,
-    },
-    {
-      id: "material-ui",
-      name: "Material UI",
-      description: t("items.materialui"),
-      icon: MaterialUiIcon,
-    },
-    {
-      id: "tanstack",
-      name: "TanStack",
-      description: t("items.tanstack"),
-      icon: TanStackIcon,
-    },
-    {
-      id: "zod",
-      name: "Zod",
-      description: t("items.zod"),
-      icon: ZodIcon,
-    },
-    {
-      id: "zustand",
-      name: "Zustand",
-      description: t("items.zustand"),
-      icon: ZustandIcon,
-    },
-  ];
+  const skills: Skill[] = skillsData.frontend.map((entry) => ({
+    id: entry.id,
+    name: entry.name,
+    description: t(entry.translationKey),
+    icon: icons[entry.id],
+  }));
 
   return <SkillGrid skills={skills} />;
 }

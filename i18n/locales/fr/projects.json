@@ -4,18 +4,34 @@
   "sections": {
     "about": "À propos",
     "features": "Fonctionnalités clés",
-    "stack": "Stack technique"
+    "stack": "Stack technique",
+    "highlights": "Points forts",
+    "role": "Rôle"
   },
   "actions": {
     "close": "Fermer",
     "viewRepository": "Voir le dépôt",
-    "visitProject": "Voir le projet"
+    "visitLive": "Voir le site en ligne"
   },
   "categories": {
+    "all": "Tous",
     "fullstack": "Full Stack",
     "backend": "Backend",
     "frontend": "Frontend",
     "library": "Bibliothèque",
     "devops": "DevOps"
+  },
+  "status": {
+    "live": "En ligne",
+    "in-progress": "En cours",
+    "archived": "Terminé"
+  },
+  "types": {
+    "client": "Projet client",
+    "personal": "Produit personnel",
+    "open-source": "Open source"
+  },
+  "filters": {
+    "all": "Tous"
   }
 }
