@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { fontDisplay } from "@/config/fonts";
 import { useTranslation } from "@/i18n/client";
@@ -22,9 +22,12 @@ import {
 } from "@/lib/analytics";
 
 /**
- * First-visit overlay on the classic home page offering the classic or modern
- * experience. Renders nothing on the server and for returning visitors, so
- * crawlers and no-JS clients always see the classic page underneath.
+ * First-visit entry screen on the classic home page offering the classic or
+ * modern experience. It appears fully opaque and instantly (the boot script
+ * in the classic layout blanks the shell until it mounts), locks background
+ * scrolling while open, and stays up during the navigation to /modern so the
+ * classic page never flashes. Renders nothing on the server and for returning
+ * visitors, so crawlers and no-JS clients always see the classic page.
  */
 export default function ExperienceGate() {
   const pathname = usePathname();
@@ -33,6 +36,7 @@ export default function ExperienceGate() {
   const prefersReducedMotion = useReducedMotion();
   const [isVisible, setIsVisible] = useState(false);
   const hasTrackedShown = useRef(false);
+  const hasChosen = useRef(false);
   const classicRef = useRef<HTMLButtonElement>(null);
   const modernRef = useRef<HTMLButtonElement>(null);
 
@@ -59,37 +63,61 @@ export default function ExperienceGate() {
   useEffect(() => {
     if (isVisible) {
       classicRef.current?.focus();
-      // The overlay is committed at this point, so the classic shell can be
-      // revealed behind it without a flash.
+      // The overlay is committed at this point (fully opaque — no entry
+      // fade), so the classic shell can be revealed behind it without a
+      // flash.
       document.documentElement.removeAttribute("data-gate-pending");
+      // Warm up the modern route so picking it navigates without a stall.
+      router.prefetch(localizePath(language, "/modern"));
     }
+  }, [isVisible, language, router]);
+
+  // The page behind the gate must not scroll while the intro is up.
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const html = document.documentElement;
+    const body = document.body;
+    const previousHtmlOverflow = html.style.overflow;
+    const previousBodyOverflow = body.style.overflow;
+
+    html.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+
+    return () => {
+      html.style.overflow = previousHtmlOverflow;
+      body.style.overflow = previousBodyOverflow;
+    };
   }, [isVisible]);
 
-  const choose = (mode: ExperienceMode) => {
-    writeExperienceModeCookie(mode);
-    trackExperienceGateChoice(mode);
-    setIsVisible(false);
+  const choose = useCallback(
+    (mode: ExperienceMode) => {
+      if (hasChosen.current) return;
+      hasChosen.current = true;
 
-    if (mode === "modern") {
-      router.push(localizePath(language, "/modern"));
-    }
-  };
+      writeExperienceModeCookie(mode);
+      trackExperienceGateChoice(mode);
+
+      if (mode === "modern") {
+        // Keep the gate covering the page until the modern route mounts —
+        // hiding it now would flash the classic home during navigation.
+        router.push(localizePath(language, "/modern"));
+      } else {
+        setIsVisible(false);
+      }
+    },
+    [language, router],
+  );
 
   // Document-level key handling so the trap works even after a backdrop
   // click moves focus to <body> (the page behind stays covered + untabbable).
   useEffect(() => {
     if (!isVisible) return;
 
-    const chooseClassic = () => {
-      writeExperienceModeCookie("classic");
-      trackExperienceGateChoice("classic");
-      setIsVisible(false);
-    };
-
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault();
-        chooseClassic();
+        choose("classic");
 
         return;
       }
@@ -112,7 +140,7 @@ export default function ExperienceGate() {
     document.addEventListener("keydown", handleKeyDown, true);
 
     return () => document.removeEventListener("keydown", handleKeyDown, true);
-  }, [isVisible]);
+  }, [isVisible, choose]);
 
   return (
     <AnimatePresence>
@@ -121,9 +149,9 @@ export default function ExperienceGate() {
           animate={{ opacity: 1 }}
           aria-labelledby="experience-gate-title"
           aria-modal="true"
-          className={`${fontDisplay.variable} fixed inset-0 z-[100] flex flex-col bg-background/95 backdrop-blur-xl`}
+          className={`${fontDisplay.variable} fixed inset-0 z-[100] flex flex-col bg-background`}
           exit={{ opacity: 0 }}
-          initial={{ opacity: 0 }}
+          initial={false}
           role="dialog"
           transition={{ duration: prefersReducedMotion ? 0.15 : 0.35 }}
         >
