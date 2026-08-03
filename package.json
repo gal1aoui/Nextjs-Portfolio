@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "eslint --fix",
     "covers:optimize": "node scripts/optimize-covers.mjs",
+    "icons:generate": "node scripts/generate-icons.mjs",
     "i18n:extract": "i18next-cli extract --sync-primary",
     "i18n:lint": "i18next-cli lint",
     "i18n:status": "i18next-cli status",

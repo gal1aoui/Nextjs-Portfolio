@@ -48,10 +48,15 @@ export async function generateMetadata({
     creator: siteConfig.author,
     icons: {
       icon: [
-        { url: "/favicon.ico", sizes: "any" },
-        { url: "/icon.png", type: "image/png", sizes: "192x192" },
+        { url: "/icon.png", type: "image/png", sizes: "512x512" },
+        {
+          url: "/favicon.ico",
+          type: "image/x-icon",
+          sizes: "16x16 32x32 48x48 64x64 96x96",
+        },
       ],
-      apple: "/apple-icon.png",
+      shortcut: "/favicon.ico",
+      apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
     },
     openGraph: {
       type: "website",
